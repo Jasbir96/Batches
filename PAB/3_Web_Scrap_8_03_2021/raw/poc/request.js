@@ -10,7 +10,7 @@ function cb(error, response, html) {
     let cheerioSelector = cheerio.load(html);
     let element = cheerioSelector("#SIvCob");
     // console.log(element.html());
-//   console.log(element.text());  
+  console.log(element.text());  
 }
 
 
