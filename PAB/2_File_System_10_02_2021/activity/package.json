@@ -1,0 +1,14 @@
+{
+  "name": "myutil",
+  "version": "1.0.0",
+  "description": "\"my script\"",
+  "main": "mycli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "myutil": "mycli.js"
+  }
+}
