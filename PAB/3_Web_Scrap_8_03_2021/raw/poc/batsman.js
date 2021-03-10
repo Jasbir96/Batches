@@ -18,6 +18,7 @@ function cb(err, response, html) {
         // bowlersHtmlString += chSelector(tables[i]).text();
         // find function find an element inside an element
         let teamBowlers = chSelector(tables[i]).find("tr");
+        console.log(teamBowlers.length);
         for (let j = 0; j < teamBowlers.length; j++) {
             // let bolHtml = chSelector(teamBowlers[j]).text();
             let eachbowlcol = chSelector(teamBowlers[j])
