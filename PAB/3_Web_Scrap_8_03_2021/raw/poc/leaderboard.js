@@ -1,6 +1,8 @@
 // npm -> play store
 let request = require("request");
 let cheerio = require("cheerio");
+
+let singlemathFileObj = require("./singleMatch");
 // console.log("before");
 // async function
 // https://www.espncricinfo.com/series/ipl-2020-21-1210595/delhi-capitals-vs-mumbai-indians-final-1237181/ball-by-ball-commentary
@@ -19,10 +21,13 @@ function cb(error, response, html) {
     console.log(matchcard.length);
     for (let i = 0; i < matchcard.length; i++) {
         // sublock anchors
-        let allanchorsofAMatch = cheerioSelector(matchcard[i]).find(".match-cta-container .btn.btn-sm.btn-outline-dark.match-cta");
+        let allanchorsofAMatch = cheerioSelector(matchcard[i])
+        .find(".match-cta-container .btn.btn-sm.btn-outline-dark.match-cta");
         let link = cheerioSelector(allanchorsofAMatch[2]).attr("href");
-        let fullLink ="https://www.espncricinfo.com"+link;
-        console.log(fullLink);
+        let fullLink = "https://www.espncricinfo.com" + link;
+        // console.log(fullLink);
+        singlemathFileObj.spFn(fullLink);
+        
     }
     //   let AllAnchors = cheerioSelector('.match-cta-container .btn.btn-sm.btn-outline-dark.match-cta ');
     // console.log(element.length);
