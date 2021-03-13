@@ -49,6 +49,7 @@ function OrganizeDir(dirpath) {
         copyFiletoFolder(dirpath, destFolder);
         // dirpath
     } else {
+        
         let content = listContent(dirpath);
         for (let i = 0; i < content.length; i++) {
             // f10/f1.txt
@@ -67,6 +68,7 @@ function OrganizeFn(dirpath) {
     }
     // others 
     let otherPath = path.join(orgFilePath, "others");
+
     dirCreator(otherPath);
 
     OrganizeDir(dirpath);

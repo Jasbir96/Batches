@@ -5,27 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        /* children selector */
-       
-    </style>
 </head>
+<style>
+    /* children -> class */
+  .c1>p {
+       color:blue;
+   }
+</style>
 
 <body>
 
-    <!-- select "I'm the direct son" and make it blue -->
+    <!-- select "I'm the direct son" and make it blue  -->
 
-    <div>
+    <div class="c1">
         <p>
-            <span>I'm the direct son</span>
+            I'm the direct son
         </p>
     </div>
 
-    <div>
+    <div class="c1">
         <span>
-            <p>
-                <span>I'm the indirect son</span>
-            </p>
+            <p>I'm the indirect son</p>
         </span>
     </div>
 
