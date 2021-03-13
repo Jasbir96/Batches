@@ -13,7 +13,8 @@ function cb(err, response, html) {
 }
 function extractData(html) {
     let selTool = cheerio.load(html);
-    let commentryArr = selTool(".col-14.col-md-15.col-lg-14 .match-comment-long-text");
+    let commentryArr = selTool
+    (".col-14.col-md-15.col-lg-14 .match-comment-long-text");
     //    cheerio index
     let lbc = selTool(commentryArr[0]).text()
     console.log(lbc);
