@@ -1,16 +1,22 @@
-  
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
         /* classes desendent */
-      
+        /* .c1 span div {
+            color: blue
+        } */
+        .c1 .c2{
+            color:blue;
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- Select "I'm here. find me" and make it blue  -->
     <div class="c1">
         <div>
@@ -18,14 +24,15 @@
                 hello
                 <span>
                     <div class="c2">I'm here. find me</div>
-                  </span>
+                </span>
             </div>
         </div>
-      
+
     </div>
 
     <span>
-      <div class="c2">Dont select me</div>
+        <div class="c2">Dont select me</div>
     </span>
-  </body>
+</body>
+
 </html>
