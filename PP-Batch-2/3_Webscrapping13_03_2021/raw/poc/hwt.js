@@ -19,6 +19,8 @@ function extractData(html) {
     // for (let i = 0; i < bothBowlerTable.length; i++) {
     //     tableHtml += selTool(bothBowlerTable[i]).html();
     // }
+    let hwtname = "";
+    let hwickets = 0;
     for (let i = 0; i < bothBowlerTable.length; i++) {
         // tableHtml += selTool(bothBowlerTable[i]).html();
         let playersRow = selTool(bothBowlerTable[i]).find("tbody tr");
@@ -27,9 +29,14 @@ function extractData(html) {
             let name = selTool(allcolOfPlayer[0]).text();
             let wicket = selTool(allcolOfPlayer[4]).text();
             console.log("name", name, "wicket", wicket);
+            if (wicket >= hwickets) {
+                hwickets=wicket;
+                hwtname=name;
+            }
         }
         console.log("`````````````````````````````````````");
     }
+    console.log(hwtname+" : "+hwickets);
     // console.log(tableHtml);
     // get the names and wickets of every player
 
