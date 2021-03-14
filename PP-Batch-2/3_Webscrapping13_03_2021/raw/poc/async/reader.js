@@ -7,5 +7,6 @@ fs.readFile("f1.txt", cb);
 function cb(err, data) {
     console.log("content " + data);
 }
+
 console.log("After");
 console.log("other");
