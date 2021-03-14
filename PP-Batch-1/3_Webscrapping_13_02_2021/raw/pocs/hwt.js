@@ -21,17 +21,25 @@ function extractHtml(html) {
     // for (let i = 0; i < bowlerstable.length; i++) {
     //     stringhtml +=selectorTool(bowlerstable[i]).html();
     // }
+    let hwtname = "";
+    let hwkt = 0;
     for (let i = 0; i < bowlerstable.length; i++) {
         let singleInningBol = selectorTool(bowlerstable[i]).find("tbody tr");
         for (let j = 0; j < singleInningBol.length; j++) {
             let singleAllCol = selectorTool(singleInningBol[j]).find("td");
             let name = selectorTool(singleAllCol[0]).text();
             let wickets = selectorTool(singleAllCol[4]).text();
-            console.log("Name->",name,"wickets->",wickets);
+            console.log("Name->", name, "wickets->", wickets);
+            if (hwkt <= Number.parseInt(wickets)){
+                hwkt=wickets;
+                hwtname=name;
+            }
+            
         }
         console.log("```````````````````````````````");
         // get all bowler name, wickets
     }
+    console.log(hwtname," : ",hwkt);
     // console.log(stringhtml);
     // compare wickets
 
