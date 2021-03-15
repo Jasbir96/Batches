@@ -26,8 +26,7 @@ function cb(error, response, html) {
         let link = cheerioSelector(allanchorsofAMatch[2]).attr("href");
         let fullLink = "https://www.espncricinfo.com" + link;
         // console.log(fullLink);
-        singlemathFileObj.spFn(fullLink);
-        
+        singlemathFileObj.spFn(fullLink);    
     }
     //   let AllAnchors = cheerioSelector('.match-cta-container .btn.btn-sm.btn-outline-dark.match-cta ');
     // console.log(element.length);

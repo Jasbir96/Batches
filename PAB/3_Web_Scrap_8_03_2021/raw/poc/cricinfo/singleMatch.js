@@ -6,6 +6,7 @@ function singlepageExtractor(url) {
 
     request(url, cb);
 }
+// let url = "https://www.espncricinfo.com/series/ipl-2020-21-1210595/delhi-capitals-vs-mumbai-indians-final-1237181/full-scorecard";
 // intial content -> scrap 
 // last ball commentry
 // first ball commentary 
@@ -65,6 +66,6 @@ function printTeamStats(winTeamInning, chSelector) {
     console.table(statsArr);
     console.log("``````````````````````````````````");
 }
-module.exports={
-    spFn:singlepageExtractor
+module.exports = {
+    spFn: singlepageExtractor
 }
