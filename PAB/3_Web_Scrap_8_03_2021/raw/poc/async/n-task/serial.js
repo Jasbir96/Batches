@@ -14,7 +14,6 @@ console.log("starting loop");
 //         }
 //     });
 // }
-
 function serialReader(n) {
     if (n == files.length) {
         return;
@@ -24,7 +23,8 @@ function serialReader(n) {
             console.log(err);
         }
         else {
-            console.log("content->", data);
+        //    console.log(data.byteLength)
+            console.log("content->"+data);
             serialReader(n + 1);
         }
     });

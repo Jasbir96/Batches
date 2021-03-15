@@ -1,6 +1,7 @@
 // match-info match-info-MATCH
 let request = require("request");
 let cheerio = require("cheerio");
+let statsArr = [];
 // input -> commentary page url 
 function singlepageExtractor(url) {
 
@@ -44,7 +45,7 @@ function cb(err, response, html) {
     }
 }
 function printTeamStats(winTeamInning, chSelector) {
-    let statsArr = []
+
     let allRows = chSelector(winTeamInning)
         .find(".table.batsman tbody tr");
     for (let j = 0; j < allRows.length; j++) {
@@ -54,17 +55,36 @@ function printTeamStats(winTeamInning, chSelector) {
             let playerName = chSelector(eachbatcol[0])
                 .text();
             let runs = chSelector(eachbatcol[2]).text();
-            statsArr.push({
-                Name: playerName,
-                Runs: runs
-            })
+
+            addtoLeaderBoard(playerName, runs);
             // compare
         }
         // console.log(bolHtml);
         // tr -> name ,wickets column
     }
-    console.table(statsArr);
     console.log("``````````````````````````````````");
+}
+
+function addtoLeaderBoard(playerName, cruns) {
+    // check -> 
+    let doesExist = false;
+    for (let i = 0; i < statsArr.length; i++) {
+        if (statsArr[i].name == playerName) {
+
+            statsArr[i].runs += Number(cruns);
+            doesExist = true;
+            break;
+        }
+    }
+    if (doesExist == false) {
+        let playerObject = {
+            name: playerName,
+            runs: Number(cruns)
+        }
+        statsArr.push(playerObject);
+    }
+
+
 }
 module.exports = {
     spFn: singlepageExtractor
