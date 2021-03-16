@@ -2,7 +2,7 @@ let fs = require("fs");
 let files = ["../f1.txt", "../f2.txt", "../f3.txt", "../f4.txt"];
 // parallely read
 console.log("before");
-console.log("starting loop");
+// console.log("starting loop");
 // for (let i = 0; i < files.length; ) {
 //     console.log(i);
 //     fs.readFile(files[i], function cb(err, content) {
