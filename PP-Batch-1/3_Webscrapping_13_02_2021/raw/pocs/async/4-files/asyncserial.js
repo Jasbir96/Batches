@@ -31,7 +31,6 @@ function cb4(err, data) {
         console.log(err);
     } else {
         console.log("content->" + data);
-       
     }
 }
 
