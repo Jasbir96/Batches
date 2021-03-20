@@ -21,24 +21,27 @@ function cb(err, response, html) {
 // }
 function extractData(html) {
     let selTool = cheerio.load(html);
+    let linksArr = [];
     let anchorArr = selTool("a[data-hover='Scorecard']");
     for (let i = 0; i < anchorArr.length; i++) {
         let link = selTool(anchorArr[i]).attr("href");
         let fullLink = "https://www.espncricinfo.com" + link;
         // console.log(fullLink);
-        extractPlayername(fullLink);
+        linksArr.push(fullLink);
     }
-    // extractPlayernameSerially(linksArr, 0);
+    extractPlayernameSerially(linksArr, 0);
 }
-function extractPlayername(fullLink) {
-
-    request(fullLink, cb);
+function extractPlayernameSerially(linksArr, n) {
+    if (n == linksArr.length) {
+        return;
+    }
+    request(linksArr[n], cb);
     function cb(err, request, html) {
         if (err) {
             console.log(err);
-
         } else {
             printPlayerName(html);
+            extractPlayernameSerially(linksArr, n + 1);
         }
     }
 }
