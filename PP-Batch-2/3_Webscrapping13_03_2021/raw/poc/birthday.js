@@ -35,6 +35,7 @@ function extractData(html) {
     // get the names and wickets of every player
 }
 function printBirthday(link, name) {
+//    async 
     request(link, cb);
     function cb(error, response, html) {
         if (error) {

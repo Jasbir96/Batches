@@ -16,6 +16,6 @@ function extractData(html) {
     let commentryArr = selTool
     (".col-14.col-md-15.col-lg-14 .match-comment-long-text");
     //    cheerio index
-    let lbc = selTool(commentryArr[0]).text()
+    let lbc = selTool(commentryArr[0]).text();
     console.log(lbc);
 }

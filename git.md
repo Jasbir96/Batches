@@ -4,7 +4,7 @@
 - [ ] git config --global user.name "John Doe"
 ## (You need to do it always) Hamesha karna hoga 
 - [ ] git init
-- [ ] touch .gitignore=> add node_modules to it
+- [ ] create a file  .gitignore=> add node_modules to it
 - [ ] git add .
 - [ ] git commit -m "commit message"
 - [ ] create a repo on github
