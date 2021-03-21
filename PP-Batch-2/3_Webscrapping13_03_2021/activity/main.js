@@ -1,32 +1,29 @@
+// npm init -y
+// npm install request 
+// npm install cheerio
 let request = require("request");
 let cheerio = require("cheerio");
-let fs = require("fs");
-let path = require("path");
-let PDFDocument = require('pdfkit');
-let url = "https://github.com/topics";
-request(url, cb);
-function cb(err, response, html) {
-    if (err) {
-        console.log(err);
+console.log("Before");
+request("https://github.com/topics", cb);
+function cb(error, response, html) {
+    if (error) {
+        console.log(error)
     } else {
-        // console.log(html);
-        extractData(html);
+        extractHtml(html);
     }
 }
-function extractData(html) {
-    let selTool = cheerio.load(html);
-    let anchors = selTool
-        (".no-underline.d-flex.flex-column.flex-justify-center");
-    for (let i = 0; i < anchors.length; i++) {
-        let link = selTool(anchors[i]).attr("href");
-        // console.log(link);
+function extractHtml(html) {
+    let selectorTool = cheerio.load(html);
+    let topicsArr = selectorTool(".col-12.col-sm-6.col-md-4.mb-4 a");
+    for (let i = 0; i < topicsArr.length; i++) {
+        let link = selectorTool(topicsArr[i]).attr("href");
         let fullLink = "https://github.com" + link;
-        extractRepodata(fullLink)
+        processrepoPage(fullLink);
     }
 }
-function extractRepodata(fullLink) {
+function processrepoPage(fullLink) {
     request(fullLink, cb);
-    function cb(err, response, html) {
+    function cb(err, resp, html) {
         if (err) {
             console.log(err);
         } else {
@@ -36,70 +33,13 @@ function extractRepodata(fullLink) {
 }
 function getRepoLinks(html) {
     let selTool = cheerio.load(html);
-    let topicNameElem = selTool(".h1-mktg");
-    let repolinks = selTool("a.text-bold");
-    // console.log(topicNameElem.text());
-    let topicName = topicNameElem.text().trim();
-    dirCreater(topicName);
+    let topicElem = selTool(".h1-mktg");
+    console.log(topicElem.text());
+    let arr = selTool("a.text-bold");
     for (let i = 0; i < 8; i++) {
-        let repoPageLink = selTool(repolinks[i]).attr("href");
-        let repoName = repoPageLink.split("/").pop();
-        repoName = repoName.trim();
-        // console.log(repoName);
-        // createFile(repoName, topicName);
-        let fullRepoLink = "https://github.com" + repoPageLink + "/issues123";
-        getIssues(repoName, topicName, fullRepoLink);
+        let link = selTool(arr[i]).attr("href");
+        console.log(link);
     }
-    console.log("`````````````````````````");
+    console.log("`````````````````````````````")
 }
-function getIssues(repoName, topicName, repoPageLink) {
-    request(repoPageLink, cb);
-    function cb(err, resp, html) {
-        if (err) {
-            if (resp.statusCode == 404) {
-                console.log("No issues page found");
-            } else {
-                console.log(err);
-            }
-        } else {
-            extractIssues(html, repoName, topicName);
-        }
-
-    }
-}
-function extractIssues(html, repoName, topicName) {
-    let selTool = cheerio.load(html);
-    let IssuesAnchAr = 
-    selTool
-    ("a.Link--primary.v-align-middle.no-underline.h4.js-navigation-open.markdown-title");
-    let arr = [];
-    for (let i = 0; i < IssuesAnchAr.length; i++) {
-        let name = selTool(IssuesAnchAr[i]).text();
-        let link = selTool(IssuesAnchAr[i]).attr("href");
-        arr.push({
-            "Name": name,
-            "Link": "https://github.com" + link
-        })
-    }
-    let filePath = path.join(__dirname, topicName, repoName + ".pdf");
-    let pdfDoc = new PDFDocument;
-    pdfDoc.pipe(fs.createWriteStream(filePath));
-    pdfDoc.text(JSON.stringify(arr));
-    pdfDoc.end();
-    // fs.writeFileSync(filePath, JSON.stringify(arr));
-    // file write 
-    // console.table(arr);
-}
-function dirCreater(topicName) {
-    let pathOfFolder = path.join(__dirname, topicName);
-    if (fs.existsSync(pathOfFolder) == false) {
-        fs.mkdirSync(pathOfFolder);
-    }
-}
-function createFile(repoName, topicName) {
-    let pathofFile = path.join(__dirname, topicName, repoName + ".json");
-    if (fs.existsSync(pathofFile) == false) {
-        let createStream = fs.createWriteStream(pathofFile);
-        createStream.end();
-    }
-}
+console.log("after");
