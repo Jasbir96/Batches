@@ -25,6 +25,7 @@ function reader(arr, n) {
             reader(arr, n + 1);
         }
     })
+    
 }
 reader(arr, 0);
 console.log("after");
