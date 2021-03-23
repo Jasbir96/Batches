@@ -7,3 +7,7 @@
 * Cheerio: http://zetcode.com/javascript/cheerio/
 * https://www.npmjs.com/package/cheerio
 * https://stackabuse.com/generating-pdf-files-in-node-js-with-pdfkit/
+### Puppeteer
+ * https://flaviocopes.com/puppeteer/
+	* https://nitayneeman.com/posts/getting-to-know-puppeteer-using-practical-examples/
+  * https://peter.sh/experiments/chromium-command-line-switches/

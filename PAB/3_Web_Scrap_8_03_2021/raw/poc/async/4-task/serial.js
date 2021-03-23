@@ -2,6 +2,7 @@ let fs = require("fs");
 console.log("Before");
 // async function 
 // let content = fs.readFileSync("f1.txt");
+// callback hell
 console.log("F1 read sent");
 fs.readFile("../f1.txt", cb);
 function cb1(err, content) {
