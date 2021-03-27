@@ -5,12 +5,13 @@ console.log("Before");
 let browserPromise = puppeteer.launch({
     headless: false,
     defaultViewport: null,
-    args: ["--start-maximized"]
+    args: ["--start-maximized","--incognito"]
 })
 // /pages
 browserPromise
     .then(function (browserInstance) {
-        let newTabPromise = browserInstance.newPage();
+       
+        let newTabPromise = browserInstance.pages();
         return newTabPromise;
     })
     .then(function (newTab) {
