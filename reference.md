@@ -12,5 +12,6 @@
 	* https://nitayneeman.com/posts/getting-to-know-puppeteer-using-practical-examples/
   * https://peter.sh/experiments/chromium-command-line-switches/
   * DOM: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents
+  * https://pptr.dev/
 ## Functional Programming
 * https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0
