@@ -37,7 +37,6 @@ browseropenP
         }
         let Playernamepromise = gPage.evaluate(fn);
         return Playernamepromise;
-
     }).then(function (playerName) {
         console.log(playerName);
     })
