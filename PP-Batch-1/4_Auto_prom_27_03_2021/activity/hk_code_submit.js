@@ -52,20 +52,19 @@ browserPromise
         let combinedPromise = Promise.all([clickpromise, gtab.waitForNavigation({ waitUntil: "networkidle0" })]);
         return combinedPromise;
     }).then(function () {
-        
         let questionWillSolvedpromise = questionSolver();
         return questionWillSolvedpromise;
     })
     .catch(function (err) {
         console.log(err);
     })
-function questionSolver() {
-    return new Promise(function (resolve, reject) {
-        fs.readFile("")
+// function questionSolver() {
+//     return new Promise(function (resolve, reject) {
+//         fs.readFile("")
 
 
-    })
-}
+//     })
+// }
 
 
 
