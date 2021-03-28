@@ -2,7 +2,6 @@ let fs = require("fs");
 console.log("before");
 // callback is an older way to do async programming
 fs.readFile("f1.txt", function cb(err, data) {
-
     if (err) {
         console.log(err);
     } else {

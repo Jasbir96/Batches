@@ -35,7 +35,6 @@ browserPromise
     }).then(function () {
         let textWillBeTypedPromise = gTab.type("input[aria-label='Search']", "pepcoding", { delay: 100 });
         return textWillBeTypedPromise;
-
     }).then(function () {
         let enterWillBePressedPromise = gTab.keyboard.press("Enter");
         return enterWillBePressedPromise;
