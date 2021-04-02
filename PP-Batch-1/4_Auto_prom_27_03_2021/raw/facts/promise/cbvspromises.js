@@ -36,20 +36,38 @@ function promisewalareadFile(filepath) {
 // promise based
 let frP = promisewalareadFile("f1.txt");
 // cb
-console.log(frP);
+console.log("frp", frP);
 // setTimeout(function () {
 //     console.log(frP+"");
 // }, 1000);
 // why >
+function promisifiedSetTimeout() {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            resolve(10);
+        }, 2000)
+
+    })
+}
 function scb(data) {
     console.log(3);
-    console.log("data->" + data);
+    console.log("frP data->" + data);
+    // 
+    return promisifiedSetTimeout();
 }
 function fcb(err) {
     console.log("err->" + err);
 }
-// console.log(1);
-frP.then(scb);
+console.log(1);
+let thenKaPromise = frP.then(scb)
+console.log("53 then ka promise", thenKaPromise);
+thenKaPromise
+    .then(function (data) {
+        console.log("inside thenKaPromise", data);
+    })
+// setTimeout(function () {
+//     console.log("55 then ka promise", thenKaPromise);
+// }, 1000);
 // console.log(2);
 frP.catch(fcb);
 console.log("after");
