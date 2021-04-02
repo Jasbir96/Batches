@@ -1,7 +1,6 @@
 const { email, password } = require("../../../secrets");
 const puppeteer = require("puppeteer");
 let { answers } = require("./codes");
-
 let cTab;
 let browserOpenPromise = puppeteer.launch({
     headless: false,

@@ -85,11 +85,13 @@ function processPlayer(myTeamName, name, venue, date, opponentTeamName, result, 
     // create -> write
     // let filePath = path.join(folderPath, name + ".json");
     let filePath = path.join(folderPath, name + ".xlsx");
+    // [],[{},{}]
     let content = excelReader(filePath, name);
     let matchobj = {
         myTeamName, name, venue, date,
         opponentTeamName, result, runs, balls, fours, sixes, sr
     }
+
     content.push(matchobj);
     excelWriter(filePath, content, name);
     // if (fs.existsSync(filePath)) {
@@ -127,6 +129,7 @@ function excelWriter(filePath, json, name) {
     //    replace
     xlsx.writeFile(newWB, filePath);
 }
+
 function dirCreater(folderPath) {
     if (fs.existsSync(folderPath) == false) {
         fs.mkdirSync(folderPath);
