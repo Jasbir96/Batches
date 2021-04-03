@@ -25,39 +25,38 @@ browserPromise
         let emailWillBeTypedPromise = gtab.type("#input-1", email, { delay: 200 });
         return emailWillBeTypedPromise;
     }).then(function () {
-        let passwordWillBeTypedPromise = gtab.type("#input-2",
-            password, { delay: 200 });
+        let passwordWillBeTypedPromise = gtab.type("#input-2", password, { delay: 200 });
         return passwordWillBeTypedPromise;
     }).then(function () {
         let loginPageWillBeClickedpromise = gtab.click("button[data-analytics='LoginPassword']");
-        let IPKitChallenge = gtab.waitForSelector(".card-content h3[title='Interview Preparation Kit']", { visible: true });
-        let combinedPromise = Promise.all([loginPageWillBeClickedpromise, gtab.waitForNavigation({ waitUntil: "networkidle0" }), IPKitChallenge]);
-        return combinedPromise;
+        loginPageWillBeClickedpromise;
     })
     .then(function () {
-        let clickpromise = gtab.click(".card-content h3[title='Interview Preparation Kit']");
-        let warmupChallengeElementPromise = gtab.waitForSelector("a[data-attr1='warmup']", { visible: true });
-        let combinedPromise = Promise.all([clickpromise, gtab.waitForNavigation({ waitUntil: "networkidle0" }),
-            warmupChallengeElementPromise]);
-        return combinedPromise;
+        let clickIPKIt = waitAndClick(".card-content h3[title='Interview Preparation Kit']");
+        return clickIPKIt;
     })
     .then(function () {
-        let clickpromise = gtab.click("a[data-attr1='warmup']");
-        let sockMerchantPromise = gtab.waitForSelector("a[data-attr1='sock-merchant']", { visible: true });
-        let combinedPromise = Promise.all([clickpromise, gtab.waitForNavigation({ waitUntil: "networkidle0" }), sockMerchantPromise]);
-        return combinedPromise;
-    })
-    .then(function () {
-        let clickpromise = gtab.click("a[data-attr1='sock-merchant']");
-        let combinedPromise = Promise.all([clickpromise, gtab.waitForNavigation({ waitUntil: "networkidle0" })]);
-        return combinedPromise;
-    }).then(function () {
-        let questionWillSolvedpromise = questionSolver();
-        return questionWillSolvedpromise;
+        let warmupClick = waitAndClick("a[data-attr1='warmup']");
+        return warmupClick;
     })
     .catch(function (err) {
         console.log(err);
     })
+// promise based function -> wait and click
+function waitAndClick(selector) {
+    return new Promise(function (resolve, reject) {
+        let selectorWaitPromise =
+            gtab.waitForSelector(selector, { visible: true });
+        selectorWaitPromise
+            .then(function () {
+                let selectorClickPromise = gtab.click(selector);
+                return selectorClickPromise;
+            }).then(function () {
+                resolve();
+            })
+    })
+}
+
 // function questionSolver() {
 //     return new Promise(function (resolve, reject) {
 //         fs.readFile("")
