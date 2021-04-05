@@ -7,8 +7,8 @@ function scb(data) {
     let f2P = fs.promises.readFile("f2.txt")
     return f2P;
 }
-thenKaPromise
-.then(function (data) {
+thenKaPromise.then(
+function (data) {
 console.log("data"+data);
 
 })
