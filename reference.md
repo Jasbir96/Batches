@@ -15,3 +15,5 @@
   * https://pptr.dev/
 ## Functional Programming
 * https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0
+# Promises
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then

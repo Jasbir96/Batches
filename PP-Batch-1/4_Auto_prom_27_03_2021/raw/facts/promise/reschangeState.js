@@ -14,13 +14,19 @@ function MyObject(fn) {
 
     fn(resolve, reject)
 }
-let myNewObjct = new MyObject(
-    function promiseCb(resolve, reject) {
-        setTimeout(function () {
-            resolve("hello");
-            console.log(myNewObjct);
-        }, 1000);
-    });
-    console.log(myNewObjct);
 
-    
+let myNewObjct = new MyObject(function cb(resolve, reject) {
+    console.log("Hello inside ");
+    setTimeout(function () {
+        resolve("hello");
+    }, 1000);
+    console.log("Hello after");
+});
+console.log("Before");
+console.log(myNewObjct);
+
+setTimeout(function () {
+    console.log("after 1.5 sec ", myNewObjct);
+}, 1500);
+
+console.log("After");

@@ -5,17 +5,6 @@ console.log("Before");
 // return Promise -> object
 // resolve -> work complete
 // reject-> work error
-function MyFilereadPromise(filePath) {
-    return new Promise(function (resolve, reject) {
-        fs.readFile(filePath, function cb(err, data) {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(data);
-            }
-        })
-    })
-}
 // user
 let frp = MyFilereadPromise("f1.txt");
 console.log(frp)
