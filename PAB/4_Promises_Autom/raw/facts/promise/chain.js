@@ -4,13 +4,12 @@ console.log("before");
 let thenKaPromise = frp.then(scb);
 function scb(data) {
     console.log("inside scb");
-    let f2P = fs.promises.readFile("f2.txt")
+    let f2P = fs.promises.readFile("f2.txt");
     return f2P;
 }
 thenKaPromise.then(
 function (data) {
 console.log("data"+data);
-
 })
 
 console.log("then ka promise", thenKaPromise)
