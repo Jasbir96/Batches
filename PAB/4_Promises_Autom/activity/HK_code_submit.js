@@ -70,6 +70,7 @@ browserOpenPromise
         // console.log(linksArr);
         let questionWillBeSolvedPromise = questionSolver(linksArr[0], 0);
         return questionWillBeSolvedPromise;
+        
     }).then(function () {
         console.log("Question printed code is moved to clipboard");
     }).catch(function(err){
