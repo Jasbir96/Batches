@@ -27,9 +27,6 @@ console.log("Before");
 //     // console.log(err)
 //     console.log("i will only work for first promise");
 // }
-
-
-
 //  you only have syntax imp -> we only now need one catch for all the promises
 let frP = fs.promises.readFile("../f1.txt");
 // why only one is enough ??

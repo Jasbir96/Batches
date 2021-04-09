@@ -42,10 +42,8 @@ browserPromise
         return warmupClick;
     }).then(function () {
         let url = gtab.url();
-
         let questionObj = codes[0];
       return  questionSolver(url, questionObj.soln, questionObj.qName);
-
     })
     .catch(function (err) {
         console.log(err);

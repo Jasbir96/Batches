@@ -13,7 +13,7 @@ frp
         console.log("data->" + data)
     })
 frp
-    .catch(function (err) {
+.catch(function (err) {
         console.log(err);
     })
 let f1ReadP = fs.promises.readFile("f1.txt");
@@ -22,7 +22,8 @@ f1ReadP
     .then(function (data) {
         console.log("data" + data);
     })
-f1ReadP.catch(function (err) {
+f1ReadP
+.catch(function (err) {
     console.log(err);
 })
 
