@@ -36,7 +36,7 @@ console.log("Before");
         let timenDurArr = await newPage.evaluate(getStats,
             "span.style-scope.ytd-thumbnail-overlay-time-status-renderer",
             "#video-title");
-        // console.table(timenDurArr);
+        // console.table(timenDurArr.length);
     } catch (err) {
         console.log(err);
     }

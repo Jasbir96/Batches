@@ -38,11 +38,14 @@ async function getListingFromAmazon(link, browserInstance, pName) {
         let PName = document.querySelectorAll(pNameSelector);
         let details = [];
         for (let i = 0; i < 5; i++) {
-            let price = priceArr[i].innerText;
-            let Name = PName[i].innerText;
-            details.push({
-                price, Name
-            })
+            if (priceArr[i] && PName[i]) {
+                let price = priceArr[i].innerText;
+                let Name = PName[i].innerText;
+                details.push({
+                    price, Name
+                })
+            }
+
         }
         return details;
     }
@@ -65,6 +68,7 @@ async function getListingFromFlipkart(link, browserInstance, pName) {
         let PName = document.querySelectorAll(pNameSelector);
         let details = [];
         for (let i = 0; i < 5; i++) {
+            
             let price = priceArr[i].innerText;
             let Name = PName[i].innerText;
             details.push({
@@ -73,12 +77,12 @@ async function getListingFromFlipkart(link, browserInstance, pName) {
         }
         return details;
     }
-    await newPage.evaluate(consoleFn,
+    return newPage.evaluate(consoleFn,
         "._30jeq3._1_WHN1",
         "._4rR01T");
     //    ._4rR01T
     // ._30jeq3._1_WHN1
-    newPage.close();
+    
 
 }
 async function getListingFromPaytm(link, browserInstance, pName) {
