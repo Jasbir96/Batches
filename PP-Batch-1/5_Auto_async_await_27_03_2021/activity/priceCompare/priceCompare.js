@@ -14,9 +14,10 @@ console.log("Before");
             args: ["--start-maximized"]
         });
         let amazonArr = await getListingFromAmazon(links[0], browserInstance, pName);
+        console.log("before flipkart");
         let flipkartArr = await getListingFromFlipkart(links[1], browserInstance, pName);
         let paytmArr = await getListingFromPaytm(links[2], browserInstance, pName);
-        console.table(amazonArr);
+        console.table(amazonArr)
         console.table(flipkartArr);
         console.table(paytmArr);
     } catch (err) {
@@ -26,6 +27,7 @@ console.log("Before");
 //  product Name,url of amazon home page
 // output-> top 5 matching product -> price Name print 
 async function getListingFromAmazon(link, browserInstance, pName) {
+    console.log("in amazon");
     let newPage = await browserInstance.newPage();
     await newPage.goto(link);
     await newPage.type("#twotabsearchtextbox", pName);
@@ -71,18 +73,19 @@ async function getListingFromFlipkart(link, browserInstance, pName) {
         }
         return details;
     }
-    return newPage.evaluate(consoleFn,
+    await newPage.evaluate(consoleFn,
         "._30jeq3._1_WHN1",
         "._4rR01T");
     //    ._4rR01T
     // ._30jeq3._1_WHN1
+    newPage.close();
 
 }
 async function getListingFromPaytm(link, browserInstance, pName) {
     let newPage = await browserInstance.newPage();
     await newPage.goto(link);
-    await newPage.type("#searchInput",pName,{ delay: 200 });
-    await newPage.keyboard.press("Enter",{ delay: 200 });
+    await newPage.type("#searchInput", pName, { delay: 200 });
+    await newPage.keyboard.press("Enter", { delay: 200 });
     await newPage.keyboard.press("Enter");
     await newPage.waitForSelector(".UGUy", { visible: true });
     await newPage.waitForSelector("._1kMS", { visible: true });
