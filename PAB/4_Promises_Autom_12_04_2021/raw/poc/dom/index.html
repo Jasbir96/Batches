@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+    <input type="text">
+    <i class="fas fa-plus-circle"></i>
+    <h2>List of Tasks</h2>
+    <!-- list of tasks will appear -->
+    <ul></ul>
+    <script>
+        let addBtn = document.querySelector("i");
+
+        addBtn.addEventListener("click", function () {
+            // console.log("add btn ");
+            // input data get 
+            // search
+            let inputElem = document.querySelector("input");
+            let task = inputElem.value;
+            // console.log(task)
+            // creation
+            let liElem = document.createElement("li");
+            liElem.innerText = task;
+            let ulElem=document.querySelector("ul");
+            ulElem.appendChild(liElem);
+            inputElem.value="";
+        })
+
+    </script>
+</body>
+
+</html>
