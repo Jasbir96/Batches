@@ -102,7 +102,6 @@ function waitAndClick(selector) {
 
     })
 }
-
 function questionSolver(url, idx) {
     return new Promise(function (resolve, reject) {
         // go to page

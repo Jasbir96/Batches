@@ -2,8 +2,6 @@ const { email, password } = require("../../../secrets");
 const puppeteer = require("puppeteer");
 let { answers } = require("./codes");
 let cTab;
-
-
 (async function fn() {
     let browserOpenPromise = puppeteer.launch({
         headless: false,
@@ -18,7 +16,13 @@ let cTab;
     await cTab.type("input[name='password']", password, { delay: 200 });
     await cTab.click("button[data-analytics='LoginPassword']");
     await waitAndClick(".ui-btn.ui-btn-normal.ui-btn-large.ui-btn-primary.ui-btn-link.ui-btn-styled");
-
+    await waitAndClick("a[data-attr1='warmup']");
+    await cTab.waitForSelector(".challengecard-title", { visible: true });
+    let currentPageUrl = await cTab.url();
+    for (let i = 0; i < answers.length; i++) {
+        let qObj = answers[i];
+        await questionSolver(qObj.qName, qObj.soln, currentPageUrl);
+    }
 })();
 // wait -> pending promise
 async function waitAndClick(selector) {
@@ -31,6 +35,11 @@ async function waitAndClick(selector) {
         console.log("done");
     }
     catch (err) {
-        return  new Error(err);
+        return new Error(err);
     }
+}
+async function questionSolver(qName, code, mainPageLink) {
+    
+
+
 }
