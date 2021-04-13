@@ -22,3 +22,4 @@
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch
 * https://github.com/kriskowal/q/blob/v1/design/README.md
 * https://www.youtube.com/watch?v=fyGSyqEX2dw&t=1311s
+* https://github.com/puppeteer/puppeteer/blob/v5.1.0/docs/api.md
