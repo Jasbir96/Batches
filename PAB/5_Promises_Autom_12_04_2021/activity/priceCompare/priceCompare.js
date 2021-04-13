@@ -13,8 +13,8 @@ let cTab;
         let allTabsArr = await browser.pages();
         cTab = allTabsArr[0];
         let list = await getListingFromAmazon(links[0], pName);
-        list 
         console.table(list);
+        // list = await getListingFromFlipkart(links[1], pName);
     } catch (err) {
         console.log(err);
     }
@@ -30,18 +30,42 @@ async function getListingFromAmazon(link, pName) {
     await cTab.type("#twotabsearchtextbox", pName, { delay: 200 });
     await cTab.click("#nav-search-submit-button");
     await cTab.waitForSelector(".a-size-medium.a-color-base.a-text-normal", { visible: true });
-    return cTab.evaluate(consoleFn, ".a-size-medium.a-color-base.a-text-normal", ".a-price-whole");
+    return cTab.evaluate(consoleFn,
+        ".s-include-content-margin.s-border-bottom.s-latency-cf-section",
+        ".aok-inline-block.s-sponsored-label-info-icon",
+        ".a-size-medium.a-color-base.a-text-normal",
+        ".a-price-whole");
 }
-function consoleFn(nameSelector, priceSelector) {
-    let nameElems = document.querySelectorAll(nameSelector);
-    let priceElems = document.querySelectorAll(priceSelector);
-    let listings = [];
-    for (let i = 0; i < 5; i++) {
-        let name = nameElems[i].innerText;
-        let price = priceElems[i].innerText;
-        listings.push({
-            name, price
-        })
+
+function consoleFn(blockSelector, sponsoredIdentifier, nameSelector, priceSelector) {
+    // .s-include-content-margin.s-border-bottom.s-latency-cf-section .aok-inline-block.s-sponsored-label-info-icon
+    // let nameElems = document.querySelectorAll(nameSelector);
+    // let priceElems = document.querySelectorAll(priceSelector);
+    // let listings = [];
+    // for (let i = 0; i < 5; i++) {
+    //     let name = nameElems[i].innerText;
+    //     let price = priceElems[i].innerText;
+    //     listings.push({
+    //         name, price
+    //     })
+    // }
+    // return listings;
+    let allBlocks = document.querySelectorAll(blockSelector);
+    let list = [];
+    for (let i = 0; i < allBlocks.length; i++) {
+        let isSponsored = allBlocks[i].querySelector(sponsoredIdentifier);
+        if (isSponsored == null) {
+            let nameElem = allBlocks[i].querySelector(nameSelector);
+            let priceElem = allBlocks[i].querySelector(priceSelector);
+            list.push({
+                name: nameElem.innerText,
+                price: priceElem.innerText
+            }
+            )
+        }
+        if (list.length == 5) {
+            return list;
+        }
     }
-    return listings;
+    return list;
 }
