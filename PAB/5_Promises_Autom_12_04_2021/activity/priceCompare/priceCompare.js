@@ -39,7 +39,6 @@ async function getListingFromAmazon(link, pName) {
         ".a-size-medium.a-color-base.a-text-normal",
         ".a-price-whole");
 }
-
 function consoleFn(blockSelector, sponsoredIdentifier, nameSelector, priceSelector) {
     // .s-include-content-margin.s-border-bottom.s-latency-cf-section .aok-inline-block.s-sponsored-label-info-icon
     // let nameElems = document.querySelectorAll(nameSelector);
