@@ -14,7 +14,10 @@ let cTab;
         cTab = allTabsArr[0];
         let list = await getListingFromAmazon(links[0], pName);
         console.table(list);
-        // list = await getListingFromFlipkart(links[1], pName);
+         list = await getListingFromFlipkart(links[1], pName);
+        console.table(list);
+         list = await getListingFromPaytm(links[2], pName);
+        console.table(list);
     } catch (err) {
         console.log(err);
     }
@@ -68,4 +71,37 @@ function consoleFn(blockSelector, sponsoredIdentifier, nameSelector, priceSelect
         }
     }
     return list;
+}
+async function getListingFromFlipkart(link, pName) {
+    await cTab.goto(link);
+    await cTab.type("input[type='text']", pName, { delay: 200 });
+    await cTab.click("._2KpZ6l._2doB4z");
+    await cTab.click(".L0Z3Pu");
+    await cTab.waitForSelector("._4rR01T", { visible: true });
+    await cTab.waitForSelector("._30jeq3._1_WHN1", { visible: true });
+    return cTab.evaluate(fConsoleFn, "._4rR01T", "._30jeq3._1_WHN1")
+    // _4rR01T-> pname
+    // ._30jeq3._1_WHN1-> price
+}
+function fConsoleFn(pNameSelector, priceSelector) {
+    let pNameElems = document.querySelectorAll(pNameSelector);
+    let priceElems = document.querySelectorAll(priceSelector);
+    let list = [];
+    for (let i = 0; i < 5; i++) {
+        let pName = pNameElems[i].innerText;
+        let price = priceElems[i].innerText;
+        list.push({ pName, price });
+    }
+    return list;
+}
+async function getListingFromPaytm(link, pName) {
+    await cTab.goto(link);
+    await cTab.type("input[type='search']", pName,{delay:200});
+    await cTab.keyboard.press("Enter");
+    await cTab.waitForSelector(".UGUy", { visible: true });
+    await cTab.waitForSelector("._1kMS", { visible: true });
+    return  cTab.evaluate(fConsoleFn, ".UGUy", "._1kMS");
+
+    // .UGUy-> pname
+    // ._1kMS-> price
 }
