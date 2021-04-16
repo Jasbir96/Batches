@@ -13,6 +13,7 @@
   * https://peter.sh/experiments/chromium-command-line-switches/
   * DOM: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents
   * https://pptr.dev/
+   * https://github.com/puppeteer/puppeteer/blob/v5.1.0/docs/api.md
 ## Functional Programming
 * https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0
 # Promises
@@ -22,4 +23,3 @@
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch
 * https://github.com/kriskowal/q/blob/v1/design/README.md
 * https://www.youtube.com/watch?v=fyGSyqEX2dw&t=1311s
-* https://github.com/puppeteer/puppeteer/blob/v5.1.0/docs/api.md
