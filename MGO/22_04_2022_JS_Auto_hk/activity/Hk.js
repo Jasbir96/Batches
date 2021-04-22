@@ -14,9 +14,9 @@ puppeteer.launch({
     page = pages[0];
     return page.goto("https://www.hackerrank.com/auth/login?h_l=body_middle_left_button&h_r=login/");
 }).then(function () {
-    return page.type("#input-1", "tasic32318@yncyjs.com");
+    return page.type("#input-1", "xotel91497@0ppp.com");
 }).then(function (){
-    return page.type("#input-2", "letsdoit")
+    return page.type("#input-2", "12345678")
 }).then(function () {
     return waitClickNavigate(".ui-btn.ui-btn-large.ui-btn-primary.auth-button.ui-btn-styled"); 
 }).then(function () {
