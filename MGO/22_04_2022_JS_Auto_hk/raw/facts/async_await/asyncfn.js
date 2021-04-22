@@ -8,10 +8,9 @@ function fn() {
 let rVal = fn();
 console.log("rval from fn", rVal);
 //  1 . async function always returns a promise
-//  2. if you return a value from a async function then 
-// it will return a promise with that value as a resolved value
-//  3. if you return a pending promise thn it will return
-//  that promise
+        // a.  if you return a value from a async function then  it will return a promise with that value as a resolved value
+    //   b. if you return a pending promise thn it will return  that promise
+
 console.log("Before");
 async function fn() {
     console.log("Hello");
@@ -25,7 +24,7 @@ let rValP = fn();
 console.log("rval from fn", rValP);
 // attach 
 rValP.then(function (PVal) {
-    console.log("Pval from fn"+ PVal);
+    console.log("Pval from fn" + PVal);
 })
 console.log("After");
 

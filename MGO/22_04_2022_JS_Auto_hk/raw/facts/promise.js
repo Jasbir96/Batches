@@ -2,7 +2,8 @@
 let fs = require("fs");
 console.log("before");
 //  
-let promise = fs.promises.readFile("f1.txt");
+let promise = 
+fs.promises.readFile("f1.txt");
 promise.then(function (data) {
     console.log("data " + data);
 })

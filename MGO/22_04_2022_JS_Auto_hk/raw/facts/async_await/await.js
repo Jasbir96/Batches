@@ -7,13 +7,18 @@ let fs = require("fs");
 // that will be resolved  when the whole async  fn is executed
 console.log("Before");
 async function fn() {
-    console.log("Hello");
-    let frP = fs.promises.readFile("f1.txt");
+    try {
+        console.log("Hello");
+        let frP = fs.promises
+        .readFile("f1.txt");
     console.log("file read has been started");
     console.log(frP);
     let data = await frP;
     console.log("data " + data);
     return 10;
+    } catch (err) {
+        console.log(err);
+    }
 }
 // let rValP = fn();
 // console.log("rval from fn", rValP);
