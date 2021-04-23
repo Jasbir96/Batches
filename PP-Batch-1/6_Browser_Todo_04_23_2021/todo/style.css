@@ -1,0 +1,35 @@
+body{
+    margin:0;
+}
+.input-container{
+    height: 15vh;
+    background-color:darkblue;
+}
+.task-container{
+    height:85vh;
+    color:white;
+    text-align: center;
+    font-family: 'Zen Dots', cursive;
+    background-color:darkblue;
+}
+
+.task{
+    list-style: none;
+    font-size: 1.25rem;
+    background-color: blue;
+   /*  backgound visible  */
+    min-width:60vh;
+    min-height: 1.5rem;
+    margin-bottom: 2vh;
+
+}
+
+.input_box{
+  margin-top: 3vh;
+  font-family: 'Zen Dots', cursive;
+  height: 60%;
+  font-size: 1.25rem;
+  margin-left: 26vw;
+}
+
+

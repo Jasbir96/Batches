@@ -23,3 +23,7 @@
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch
 * https://github.com/kriskowal/q/blob/v1/design/README.md
 * https://www.youtube.com/watch?v=fyGSyqEX2dw&t=1311s
+## Browser
+### DOM
+* https://developer.mozilla.org/en-US/docs/Web/Events
+* https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents

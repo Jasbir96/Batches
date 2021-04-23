@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* basic setup */
+        body {
+            margin: 0;
+        }
+
+        /* pixels */
+        .box-1 {
+            background-color: lightgreen;
+            height: 100px;
+        }
+
+        /* view port height */
+        /* view port width */
+        .box-2 {
+            background-color: lightgrey;
+            height: 20vh;
+            width: 50vw;
+        }
+        .parent {
+            height: 200px;
+            background-color: lightcoral;
+        }
+        /* percentage-> relative to parent  */
+        .child {
+            background-color: lightblue;
+            height: 50%;
+            width: 50%;
+        }
+        .g-child{
+            height: 50%;
+            background-color: blueviolet;;
+        }
+        /* p default  font-size  */
+        p{
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!--  width -> full width-->
+    <!--  default -> content -> height  -->
+    <!--  if you will give -> exact height  -->
+    <!-- width-> 100% -->
+    <!-- block level elements -->
+    <div class="box-1">
+    </div>
+    <div class="box-2"></div>
+    <div class="parent">
+        <div class="child">
+            <div class="g-child"></div>
+        </div>
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, sit.</p>
+</body>
+
+</html>

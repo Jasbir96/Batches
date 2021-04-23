@@ -30,8 +30,6 @@ async function fn() {
             let link = "https://www.hackerrank.com" + hrefArr[i];
             await submitCode(link);
         }
-
-
     } catch (err) {
         console.log(err);
     }
