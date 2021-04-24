@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* required space */
+        /* height and width can't be set  */
+        /* padding margin-> ✔ */
+        .inline {
+            display: inline;
+            background-color: lightblue;
+            font-size: 1.5rem;
+            /* height:100px; */
+            /* width:200px; */
+            /* padding-left: 10px;
+            padding-right: 10px;
+            padding-top:10px;
+            padding-bottom:10px; */
+            /* padding: 10px; */
+            /* margin:10px; */
+            /* margin:0 auto; */
+        }
+        /*  full width */
+        /* next element-> next line  */
+        /* h,w ,p,m */
+        /*  block */
+        .block {
+            box-sizing: border-box;
+            display: block;
+            background-color: lightgreen;
+            height: 100px;
+            width: 100px;
+            margin: 10px auto;
+            text-align: center;
+            padding-top:40px ;
+        }
+        .inline-block {
+            display: inline-block;;
+            background-color: lightseagreen;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- inline -->
+    <span class="inline">I am Span</span>
+    <span class="inline">I am Span</span>
+    <span class="inline">I am Span</span>
+    <!-- block level elements -->
+    <div class="block">I am Block</div>
+    <div class="block"> I am Block</div>
+    <div class="block">I am Block</div>
+
+    <div class="inline-block">I am Inline Block</div>
+    <div class="inline-block"> I am Inline Block</div>
+    <div class="inline-block">I am Inline Block</div>
+
+</body>
+
+</html>

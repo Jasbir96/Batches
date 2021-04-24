@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* rendered h-> given height +p-t+p-b+b-t+bb */
+        .box {
+            height: 200px;
+            width: 200px;
+            border: 1px solid red;
+            background-color: lightblue;
+            margin-bottom: 1rem;
+            padding: 20px;
+        }
+/* height-> 200px -> content area= given height -pt-pb-bt-bb*/
+        .two {
+           box-sizing: border-box; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box "></div>
+    <div class="box two"></div>
+</body>
+
+</html>
