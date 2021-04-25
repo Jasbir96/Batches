@@ -16,11 +16,14 @@
             background-color: aquamarine;
             margin-bottom: 2rem;
             display: flex;
+            flex-direction: row;
             height: 400px;
-            /*  children horizontal alignment  */
-            justify-content: space-between;
-            /* children -> vertical alignment */
-            align-items: center;
+            /*  children main axis alignment  */
+            justify-content: center;
+            /* children -> subordinate axis alignment */
+            align-items: flex-start;
+            /* if children can't be accomodated then they will come in next lines */
+            flex-wrap: wrap;
         }
         .child {
             height: 100px;
@@ -34,6 +37,15 @@
 
 <body>
     <div class="parent">
+        <div class="child">child</div>
+        <div class="child">child</div>
+        <div class="child">child</div>
+        <div class="child">child</div>
+        <div class="child">child</div>
+        <div class="child">child</div>
+        <div class="child">child</div>
+        <div class="child">child</div>
+        <div class="child">child</div>
         <div class="child">child</div>
         <div class="child">child</div>
         <div class="child">child</div>

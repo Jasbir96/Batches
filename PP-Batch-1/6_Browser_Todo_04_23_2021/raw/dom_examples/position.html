@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent {
+            background-color: rebeccapurple;
+            border: 5px dotted white;
+            position: relative;
+            /* left: 50px; */
+            /* top:50px; */
+        }
+
+        .box {
+            height: 100px;
+            width: 100px;
+            border: 1px solid white;
+            text-align: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .first {
+            background-color: lightcoral;
+            position: relative;
+            left: 100px;
+            /* top: 50px; */
+        }
+
+        .second {
+            /* relative to it's original pos */
+            /* original pos is always occupied */
+           /* new page */
+            position: absolute;
+            top: 50px;
+            background-color: rgb(144, 238, 144);
+            left: 50px;
+        }
+
+        .third {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- page -> normal flow -->
+    <!-- lr, top to bottom -->
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex illum magni, voluptatum ea optio ut sed consequatur iure maiores laudantium nihil deserunt ipsam sit veniam. Voluptatem distinctio doloribus officia voluptate nihil maxime, odio doloremque, aut reiciendis cumque corrupti omnis provident inventore nulla debitis autem blanditiis fugiat eum incidunt cum asperiores quam? Rerum necessitatibus natus sit totam illo veniam laboriosam ab voluptate ullam sunt dolorem, quaerat quidem corrupti enim quo nihil fuga dolores doloribus aut. Quis nostrum saepe impedit, consequuntur doloremque laboriosam veniam neque deserunt nam excepturi distinctio, amet beatae? Atque asperiores harum odit corrupti. Harum ab facere quas quo autem.</p>
+    <div class="parent">
+        <div class="box first">1 </div>
+        <div class="box second">2</div>
+        <div class="box third">3</div>
+
+    </div>
+    <span>Hello</span>
+    <span>Hello</span>
+    <span>Hello</span>
+</body>
+
+</html>
