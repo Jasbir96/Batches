@@ -3,7 +3,11 @@
 }
 body{
     margin:0px;
+    font-family: "Raleway", sans-serif;
+    background-color: #ecf0f1;
+
 }
+
 .toolbar{
     height: 12vh;
     background-color: #2d3436;
@@ -46,7 +50,7 @@ background-color: blue;
 background-color: green;
 }
 .black{
-    background-color: black;
+    background-color: rgb(26, 23, 23);
 }
 .action-container{
     height: 60%;
@@ -68,9 +72,7 @@ background-color: green;
 .fas{
     font-size: 1.5rem;
 }
-.main-container{
-    height:85vh;
-}
+
 /* modal css */
 .modal_container{
     position: absolute;
@@ -112,4 +114,34 @@ padding: 1.7rem 1.2rem;
    height: 15%; 
    width:60%
 }
+.border{
+    border: 0.2rem solid white;
+}
 
+
+/* task css */
+.main_container{
+    height:88vh;
+    padding-top: 2rem;
+    padding-left: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.task_filter{
+    height: 7%;
+}
+.task_container{
+    height: 10rem;
+    width:16rem;
+    background-color: #fff;
+}
+.task_desc_container{
+    padding-left:0.5rem;
+}
+.task_desc{
+    text-align: center;
+}
+.uid{
+    color: #444;
+}
