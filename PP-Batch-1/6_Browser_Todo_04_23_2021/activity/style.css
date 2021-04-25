@@ -71,3 +71,45 @@ background-color: green;
 .main-container{
     height:85vh;
 }
+/* modal css */
+.modal_container{
+    position: absolute;
+height:18rem;
+width:36rem;
+background-color: brown;
+left:3vw;
+top:30vh;
+display: flex;
+box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.698);
+}
+.input_container{
+    height: 100%;
+    width:73%;
+}
+.modal_input{
+    height: 100%;
+    width:100%;
+    outline:none;
+    padding: 2rem 3rem;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.5rem;
+    /*  line between space */
+    line-height: 145%;
+    font-weight: 400;
+
+}
+.modal_filter_container{
+ width:27%;
+ background-color: #444;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+/* gap:2rem; */
+align-items: center;
+padding: 1.7rem 1.2rem;
+}
+.modal_filter_container>.filter{
+   height: 15%; 
+   width:60%
+}
+
