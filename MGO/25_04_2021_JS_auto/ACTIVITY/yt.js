@@ -40,12 +40,11 @@ async function fn() {
         let duration = "span.style-scope.ytd-thumbnail-overlay-time-status-renderer";
         await page.waitForSelector(videoSelector, { visible: true });
         await page.waitForSelector(duration, { visible: true });
-
         await page.evaluate(function () {
             let durationElems = document.querySelectorAll("span.style-scope.ytd-thumbnail-overlay-time-status-renderer");
             durationElems[durationElems.length - 1].scrollIntoView();
             console.log("hello");
-        })
+        });
         // await page.focus(reqElem);
         // console.log("Hello");
         // let i = 0;
