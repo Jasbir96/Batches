@@ -8,7 +8,5 @@ for (let i = 0; i < filterOptions.length; i++) {
         let chclassesArr = arr[0].classList;
         // console.log(classesArr[1]);
         mainContainer.style.backgroundColor = chclassesArr[0];
-
-
     });
 }

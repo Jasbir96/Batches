@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent {
+            height: 60vh;
+            background-color: rebeccapurple;
+        }
+        .box {
+            height: 100px;
+            width: 100px;
+            /* border: 1px solid white; */
+        }
+        .one {
+            background-color: lightblue;
+        }
+        .two {
+            background-color: rgb(240, 128, 128);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index:101;
+
+        }
+        .three {
+            background-color: rgb(144, 238, 144);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index:102;
+            /* position: relative; */
+            /* bottom: 100px; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- normal flow ->  -->
+    <!-- render -> left to right top to bottom-->
+    <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, eveniet fugiat ullam quia aliquam rerum,
+        quasi voluptatibus itaque tempore dolorum libero. Aliquam vel quibusdam sit eos pariatur quod ad rem accusamus
+        debitis nam eaque quis recusandae incidunt, unde voluptas placeat qui saepe inventore aliquid. Commodi fuga
+        tempore cumque neque hic, iure a blanditiis ducimus! Rem maiores minima sed. Dolore omnis qui molestias nam
+        repellendus vel recusandae officia aspernatur, eum praesentium accusamus laborum tenetur minima, labore, amet
+        aut nesciunt dolores ipsam incidunt accusantium placeat molestiae. Ea assumenda tempore sapiente, nobis
+        perferendis dicta adipisci quaerat quam, eos earum nam voluptatum accusamus numquam!</p> -->
+    <div class="parent">
+        <div class="box one">one </div>
+        <div class="box two">two </div>
+        <div class="box three">three</div>
+    </div>
+    <span>Hello</span><span>Hello1</span><span>Hello2</span>
+</body>
+
+</html>

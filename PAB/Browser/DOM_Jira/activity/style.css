@@ -1,10 +1,11 @@
+/* basic */
 *{
     box-sizing: border-box;
 }
 body{
     margin:0px;
 }
-/* generic  */
+/* generic  JS  */
 .pink{
     background-color: lightpink;
 }
@@ -20,8 +21,10 @@ body{
 
 /* toolbar*********************************************/
 .toolbar{
+    /* 1. toolbar height  */
     height: 12vh;
     background-color: #444;
+    /* 1.3 */
     display: flex;
     align-items: center;
     gap : 6rem;
@@ -31,31 +34,37 @@ body{
     border-radius: 4px;
 }
 .filter-container{
+    /* 1.1 */
     height:70%;
     width:20%;
     background-color: rgb(85, 82, 82);
     /* border:1px solid red; */
     /* margin-left:4rem; */
     /* margin-right:6rem */
+    /* 2.2 */
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 .filter-colors__container{
+    /* 2.1 */
     height:100%;
     width:25%;
     /* background-color: red; */
 border-radius: 0.2rem;
+/* 3.2 */
 display: flex;
 justify-content: center;
 align-items: center;
 }
 .filter-color{
+    /* 3.1 in elements ko filtercontainer -> center */
 height:30%;
 width:50%;
 border-radius:2px;
 }
 .action-container{
+    /* 1.2 */
     height:70%;
     width:10%;
     background-color: rgb(146, 102, 35);
