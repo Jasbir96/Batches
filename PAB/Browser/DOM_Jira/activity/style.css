@@ -1,0 +1,80 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin:0px;
+}
+/* generic  */
+.pink{
+    background-color: lightpink;
+}
+.blue{
+    background-color: lightblue;
+}
+.green{
+    background-color: lightgreen;
+}
+.black{
+    background-color: black;
+}
+
+/* toolbar*********************************************/
+.toolbar{
+    height: 12vh;
+    background-color: #444;
+    display: flex;
+    align-items: center;
+    gap : 6rem;
+    padding-left:4rem;
+}
+.toolbar>*{
+    border-radius: 4px;
+}
+.filter-container{
+    height:70%;
+    width:20%;
+    background-color: rgb(85, 82, 82);
+    /* border:1px solid red; */
+    /* margin-left:4rem; */
+    /* margin-right:6rem */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.filter-colors__container{
+    height:100%;
+    width:25%;
+    /* background-color: red; */
+border-radius: 0.2rem;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.filter-color{
+height:30%;
+width:50%;
+border-radius:2px;
+}
+.action-container{
+    height:70%;
+    width:10%;
+    background-color: rgb(146, 102, 35);
+    display: flex;
+}
+.action-container__icons{
+    height:100%;
+    width:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fas{
+    font-size:x-large;
+}
+/* main container css**************************** */
+.main-container{
+    border:5px solid green;
+/*  task add  */
+    min-height: 88vh;
+}
+
