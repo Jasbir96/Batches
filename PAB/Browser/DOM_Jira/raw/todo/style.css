@@ -10,10 +10,19 @@ li{
 }
 .input-container{
     height:15vh;
-    /* border: 2px solid red; */
+}
+.input-box{
+    display: block;
+    height:80%;
+    width:40vw;
+    margin:0 auto;
+    margin-top: 1rem;
+    font-size: 1.5rem;;
+    text-align: center;
 }
 .main-container {
     /* border: 2px solid green; */
+    padding-top:2rem;
     font-family: 'Roboto Mono', monospace;
     color:white;
     /* text center  */
@@ -25,13 +34,20 @@ li{
 .action{
     font-size: 1.5rem;
     background-color: green;
-    width:70%;
+    width:60%;
     margin: 0 auto;
 }
 .task{
     height:2rem;
     font-size: 1.1rem;
-    width:70%;
+    width:60%;
     background-color:#2f679c ;
     margin: 0 auto;
+    margin-bottom: 0.5rem;
 }
+/* media queries -> screen size  */
+@media only screen and (max-width: 800px) {
+    .input-box{
+        width:60vw;
+    }
+  }
