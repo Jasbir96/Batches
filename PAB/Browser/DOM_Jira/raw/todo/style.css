@@ -1,0 +1,37 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin:0;
+    background-color: #15314b;
+}
+li{
+    list-style: none;
+}
+.input-container{
+    height:15vh;
+    /* border: 2px solid red; */
+}
+.main-container {
+    /* border: 2px solid green; */
+    font-family: 'Roboto Mono', monospace;
+    color:white;
+    /* text center  */
+    text-align: center;
+}
+.task-list {
+    padding-left: 0;
+}
+.action{
+    font-size: 1.5rem;
+    background-color: green;
+    width:70%;
+    margin: 0 auto;
+}
+.task{
+    height:2rem;
+    font-size: 1.1rem;
+    width:70%;
+    background-color:#2f679c ;
+    margin: 0 auto;
+}
