@@ -6,13 +6,13 @@ body{
     margin:0px;
 }
 /* generic  JS  */
-.pink{
+.lightpink{
     background-color: lightpink;
 }
-.blue{
+.lightblue{
     background-color: lightblue;
 }
-.green{
+.lightgreen{
     background-color: lightgreen;
 }
 .black{
@@ -83,7 +83,53 @@ border-radius:2px;
 /* main container css**************************** */
 .main-container{
     border:5px solid green;
-/*  task add  */
+/*  task add 2 */
     min-height: 88vh;
 }
+.modal_container{
+    
+    position: absolute;
+    top:25vh;
+    height:18rem;
+    width:30rem;
+    left: calc((100vw - 30rem)/2);
+    /* display:flex; */
+    display: none;
+   
+}
+.desc-box{
+    height: 100%;
+    width:100%;
+    padding:2.2rem;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    color:lightslategray;
+    line-height: 120%;
+}
+.modal_task_container{
+/* 3 */
+    width:75%;
+    /* background-color: yellow; */
+}
+.modal_filter-container{
+    width:25%;
+    background-color: #444;
+    /* border:2px solid blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items:center; 
+    padding-top:1.2rem;
+    padding-bottom: 1.2rem;
+}
+.modal_filters{
+width:60%;
+height: 12%;
+}
+.border{
+    border:2px solid white;light
+}
+
+
+
 
