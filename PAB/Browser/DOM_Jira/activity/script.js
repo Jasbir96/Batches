@@ -19,9 +19,6 @@ for (let i = 0; i < filterOptions.length; i++) {
         mainContainer.style.backgroundColor = chclassesArr[0];
     });
 }
-
-
-
 addBtn.addEventListener("click", function () {
     if (flag == false) {
         modalContainer.style.display = "flex";
@@ -29,7 +26,7 @@ addBtn.addEventListener("click", function () {
         modalContainer.style.display = "none";
     }
     flag = !flag
-})
+});
 for (let i = 0; i < modalFilters.length; i++) {
     modalFilters[i].addEventListener("click", function () {
         modalFilters.forEach(function (modalFilter) {
@@ -41,20 +38,38 @@ for (let i = 0; i < modalFilters.length; i++) {
     })
 }
 descBox.addEventListener("keydown", function (e) {
-
     if (e.key == "Enter") {
         let task = descBox.value;
-        // console.log("task is ", task, "cColor ", cColor);
+        console.log("task is ", task, "cColor ", cColor);
+
         // tiket create 
         // ticket create 
+        createTicket(task, cColor);
         //  clean up 
         cColor = colors[colors.length - 1];
         modalContainer.style.display = "none";
         flag = false;
         descBox.value = "";
-
-
     }
-
 })
+
+function createTicket(task, cColor) {
+    //      <div class="ticket-container">
+    //     <div class="ticket-color"></div>
+    //     <div class="ticket_sub-container">
+    //         <h3 class="ticket-id">#sampleId</h3>
+    //         <p class="ticket-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, aspernatur.</p>
+    //     </div>
+    // </div>
+
+    let ticketContainer = document.createElement("div");
+    ticketContainer.setAttribute("class", "ticket-container");
+    ticketContainer.innerHTML = `    <div class="ticket-color ${cColor}"></div>
+       <div class="ticket_sub-container">
+             <h3 class="ticket-id">#sampleId</h3>
+             <div class="ticket-desc">${task}</div>
+         </div>`;
+    mainContainer.appendChild(ticketContainer);
+
+}
 

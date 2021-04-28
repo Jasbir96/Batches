@@ -82,9 +82,12 @@ border-radius:2px;
 }
 /* main container css**************************** */
 .main-container{
-    border:5px solid green;
+    /* border:5px solid green; */
 /*  task add 2 */
     min-height: 88vh;
+    background-color: rgb(240, 239, 239);
+    padding: 2rem ;
+    display:flex;
 }
 .modal_container{
     
@@ -130,6 +133,28 @@ height: 12%;
     border:2px solid white;light
 }
 
+.ticket-container{
+height: 10rem;    
+    width:15rem;
+    background-color:white;
+    
+}
+.ticket-color{
+height:8%;
+/* background-color:black; */
+}
+.ticket_sub-container{
+    padding-left:1rem;
+    font-family: sans-serif;
+}
+.ticket-id{
+    color:lightslategray;
+}
+.ticket-desc{
+    text-align: center;
+    height: 70%;
+    
+}
 
 
 
