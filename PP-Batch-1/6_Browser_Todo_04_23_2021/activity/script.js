@@ -1,33 +1,37 @@
+'use strict';
 let colorBtn = document.querySelectorAll(".filter_color");
 let mainContainer = document.querySelector(".main_container");
+let crossBtn = document.querySelector(".fa-times");
 let body = document.body;
 let plusButton = document.querySelector(".fa-plus");
+let deleteState = false;
 
-
-// for (let i = 0; i < colorBtn.length; i++) {
-//     colorBtn[i].addEventListener("click", function (e) {
-//         let color = colorBtn[i].classList[1];
-//         mainContainer.style.backgroundColor = color;
-//     })
-// }
 plusButton.addEventListener("click", createModal);
+crossBtn.addEventListener("click", setDeleteState);
+
 function createModal() {
     // create modal
-    let modal_container = document.createElement("div");
-    modal_container.setAttribute("class", "modal_container");
-    modal_container.innerHTML = `<div class="input_container">
-    <textarea class="modal_input" 
-    placeholder="Enter Your text"></textarea>
-</div>
-<div class="modal_filter_container">
-    <div class="filter pink"></div>
-    <div class="filter blue"></div>
-    <div class="filter green"></div>
-    <div class="filter black"></div>
-</div>`;
-    body.appendChild(modal_container);
+    let modalContainer = document.querySelector(".modal_container");
+    if (modalContainer == null) {
+        modalContainer = document.createElement("div");
+        modalContainer.setAttribute("class", "modal_container");
+        modalContainer.innerHTML = `<div class="input_container">
+        <textarea class="modal_input" 
+        placeholder="Enter Your text"></textarea>
+    </div>
+    <div class="modal_filter_container">
+        <div class="filter pink"></div>
+        <div class="filter blue"></div>
+        <div class="filter green"></div>
+        <div class="filter black"></div>
+    </div>`;
+        body.appendChild(modalContainer);
+        handleModal(modalContainer);
+    }
+    let textarea = modalContainer.querySelector(".modal_input");
+    textarea.value = "";
+
     //  event listner 
-    handleModal(modal_container);
 }
 function handleModal(modal_container) {
     let cColor = "black";
@@ -48,7 +52,6 @@ function handleModal(modal_container) {
             //  color 
             cColor = modalFilters[i].classList[1];
             console.log("current color of task", cColor);
-
         })
     }
     let textArea = document.querySelector(".modal_input");
@@ -67,17 +70,20 @@ function handleModal(modal_container) {
 function createTask(color, task) {
     // color area click-> among colors
     let taskContainer = document.createElement("div");
+
+    let uid = new ShortUniqueId();
+
     taskContainer.setAttribute("class", "task_container");
     taskContainer.innerHTML = `<div class="task_filter ${color}"></div>
     <div class="task_desc_container">
-        <h3 class="uid">#example</h3>
+        <h3 class="uid">#${uid()}</h3>
         <div class="task_desc" contenteditable="true" >${task}</div>
     </div>
 </div >`;
     mainContainer.appendChild(taskContainer);
     let taskFilter = taskContainer.querySelector(".task_filter");
     taskFilter.addEventListener("click", changeColor);
-
+    taskContainer.addEventListener("click", deleteTask);
 }
 function changeColor(e) {
     //  add event listener 
@@ -92,7 +98,23 @@ function changeColor(e) {
     taskFilter.classList.remove(cColor);
     taskFilter.classList.add(colors[newColorIdx]);
 }
+function setDeleteState(e) {
 
-
+    let crossBtn = e.currentTarget;
+    // console.log(crossBtn.parent)
+    let parent = crossBtn.parentNode;
+    if (deleteState == false) {
+        parent.classList.add("active");
+    } else {
+        parent.classList.remove("active");
+    }
+    deleteState = !deleteState;
+}
+function deleteTask(e) {
+    let taskContainer = e.currentTarget;
+    if (deleteState) {
+        taskContainer.remove();
+    }
+}
 
 

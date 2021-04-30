@@ -72,6 +72,9 @@ background-color: green;
 .fas{
     font-size: 1.5rem;
 }
+.active{
+    background-color: #474a4b;
+}
 /* modal css */
 .modal_container{
     position: absolute;
