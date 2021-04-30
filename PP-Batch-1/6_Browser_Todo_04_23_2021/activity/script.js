@@ -1,17 +1,26 @@
 'use strict';
+
+
 let colorBtn = document.querySelectorAll(".filter_color");
 let mainContainer = document.querySelector(".main_container");
-let crossBtn = document.querySelector(".fa-times");
+let bothElementsArr = document.querySelectorAll(".icon-container");
+let crossBtn = bothElementsArr[1]
+let plusButton = bothElementsArr[0];
 let body = document.body;
-let plusButton = document.querySelector(".fa-plus");
 let deleteState = false;
-
+let taskArr = [];
+if (localStorage.getItem("allTask")) {
+    taskArr = JSON.parse(localStorage.getItem("allTask"));
+    // UI
+    for (let i = 0; i < taskArr.length; i++) {
+        let { id, color, task } = taskArr[i];
+        createTask(color, task, false, id);
+    }
+}
 plusButton.addEventListener("click", createModal);
 crossBtn.addEventListener("click", setDeleteState);
-
 function createModal() {
     // create modal
-   
     let modalContainer = document.querySelector(".modal_container");
     if (modalContainer == null) {
         modalContainer = document.createElement("div");
@@ -62,29 +71,40 @@ function handleModal(modal_container) {
             //  remove modal
             modal_container.remove();
             // create taskBox
-            createTask(cColor, textArea.value);
+            createTask(cColor, textArea.value, true);
+
         }
     })
 
 
 }
-function createTask(color, task) {
+function createTask(color, task, flag, id) {
     // color area click-> among colors
     let taskContainer = document.createElement("div");
 
-    let uid = new ShortUniqueId();
-
+    let uifn = new ShortUniqueId();
+    let uid = id || uifn();
     taskContainer.setAttribute("class", "task_container");
     taskContainer.innerHTML = `<div class="task_filter ${color}"></div>
     <div class="task_desc_container">
-        <h3 class="uid">#${uid()}</h3>
+        <h3 class="uid">#${uid}</h3>
         <div class="task_desc" contenteditable="true" >${task}</div>
     </div>
 </div >`;
     mainContainer.appendChild(taskContainer);
     let taskFilter = taskContainer.querySelector(".task_filter");
+    if (flag == true) {
+        // console.log(uid);
+        let obj = { "task": task, "id": `${uid}`, "color": color };
+        taskArr.push(obj);
+        let finalArr = JSON.stringify(taskArr);
+        localStorage.setItem("allTask", finalArr);
+    }
     taskFilter.addEventListener("click", changeColor);
     taskContainer.addEventListener("click", deleteTask);
+    let taskDesc = taskContainer.querySelector(".task_desc");
+    taskDesc.addEventListener("keypress", editTask);
+
 }
 function changeColor(e) {
     //  add event listener 
@@ -103,19 +123,48 @@ function setDeleteState(e) {
 
     let crossBtn = e.currentTarget;
     // console.log(crossBtn.parent)
-    let parent = crossBtn.parentNode;
     if (deleteState == false) {
-        parent.classList.add("active");
+        crossBtn.classList.add("active");
     } else {
-        parent.classList.remove("active");
+        crossBtn.classList.remove("active");
     }
     deleteState = !deleteState;
 }
 function deleteTask(e) {
     let taskContainer = e.currentTarget;
     if (deleteState) {
-        taskContainer.remove();
+        // local storage search -> remove
+        let uidElem = taskContainer.querySelector(".uid");
+        let uid = uidElem.innerText.split("#")[1];
+        for (let i = 0; i < taskArr.length; i++) {
+            let { id } = taskArr[i];
+            console.log(id, uid);
+            if (id == uid) {
+                taskArr.splice(i, 1);
+                let finalTaskArr = JSON.stringify(taskArr);
+                localStorage.setItem("allTask", finalTaskArr);
+                taskContainer.remove();
+                break;
+            }
+        }
     }
 }
 
 
+
+function editTask(e) {
+    let taskDesc = e.currentTarget;
+    let uidElem = taskDesc.parentNode.children[0];
+    let uid = uidElem.innerText.split("#")[1];
+    for (let i = 0; i < taskArr.length; i++) {
+        let { id } = taskArr[i];
+        console.log(id, uid);
+        if (id == uid) {
+            taskArr[i].task = taskDesc.innerText
+            let finalTaskArr = JSON.stringify(taskArr);
+            localStorage.setItem("allTask", finalTaskArr);
+
+            break;
+        }
+    }
+}

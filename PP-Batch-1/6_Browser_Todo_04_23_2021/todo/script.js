@@ -49,7 +49,6 @@ input.addEventListener("keydown", function (e) {
         li.addEventListener("dblclick", function (e) {
             li.remove();
         })
-
         //  add any attribute 
         li.setAttribute("class", "task");
         ul.appendChild(li);
