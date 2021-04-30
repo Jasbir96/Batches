@@ -11,6 +11,7 @@ crossBtn.addEventListener("click", setDeleteState);
 
 function createModal() {
     // create modal
+   
     let modalContainer = document.querySelector(".modal_container");
     if (modalContainer == null) {
         modalContainer = document.createElement("div");
