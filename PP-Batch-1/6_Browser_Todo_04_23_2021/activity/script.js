@@ -4,12 +4,12 @@ let body = document.body;
 let plusButton = document.querySelector(".fa-plus");
 
 
-for (let i = 0; i < colorBtn.length; i++) {
-    colorBtn[i].addEventListener("click", function (e) {
-        let color = colorBtn[i].classList[1];
-        mainContainer.style.backgroundColor = color;
-    })
-}
+// for (let i = 0; i < colorBtn.length; i++) {
+//     colorBtn[i].addEventListener("click", function (e) {
+//         let color = colorBtn[i].classList[1];
+//         mainContainer.style.backgroundColor = color;
+//     })
+// }
 plusButton.addEventListener("click", createModal);
 function createModal() {
     // create modal
@@ -28,10 +28,7 @@ function createModal() {
     body.appendChild(modal_container);
     //  event listner 
     handleModal(modal_container);
-
-
 }
-
 function handleModal(modal_container) {
     let cColor = "black";
     let modalFilters = document.querySelectorAll(".modal_filter_container .filter");
@@ -56,7 +53,7 @@ function handleModal(modal_container) {
     }
     let textArea = document.querySelector(".modal_input");
     textArea.addEventListener("keydown", function (e) {
-        if (e.key == "Enter"&&textArea.value!="") {
+        if (e.key == "Enter" && textArea.value != "") {
             console.log("Task ", textArea.value, "color ", cColor);
             //  remove modal
             modal_container.remove();
@@ -68,16 +65,34 @@ function handleModal(modal_container) {
 
 }
 function createTask(color, task) {
+    // color area click-> among colors
     let taskContainer = document.createElement("div");
     taskContainer.setAttribute("class", "task_container");
     taskContainer.innerHTML = `<div class="task_filter ${color}"></div>
     <div class="task_desc_container">
         <h3 class="uid">#example</h3>
-        <div class="task_desc">${task}</div>
+        <div class="task_desc" contenteditable="true" >${task}</div>
     </div>
 </div >`;
     mainContainer.appendChild(taskContainer);
+    let taskFilter = taskContainer.querySelector(".task_filter");
+    taskFilter.addEventListener("click", changeColor);
+
 }
+function changeColor(e) {
+    //  add event listener 
+    // console.log(e.currentTarget);
+    // /event occur 
+    // console.log(e.target);
+    let taskFilter = e.currentTarget;
+    let colors = ["pink", "blue", "green", "black"];
+    let cColor = taskFilter.classList[1];
+    let idx = colors.indexOf(cColor);
+    let newColorIdx = (idx + 1) % 4;
+    taskFilter.classList.remove(cColor);
+    taskFilter.classList.add(colors[newColorIdx]);
+}
+
 
 
 

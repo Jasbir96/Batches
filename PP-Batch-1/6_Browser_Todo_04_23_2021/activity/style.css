@@ -72,14 +72,14 @@ background-color: green;
 .fas{
     font-size: 1.5rem;
 }
-
 /* modal css */
 .modal_container{
     position: absolute;
 height:18rem;
 width:36rem;
 background-color: brown;
-left:3vw;
+/* variable value */
+left: calc((100vw - 36rem)/2);
 top:30vh;
 display: flex;
 box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.698);
@@ -121,7 +121,8 @@ padding: 1.7rem 1.2rem;
 
 /* task css */
 .main_container{
-    height:88vh;
+   height:88vh;
+   overflow: auto;
     padding-top: 2rem;
     padding-left: 3rem;
     display: flex;
@@ -137,11 +138,18 @@ padding: 1.7rem 1.2rem;
     background-color: #fff;
 }
 .task_desc_container{
+    height: 80%;
     padding-left:0.5rem;
 }
 .task_desc{
+    height: 70%;
+    overflow:auto;
     text-align: center;
+    /* words */
+    word-break: break-all;
+    
 }
 .uid{
     color: #444;
+    margin-bottom: 0.1rem;;
 }

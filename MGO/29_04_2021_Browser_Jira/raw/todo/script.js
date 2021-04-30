@@ -5,8 +5,7 @@
 let inputBox = document.querySelector(".input-box");
 let ul = document.querySelector(".task-list");
 // listener
-// dom -> form -> value
-// rest -> textContent
+// document -> form -> value // rest -> textContent
 inputBox.addEventListener("keydown", function (object) {
     //    console.log("event object ",object);
     console.log("event");
@@ -20,11 +19,13 @@ inputBox.addEventListener("keydown", function (object) {
         li.textContent = value;
         // set Attribute
         li.setAttribute("class", "task");
-        li.addEventListener("dblclick", function () {
-            // li.remove();
-            // console.log("i was dbl clicked",li.innerText)
-            li.remove();
-        })
+        li.addEventListener("dblclick", delFN);
         inputBox.value = "";
     }
 })
+
+function delFN() {
+    // li.remove();
+    // console.log("i was dbl clicked",li.innerText)
+    li.remove();
+}
