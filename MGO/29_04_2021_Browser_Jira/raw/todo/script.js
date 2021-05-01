@@ -19,13 +19,12 @@ inputBox.addEventListener("keydown", function (object) {
         li.textContent = value;
         // set Attribute
         li.setAttribute("class", "task");
-        li.addEventListener("dblclick", delFN);
+        li.addEventListener("dblclick", function delFN() {
+            // li.remove();
+            // console.log("i was dbl clicked",li.innerText)
+            li.remove();
+        });
         inputBox.value = "";
     }
 })
 
-function delFN() {
-    // li.remove();
-    // console.log("i was dbl clicked",li.innerText)
-    li.remove();
-}

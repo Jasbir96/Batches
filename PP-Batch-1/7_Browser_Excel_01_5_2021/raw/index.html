@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .top-left-block {
+            height: 30px;
+            width: 25px;
+            background-color: gray;
+        }
+
+        .top-row {
+            height: 30px;
+            background-color: lightgreen;
+            display: flex;
+            /* position: absolute;
+            top: 0px;
+            left: 25px */
+        }
+
+        /* .grid_container {
+            position: relative;
+            border:5px solid red
+        } */
+        .row {
+            display: flex;
+        }
+
+        .col {
+            min-width: 80px;
+            border: 1px solid;
+            min-height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .left-col {
+            width: 25px;
+            border: 1px solid red;
+        }
+
+        /* .grid {
+            position: absolute;
+            top: 30px;
+            left: 25px; */
+        /* } */
+
+        .left-col_box {
+            height: 30px;
+            background-color: lightgreen;
+            text-align: center;
+            border: 1px solid;
+        }
+
+       
+
+        .grid_container {
+            border: 10px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint unde voluptatem dolore libero, aperiam eum cum
+        impedit eos aspernatur vel tempore, excepturi animi, debitis incidunt laborum? Exercitationem debitis incidunt
+        facilis suscipit quam quis, similique vel quasi doloremque adipisci veniam tempore illo quos, totam eum eligendi
+        id nobis at dicta quidem! Quisquam sint eveniet repellat molestiae maxime atque aperiam eaque vero, animi totam
+        alias iste, error enim rem possimus excepturi accusantium deserunt illum rerum repellendus. Dignissimos illum
+        dicta doloremque assumenda porro veniam suscipit facilis ad accusamus impedit deleniti itaque, numquam eum
+        possimus officiis nulla dolores sequi animi veritatis quaerat laboriosam atque!</p>
+    <div class="grid_container">
+        <div class="top-left-block">
+        </div>
+        <div class="top-row">
+        </div>
+        <div class="left-col">
+        </div>
+        <div class="grid"></div>
+    </div>
+    <script>
+        let topRow = document.querySelector(".top-row");
+        let str = "";
+        for (let i = 0; i < 26; i++) {
+            str += `<div class='col'>${String.fromCharCode(65 + i)}</div>`;
+        }
+        topRow.innerHTML = str;
+        let leftCol = document.querySelector(".left-col");
+        str = ""
+        for (let i = 0; i < 100; i++) {
+            str += `<div class='left-col_box'>${i + 1}</div>`
+        }
+        leftCol.innerHTML = str;
+
+        // 2d array
+        let grid = document.querySelector(".grid");
+        str = "";
+        for (let i = 0; i < 100; i++) {
+            str += `<div class="row">`
+            for (let j = 0; j < 26; j++) {
+                str += `<div class='col'>${String.fromCharCode(65 + j)}${i + 1}</div>`
+            }
+            str += "</div>";
+        }
+        grid.innerHTML = str;
+    </script>
+</body>
+
+</html>

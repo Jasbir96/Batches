@@ -1,0 +1,45 @@
+body{
+    margin:0px;
+    padding:0px;
+}
+*{
+    box-sizing: border-box;
+    /* border:1px solid red; */
+}
+.pink{
+background-color:lightpink;
+}
+.blue{
+    background-color:lightblue;
+}
+.green{
+    background-color:lightgreen;
+}
+.black{
+    background-color:black;
+}
+
+.toolbar{
+    padding-top:10px;
+    height:12vh;
+    background-color: rgb(32, 29, 29);
+}
+.filter_container{
+    height:70%;
+    background-color: darkgray;
+    width:20rem;
+    border-radius: 3px;
+    /* center */
+    margin: 0 auto;
+}
+.filter{
+    margin-top:3px;
+
+    height:90%;
+    width:22%; 
+}
+
+.main-container{
+    min-height: 88vh;
+    /* background-color: rgb(230, 223, 215); */
+}

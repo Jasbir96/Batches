@@ -1,0 +1,41 @@
+body{
+    margin: 0px;
+}
+li{
+    list-style: none;
+}
+body{
+    background-color:#30336b;
+}
+.input-container{
+    height:20vh;
+    border:5px solid;
+}
+.input-box{
+    font-family: 'Roboto Slab', serif;
+    height: 30%;
+    width: 70%;
+    display: block;
+    /*  */
+    margin: 0 auto;
+    margin-top: 2.2rem;
+}
+.main-container{
+    font-family: 'Roboto Slab', serif;
+    color:white;
+text-align: center;    
+}
+.action{
+    font-size:2rem;
+}
+.task-list{
+    width:70vw;
+    margin:0 auto;
+    padding: 0;
+}
+.task{
+font-size: 1.5rem;
+background-color: #686de0;
+margin-top: 1rem;
+height:1.8rem;
+}

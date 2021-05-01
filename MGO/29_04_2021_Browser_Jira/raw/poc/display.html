@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        border: 5px solid red;
+        background-color: lightgreen;
+        padding: 1rem;
+        /* outside area */
+        margin-left: 1rem;
+        margin-top: 1rem;
+    }
+
+    .height {
+        height: 200px;
+        width: 200px;
+    }
+    .border {
+        height: 200px;
+        width: 200px;
+        box-sizing: border-box;
+    }
+</style>
+<body>
+    <!-- default=>box height/width -> content +padding+border  -->
+    <div class="box">one</div>
+    <!-- user defined height/width-> height/width+ padding +border -->
+    <div class="box height">two</div>
+    <!-- user  -->
+    <!-- user defined height/width-> height/width- padding -border -->
+    <div class="box border">three</div>
+</body>
+
+</html>

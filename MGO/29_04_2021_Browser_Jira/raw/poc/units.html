@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            /* deafult 1 rem -> 16 px */
+            font-size: 150%;
+        }
+        body {
+            margin: 0px;
+        }
+        .box {
+            border: 1px solid;
+        }
+        .one {
+            background-color: lightgreen;
+            height: 100px;
+            width: 100px;
+        }
+        /* relative unit */
+        .two {
+            background-color: lightblue;
+            height: 10rem;
+            width: 10rem;
+        }
+        /* view height and view width */
+        /* 100vw-> browser screen width */
+        /* 100vh-> browser screen height */
+        .three {
+            background-color: lightcoral;
+            height: 10vh;
+            width: 50vw;
+        }
+        .parent {
+            background-color: rgb(230, 203, 173);
+            height: 20rem;
+            width: 20rem;
+        }
+        /* percentage is realtive to parent */
+        /* .child {
+            background-color: lightpink;
+            height: 50%;
+            width: 50%;
+        } */
+        .gchild {
+            color: white;
+            height: 50%;
+            background-color: black;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <!-- div /block level -> height default
+        content ✔ -> =content
+        content ❌-> 0
+    -->
+    <!--  manually height -> given height -->
+    <div class="box one"></div>
+    <div class="box two"></div>
+    <div class="box three"></div>
+    <div class="parent">
+        <div class="child">
+            <div class="gchild">ds,kjfbgjfsbdh</div>
+        </div>
+    </div>
+</body>
+
+</html>
