@@ -18,28 +18,57 @@ background-color:lightpink;
 .black{
     background-color:black;
 }
-
 .toolbar{
-    padding-top:10px;
-    height:12vh;
+    display: flex;
+    height: 12vh;
     background-color: rgb(32, 29, 29);
+    align-items: center;
 }
 .filter_container{
-    height:70%;
+    height: 70%;
     background-color: darkgray;
-    width:20rem;
+    width: 20rem;
     border-radius: 3px;
-    /* center */
-    margin: 0 auto;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    display: flex;
 }
-.filter{
-    margin-top:3px;
-
-    height:90%;
-    width:22%; 
+.filter_color-container{
+    width: 25%;
+    height: 100%;
+    background: #444;
+    border-right: 1px solid red;
+    /* perefectly center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filter_color{
+    height: 40%;
+    width:40%;
+    border-radius: 2px ;
+}
+.action_container{
+    height: 70%;
+    background-color: darkgray;
+    width: 8rem;
+    border-radius: 3px;
+    display: flex;
+}
+.icon_container{
+    height: 100%;
+    width: 50%;
+    border-right: 1px solid red;
+    /* perfectly center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon{
+    font-size:1.5rem;
 }
 
-.main-container{
+ .main-container{
     min-height: 88vh;
     /* background-color: rgb(230, 223, 215); */
 }
