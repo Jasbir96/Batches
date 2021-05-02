@@ -9,18 +9,19 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
     <div class="menu-container">
         <div class="formatting-container">
             <div class="subgroup">
-                    <select id="font-family" class="font-family">
-                        <option value="Arial">Font-1</option>
-                        <option value="Cambria">Font-2</option>
-                        <option value="Georgia">Font-3</option>
-                        <option value="monospace">Font-4</option>
-                        <option value="sans-serif">Font-5</option>
-                        <option value="fantasy">Font-6</option>
-                    </select>
+                <select id="font-family" class="font-family">
+                    <option value="Arial">Font-1</option>
+                    <option value="Cambria">Font-2</option>
+                    <option value="Georgia">Font-3</option>
+                    <option value="monospace">Font-4</option>
+                    <option value="sans-serif">Font-5</option>
+                    <option value="fantasy">Font-6</option>
+                </select>
                 <div class="BUI_container">
                     <input type="button" value="B" class="bold">
                     <input type="button" value="I" class="Italic">
@@ -28,28 +29,34 @@
                 </div>
             </div>
             <div class="subgroup">
-               
-                    <select id="font-size" class="font-size">
-                        <option value="8">8</option>
-                        <option value="10">10</option>
-                        <option value="12">12</option>
-                        <option value="16">16</option>
-                        <option value="20">20</option>
-                        <option value="32">32</option>
-                    </select>
+                <select id="font-size" class="font-size">
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                    <option value="16">16</option>
+                    <option value="20">20</option>
+                    <option value="32">32</option>
+                </select>
                 <div class="color-container">
-                    <input type="color"  id="color">
-                    <input type="color"  id="bg-color">
+                    <input type="color" id="color">
+                    <input type="color" id="bg-color">
                 </div>
             </div>
         </div>
         <div class="alignment-container">
-            <input type="button" value="L">
-            <input type="button" value="C">
-            <input type="button" value="R">
+            <input type="button" value="L" class="left">
+            <input type="button" value="C" class="center">
+            <input type="button" value="R" class="right">
         </div>
     </div>
-    <div class="formula-container">Formula</div>
+
+    <div class="formula-container">
+        <input type="text" class="address-box" readonly>
+        <div class="seperator">:</div>
+        <input type="text" class="formula-box">
+    </div>
+
+
     <div class="grid_container">
         <div class="top-left-block">
         </div>
