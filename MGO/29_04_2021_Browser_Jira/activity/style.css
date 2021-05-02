@@ -1,6 +1,8 @@
 body{
     margin:0px;
     padding:0px;
+    font-family: 'Roboto Slab', serif;
+
 }
 *{
     box-sizing: border-box;
@@ -67,8 +69,38 @@ background-color:lightpink;
 .icon{
     font-size:1.5rem;
 }
-
  .main-container{
     min-height: 88vh;
-    /* background-color: rgb(230, 223, 215); */
+    padding-top: 3rem;
+    padding-left: 3rem;
+    background-color:aliceblue;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.ticket_container{
+    /* border: 1px solid red; */
+    height: 10rem;
+    width: 14rem;
+    background-color: white;
+}
+.ticket_color{
+    height: 7%;
+}
+.ticket_desc_container{
+    height: 93%;
+    padding: 0.5rem;
+    overflow: auto;
+    word-break: break-all;
+}
+
+.ticket_id{
+    margin-bottom: 11px;
+    font-weight: 800;
+    color:lightslategray;
+    
+}
+.ticket_desc{
+    text-align: center;
+    font-size: 1.2rem;
 }

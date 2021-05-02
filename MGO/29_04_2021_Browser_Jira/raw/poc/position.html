@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+        }
+
+        .parent {
+            height: 100vh;
+            width: 400px;
+            background-color: rebeccapurple;
+        }
+
+        .child {
+            text-align: center;
+            height: 100px;
+            width: 200px;
+            border: 2px solid red;
+            background-color: lightblue;
+        }
+
+        .one {}
+
+        .two {
+            position: absolute;
+            left: 150px;
+            top: 100px;
+            background-color: rgb(144, 238, 144);
+            /* positioned element  */
+            z-index: 1;
+        }
+        .nav{
+            height:10vh;
+            width:100vw;
+            background-color: black;
+            color:white;
+            display: flex;
+            justify-content: space-evenly;
+            position: fixed;
+            /* z-index:12; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- normal flow -->
+    <!-- html -->
+    <!--  left to right and top to bottom  -->
+    <div class="nav">
+        <p>Hello</p>
+        <p>Home</p>
+        <p>HI</p>
+    </div>
+    <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, nostrum.</p> -->
+    <div class="parent">
+        <div class="child one">1</div>
+        <div class="child two">2</div>
+        <div class="child three">3</div>
+    </div>
+    <span>Hello</span>
+    <span>Hello</span>
+    <span>Hello</span>
+    <span>Hello</span>
+    <span>Hello</span>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente numquam accusantium minima possimus, animi
+        aperiam doloremque quae eveniet aspernatur nisi deleniti ea exercitationem quas beatae nobis laboriosam a
+        distinctio magni non. Eaque itaque molestias maiores odit, accusantium sequi. Illo accusantium at assumenda
+        similique quia nostrum, asperiores dolor praesentium magni dolores vel a sunt provident voluptatum harum dolorem
+        explicabo optio consequuntur repellat cupiditate quisquam ullam voluptas! Temporibus, vero nulla! Quisquam sequi
+        iure quia libero, quam suscipit dolore numquam natus rerum incidunt ab ducimus, reiciendis quaerat ex est sed
+        voluptatum culpa minus fuga necessitatibus id magnam illum vero atque. Ullam, aliquam autem?</p>
+</body>
+
+</html>
