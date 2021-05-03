@@ -3,22 +3,14 @@ let modalFilters = document.querySelectorAll(".modal_filters");
 let mainContainer = document.querySelector(".main-container");
 let modalContainer = document.querySelector(".modal_container");
 let addBtn = document.querySelector(".add");
+let removeBtn = document.querySelector(".remove");
 let descBox = document.querySelector(".desc-box");
 let colors = ["lightpink", "lightblue", "lightgreen", "black"];
 let flag = false;
+let deletState = false;
 let cColor = colors[colors.length - 1];
 
-// for (let i = 0; i < filterOptions.length; i++) {
-//     filterOptions[i].addEventListener("click", function () {
-//         let arr = filterOptions[i].children;
-//         // present classes
-//         // console.log(arr[1]);
-//         let chclassesArr = arr[0].classList;
 
-//         // console.log(classesArr[1]);
-//         mainContainer.style.backgroundColor = chclassesArr[0];
-//     });
-// }
 addBtn.addEventListener("click", function () {
     if (flag == false) {
         modalContainer.style.display = "flex";
@@ -47,7 +39,7 @@ descBox.addEventListener("keydown", function (e) {
         // ticket create 
         createTicket(task, cColor);
         //  clean up 
-        
+
         cColor = colors[colors.length - 1];
         modalContainer.style.display = "none";
         flag = false;
@@ -73,10 +65,13 @@ function createTicket(task, cColor) {
          </div>`;
     mainContainer.appendChild(ticketContainer);
     let colorStripElement = ticketContainer.querySelector(".ticket-color");
-    handleTicket(colorStripElement);
+    handleColorChange(colorStripElement);
+    handleDeleteContainer(ticketContainer);
 }
-function handleTicket(colorStripElement) {
+function handleColorChange(colorStripElement) {
+
     colorStripElement.addEventListener("click", function () {
+        // delete state 
         let classes = colorStripElement.classList;
         let initColor = classes[1];
         let idx = colors.indexOf(initColor);
@@ -86,3 +81,31 @@ function handleTicket(colorStripElement) {
         colorStripElement.classList.add(newColor);
     })
 }
+removeBtn.addEventListener("click", function () {
+    if (deletState == false) {
+        removeBtn.style.backgroundColor = "rgb(100, 71, 26)";
+    } else {
+        removeBtn.style.backgroundColor = "rgb(146, 102, 35)";
+    }
+    deletState = !deletState;
+});
+function handleDeleteContainer(ticketContainer) {
+    ticketContainer.addEventListener("click", function () {
+        if (deletState == true) {
+            ticketContainer.remove();
+        }
+    });
+
+}
+
+// for (let i = 0; i < filterOptions.length; i++) {
+//     filterOptions[i].addEventListener("click", function () {
+//         let arr = filterOptions[i].children;
+//         // present classes
+//         // console.log(arr[1]);
+//         let chclassesArr = arr[0].classList;
+
+//         // console.log(classesArr[1]);
+//         mainContainer.style.backgroundColor = chclassesArr[0];
+//     });
+// }
