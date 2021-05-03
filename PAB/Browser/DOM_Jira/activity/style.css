@@ -1,6 +1,8 @@
 /* basic */
 *{
     box-sizing: border-box;
+    word-break: break-all;
+
 }
 body{
     margin:0px;
@@ -134,7 +136,7 @@ width:60%;
 height: 12%;
 }
 .border{
-    border:2px solid white;light
+    border:2px solid white;
 }
 
 .ticket-container{
@@ -148,15 +150,18 @@ height:8%;
 /* background-color:black; */
 }
 .ticket_sub-container{
+    height:92%;
     padding-left:1rem;
     font-family: sans-serif;
 }
 .ticket-id{
-    color:lightslategray;
+    height: 3%;
 }
+
 .ticket-desc{
     text-align: center;
     height: 70%;
+    overflow: auto;
     
 }
 

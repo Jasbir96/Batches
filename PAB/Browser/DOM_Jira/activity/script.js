@@ -7,10 +7,9 @@ let removeBtn = document.querySelector(".remove");
 let descBox = document.querySelector(".desc-box");
 let colors = ["lightpink", "lightblue", "lightgreen", "black"];
 let flag = false;
-let deletState = false;
+let deleteState = false;
 let cColor = colors[colors.length - 1];
-
-
+// alert(a);
 addBtn.addEventListener("click", function () {
     if (flag == false) {
         modalContainer.style.display = "flex";
@@ -46,7 +45,6 @@ descBox.addEventListener("keydown", function (e) {
         descBox.value = "";
     }
 })
-
 function createTicket(task, cColor) {
     //      <div class="ticket-container">
     //     <div class="ticket-color"></div>
@@ -58,9 +56,10 @@ function createTicket(task, cColor) {
 
     let ticketContainer = document.createElement("div");
     ticketContainer.setAttribute("class", "ticket-container");
+    let id = uid();
     ticketContainer.innerHTML = `<div class="ticket-color ${cColor}"></div>
        <div class="ticket_sub-container">
-             <h3 class="ticket-id">#sampleId</h3>
+             <h3 class="ticket-id">#${id}</h3>
              <div class="ticket-desc">${task}</div>
          </div>`;
     mainContainer.appendChild(ticketContainer);
@@ -69,7 +68,6 @@ function createTicket(task, cColor) {
     handleDeleteContainer(ticketContainer);
 }
 function handleColorChange(colorStripElement) {
-
     colorStripElement.addEventListener("click", function () {
         // delete state 
         let classes = colorStripElement.classList;
@@ -82,16 +80,16 @@ function handleColorChange(colorStripElement) {
     })
 }
 removeBtn.addEventListener("click", function () {
-    if (deletState == false) {
+    if (deleteState == false) {
         removeBtn.style.backgroundColor = "rgb(100, 71, 26)";
     } else {
         removeBtn.style.backgroundColor = "rgb(146, 102, 35)";
     }
-    deletState = !deletState;
+    deleteState = !deleteState;
 });
 function handleDeleteContainer(ticketContainer) {
     ticketContainer.addEventListener("click", function () {
-        if (deletState == true) {
+        if (deleteState == true) {
             ticketContainer.remove();
         }
     });
