@@ -4,7 +4,6 @@
 let inputBox = document.querySelector(".input-box");
 let taskList = document.querySelector(".task-list");
 let tasksArr = [];
-
 if (localStorage.getItem("alltasks")) {
     let strArr = localStorage.getItem("alltasks");
     tasksArr = JSON.parse(strArr);

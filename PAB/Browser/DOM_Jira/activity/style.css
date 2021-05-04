@@ -90,10 +90,15 @@ border-radius:2px;
 .main-container{
     /* border:5px solid green; */
 /*  task add 2 */
+border: 5px solid green; 
     min-height: 88vh;
     background-color: rgb(240, 239, 239);
-    padding: 2rem ;
-    display:flex;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    /* align-content: stretch; */
+    justify-content: space-around;
+    gap: 2vw;
 }
 .modal_container{
     
@@ -165,5 +170,24 @@ height:8%;
     
 }
 
+@media only screen and (max-width: 500px){
+    .toolbar{
+        gap: 3rem;
+    }
+    .filter-container {
+        height: 70%;
+        width: 42%;
+    }
+    .action-container {
+        height: 70%;
+        width: 20%;}
+
+        .modal_container{
+    top: 25vh;
+    height: 15rem;
+    width: 20rem;
+    left: calc((100vw - 20rem)/2);
+        }
+}
 
 
