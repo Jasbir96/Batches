@@ -2,7 +2,6 @@
 *{
     box-sizing: border-box;
     word-break: break-all;
-
 }
 body{
     margin:0px;
@@ -20,7 +19,6 @@ body{
 .black{
     background-color: black;
 }
-
 /* toolbar*********************************************/
 .toolbar{
     /* 1. toolbar height  */

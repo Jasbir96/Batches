@@ -27,3 +27,5 @@
 ### DOM
 * https://developer.mozilla.org/en-US/docs/Web/Events
 * https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents
+* https://www.youtube.com/playlist?list=PL4cUxeGkcC9gfoKa5la9dsdCNpuey2s-V
+* https://javascript.info -> Part 2

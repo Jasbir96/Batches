@@ -1,3 +1,5 @@
+'use strict';
+// a=10;
 let filterOptions = document.querySelectorAll(".filter-colors__container");
 let modalFilters = document.querySelectorAll(".modal_filters");
 let mainContainer = document.querySelector(".main-container");
@@ -9,7 +11,19 @@ let colors = ["lightpink", "lightblue", "lightgreen", "black"];
 let flag = false;
 let deleteState = false;
 let cColor = colors[colors.length - 1];
+let taskArr = [];
 // alert(a);
+// init 
+// allTasks=[];
+//  reload -> according state to re-render the ui 
+if (localStorage.getItem("allTasks")) {
+    taskArr = JSON.parse(localStorage.getItem("allTasks"));
+    for (let i = 0; i < taskArr.length; i++) {
+        let { task, color, id } = taskArr[i];
+        createTicket(task, color, id);
+    }
+}
+
 addBtn.addEventListener("click", function () {
     if (flag == false) {
         modalContainer.style.display = "flex";
@@ -45,18 +59,10 @@ descBox.addEventListener("keydown", function (e) {
         descBox.value = "";
     }
 })
-function createTicket(task, cColor) {
-    //      <div class="ticket-container">
-    //     <div class="ticket-color"></div>
-    //     <div class="ticket_sub-container">
-    //         <h3 class="ticket-id">#sampleId</h3>
-    //         <p class="ticket-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, aspernatur.</p>
-    //     </div>
-    // </div>
-
+function createTicket(task, cColor, myid) {
     let ticketContainer = document.createElement("div");
     ticketContainer.setAttribute("class", "ticket-container");
-    let id = uid();
+    let id = myid || shortid();
     ticketContainer.innerHTML = `<div class="ticket-color ${cColor}"></div>
        <div class="ticket_sub-container">
              <h3 class="ticket-id">#${id}</h3>
@@ -64,6 +70,15 @@ function createTicket(task, cColor) {
          </div>`;
     mainContainer.appendChild(ticketContainer);
     let colorStripElement = ticketContainer.querySelector(".ticket-color");
+    if (!myid) {
+        // 1. 
+        taskArr.push({
+            color: cColor,
+            id: id,
+            task: task
+        })
+        localStorage.setItem("allTasks", JSON.stringify(taskArr));
+    }
     handleColorChange(colorStripElement);
     handleDeleteContainer(ticketContainer);
 }
@@ -77,6 +92,8 @@ function handleColorChange(colorStripElement) {
         let newColor = colors[newidx];
         colorStripElement.classList.remove(initColor);
         colorStripElement.classList.add(newColor);
+        //  change color in  localstorage on tap
+        changeColorInStore(colorStripElement, newColor);
     })
 }
 removeBtn.addEventListener("click", function () {
@@ -90,20 +107,34 @@ removeBtn.addEventListener("click", function () {
 function handleDeleteContainer(ticketContainer) {
     ticketContainer.addEventListener("click", function () {
         if (deleteState == true) {
+//  local storage
+            let elem = ticketContainer.querySelector(".ticket-id");
+            let toBeDeletedId = elem.innerText.slice(1);
+            // console.log(toBeDeletedId);
+            let idx = taskArr.findIndex(function (ticket) {
+                return ticket.id == toBeDeletedId;
+            })
+            // console.log(idx);
+            taskArr.splice(idx, 1);
+            localStorage.setItem("allTasks", JSON.stringify(taskArr));
+        //    UI remove
             ticketContainer.remove();
         }
     });
 
 }
-
-// for (let i = 0; i < filterOptions.length; i++) {
-//     filterOptions[i].addEventListener("click", function () {
-//         let arr = filterOptions[i].children;
-//         // present classes
-//         // console.log(arr[1]);
-//         let chclassesArr = arr[0].classList;
-
-//         // console.log(classesArr[1]);
-//         mainContainer.style.backgroundColor = chclassesArr[0];
-//     });
-// }
+function changeColorInStore(colorStripElement, newColor) {
+    //  ticket sub container 
+    let ticketSubcontainerElem = colorStripElement.parentNode.children[1];
+    // unique id element
+    let idElem = ticketSubcontainerElem.children[0];
+    //  id -> # 
+    let id = idElem.innerText.slice(1);
+//  idx
+    let idx = taskArr.findIndex(function (ticket) {
+        return ticket.id == id;
+    })
+    // color change 
+    taskArr[idx].color = newColor;
+    localStorage.setItem("allTasks", JSON.stringify(taskArr));
+}
