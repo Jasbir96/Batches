@@ -19,18 +19,18 @@ let taskArr = [];
 if (localStorage.getItem("allTasks")) {
     taskArr = JSON.parse(localStorage.getItem("allTasks"));
     for (let i = 0; i < taskArr.length; i++) {
-        let { task, color, id } = taskArr[i];
+        let { task, color, id } = taskArr;
+       
         createTicket(task, color, id);
     }
 }
-
 addBtn.addEventListener("click", function () {
     if (flag == false) {
         modalContainer.style.display = "flex";
     } else {
         modalContainer.style.display = "none";
     }
-    flag = !flag
+    flag = !flag;
 });
 for (let i = 0; i < modalFilters.length; i++) {
     modalFilters[i].addEventListener("click", function () {
@@ -80,6 +80,7 @@ function createTicket(task, cColor, myid) {
         localStorage.setItem("allTasks", JSON.stringify(taskArr));
     }
     handleColorChange(colorStripElement);
+    
     handleDeleteContainer(ticketContainer);
 }
 function handleColorChange(colorStripElement) {

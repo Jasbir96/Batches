@@ -80,6 +80,10 @@ border-radius:2px;
 .fas{
     font-size:x-large;
 }
+.fa{
+    font-size: xx-large;
+}
+
 .action-container__icons:hover{
     background-color: rgb(100, 71, 26);
     
