@@ -44,13 +44,32 @@
     <div class="card"></div>
     <div class="card"></div>
   </div>
+  <p>Hello
+  </p>
   <script>
     //  Q Create a generic function to select all sibling of a given node. Using that function delete all siblings of red card
-    let redBox = document.querySelector("red");
+    let redBox = document.querySelector(".red");
+
+    function selectSibling(node) {
+      let allNodes = node.parentNode.children;
+      let mySiblings = [];
+      for (let i = 0; i < allNodes.length; i++) {
+        if (allNodes[i] != node) {
+          mySiblings.push(allNodes[i]);
+        }
+      }
+      return mySiblings;
+    }
     redBox.addEventListener("click", function () {
-      // selectSibling(redbox);
+      let mySiblings = selectSibling(redBox);
       // select sibling 
       // sibling remove
+      let length = mySiblings.length;
+    
+      for (let i = 0; i < length; i++) {
+        mySiblings[i].remove();
+      }
+
     })
 
   </script>
