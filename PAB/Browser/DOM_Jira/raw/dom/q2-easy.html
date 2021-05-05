@@ -1,37 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      .balls {
-        margin-top: 4rem;
-        display: flex;
-        justify-content: space-evenly;
-      }
-      .ball {
-        height: 4rem;
-        width: 4rem;
-        border-radius: 50%;
-        border: none;
-        background-color: red;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="balls">
-      <div class="ball"></div>
-      <div class="ball"></div>
-      <div class="ball"></div>
-      <div class="ball"></div>
-      <div class="ball"></div>
-    </div>
-    <script>
-      // Q Make a loading animation using the above 5 balls and JS
 
-     
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .balls {
+      margin-top: 4rem;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .ball {
+      height: 4rem;
+      width: 4rem;
+      border-radius: 50%;
+      border: none;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="balls">
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+  </div>
+  <script>
+    // Q Make a loading animation using 
+    // the above 5 balls and JS 
+    function showHide(idx) {
+      idx = idx % 5;
+      let arr = document
+      .getElementsByClassName("ball");
+      let myElem = arr[idx];
+      if (idx == 0) {
+        arr[arr.length - 1].style.opacity = 1;
+      } else {
+        arr[idx - 1].style.opacity = 1;
+      }
+      myElem.style.opacity = 0;
+      // after 
+      setTimeout(function () {
+        // stackoverflow 
+        showHide(idx + 1);
+      }, 200);
+
+    }
+    showHide(0);
+  </script>
+</body>
+
 </html>
+<!--  opacity -> visible false -->
+<!--  display : none  -> ui remove  -->
+<!-- element  -->
