@@ -39,12 +39,12 @@
       let arr = document
       .getElementsByClassName("ball");
       let myElem = arr[idx];
+      myElem.style.opacity = 0;
       if (idx == 0) {
         arr[arr.length - 1].style.opacity = 1;
       } else {
         arr[idx - 1].style.opacity = 1;
       }
-      myElem.style.opacity = 0;
       // after 
       setTimeout(function () {
         // stackoverflow 
