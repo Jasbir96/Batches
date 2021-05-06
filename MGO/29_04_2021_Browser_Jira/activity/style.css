@@ -18,7 +18,7 @@ background-color:lightpink;
     background-color:lightgreen;
 }
 .black{
-    background-color:black;
+    background-color:rgb(36, 33, 33);
 }
 .toolbar{
     display: flex;
@@ -109,7 +109,7 @@ background-color:lightpink;
     width: 31rem;
     /* border: 2px solid red; */
     height: 18rem;
-    display: flex;
+    /* display: flex; */
     position: absolute;
     box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.637);
     display: none;
@@ -142,4 +142,7 @@ background-color:lightpink;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+}
+.border{
+    border:5px solid black;
 }
