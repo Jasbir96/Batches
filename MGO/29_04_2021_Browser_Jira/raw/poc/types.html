@@ -10,41 +10,50 @@
         /* block */
         div {
             /* height/width->✔ */
-            width: 120px;
+            width: 150px;
             padding: 10px;
             background-color: lightblue;
-            /* margin: 0 auto; */
+            margin: 0 auto;
         }
 
         /* inline */
         span {
             /* height/width->❌ */
-            background-color: lightblue;
+            background-color: lightgreen;
             padding: 1rem;
             /* doesnot work */
-
             margin: 10px;
             height: 100px;
         }
 
-        /* inline block */
+        /* inline-block */
         input {
             height: 43px;
             margin: 10px;
             padding: 10px;
             /* doesnot work */
-            margin: 0 auto;
+            /* margin: 0 auto; */
         }
     </style>
 </head>
 
 <body>
+    <!-- parent width -->
+    <!-- block  -->
+    <!--  parent width  -->
+    <!-- height -> 0
+                content -> content height
+            user defined h/w-> given hw -->
+    <!-- default -> margin: rhs -> equally distribute -> margin: 0 auto -->
     <div>Hello</div>
     <div>Hello</div>
+    <!-- span -> required space  -->
+    <!-- height / width can't be set -->
     <span>Hello All</span>
     <span>Hello All</span>
     <span>Hello All</span>
     <span>Hello All</span>
+    <!-- inline -> required space , height /width -> can be given -->
     <input type="text">
     <input type="text">
 

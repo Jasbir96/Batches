@@ -104,3 +104,42 @@ background-color:lightpink;
     text-align: center;
     font-size: 1.2rem;
 }
+/* modal container */
+.modal_container{
+    width: 31rem;
+    /* border: 2px solid red; */
+    height: 18rem;
+    display: flex;
+    position: absolute;
+    box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.637);
+    display: none;
+
+}
+.task_container{
+    /* border: 1px solid green; */
+    width: 76%;
+    height: 100%;
+
+}
+.modal_color-container{
+    /* border: 1px solid green; */
+    width: 24%;
+    height: 100%;
+    background-color: #444;
+}
+.task_box{
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+}
+.modal-color{
+    height: 12%;
+    width: 73%;
+    border-radius: 2px;
+}
+.modal_color-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
