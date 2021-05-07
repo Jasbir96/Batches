@@ -56,14 +56,14 @@
   <script>
     // Q Write a script which fetches the data-color attribute of the card on double clicking on them and attaches the fetched class to that card. Also changes the data-color attribute to "used"
     let cards = document.querySelectorAll(".card");
-    for (let i = 0; i < cards.length; i++) {
-      cards[i].addEventListener("dblclick", function () {
-        let color = cards[i].getAttribute("data-color");
-        if (color == "used") {
-          return;
+  for (let i = 0; i < cards.length; i++) {
+  cards[i].addEventListener("dblclick",function () {
+  let color = cards[i].getAttribute("data-color");
+   if (color == "used") {
+         return;
         }
-        cards[i].classList.add(color);
-        cards[i].setAttribute("data-color", "used");
+  cards[i].classList.add(color);
+    cards[i].setAttribute("data-color", "used");
       })
     }
 

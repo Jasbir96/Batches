@@ -113,7 +113,8 @@
     select.addEventListener("change", function () {
       // alert(select.value);
       let cType = select.value;
-      let movies = document.querySelectorAll(".movies");
+      let movies = document
+      .querySelectorAll(".movies");
       if (cType == "none") {
         for (let i = 0; i < movies.length; i++) {
           movies[i].style.display = "block";
@@ -122,7 +123,8 @@
       else {
         for (let i = 0; i < movies.length; i++) {
           let p = movies[i].children[1];
-          let type = p.getAttribute("data-category");
+          let type = p
+          .getAttribute("data-category");
           if (type != cType) {
             movies[i].style.display = "none";
           } else {
