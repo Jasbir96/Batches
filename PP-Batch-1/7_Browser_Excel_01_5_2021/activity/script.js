@@ -230,12 +230,12 @@ function initUI() {
         Allcells[i].style.fontStyle = "normal";
         Allcells[i].style.textDecoration = "none";
         Allcells[i].style.fontFamily = "Arial";
-        Allcells[i].style.fontSize = "10px";
+        Allcells[i].style.fontSize = "16px";
         Allcells[i].style.textAlign = "left";
         Allcells[i].innerText = "";
     }
 }
-for (let i = 0; i < Allcells.length; i++) {
+for(let i = 0; i < Allcells.length; i++) {
     Allcells[i].addEventListener("blur", function handleCell() {
         let address = addressBar.value;
         let { rid, cid } = getRIdCIdfromAddress(address);
