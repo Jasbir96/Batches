@@ -11,10 +11,9 @@ let fontFamily = document.querySelector(".font-family");
 let boldElem = document.querySelector(".bold");
 let italicElem = document.querySelector(".italic");
 let underlineElem = document.querySelector(".underline");
-firstSheet.addEventListener("click", handleActiveSheet)
-
+let allAlignBtns = document.querySelectorAll(".alignment-container>*");
+firstSheet.addEventListener("click", handleActiveSheet);
 // create sheets and add functionlities
-
 addbtnContainer.addEventListener("click", function () {
     let sheetsArr = document.querySelectorAll(".sheet");
     let lastSheetElem = sheetsArr[sheetsArr.length - 1];
@@ -48,33 +47,76 @@ for (let i = 0; i < Allcells.length; i++) {
         let colAdd = String.fromCharCode(cid + 65);
         let address = colAdd + rowAdd;
         addressBar.value = address;
+        let cellObject = sheetDB[rid][cid];
         // styling-> set 
+        // object styling set 
+        // UI 
+        // cell
+        // boldness
+        if (cellObject.bold == true) {
+            boldElem.classList.add("active-btn")
+        } else {
+            boldElem.classList.remove("active-btn");
+        }
+        // alignment
+        for (let i = 0; i < allAlignBtns.length; i++) {
+            allAlignBtns[i].classList.remove("active-btn");
+        }
+        console.log(cellObject.halign);
+        if (cellObject.halign == "left") {
+            // left active
+            leftBtn.classList.add("active-btn")
+        } else if (cellObject.halign == "right") {
+            rightBtn.classList.add("active-btn")
+            // right active
+        } else if (cellObject.halign == "center") {
+            centerBtn.classList.add("active-btn")
+        }
     });
 }
 // initial cell click emulate
 Allcells[0].click();
 // ************Formatting****************
-
 leftBtn.addEventListener("click", function () {
     let address = addressBar.value;
     let { rid, cid } = getRIdCIdfromAddress(address);
-    console.log(rid, cid);
+    // console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-    cell.style.textAlign = "left"
+    cell.style.textAlign = "left";
+    for (let i = 0; i < allAlignBtns.length; i++) {
+        allAlignBtns[i].classList.remove("active-btn");
+    }
+    leftBtn.classList.add("active-btn");
+    // db update 
+    let cellObject = sheetDB[rid][cid];
+    cellObject.halign = "left";
 })
 rightBtn.addEventListener("click", function () {
     let address = addressBar.value;
     let { rid, cid } = getRIdCIdfromAddress(address);
     console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-    cell.style.textAlign = "right"
+    cell.style.textAlign = "right";
+    for (let i = 0; i < allAlignBtns.length; i++) {
+        allAlignBtns[i].classList.remove("active-btn");
+    }
+    rightBtn.classList.add("active-btn");
+    // db update 
+    let cellObject = sheetDB[rid][cid];
+    cellObject.halign = "right";
 })
 centerBtn.addEventListener("click", function () {
     let address = addressBar.value;
     let { rid, cid } = getRIdCIdfromAddress(address);
     console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-    cell.style.textAlign = "center"
+    cell.style.textAlign = "center";
+    for (let i = 0; i < allAlignBtns.length; i++) {
+        allAlignBtns[i].classList.remove("active-btn");
+    }
+    centerBtn.classList.add("active-btn");
+    let cellObject = sheetDB[rid][cid];
+    cellObject.halign = "center";
 })
 fontBtn.addEventListener("change", function () {
     let fontSize = fontBtn.value;
@@ -99,15 +141,19 @@ boldElem.addEventListener("click", function () {
     let address = addressBar.value;
     let { rid, cid } = getRIdCIdfromAddress(address);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
+    let cellObject = sheetDB[rid][cid];
     if (isActive == false) {
         // cell text bold
         cell.style.fontWeight = "bold";
         boldElem.classList.add("active-btn");
+        cellObject.bold = true
     } else {
         // cell text normal
         cell.style.fontWeight = "normal";
         boldElem.classList.remove("active-btn");
+        cellObject.bold = false
     }
+    // console.log(sheetDB)
 })
 italicElem.addEventListener("click", function () {
     let isActive = italicElem.classList.contains("active-btn");
