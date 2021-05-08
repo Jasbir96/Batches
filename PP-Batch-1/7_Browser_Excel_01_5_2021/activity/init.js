@@ -1,4 +1,5 @@
 // let a=10;
+// script -> grid
 let topRow = document.querySelector(".top-row");
 let str = "";
 for (let i = 0; i < 26; i++) {
