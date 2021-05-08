@@ -48,9 +48,21 @@
     //  Q Create a generic function to select all sibling of a given node. Using that function delete all siblings of red card
     // return nodes array
     function getSiblings(node) {
+      let meNMySiblings = node.parentNode.children;
+      let siblings = [];
+      for (let i = 0; i < meNMySiblings.length; i++) {
+        if (node != meNMySiblings[i]) {
+          siblings.push(meNMySiblings[i]);
+        }
+      }
+      return siblings;
     }
     let redCard = document.querySelector(".red");
-    getSiblings(redCard);
+    let allSiblings = getSiblings(redCard);
+    let length = allSiblings.length;
+    for (let i = 0; i < length; i++) {
+      allSiblings[i].remove();
+    }
 
 
 
