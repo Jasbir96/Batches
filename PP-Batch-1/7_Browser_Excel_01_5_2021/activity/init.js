@@ -22,25 +22,34 @@ for (let i = 0; i < 100; i++) {
     }
     str += "</div>";
 }
-
 grid.innerHTML = str;
 // initial load
-let sheetDB = [];
-for (let i = 0; i < 100; i++) {
-    let row = [];
-    for (let j = 0; j < 26; j++) {
-        let cell = {
-            bold: false,
-            italic: "normal",
-            underline: "none",
-            fontFamily: "Arial",
-            fontSize: "10",
-            halign: "left"
+
+workSheetDB = [];
+function initCurrentSheetDb() {
+    let sheetDB = [];
+    for (let i = 0; i < 100; i++) {
+        let row = [];
+        for (let j = 0; j < 26; j++) {
+            let cell = {
+                bold: false,
+                italic: "normal",
+                underline: "none",
+                fontFamily: "Arial",
+                fontSize: "10",
+                halign: "left",
+                value: ""
+            }
+
+            row.push(cell);
         }
-        row.push(cell);
+        sheetDB.push(row);
     }
-    sheetDB.push(row);
+    console.log(sheetDB);
+    workSheetDB.push(sheetDB);
+    console.log(workSheetDB);
 }
-console.log(sheetDB);
+initCurrentSheetDb();
+
 //  2 d Array-> styling prop
 //  cell set 

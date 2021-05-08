@@ -11,7 +11,8 @@ let fontFamily = document.querySelector(".font-family");
 let boldElem = document.querySelector(".bold");
 let italicElem = document.querySelector(".italic");
 let underlineElem = document.querySelector(".underline");
-let allAlignBtns = document.querySelectorAll(".alignment-container>*");
+let allAlignBtns = document.querySelectorAll(".alignment-container>input");
+let sheetDB = workSheetDB[0];
 firstSheet.addEventListener("click", handleActiveSheet);
 // create sheets and add functionlities
 addbtnContainer.addEventListener("click", function () {
@@ -25,7 +26,22 @@ addbtnContainer.addEventListener("click", function () {
     NewSheet.innerText = `Sheet ${idx + 1}`;
     // page add
     sheetList.appendChild(NewSheet);
-    NewSheet.addEventListener("click", handleActiveSheet)
+    //  db
+    // active set 
+    sheetsArr.forEach(function (sheet) {
+        sheet.classList.remove("active-sheet");
+    })
+    sheetsArr = document.querySelectorAll(".sheet");
+    sheetsArr[sheetsArr.length - 1].classList.add("active-sheet");
+    // 2 d array 
+    initCurrentSheetDb();
+    // /current change
+    sheetDB = workSheetDB[idx];
+    // cell empty 
+    // new page element value empty
+    initUI();
+    // change sheet
+    NewSheet.addEventListener("click", handleActiveSheet);
 })
 function handleActiveSheet(e) {
     let MySheet = e.currentTarget;
@@ -36,6 +52,13 @@ function handleActiveSheet(e) {
     if (!MySheet.classList[1]) {
         MySheet.classList.add("active-sheet");
     }
+    //  index
+    let sheetIdx = MySheet.getAttribute("sheetIdx")
+        ;
+    sheetDB = workSheetDB[sheetIdx - 1];
+    // get data from that and set ui
+    setUI(sheetDB);
+
 }
 // *****************************************************
 //  address set on click of a cell 
@@ -135,7 +158,6 @@ fontFamily.addEventListener("change", function () {
     let cFont = fontFamily.value
     cell.style.fontFamily = cFont;
 })
-
 boldElem.addEventListener("click", function () {
     let isActive = boldElem.classList.contains("active-btn");
     let address = addressBar.value;
@@ -200,6 +222,37 @@ function getRIdCIdfromAddress(adress) {
     let rid = Number(cellrowAdr) - 1;
     return { cid, rid };
 
+}
+function initUI() {
+    for (let i = 0; i < Allcells.length; i++) {
+        // boldness
+        Allcells[i].style.fontWeight = "normal";
+        Allcells[i].style.fontStyle = "normal";
+        Allcells[i].style.textDecoration = "none";
+        Allcells[i].style.fontFamily = "Arial";
+        Allcells[i].style.fontSize = "10px";
+        Allcells[i].style.textAlign = "left";
+        Allcells[i].innerText = "";
+    }
+}
+for (let i = 0; i < Allcells.length; i++) {
+    Allcells[i].addEventListener("blur", function handleCell() {
+        let address = addressBar.value;
+        let { rid, cid } = getRIdCIdfromAddress(address);
+        let cellObject = sheetDB[rid][cid];
+        let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
+        cellObject.value = cell.innerText;
+    });
+}
+function setUI(sheetDB) {
+    for (let i = 0; i < sheetDB.length; i++) {
+        for (let j = 0; j < sheetDB[i].length; j++) {
+            let cell = document.querySelector(`.col[rid="${i}"][cid="${j}"]`);
+            let { bold, italic, underline, fontFamily, fontSize, halign, value } = sheetDB[i][j];
+            cell.style.fontWeight = bold == true ? "bold" : "normal";
+            cell.innerText = value;
+        }
+    }
 }
 
 
