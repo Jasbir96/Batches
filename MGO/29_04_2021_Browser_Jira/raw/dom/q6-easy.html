@@ -58,7 +58,8 @@
     let cards = document.querySelectorAll(".card");
     for (let i = 0; i < cards.length; i++) {
       cards[i].addEventListener("dblclick", function () {
-        let cColorToSet = cards[i].getAttribute("data-color");
+        let cColorToSet = cards[i]
+        .getAttribute("data-color");
         // let InClasses = cards[i].getAttribute("class");
         // let classesArr = InClasses.split(" ");
         // [card ,cv ,bh ,gh,blue]
