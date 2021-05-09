@@ -254,7 +254,7 @@ for (let i = 0; i < Allcells.length; i++) {
         let { rid, cid } = getRIdCIdfromAddress(address);
         let cellObject = sheetDB[rid][cid];
         let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-
+//  formula -> 40, 40
         if (cellObject.value == cell.innerText) {
             return;
         }
@@ -267,17 +267,7 @@ for (let i = 0; i < Allcells.length; i++) {
         changeChildrens(cellObject);
     });
 }
-// for (let i = 0; i < Allcells.length; i++) {
-//     Allcells[i].addEventListener("keydown", function handleCell() {
-//         let address = addressBar.value;
-//         let { rid, cid } = getRIdCIdfromAddress(address);
-//         let cellObject = sheetDB[rid][cid];
-//         if (cellObject.formula) {
 
-//             removeFormula(cellObject, address);
-//         }
-//     });
-// }
 // formula bar enter
 // value -> formula set
 // old formula -> new formula  
@@ -366,6 +356,7 @@ function changeChildrens(cellObject) {
 }
 // remove yourself from parent;s children array
 function removeFormula(cellObject, address) {
+    // (A1)
     let formula = cellObject.formula;
     let formulaTokens = formula.split(" ");
     for (let i = 0; i < formulaTokens.length; i++) {
