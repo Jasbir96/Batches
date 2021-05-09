@@ -77,6 +77,11 @@ for (let i = 0; i < Allcells.length; i++) {
         // UI 
         // cell
         // boldness
+        if (cellObject.formula != "") {
+            formulaInput.value = cellObject.formula;
+        } else {
+            formulaInput.value = "";
+        }
         if (cellObject.bold == true) {
             boldElem.classList.add("active-btn")
         } else {
@@ -227,15 +232,6 @@ function initUI() {
         Allcells[i].innerText = "";
     }
 }
-for (let i = 0; i < Allcells.length; i++) {
-    Allcells[i].addEventListener("blur", function handleCell() {
-        let address = addressBar.value;
-        let { rid, cid } = getRIdCIdfromAddress(address);
-        let cellObject = sheetDB[rid][cid];
-        let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-        cellObject.value = cell.innerText;
-    });
-}
 function setUI(sheetDB) {
     for (let i = 0; i < sheetDB.length; i++) {
         for (let j = 0; j < sheetDB[i].length; j++) {
@@ -246,21 +242,71 @@ function setUI(sheetDB) {
         }
     }
 }
+
+
 // ********Formula code*******************
-formulaInput.addEventListener("keydown", function (e) {
-    if (e.key == "Enter" && formulaInput.value != "") {
-        let formula = formulaInput.value;
-        // getCurrentCell
-        let value = evaluateFormula(formula);
-        // alert(value);
-        //    UI change
+// cell blur
+// "value"-> value
+//  fomrula value-> manually value set  
+for (let i = 0; i < Allcells.length; i++) {
+    Allcells[i].addEventListener("blur", function handleCell() {
         let address = addressBar.value;
         let { rid, cid } = getRIdCIdfromAddress(address);
-        setUIByFormula(value, rid, cid);
+        let cellObject = sheetDB[rid][cid];
+        let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
+
+        if (cellObject.value == cell.innerText) {
+            return;
+        }
+
+        if (cellObject.formula) {
+            removeFormula(cellObject, address);
+        }
+        cellObject.value = cell.innerText;
+        // depend update 
+        changeChildrens(cellObject);
+    });
+}
+// for (let i = 0; i < Allcells.length; i++) {
+//     Allcells[i].addEventListener("keydown", function handleCell() {
+//         let address = addressBar.value;
+//         let { rid, cid } = getRIdCIdfromAddress(address);
+//         let cellObject = sheetDB[rid][cid];
+//         if (cellObject.formula) {
+
+//             removeFormula(cellObject, address);
+//         }
+//     });
+// }
+// formula bar enter
+// value -> formula set
+// old formula -> new formula  
+formulaInput.addEventListener("keydown", function (e) {
+
+    if (e.key == "Enter" && formulaInput.value != "") {
+        let Newformula = formulaInput.value;
+        // cellObject formula
+        let address = addressBar.value;
+        // getCurrentCell
+        let { rid, cid } = getRIdCIdfromAddress(address);
+        let cellObject = sheetDB[rid][cid];
+        let prevFormula = cellObject.formula;
+        if (prevFormula == Newformula) {
+            return;
+        }
+        if (prevFormula != "" && prevFormula != Newformula) {
+            removeFormula(cellObject, address);
+        }
+        let evaluatedValue = evaluateFormula(Newformula);
+        // alert(value);
+        //    UI change
+        setUIByFormula(evaluatedValue, rid, cid);
         // db -> works
-        // setcontentInDB(value, formula);
+        setFormula(evaluatedValue, Newformula, rid, cid, address);
+        changeChildrens(cellObject);
     }
 })
+
 function evaluateFormula(formula) {
     // "( A1 + A2 )"
     let formulaTokens = formula.split(" ");
@@ -270,8 +316,10 @@ function evaluateFormula(formula) {
         let firstCharOfToken = formulaTokens[i].charCodeAt(0);
         if (firstCharOfToken >= 65 && firstCharOfToken <= 90) {
             // console.log(formulaTokens[i]);
+            // A1
             let { rid, cid } = getRIdCIdfromAddress(formulaTokens[i]);
             let cellObject = sheetDB[rid][cid];
+            //  getting value from  db
             let { value } = cellObject;
             formula = formula.replace(formulaTokens[i], value);
         }
@@ -279,18 +327,62 @@ function evaluateFormula(formula) {
     // infix evaluation
     let ans = eval(formula);
     return ans;
-    // DB-> A1 ,A2-> 10,20
-    // [(,10 + ,20, )]
     // eval
     // ( 10 + 20 )
 }
-
 function setUIByFormula(value, rid, cid) {
     document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`).innerText = value;
-//  parent add yourself as a children
+    //  parent add yourself as a
+}
+function setFormula(value, formula, rid, cid, address) {
+    let cellObject = sheetDB[rid][cid];
+    cellObject.value = value;
+    cellObject.formula = formula;
+    let formulaTokens = formula.split(" ");
+    for (let i = 0; i < formulaTokens.length; i++) {
+        let firstCharOfToken = formulaTokens[i].charCodeAt(0);
+        if (firstCharOfToken >= 65 && firstCharOfToken <= 90) {
+            // console.log(formulaTokens[i]);
+            let parentRIdCid = getRIdCIdfromAddress(formulaTokens[i]);
+            let cellObject = sheetDB[parentRIdCid.rid][parentRIdCid.cid];
+            //  getting value from  db
+            cellObject.children.push(address)
+        }
+    }
+}
+function changeChildrens(cellObject) {
+    let childrens = cellObject.children;
+    for (let i = 0; i < childrens.length; i++) {
+        let chAddress = childrens[i];
+        let chRICIObj = getRIdCIdfromAddress(chAddress);
+        let chObj = sheetDB[chRICIObj.rid][chRICIObj.cid];
+        let formula = chObj.formula;
+        let evaluatedValue = evaluateFormula(formula);
+        setUIByFormula(evaluatedValue, chRICIObj.rid, chRICIObj.cid);
+        chObj.value = evaluatedValue;
+        changeChildrens(chObj);
+    }
 
 }
+// remove yourself from parent;s children array
+function removeFormula(cellObject, address) {
+    let formula = cellObject.formula;
+    let formulaTokens = formula.split(" ");
+    for (let i = 0; i < formulaTokens.length; i++) {
+        let firstCharOfToken = formulaTokens[i].charCodeAt(0);
+        if (firstCharOfToken >= 65 && firstCharOfToken <= 90) {
+            // console.log(formulaTokens[i]);
+            let parentRIdCid = getRIdCIdfromAddress(formulaTokens[i]);
+            let parentCellObject = sheetDB[parentRIdCid.rid][parentRIdCid.cid];
+            //  getting value from  db
+            let childrens = parentCellObject.children;
+            let idx = childrens.indexOf(address);
+            childrens.splice(idx, 1);
+        }
+    }
+    cellObject.formula = "";
 
+}
 // ***********helper fn**********************
 
 function getRIdCIdfromAddress(adress) {

@@ -24,7 +24,6 @@ for (let i = 0; i < 100; i++) {
 }
 grid.innerHTML = str;
 // initial load
-
 workSheetDB = [];
 function initCurrentSheetDb() {
     let sheetDB = [];
@@ -38,7 +37,9 @@ function initCurrentSheetDb() {
                 fontFamily: "Arial",
                 fontSize: "10",
                 halign: "left",
-                value: ""
+                value: "",
+                children: [],
+                formula: ""
             }
 
             row.push(cell);
