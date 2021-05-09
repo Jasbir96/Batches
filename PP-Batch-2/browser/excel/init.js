@@ -17,15 +17,17 @@ for (let i = 1; i <= rows; i++) {
     div.setAttribute("class", "block");
     leftCol.appendChild(div);
 }
+// rows-> 100
+// col - > 26
 for (let i = 0; i < rows; i++) {
     let row = document.createElement("div");
     row.setAttribute("class", "row");
     for (let j = 0; j < columns; j++) {
-        let div = document.createElement("div");
-        div.innerText =
+        let col = document.createElement("div");
+        col.innerText =
             `${i} ${String.fromCharCode(65 + j)}`;
-        div.setAttribute("class", "cell");
-        row.appendChild(div);
+        col.setAttribute("class", "cell");
+        row.appendChild(col);
     }
     grid.appendChild(row);
 }

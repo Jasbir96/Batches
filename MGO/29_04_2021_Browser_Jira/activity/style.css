@@ -1,32 +1,38 @@
-body{
-    margin:0px;
-    padding:0px;
+body {
+    margin: 0px;
+    padding: 0px;
     font-family: 'Roboto Slab', serif;
-
 }
-*{
+
+* {
     box-sizing: border-box;
     /* border:1px solid red; */
 }
-.pink{
-background-color:lightpink;
+
+.pink {
+    background-color: lightpink;
 }
-.blue{
-    background-color:lightblue;
+
+.blue {
+    background-color: lightblue;
 }
-.green{
-    background-color:lightgreen;
+
+.green {
+    background-color: lightgreen;
 }
-.black{
-    background-color:rgb(36, 33, 33);
+
+.black {
+    background-color: rgb(36, 33, 33);
 }
-.toolbar{
+
+.toolbar {
     display: flex;
     height: 12vh;
     background-color: rgb(32, 29, 29);
     align-items: center;
 }
-.filter_container{
+
+.filter_container {
     height: 70%;
     background-color: darkgray;
     width: 20rem;
@@ -35,7 +41,8 @@ background-color:lightpink;
     margin-left: 2rem;
     display: flex;
 }
-.filter_color-container{
+
+.filter_color-container {
     width: 25%;
     height: 100%;
     background: #444;
@@ -45,19 +52,22 @@ background-color:lightpink;
     justify-content: center;
     align-items: center;
 }
-.filter_color{
+
+.filter_color {
     height: 40%;
-    width:40%;
-    border-radius: 2px ;
+    width: 40%;
+    border-radius: 2px;
 }
-.action_container{
+
+.action_container {
     height: 70%;
     background-color: darkgray;
     width: 8rem;
     border-radius: 3px;
     display: flex;
 }
-.icon_container{
+
+.icon_container {
     height: 100%;
     width: 50%;
     border-right: 1px solid red;
@@ -66,46 +76,57 @@ background-color:lightpink;
     justify-content: center;
     align-items: center;
 }
-.icon{
-    font-size:1.5rem;
+
+.icon {
+    font-size: 1.5rem;
 }
- .main-container{
+
+.main-container {
     min-height: 88vh;
     padding-top: 3rem;
-    padding-left: 3rem;
-    background-color:aliceblue;
+    padding-right: 1vw;
+    padding-left: 3vw;
+    background-color: aliceblue;
     display: flex;
+    gap: 2rem;
+    align-items: baseline;
     justify-content: space-around;
     flex-wrap: wrap;
 }
-.ticket_container{
+
+.ticket_container {
     /* border: 1px solid red; */
     height: 10rem;
     width: 14rem;
     background-color: white;
 }
-.ticket_color{
+
+.ticket_color {
     height: 7%;
 }
-.ticket_desc_container{
+
+.ticket_desc_container {
     height: 93%;
     padding: 0.5rem;
     overflow: auto;
     word-break: break-all;
 }
 
-.ticket_id{
+.ticket_id {
     margin-bottom: 11px;
     font-weight: 800;
-    color:lightslategray;
-    
+    color: lightslategray;
 }
-.ticket_desc{
+
+.ticket_desc {
     text-align: center;
     font-size: 1.2rem;
 }
+
+
 /* modal container */
-.modal_container{
+
+.modal_container {
     width: 31rem;
     /* border: 2px solid red; */
     height: 18rem;
@@ -113,36 +134,46 @@ background-color:lightpink;
     position: absolute;
     box-shadow: 0 1rem 5rem rgba(0, 0, 0, 0.637);
     display: none;
-
 }
-.task_container{
+
+.task_container {
     /* border: 1px solid green; */
     width: 76%;
     height: 100%;
-
 }
-.modal_color-container{
+
+.modal_color-container {
     /* border: 1px solid green; */
     width: 24%;
     height: 100%;
     background-color: #444;
 }
-.task_box{
+
+.task_box {
     height: 100%;
     width: 100%;
     padding: 2rem;
 }
-.modal-color{
+
+.modal-color {
     height: 12%;
     width: 73%;
     border-radius: 2px;
 }
-.modal_color-container{
+
+.modal_color-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
 }
-.border{
-    border:5px solid black;
+
+.border {
+    border: 5px solid black;
+}
+
+@media only screen and (min-width: 1800px) {
+    html {
+        font-size: 200%;
+    }
 }
