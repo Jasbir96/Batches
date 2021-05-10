@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;  
+}
+body {
+    margin: 0px;
+}
+.menu-container {
+    /* border: 1px solid red; */
+    height: 4rem;
+    background-color: lightpink;
+}
+.formula-container {
+    /* border: 1px solid red; */
+    height: 2rem;
+    background-color: lightcoral;
+}
+.grid-container {
+    border: 1px solid red;
+    height: 
+    calc(100vh - ( 4rem + 2rem + 2rem));
+    background-color: lightgreen;
+    overflow: auto;
+}
+.box{
+    height: 2rem;
+    width:2rem;
+    border:1px solid ;
+    text-align: center;
+}
+.left_box{
+    background-color:gray;
+}
+.top_row{
+    height:2rem;
+   background-color:green;
+}
+.grid{
+    height:2rem;
+    background-color:lightblue;
+}
+
+
+
+/* sheets */
+.sheets-container {
+    /* border: 1px solid red; */
+    background-color: lightblue;
+    height: 2rem;
+    display: flex;
+}
+.add-sheet_btn-container {
+    width: 3rem;
+    border: 1px solid;
+    height: 100%;
+    padding-top: 0.2rem;
+    padding-left: 0.3rem;
+}
+.sheet-list {
+    width: calc(100vw - 3rem);
+    border: 1px solid;
+    display:flex;
+    overflow: auto;
+}
+.sheet-list::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .sheet-list {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+.sheet {
+    min-width: 5rem;
+    border: 1px solid blue;
+    height: 100%;
+    background-color: gray;
+}
+.active{
+    background-color:white;
+}
+.box{
+    height: 2rem;
+    width:2rem;
+    border:1px solid ;
+    text-align: center;
+}
+
+
