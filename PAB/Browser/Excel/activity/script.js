@@ -30,7 +30,4 @@ function makeMeActive(e) {
     }
     sheet.classList.add("active");
 }
-
-
-
 // alert(10)
