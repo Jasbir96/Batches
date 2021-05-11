@@ -8,13 +8,37 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="menu-container">
-        <select class="font-size"></select>
-        <select class="font-family"></select>
-        <div class="bui-container"></div>
-        <div class="align-container"></div>
-        <div class="color-container"></div>
+        <select class="font-size">
+            <option value="8">8</option>
+            <option value="10">10</option>
+            <option value="12">12</option>
+            <option value="14">14</option>
+        </select>
+        <select class="font-family">
+            <option value="monospace">monospace</option>
+            <option value="sans-serif">sans-serif</option>
+            <option value="Georgia">Georgia</option>
+            <option value="fantasy">fantasy</option>
+        </select>
+        <div class="bui-container">
+            <input type="button" class="bold" value="B">
+            <input type="button" class="underline" value="U">
+            <input type="button" class="italic" value="I">
+        </div>
+        <!-- /alignmnet -->
+        <div class="align-container">
+            <input type="button" class="left" value="L">
+            <input type="button" class="center" value="C">
+            <input type="button" class="right" value="R">
+        </div>
+        <!-- /color -->
+        <div class="color-container">
+            <input type="color" class="color">
+            <input type="color" class="bg-color">
+        </div>
     </div>
     <div class="formula-container">
         <input type="text" class="address-input" readonly>

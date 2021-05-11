@@ -1,7 +1,11 @@
 let leftCol = document.querySelector(".left_col");
 let topRow = document.querySelector(".top_row");
 let grid = document.querySelector(".grid");
+// current clicked cell address 
 let addressInput = document.querySelector(".address-input");
+let boldBtn = document.querySelector(".bold");
+let underlineBtn = document.querySelector(".underline");
+let italicBtn = document.querySelector(".italic");
 let rows = 100;
 let cols = 26;
 // left_col
@@ -20,6 +24,7 @@ for (let i = 0; i < cols; i++) {
     topRow.appendChild(cell);
 }
 // grid
+// ui uniqely identify -> 
 for (let i = 0; i < rows; i++) {
     let row = document.createElement("div");
     row.setAttribute("class", "row");
@@ -29,9 +34,8 @@ for (let i = 0; i < rows; i++) {
         cell.setAttribute("class", "cell");
         cell.setAttribute("rid", i);
         cell.setAttribute("cid", j);
-        cell.setAttribute("contenteditable","true");
+        cell.setAttribute("contenteditable", "true");
         row.appendChild(cell);
-
     }
     grid.appendChild(row);
 }
@@ -49,5 +53,35 @@ for (let i = 0; i < allCells.length; i++) {
         addressInput.value = address;
     })
 }
-
+boldBtn.addEventListener("click", function () {
+    // Jispe cell click -> bold
+    let uiCellElement = findUICellElement();
+    uiCellElement.style.fontWeight = "bold";
+})
+underlineBtn.addEventListener("click", function () {
+    // Jispe cell click -> bold
+    let uiCellElement = findUICellElement();
+    uiCellElement.style.textDecoration = "underline";
+})
+italicBtn.addEventListener("click", function () {
+    // Jispe cell click -> bold
+    let uiCellElement = findUICellElement();
+    uiCellElement.style.fontStyle = "italic";
+})
+// text-decoration: underline|none;
+// font-style: normal|italic;
+function findUICellElement() {
+    let address = addressInput.value;
+    let ricidObj = getRIDCIDfromAddress(address);
+    let rid = ricidObj.rid;
+    let cid = ricidObj.cid;
+    let uiCellElement = document.querySelector(`.cell[rid="${rid}"][cid="${cid}"]`)
+    return uiCellElement;
+}
+function getRIDCIDfromAddress(address) {
+    let cid = Number(address.charCodeAt(0)) - 65;
+    let rid = Number(address.slice(1)) - 1;
+    return { "rid": rid, "cid": cid };
+}
 allCells[0].click();
+
