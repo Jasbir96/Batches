@@ -36,10 +36,10 @@ body {
     text-align: center;
 }
 .align-container{
-    width:14%;
+    min-width:14%;
 }
 .color-container{
-    width:10%;
+    min-width:10%;
 }
 
 
@@ -150,6 +150,12 @@ width:4rem;
 .active{
     background-color:white;
 }
+.active-btn{
+    background-color:red;
+}
 
-
+/* new open save */
+.nos-container>*{
+    border:none;
+}
 

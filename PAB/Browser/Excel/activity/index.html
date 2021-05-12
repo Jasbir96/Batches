@@ -7,19 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
     <div class="menu-container">
+        <!-- select -> option value -->
+        <!--  -->
         <select class="font-size">
-            <option value="8">8</option>
-            <option value="10">10</option>
             <option value="12">12</option>
-            <option value="14">14</option>
+            <option value="16" selected>16</option>
+            <option value="20">20</option>
+            <option value="32">32</option>
         </select>
         <select class="font-family">
             <option value="monospace">monospace</option>
-            <option value="sans-serif">sans-serif</option>
+            <option value="sans-serif" selected>sans-serif</option>
             <option value="Georgia">Georgia</option>
             <option value="fantasy">fantasy</option>
         </select>
@@ -28,16 +31,28 @@
             <input type="button" class="underline" value="U">
             <input type="button" class="italic" value="I">
         </div>
-        <!-- /alignmnet -->
+        <!--alignmnet -->
         <div class="align-container">
             <input type="button" class="left" value="L">
             <input type="button" class="center" value="C">
             <input type="button" class="right" value="R">
         </div>
-        <!-- /color -->
+        <!--color -->
         <div class="color-container">
             <input type="color" class="color">
             <input type="color" class="bg-color">
+        </div>
+        <div class="nos-container">
+            <span class="material-icons-outlined material-icons new">
+                add_circle_outline
+            </span>
+            <span class="material-icons-outlined material-icons ">
+                folder_open
+            </span>
+            <input type="file" name="" class="open">
+            <span class="material-icons-outlined material-icons save">
+                file_download
+            </span>
         </div>
     </div>
     <div class="formula-container">
@@ -66,6 +81,7 @@
     </div>
     <script src="grid.js"></script>
     <script src="script.js"></script>
+    <script src="newOpenSave.js"></script>
 </body>
 
 </html>

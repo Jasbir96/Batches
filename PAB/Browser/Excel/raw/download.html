@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hello</h1>
+    <p>Download</p>
+    <script>
+        document.querySelector("p").addEventListener("click", function () {
+            let arr = [1, 2, 3, 4, 5];
+            const data = JSON.stringify(arr);
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            let a = document.createElement("a");
+            a.download = "file.json";
+            a.href = url;
+            a.click();
+            a.remove();
+        })
+
+    </script>
+</body>
+
+</html>
