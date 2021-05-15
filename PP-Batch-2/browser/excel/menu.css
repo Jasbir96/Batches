@@ -28,7 +28,7 @@
     font-size: 130%;
     color:grey;
 }
-.formatting-container,.alignment-container,.nos-container{
+.formatting-container,.alignment-container,.nos-container,.color-container{
     display: flex;
     justify-content: space-evenly;
     align-items: center;

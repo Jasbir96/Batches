@@ -35,8 +35,13 @@ for (let i = 0; i < rows; i++) {
         // 
         let cellObj = {
             isBold: false,
-            isItalic:false,
-            isUnderline:false
+            isItalic: false,
+            isUnderline: false,
+            fontFamily: "sans-serif",
+            fontSize: 16,
+            color: "black",
+            bgColor: "",
+            halign:"center"
         }
         rowArr.push(cellObj);
     }
