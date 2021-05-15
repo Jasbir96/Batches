@@ -24,10 +24,27 @@ for (let i = 0; i < rows; i++) {
     row.setAttribute("class", "row");
     for (let j = 0; j < columns; j++) {
         let col = document.createElement("div");
-        col.innerText =
-            `${i} ${String.fromCharCode(65 + j)}`;
+       
         col.setAttribute("class", "cell");
+        col.setAttribute("rid", i);
+        col.setAttribute("cid", j);
+        col.setAttribute("contenteditable","true");
+
         row.appendChild(col);
     }
     grid.appendChild(row);
 }
+let Allcells = document.querySelectorAll(".grid .cell");
+let addressElem = document.querySelector(".address");
+for (let i = 0; i < Allcells.length; i++) {
+    Allcells[i].addEventListener("click", function () {
+        let cid = Allcells[i].getAttribute("cid");
+        let rid = Allcells[i].getAttribute("rid");
+        cid=Number(cid);
+        rid=Number(rid);
+        // console.log(rid,cid);
+        addressElem.value=`${String.fromCharCode(65 + cid)}${rid + 1}`; 
+    }
+    )
+}
+Allcells[0].click();

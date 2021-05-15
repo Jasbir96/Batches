@@ -1,0 +1,39 @@
+.menu-container {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+}
+.menu-container>*{
+    height:80%;
+    border:1px solid;
+}
+.nos-container{
+    width:25%; 
+}  
+.font-size{
+    width: 6%
+}
+.font-family{
+    width: 11%;
+}
+.alignment-container{
+    width:18%;
+}
+
+.formatting-container{
+    width:18%;
+ 
+}
+.menu-icon{
+    font-size: 130%;
+    color:grey;
+}
+.formatting-container,.alignment-container,.nos-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.menu-active{
+    color:black;
+}
