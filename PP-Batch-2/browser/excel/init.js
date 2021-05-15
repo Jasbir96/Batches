@@ -17,34 +17,30 @@ for (let i = 1; i <= rows; i++) {
     div.setAttribute("class", "block");
     leftCol.appendChild(div);
 }
+let sheetArr = [];
 // rows-> 100
 // col - > 26
 for (let i = 0; i < rows; i++) {
     let row = document.createElement("div");
+    let rowArr = [];
     row.setAttribute("class", "row");
     for (let j = 0; j < columns; j++) {
-        let col = document.createElement("div");
-       
-        col.setAttribute("class", "cell");
-        col.setAttribute("rid", i);
-        col.setAttribute("cid", j);
-        col.setAttribute("contenteditable","true");
-
-        row.appendChild(col);
+        // UI
+        let cell = document.createElement("div");
+        cell.setAttribute("class", "cell");
+        cell.setAttribute("rid", i);
+        cell.setAttribute("cid", j);
+        cell.setAttribute("contenteditable", "true");
+        row.appendChild(cell);
+        // 
+        let cellObj = {
+            isBold: false,
+            isItalic:false,
+            isUnderline:false
+        }
+        rowArr.push(cellObj);
     }
     grid.appendChild(row);
+    sheetArr.push(rowArr);
 }
-let Allcells = document.querySelectorAll(".grid .cell");
-let addressElem = document.querySelector(".address");
-for (let i = 0; i < Allcells.length; i++) {
-    Allcells[i].addEventListener("click", function () {
-        let cid = Allcells[i].getAttribute("cid");
-        let rid = Allcells[i].getAttribute("rid");
-        cid=Number(cid);
-        rid=Number(rid);
-        // console.log(rid,cid);
-        addressElem.value=`${String.fromCharCode(65 + cid)}${rid + 1}`; 
-    }
-    )
-}
-Allcells[0].click();
+console.log(sheetArr)
