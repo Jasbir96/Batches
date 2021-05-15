@@ -24,7 +24,7 @@ for (let i = 0; i < 100; i++) {
 }
 grid.innerHTML = str;
 // initial load
-workSheetDB = [];
+let workSheetDB = [];
 function initCurrentSheetDb() {
     let sheetDB = [];
     for (let i = 0; i < 100; i++) {

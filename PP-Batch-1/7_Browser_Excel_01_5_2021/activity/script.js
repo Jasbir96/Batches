@@ -17,16 +17,6 @@ let gridContainer = document.querySelector(".grid_container");
 let topLeftBlock = document.querySelector(".top-left-block");
 let sheetDB = workSheetDB[0];
 firstSheet.addEventListener("click", handleActiveSheet);
-gridContainer.addEventListener("scroll", function () {
-    // console.log(e);
-    let top = gridContainer.scrollTop;
-    let left = gridContainer.scrollLeft;
-    console.log(left);
-    topLeftBlock.style.top = top + "px";
-    topRow.style.top = top + "px";
-    leftCol.style.left = left + "px";
-    topLeftBlock.style.left = left + "px";
-})
 // create sheets and add functionlities
 addbtnContainer.addEventListener("click", function () {
     let sheetsArr = document.querySelectorAll(".sheet");
@@ -56,6 +46,7 @@ addbtnContainer.addEventListener("click", function () {
     // change sheet
     NewSheet.addEventListener("click", handleActiveSheet);
 })
+
 function handleActiveSheet(e) {
     let MySheet = e.currentTarget;
     let sheetsArr = document.querySelectorAll(".sheet");
@@ -124,7 +115,16 @@ for (let i = 0; i < Allcells.length; i++) {
         leftCol.style.height = height + "px";
     });
 }
-
+gridContainer.addEventListener("scroll", function () {
+    // console.log(e);
+    let top = gridContainer.scrollTop;
+    let left = gridContainer.scrollLeft;
+    console.log(left);
+    topLeftBlock.style.top = top + "px";
+    topRow.style.top = top + "px";
+    leftCol.style.left = left + "px";
+    topLeftBlock.style.left = left + "px";
+})
 
 // initial cell click emulate
 Allcells[0].click();
