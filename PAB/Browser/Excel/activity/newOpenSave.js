@@ -10,7 +10,7 @@ save.addEventListener("click", function () {
     // convert it any type file into url
     const url = window.URL.createObjectURL(blob);
     let a = document.createElement("a");
-    // file will be downloaded
+    // content in that file
     a.href = url;
     // file download
     a.download = "file.json";
@@ -28,9 +28,12 @@ open.addEventListener("change", function () {
     let fr = new FileReader();
     // read as text 
     fr.readAsText(fileObj);
-
+fr.onload=function(){
+    console.log(fr.result);
+}
     fr.addEventListener("load", function () {
         console.log(fr.result);
+        
     })
     
     console.log("After");

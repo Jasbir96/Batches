@@ -13,8 +13,20 @@ let italicElem = document.querySelector(".italic");
 let underlineElem = document.querySelector(".underline");
 let allAlignBtns = document.querySelectorAll(".alignment-container>input");
 let formulaInput = document.querySelector(".formula-box");
+let gridContainer = document.querySelector(".grid_container");
+let topLeftBlock = document.querySelector(".top-left-block");
 let sheetDB = workSheetDB[0];
 firstSheet.addEventListener("click", handleActiveSheet);
+gridContainer.addEventListener("scroll", function () {
+    // console.log(e);
+    let top = gridContainer.scrollTop;
+    let left = gridContainer.scrollLeft;
+    console.log(left);
+    topLeftBlock.style.top = top + "px";
+    topRow.style.top = top + "px";
+    leftCol.style.left = left + "px";
+    topLeftBlock.style.left = left + "px";
+})
 // create sheets and add functionlities
 addbtnContainer.addEventListener("click", function () {
     let sheetsArr = document.querySelectorAll(".sheet");
@@ -102,7 +114,18 @@ for (let i = 0; i < Allcells.length; i++) {
             centerBtn.classList.add("active-btn")
         }
     });
+
+    Allcells[i].addEventListener("keydown", function (e) {
+        let obj = Allcells[i].getBoundingClientRect();
+        let height = obj.height;
+        let address = addressBar.value;
+        let { rid, cid } = getRIdCIdfromAddress(address);
+        let leftCol = document.querySelectorAll(".left-col .left-col_box")[rid];
+        leftCol.style.height = height + "px";
+    });
 }
+
+
 // initial cell click emulate
 Allcells[0].click();
 // ************Formatting****************
@@ -252,27 +275,27 @@ for (let i = 0; i < Allcells.length; i++) {
     Allcells[i].addEventListener("blur", function handleCell() {
         let address = addressBar.value;
         let { rid, cid } = getRIdCIdfromAddress(address);
+        // 2d array
         let cellObject = sheetDB[rid][cid];
+
+        // grid 
         let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
-//  formula -> 40, 40
+        //   formula -> 40, 40
         if (cellObject.value == cell.innerText) {
             return;
         }
-
         if (cellObject.formula) {
             removeFormula(cellObject, address);
         }
+        // db entry
         cellObject.value = cell.innerText;
         // depend update 
         changeChildrens(cellObject);
     });
 }
-
-// formula bar enter
-// value -> formula set
+// formula bar enter// value -> formula set
 // old formula -> new formula  
 formulaInput.addEventListener("keydown", function (e) {
-
     if (e.key == "Enter" && formulaInput.value != "") {
         let Newformula = formulaInput.value;
         // cellObject formula
@@ -296,9 +319,10 @@ formulaInput.addEventListener("keydown", function (e) {
         changeChildrens(cellObject);
     }
 })
-
+// parsing 
 function evaluateFormula(formula) {
-    // "( A1 + A2 )"
+    // (A100+A20)
+    // 
     let formulaTokens = formula.split(" ");
     // split
     // [(, A1, +, A2,)]
@@ -314,6 +338,7 @@ function evaluateFormula(formula) {
             formula = formula.replace(formulaTokens[i], value);
         }
     }
+    // (10 +20 )
     // infix evaluation
     let ans = eval(formula);
     return ans;
@@ -324,11 +349,13 @@ function setUIByFormula(value, rid, cid) {
     document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`).innerText = value;
     //  parent add yourself as a
 }
+// formula update db, value update , parent children array update
 function setFormula(value, formula, rid, cid, address) {
     let cellObject = sheetDB[rid][cid];
     cellObject.value = value;
     cellObject.formula = formula;
     let formulaTokens = formula.split(" ");
+    (A1 + A2)
     for (let i = 0; i < formulaTokens.length; i++) {
         let firstCharOfToken = formulaTokens[i].charCodeAt(0);
         if (firstCharOfToken >= 65 && firstCharOfToken <= 90) {
@@ -341,6 +368,9 @@ function setFormula(value, formula, rid, cid, address) {
     }
 }
 function changeChildrens(cellObject) {
+    // children get
+    // formula reevaluate
+    // recursively call
     let childrens = cellObject.children;
     for (let i = 0; i < childrens.length; i++) {
         let chAddress = childrens[i];
@@ -350,6 +380,7 @@ function changeChildrens(cellObject) {
         let evaluatedValue = evaluateFormula(formula);
         setUIByFormula(evaluatedValue, chRICIObj.rid, chRICIObj.cid);
         chObj.value = evaluatedValue;
+        // your children have children
         changeChildrens(chObj);
     }
 
