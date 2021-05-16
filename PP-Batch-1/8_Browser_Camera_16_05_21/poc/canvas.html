@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>Canvas example</h1> -->
+    <canvas id="board"></canvas>
+    <script>
+        let board = document.getElementById("board");
+        // height width
+        board.height = window.innerHeight;
+        board.width = window.innerWidth;
+        // 2d 
+        let tool = board.getContext("2d");
+        // x,y ,width,height
+        // color-> black
+        tool.fillRect(0, 0, board.width/2, board.height/2);
+        tool.fillStyle="red";
+        tool.fillRect(50, 50, board.width/2, board.height/2);
+        // board.onresize = function () {
+            //     tool.clearRect(10, 10, board.width, board.height);
+            //     tool.fillRect(0, 0, board.width, board.height);
+            tool.fillStyle="blue";
+            // }
+            tool.fillRect(60, 60, board.width/2, board.height/2);
+        //    stroke color
+            tool.strokeStyle="green";
+            // thickness of the line
+            // / x,y ,width,height
+            tool.lineWidth=10;
+            tool.strokeRect(250, 300, board.width/2, board.height/2);
+    </script>
+</body>
+
+</html>
