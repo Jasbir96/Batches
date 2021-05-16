@@ -2,6 +2,8 @@ let bold = document.querySelector(".fa-bold");
 let fontSize = document.querySelector(".font-size");
 let fontFamily = document.querySelector(".font-family");
 let alignmentbtns = document.querySelectorAll(".alignment-container>*");
+let formulabar = document.querySelector(".formula");
+
 bold.addEventListener("click", function () {
     // address get -> address
     // ui elemnt
@@ -100,6 +102,9 @@ for (let i = 0; i < Allcells.length; i++) {
                 alignmentbtns[j].classList.add("menu-active");
             }
         }
+
+        // ****************formula***********************
+        formulabar.value =cellObj.formula;
     }
     )
 }

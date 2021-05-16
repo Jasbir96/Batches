@@ -17,7 +17,7 @@ for (let i = 1; i <= rows; i++) {
     div.setAttribute("class", "block");
     leftCol.appendChild(div);
 }
-let sheetArr = [];
+sheetArr = [];
 // rows-> 100
 // col - > 26
 for (let i = 0; i < rows; i++) {
@@ -41,7 +41,10 @@ for (let i = 0; i < rows; i++) {
             fontSize: 16,
             color: "black",
             bgColor: "",
-            halign:"center"
+            halign: "center",
+            value: "",
+            formula: "",
+            children: []
         }
         rowArr.push(cellObj);
     }
