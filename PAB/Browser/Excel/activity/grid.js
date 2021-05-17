@@ -10,6 +10,7 @@ let alignBtns = document.querySelectorAll(".align-container>*");
 let fontSizeElem = document.querySelector(".font-size");
 let rows = 100;
 let cols = 26;
+let formulaBar = document.querySelector(".formula-input");
 // left_col
 for (let i = 0; i < rows; i++) {
     let colBox = document.createElement("div");
@@ -53,7 +54,9 @@ for (let i = 0; i < rows; i++) {
             fontFamily: "sans-serif"
             , fontSize: "16",
             color: "black",
-            bColor: "none"
+            bColor: "none",
+            value: "",
+            formula: ""
         }
         row.push(cell);
     }
@@ -158,16 +161,3 @@ italicBtn.addEventListener("click", function () {
         cellObject.italic = "normal";
     }
 })
-function findUICellElement() {
-    let address = addressInput.value;
-    let ricidObj = getRIDCIDfromAddress(address);
-    let rid = ricidObj.rid;
-    let cid = ricidObj.cid;
-    let uiCellElement = document.querySelector(`.cell[rid="${rid}"][cid="${cid}"]`)
-    return uiCellElement;
-}
-function getRIDCIDfromAddress(address) {
-    let cid = Number(address.charCodeAt(0)) - 65;
-    let rid = Number(address.slice(1)) - 1;
-    return { "rid": rid, "cid": cid };
-}
