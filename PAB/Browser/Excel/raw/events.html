@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" class="first">
+    <input type="text" class="second">
+    <script>
+        let first = document.querySelector(".first");
+        let second = document.querySelector(".second");
+        first.addEventListener("focus", function () {
+            console.log("First is focused");
+        })
+        // mouse press /leave 
+        first.addEventListener("click", function () {
+            console.log("First is clicked");
+        })
+        first.addEventListener("blur", function () {
+            console.log("first is blurred");
+        })
+        second.addEventListener("focus", function () {
+            console.log("second is focused");
+        })
+        // mouse press /leave 
+        second.addEventListener("click", function () {
+            console.log("second is clicked");
+        })
+        second.addEventListener("blur", function () {
+            console.log("second is blurred");
+        })
+    </script>
+</body>
+
+</html>

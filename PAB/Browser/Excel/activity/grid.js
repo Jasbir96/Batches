@@ -56,7 +56,8 @@ for (let i = 0; i < rows; i++) {
             color: "black",
             bColor: "none",
             value: "",
-            formula: ""
+            formula: "",
+            children: []
         }
         row.push(cell);
     }
