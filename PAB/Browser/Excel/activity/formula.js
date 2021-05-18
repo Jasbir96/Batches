@@ -37,11 +37,14 @@ function removeFormula(cellObject, myName) {
             let { rid, cid } = getRIDCIDfromAddress(formulaTokens[i]);
             let parentObj = sheetDB[rid][cid];
             let idx = parentObj.children.indexOf(myName);
-            parentObj.children.splice(idx, 1);}}
+            parentObj.children.splice(idx, 1);
+        }
+    }
     cellObject.formula = "";
 }
 // formula bar -> formual set 
 formulaBar.addEventListener("keydown", function (e) {
+
     if (e.key == "Enter" && formulaBar.value) {
         // user input formula
         let currentFormula = formulaBar.value;
@@ -49,6 +52,7 @@ formulaBar.addEventListener("keydown", function (e) {
         let { rid, cid } = getRIDCIDfromAddress(address);
         let cellObject = sheetDB[rid][cid];
         // formula update
+        
         if (currentFormula != cellObject.formula) {
             removeFormula(cellObject, address);
         }
@@ -61,6 +65,7 @@ formulaBar.addEventListener("keydown", function (e) {
         //    formula is equation -> hold true
         // formula cell -> cell object -> name add 
         setParentCHArray(currentFormula, address);
+        updateChildren(cellObject);
     }
 })
 
@@ -75,6 +80,9 @@ function evaluateFormula(formula) {
         if (ascii >= 65 && ascii <= 90) {
             let { rid, cid } = getRIDCIDfromAddress(formulaTokens[i]);
             let value = sheetDB[rid][cid].value;
+            if (value == "") {
+                value = 0;
+            }
             formulaTokens[i] = value;
         }
     }

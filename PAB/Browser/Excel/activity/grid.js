@@ -43,7 +43,7 @@ for (let i = 0; i < rows; i++) {
     grid.appendChild(row);
 }
 // event listener add click;
-let sheetDB = [];
+window.sheetDB = [];
 for (let i = 0; i < rows; i++) {
     let row = [];
     for (let j = 0; j < cols; j++) {
