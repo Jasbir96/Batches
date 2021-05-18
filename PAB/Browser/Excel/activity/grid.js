@@ -94,6 +94,11 @@ for (let i = 0; i < allCells.length; i++) {
         } else {
             italicBtn.classList.add("active-btn");
         }
+        if (cellObject.formula) {
+            formulaBar.value = cellObject.formula;
+        } else {
+            formulaBar.value = "";
+        }
 
 
     })
