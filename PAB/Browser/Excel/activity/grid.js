@@ -10,7 +10,6 @@ let alignBtns = document.querySelectorAll(".align-container>*");
 let fontSizeElem = document.querySelector(".font-size");
 let rows = 100;
 let cols = 26;
-let formulaBar = document.querySelector(".formula-input");
 // left_col
 for (let i = 0; i < rows; i++) {
     let colBox = document.createElement("div");
@@ -42,27 +41,93 @@ for (let i = 0; i < rows; i++) {
     }
     grid.appendChild(row);
 }
-// event listener add click;
-window.sheetDB = [];
-for (let i = 0; i < rows; i++) {
-    let row = [];
-    for (let j = 0; j < cols; j++) {
-        let cell = {
-            bold: "normal"
-            , italic: "normal",
-            underline: "none", hAlign: "center",
-            fontFamily: "sans-serif"
-            , fontSize: "16",
-            color: "black",
-            bColor: "none",
-            value: "",
-            formula: "",
-            children: []
-        }
-        row.push(cell);
+let btnContainer = document.querySelector(".add-sheet_btn-container");
+let sheetList = document.querySelector(".sheet-list");
+let firstSheet = document.querySelector(".sheet");
+let formulaBar = document.querySelector(".formula-input");
+// sheets aray -> bottom 
+let sheetArray = [];
+// 2d array -> current sheet
+let sheetDB;
+firstSheet.addEventListener("click", makeMeActive)
+// 2 array -> if 
+firstSheet.click();
+btnContainer.addEventListener("click", function () {
+    // create sheet 
+    let AllSheets = document.querySelectorAll(".sheet");
+    let lastSheet = AllSheets[AllSheets.length - 1];
+    let Lastidx = lastSheet.getAttribute("idx");
+    Lastidx = Number(Lastidx);
+    let Newsheet = document.createElement("div");
+    Newsheet.setAttribute("class", "sheet");
+    Newsheet.setAttribute("idx", `${Lastidx + 1}`);
+    Newsheet.innerText = `Sheet ${Lastidx + 2}`;
+    sheetList.appendChild(Newsheet);
+    for (let i = 0; i < AllSheets.length; i++) {
+        AllSheets[i].classList.remove("active");
     }
-    sheetDB.push(row);
+    Newsheet.classList.add("active");
+    // new sheet create 
+    createSheet();
+    // 3d array -> sheetDB
+    // current db sheet change
+    sheetDB = sheetArray[Lastidx+1];
+    Newsheet.addEventListener("click", makeMeActive)
+})
+function makeMeActive(e) {
+    // evnt listener  add 
+    let sheet = e.currentTarget;
+    let AllSheets = document.querySelectorAll(".sheet");
+    for (let i = 0; i < AllSheets.length; i++) {
+        AllSheets[i].classList.remove("active");
+    }
+    sheet.classList.add("active");
+    let idx = sheet.getAttribute("idx");
+    if (!sheetArray[idx]) {
+        // only when you init the workbook
+        createSheet();
+    }
+    // current set 
+    sheetDB = sheetArray[idx];
+    setUI();
 }
+function createSheet() {
+    let NewDB = [];
+    for (let i = 0; i < rows; i++) {
+        let row = [];
+        for (let j = 0; j < cols; j++) {
+            let cell = {
+                bold: "normal"
+                , italic: "normal",
+                underline: "none", hAlign: "center",
+                fontFamily: "sans-serif"
+                , fontSize: "16",
+                color: "black",
+                bColor: "none",
+                value: "",
+                formula: "",
+                children: []
+            }
+            let elem = document.querySelector(`.grid .cell[rid='${i}'][cid='${j}']`);
+            elem.innerText = "";
+            row.push(cell);
+        }
+        NewDB.push(row);
+    }
+    sheetArray.push(NewDB);
+
+}
+function setUI() {
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            let elem = 
+            document.querySelector(`.grid .cell[rid='${i}'][cid='${j}']`);
+            let value = sheetDB[i][j].value;
+            elem.innerText = value;
+        }
+    }
+}
+// event listener add click;
 let allCells = document.querySelectorAll(".grid .cell");
 for (let i = 0; i < allCells.length; i++) {
     allCells[i].addEventListener("click", function () {
@@ -167,3 +232,4 @@ italicBtn.addEventListener("click", function () {
         cellObject.italic = "normal";
     }
 })
+

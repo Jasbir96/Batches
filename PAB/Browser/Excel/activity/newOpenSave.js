@@ -3,9 +3,9 @@ let open = document.querySelector(".open");
 // functionality -> download excel representation
 save.addEventListener("click", function () {
     //2d arrayy save file 
-    const data = JSON.stringify(sheetDB);
+    const data = JSON.stringify(sheetArray);
     // convert it into blob
-// data -> file like object convert
+    // data -> file like object convert
     const blob = new Blob([data], { type: 'application/json' });
     // convert it any type file into url
     const url = window.URL.createObjectURL(blob);
@@ -14,7 +14,7 @@ save.addEventListener("click", function () {
     a.href = url;
     // file download
     a.download = "file.json";
-// anchor click
+    // anchor click
     a.click();
 })
 // downloaded file -> open read 
@@ -28,14 +28,20 @@ open.addEventListener("change", function () {
     let fr = new FileReader();
     // read as text 
     fr.readAsText(fileObj);
-fr.onload=function(){
-    console.log(fr.result);
-}
+    fr.onload = function () {
+        // 3 darray
+        console.log(fr.result);
+        // sheet array 
+        let sheetArray = fr.result;
+        sheetDB = sheetArray[0];
+        // first sheet db get 
+        // setUi call
+    }
     fr.addEventListener("load", function () {
         console.log(fr.result);
-        
+
     })
-    
+
     console.log("After");
     // ui init f
 })
