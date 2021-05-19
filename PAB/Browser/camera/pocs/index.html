@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- Aim -> video audio element -> camera microphone feed -->
+<body>
+    <video controls autoplay ></video>
+    <audio controls autoplay></audio>
+    <!-- browser getcamera /mic -->
+    <!-- stream -->
+    <script>
+        let videoElem = document.querySelector("video");
+        let audioElem = document.querySelector("audio");
+        // user  requirement send 
+        let constraint = {
+            audio: true, video: true
+        }
+        // promise 
+        let usermediaPromise = navigator
+            .mediaDevices.getUserMedia(constraint);
+            // /stream coming from required
+        usermediaPromise.
+            then(function (stream) {
+                videoElem.srcObject = stream;
+                audioElem.srcObject = stream;
+            }).catch(function (err) {
+console.log(err)
+                alert("please allow both microphone and camera");
+            });
+    </script>
+</body>
+
+</html>
