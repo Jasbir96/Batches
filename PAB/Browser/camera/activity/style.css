@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin:0px;
+}
+.video-container{
+    background-color: black;
+    width:100vw;
+    height: 100vh;
+}
+.video{
+    height: 100%;
+    width:100%;
+}
+.round-btn{
+    height: 5rem;
+    position: fixed;
+    width: 5rem;
+    top: 30%;
+    right: 26px;
+    border-radius: 50%;
+}
+.click{
+    top: 45%;  
+}
+

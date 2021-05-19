@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +8,6 @@
 </head>
 <!-- Aim -> video audio element -> camera microphone feed -->
 <!-- Aim -> record the media stream when someone presses recordBtn  and when i stop download the recording-->
-
 <body>
     <video controls autoplay></video>
     <audio controls autoplay></audio>
@@ -50,14 +48,14 @@
                 // download
                 mediarecordingObjectForCurrStream.addEventListener("stop", function () {
                     // recording -> url convert 
-                    // type -> MIME type
+                    // type -> MIME type (extension)
                     const blob = new Blob(recording, { type: 'video/mp4' });
                     const url = window.URL.createObjectURL(blob);
                     let a = document.createElement("a");
                     a.download = "file.mp4";
                     a.href = url;
                     a.click();
-                    recording = []
+                    recording = [];
                 })
 
             }).catch(function (err) {

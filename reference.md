@@ -35,3 +35,8 @@
 * https://developer.mozilla.org/en-US/docs/Web/API
 * https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
 * https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics
+* https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API
+
+### Goto resource for browser theory
+* https://www.youtube.com/channel/UCTBGXCJHORQjivtgtMsmkAQ : Steve Griffith
+* https://www.youtube.com/watch?v=gm1QtePAYTM
