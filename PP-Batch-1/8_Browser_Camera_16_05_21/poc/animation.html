@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            height: 6rem;
+            width: 6rem;
+            margin: 6rem;
+        }
+        .box-1 {
+            background-color: lightcoral;
+            animation: scaleUp 2s;
+            /*final state the element will reamain at that state */
+            animation-fill-mode: forwards;
+        }
+        .box-2 {
+            background-color: lightgreen;
+            animation: moveRightAndBack 1s 5;
+            animation-delay: 3s;
+            animation-timing-function: ease-in;
+        }
+
+        .box-3 {
+            background-color: lightblue;
+            animation: fadeAway 0.5s infinite;
+            animation-delay: 5s;
+        }
+
+        @keyframes scaleUp {
+            0% {
+                transform: scale(1);   
+            }
+            25% {
+                transform: scale(1.5);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            75% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(2);
+            }
+        }
+        @keyframes moveRightAndBack {
+            0% {
+                transform: translateX(0px);
+            }
+
+            50% {
+                transform: translateX(800px);
+            }
+
+            100% {
+                transform: translateX(0px);
+            }
+        }
+
+        @keyframes fadeAway {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box-1"></div>
+    <div class="box box-2"></div>
+    <div class="box box-3"></div>
+</body>
+
+</html>
