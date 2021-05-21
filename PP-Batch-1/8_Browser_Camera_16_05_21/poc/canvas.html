@@ -10,30 +10,99 @@
         body {
             margin: 0px;
         }
+        img{
+            height:10vh;
+            width:10vw;
+        }
     </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- <h1>Canvas example</h1> -->
+    <!-- drawing optimized -->
+    <!-- <h1>Hello</h1> -->
+    <!-- <div class="parent">
+        <div class="color red"></div>
+        <div class="color green"></div>
+        <div class="color blue"></div>
+    </div> -->
+    <img src="browser.png">
     <canvas id="board"></canvas>
     <script>
+        // let parent = document.querySelector(".parent");
         let board = document.getElementById("board");
         // height width
         board.height = window.innerHeight;
         board.width = window.innerWidth;
-        // 2d 
+        // window.addEventListener("resize", function () {
+        //     board.height = window.innerHeight;
+        //     board.width = window.innerWidth;
+        //     // alert("resize");
+        //     // whenever you change the height or width of the canvas
+        //     draw();
+        // })
         let tool = board.getContext("2d");
-        // x,y ,width,height
-        // color-> black
-        tool.fillRect(0, 0, board.width/2, board.height/2);
-        tool.fillStyle="red";
-        tool.fillRect(50, 50, board.width/2, board.height/2);
-            tool.fillRect(60, 60, board.width/2, board.height/2);
-        //    stroke color
-            tool.strokeStyle="green";
-            // thickness of the line
-            // / x,y ,width,height
-            tool.lineWidth=10;
-            tool.strokeRect(250, 300, board.width/2, board.height/2);
+        // // color -> black
+        // // /paint 
+        // draw();
+        // function draw() {
+        //     tool.fillStyle = "red";
+        //     // x,y , width,height
+        //     tool.fillRect(0, 0, board.width, board.height);
+        //     tool.fillStyle = "lightgreen";
+        //     tool.fillRect(0, 0, board.width / 2, board.height / 2);
+        //     // outline-> stroke;
+        // tool.strokeStyle = "yellow";
+        // tool.lineWidth = 10;
+        // //     tool.strokeRect(10, 10, board.width / 2, board.height / 2);
+        // // }
+        // // tool.beginPath();
+        // // tool.moveTo(10, 10);
+        // // tool.lineTo(120, 150);
+        // // tool.lineTo(120, 300);
+        // // tool.moveTo(225, 200);
+        // // tool.lineTo(150, 400);
+        // // tool.stroke();
+        // let isMouseDown = false;
+        // document.body.addEventListener("mousedown",
+        //     function (e) {
+        //         let x = e.clientX;
+        //         let y = e.clientY;
+        //         y = getCoordinates(y);
+        //         tool.beginPath();
+        //         tool.moveTo(x, y);
+        //         isMouseDown = true;
+        //     })
+        // // whenver mouse moves over an element 
+        // document.body.addEventListener("mousemove",
+        //     function (e) {
+        //         console.log("mouse move");
+        //         let x = e.clientX;
+        //         let y = e.clientY;
+        //         y = getCoordinates(y);
+        //         if (isMouseDown == true) {
+        //             tool.lineTo(x, y);
+        //             tool.stroke();
+        //         }
+        //     })
+        // document.body.addEventListener("mouseup",
+
+        // function (e) {
+        //         // tool.stroke();
+        //         isMouseDown = false;
+        //     })
+
+        // function getCoordinates(initialY) {
+        //     let obj = parent.getBoundingClientRect();
+        //     return initialY - obj.height;
+        // }
+        // drawing image
+        let img = document.querySelector("img");
+        img.addEventListener("load", function () {
+            tool.drawImage(img, 0,0);
+        })
+
     </script>
 </body>
 

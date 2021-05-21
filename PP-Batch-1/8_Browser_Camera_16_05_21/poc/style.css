@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+}
+.parent{
+    border: 3px solid;
+    height: 5rem;
+    width: 60vw;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.color{
+    height: 70%;
+    width: 20%;
+    background: red;
+}
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+}
+.green{
+    background-color: green;;
+}
