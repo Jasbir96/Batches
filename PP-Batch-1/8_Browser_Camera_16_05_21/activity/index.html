@@ -10,11 +10,26 @@
 </head>
 
 <body>
+
+    <div class="filter-container">
+        <div style="background-color: #f4a2613d" class="filter"></div>
+        <div style="background-color: #e85d0440" class="filter"></div>
+        <div style="background-color: #ad5d6d7a" class="filter"></div>
+        <div style="background-color: #2195f323" class="filter"></div>
+        <div style="background-color: #5a835b31" class="filter"></div>
+        <div class="filter"></div>
+    </div>
+    <div class="timing "id="timing">00:00:00</div>
     <div class="video-container">
         <video class="video" id="video-elem" autoplay></video>
     </div>
-    <button class="record-btn" id="record-video">Record</button>
-    <button class="capture-btn" id="capture">Capture</button>
+    <div class="record-container btn-parent">
+
+        <button class="record-btn" id="record-video"></button>
+    </div>
+    <div class="capture-container btn-parent">
+        <button class="capture-btn " id="capture"></button>
+    </div>
     <script src="script.js"></script>
 </body>
 

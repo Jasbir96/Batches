@@ -12,15 +12,84 @@ body{
     width:100%;
 }
 .record-btn,.capture-btn{
-    position: fixed;
-    height: 5rem;
-    width: 5rem;
+    height: 4.5rem;
+    width: 4.5rem;
     top: 1rem;
     z-index: 2;
     border-radius: 50%;
-    right: 4vw;
-    top: 34vh;
+    border:none;
+    outline: none;  
+}
+.record-btn{
+    background-color: red;
 }
 .capture-btn{
     top:55vh;
+}
+
+.btn-parent{
+    height: 7rem;
+    width: 7rem;
+    border: 0.5rem solid white;
+    position: fixed;
+    top: 30vh;
+    z-index: 2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 3vw;
+}
+.capture-container{
+    top:50vh;
+}
+
+/* animation */
+.record-animation{
+   animation: scaleUp 1s ease-in infinite; 
+}
+.capture-animation{
+    animation: scaleUp 0.5s ease-in ; 
+ }
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(1);   
+    }
+    25% {
+        transform: scale(1.125);
+    }
+    50% {
+        transform: scale(1.16);
+    }
+    75%{
+        transform: scale(1.125);
+    }
+}
+.filter-container{
+    height:50vh;
+    width:4rem;
+    position: fixed;
+    top:10vh;
+    left:5vw;
+}
+.filter{
+   background-image: url("https://picsum.photos/id/237/200/300"); 
+height: 20%;  
+   background-size: cover;
+   /* mix bg color width the  image */
+   background-blend-mode: color-burn;
+}
+.timing{
+    color:white;
+    position: fixed;
+    bottom :15vh;
+    left:3vw;
+    font-size: 1.7rem;
+    font-family: sans-serif;
+    font-weight: 600;
+    display: none;
+}
+.timing-active{
+    display: block;
 }
