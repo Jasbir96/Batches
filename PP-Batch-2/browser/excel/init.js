@@ -18,7 +18,9 @@ for (let i = 1; i <= rows; i++) {
     div.setAttribute("class", "block");
     leftCol.appendChild(div);
 }
+// array list 
 let sheeListArr = [];
+// empty
 let sheetArr;
 let iconContainer = document.querySelector(".icon-container");
 let sheetList = document.querySelector(".sheet-list");
@@ -81,7 +83,6 @@ function handleClick(e) {
     }
 
 }
-
 // rows-> 100
 // col - > 26
 // first sheet 
@@ -118,6 +119,7 @@ function initSheetDB() {
         grid.appendChild(row);
         sheetArr.push(rowArr);
     }
+
     sheeListArr.push(sheetArr);
 }
 // console.log(sheetArr)
