@@ -19,7 +19,7 @@ for (let i = 1; i <= rows; i++) {
     leftCol.appendChild(div);
 }
 // array list 
-let sheeListArr = [];
+let sheetListArr = [];
 // empty
 let sheetArr;
 let iconContainer = document.querySelector(".icon-container");
@@ -69,15 +69,15 @@ function handleClick(e) {
     if (idx == 0 && sheetList.length == 0) {
         initSheetDB();
         //    for all operation
-        sheetArr = sheeListArr[0];
+        sheetArr = sheetListArr[0];
     } else {
         // create a new sheet
-        if (sheeListArr[idx] == undefined) {
+        if (sheetListArr[idx] == undefined) {
             initSheetDB();
-            sheetArr = sheeListArr[idx];
+            sheetArr = sheetListArr[idx];
         } else {
             // /switch sheet
-            sheetArr = sheeListArr[idx];
+            sheetArr = sheetListArr[idx];
         }
         setUI(sheetArr)
     }
@@ -120,7 +120,7 @@ function initSheetDB() {
         sheetArr.push(rowArr);
     }
 
-    sheeListArr.push(sheetArr);
+    sheetListArr.push(sheetArr);
 }
 // console.log(sheetArr)
 function setUI(sheetArr) {
