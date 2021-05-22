@@ -33,7 +33,7 @@ body{
     border: 0.5rem solid white;
     position: fixed;
     top: 30vh;
-    z-index: 2;
+    z-index: 6;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -70,8 +70,9 @@ body{
     height:50vh;
     width:4rem;
     position: fixed;
-    top:10vh;
+    top:15vh;
     left:5vw;
+    z-index:6;
 }
 .filter{
    background-image: url("https://picsum.photos/id/237/200/300"); 
@@ -91,5 +92,18 @@ height: 20%;
     display: none;
 }
 .timing-active{
+    display: block;
+}
+
+.ui-filter{
+    height:100vh;
+    width:100vw;
+    position: fixed;
+    z-index:4;
+    display: none;
+    /* opacity: 0.5; */
+
+}
+.ui-filter-active{
     display: block;
 }

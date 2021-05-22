@@ -1,7 +1,10 @@
 let videoRecorder = document.querySelector("#record-video");
 let capturebtn = document.querySelector("#capture");
 let timingELem = document.querySelector("#timing");
+let allFilters = document.querySelectorAll(".filter");
 let clearObj;
+let uiFilter = document.querySelector(".ui-filter");
+let filterColor = "";
 let constraints = {
     video: true,
     audio: true
@@ -68,6 +71,10 @@ capturebtn.addEventListener("click", function () {
     capturebtn.classList.add("capture-animation");
     // draw a frame on that canvas
     tool.drawImage(videoElem, 0, 0);
+    tool.fillStyle = filterColor;
+    // translucent 
+    tool.fillRect(0, 0, canvas.width, canvas.height);
+    // above layer things are drawn
     // toDataUrl 
     let link = canvas.toDataURL();
     // download 
@@ -89,7 +96,7 @@ function startCounting() {
         let seconds = (timeCount % 60) < 10 ? `0${timeCount % 60}` : `${timeCount % 60}`;
         let minutes = (timeCount / 60) < 10 ? `0${Number.parseInt(timeCount / 60)}` : `${Number.parseInt(timeCount / 60)}`;
         let hours = (timeCount / 3600) < 10 ? `0${Number.parseInt(timeCount / 3600)}` : `${Number.parseInt(timeCount / 3600)}`;
-            timingELem.innerText = `${hours}:${minutes}:${seconds}`;
+        timingELem.innerText = `${hours}:${minutes}:${seconds}`;
         timeCount++;
     }, 1000);
 }
@@ -97,4 +104,21 @@ function stopCounting() {
     timingELem.classList.remove("timing-active");
     timingELem.innerText = "00: 00: 00";
     clearInterval(clearObj);
+}
+// filter apply
+for (let i = 0; i < allFilters.length; i++) {
+    allFilters[i].addEventListener("click", function () {
+        // add filter to ui
+        let color = allFilters[i].style.backgroundColor
+        if (color) {
+            uiFilter.classList.add("ui-filter-active");
+            uiFilter.style.backgroundColor = color;
+            filterColor = color;
+        } else {
+            uiFilter.classList.remove("ui-filter-active");
+            uiFilter.style.backgroundColor = "";
+            filterColor = "";
+
+        }
+    })
 }
