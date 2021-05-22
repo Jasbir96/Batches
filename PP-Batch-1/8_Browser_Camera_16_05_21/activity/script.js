@@ -71,8 +71,8 @@ capturebtn.addEventListener("click", function () {
     capturebtn.classList.add("capture-animation");
     // draw a frame on that canvas
     tool.drawImage(videoElem, 0, 0);
-    tool.fillStyle = filterColor;
     // translucent 
+    tool.fillStyle = filterColor;
     tool.fillRect(0, 0, canvas.width, canvas.height);
     // above layer things are drawn
     // toDataUrl 

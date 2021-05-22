@@ -1,6 +1,7 @@
 *{box-sizing: border-box;}
 body{
     margin:0px;
+    overflow: hidden;
 }
 .video-container{
     height: 100vh;
@@ -10,6 +11,8 @@ body{
 .video{
     height: 100%;
     width:100%;
+    transform: scale(1.5);
+   
 }
 .record-btn,.capture-btn{
     height: 4.5rem;
@@ -90,6 +93,7 @@ height: 20%;
     font-family: sans-serif;
     font-weight: 600;
     display: none;
+    box-shadow: tomato;
 }
 .timing-active{
     display: block;
@@ -101,9 +105,29 @@ height: 20%;
     position: fixed;
     z-index:4;
     display: none;
-    /* opacity: 0.5; */
+    
 
 }
 .ui-filter-active{
     display: block;
+}
+.zoom{
+    height: 7rem;
+    width: 3rem;
+    background-color: #444;
+    position: fixed;
+    z-index: 2;
+    right: 7vw;
+    top: 9vh;
+}
+.icon-container{
+    color: white;
+    height: 50%;
+    border-bottom: 2px solid black;
+    text-align: center;
+    padding-top: 1rem;
+    
+}
+.icon{
+    font-size: 180%;
 }
