@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Gallery</h1>
+    <script>
+        let request = indexedDB.open("camera", 1);
+        let db;
+        request.onsuccess = function (e) {
+            //  if exist then will get db from here 
+            db = request.result;
+            viewMedia();
+        }
+        request.onerror = function (err) {
+            console.log(err)
+
+        }
+        request.onupgradeneeded = function () {
+            // 1st  create 
+            db = request.result;
+            db.createObjectStore("img", { keyPath: "mid" });
+            // viewMedia();
+        }
+
+        function viewMedia() {
+            if (db) {
+                let tx = db.transaction("img", "readonly");
+                let notesStore = tx.objectStore("img");
+                //   async 
+                let pendingAns = notesStore.openCursor();
+                pendingAns.addEventListener("success", function (e) {
+                    let cursor = pendingAns.result;
+                    if (cursor) {
+                        let link = cursor.value.media;
+                        let img = document.createElement("img");
+                        img.src=link;
+                        img.style.height=200+"px";
+                        document.body.appendChild(img);
+                        cursor.continue();
+                    }
+                })
+            } else {
+                alert("Db is still loading");
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

@@ -34,13 +34,15 @@ navigator.mediaDevices
             let blob = new Blob(buffer, { type: "video/mp4" });
             // blob convert -> url
             const url = window.URL.createObjectURL(blob);
+            addMediaToDB(url, "video");
+
             // download btn
-            let a = document.createElement("a");
-            // /download
-            a.download = "file.mp4";
-            // url 
-            a.href = url;
-            a.click();
+            // let a = document.createElement("a");
+            // // /download
+            // a.download = "file.mp4";
+            // // url 
+            // a.href = url;
+            // a.click();
             buffer = [];
         })
     }
@@ -69,7 +71,6 @@ capturebtn.addEventListener("click", function () {
     // create a canvas element
     // equal to your video frame
     let canvas = document.createElement("canvas");
-
     canvas.width = videoElem.videoWidth;
     canvas.height = videoElem.videoHeight;
     let tool = canvas.getContext("2d");
@@ -77,11 +78,12 @@ capturebtn.addEventListener("click", function () {
     // draw a frame on that canvas
     // ctx.translate(canvas.width / 2, canvas.height / 2)
     // tool.scale(zoomLevel, zoomLevel);
+    // /x,y
+
     tool.scale(zoomLevel, zoomLevel);
     let x = (canvas.width / zoomLevel - canvas.width) / 2;
     let y = (canvas.height / zoomLevel - canvas.height) / 2;
     tool.drawImage(videoElem, x, y);
-    
     // translucent 
     if (filterColor) {
         tool.fillStyle = filterColor;
@@ -91,13 +93,14 @@ capturebtn.addEventListener("click", function () {
     // above layer things are drawn
     // toDataUrl 
     let link = canvas.toDataURL();
+    addMediaToDB(link, "img");
     // download 
-    let anchor = document.createElement("a");
-    anchor.href = link;
-    anchor.download = "file.png";
-    anchor.click();
-    anchor.remove();
-    canvas.remove();
+    // let anchor = document.createElement("a");
+    // anchor.href = link;
+    // anchor.download = "file.png";
+    // anchor.click();
+    // anchor.remove();
+    // canvas.remove();
     // i need one secomd of that animation
     setTimeout(function () {
         capturebtn.classList.remove("capture-animation");
@@ -140,14 +143,14 @@ for (let i = 0; i < allFilters.length; i++) {
 
 // zoom in zoom out
 zoomInElem.addEventListener("click", function () {
-    zoomLevel += 0.2;
     if (zoomLevel < 3) {
+        zoomLevel += 0.2;
         videoElem.style.transform = `scale(${zoomLevel})`;
     }
 })
 zoomOutElem.addEventListener("click", function () {
-    zoomLevel -= 0.2;
     if (zoomLevel > 1) {
+        zoomLevel -= 0.2;
         videoElem.style.transform = `scale(${zoomLevel})`;
     }
 })

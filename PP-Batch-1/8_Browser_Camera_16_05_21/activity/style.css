@@ -132,3 +132,20 @@ height: 20%;
 .icon{
     font-size: 180%;
 }
+
+.gallery{
+    position: fixed;
+    z-index:6;
+    bottom: 2vh;
+    right:2vw;
+    display: block;
+    height: 5rem;
+    width:5rem;
+    text-decoration: none;
+    background-color: #444;
+    border-radius: 50%;
+    color:white;
+    font-size:120%;
+    padding-top:8px;
+    text-align: center;
+}
