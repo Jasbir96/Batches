@@ -20,7 +20,6 @@
         }
         request.onerror = function (err) {
             console.log(err)
-
         }
         request.onupgradeneeded = function () {
             // 1st  create 
@@ -28,7 +27,6 @@
             db.createObjectStore("img", { keyPath: "mid" });
             // viewMedia();
         }
-
         function viewMedia() {
             if (db) {
                 let tx = db.transaction("img", "readonly");
