@@ -5,7 +5,8 @@ download.addEventListener("click", function () {
     // sheetListArr
     let a = document.createElement("a");
     // json -> xlsx -> excel
-    let url = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(sheetListArr));
+    let url = "data:text/json;charset=utf-8," + 
+    encodeURIComponent(JSON.stringify(sheetListArr));
     a.setAttribute("href", url);
     a.setAttribute("download", "file.json");
     a.click();

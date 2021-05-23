@@ -2,6 +2,7 @@
 body{
     margin:0px;
     overflow: hidden;
+    
 }
 .video-container{
     height: 100vh;
@@ -11,7 +12,6 @@ body{
 .video{
     height: 100%;
     width:100%;
-    transform: scale(1.5);
    
 }
 .record-btn,.capture-btn{
@@ -116,9 +116,10 @@ height: 20%;
     width: 3rem;
     background-color: #444;
     position: fixed;
-    z-index: 2;
+    z-index: 6;
     right: 7vw;
     top: 9vh;
+
 }
 .icon-container{
     color: white;
