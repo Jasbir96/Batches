@@ -33,8 +33,8 @@ navigator.mediaDevices
             // mime type
             let blob = new Blob(buffer, { type: "video/mp4" });
             // blob convert -> url
-            const url = window.URL.createObjectURL(blob);
-            addMediaToDB(url, "video");
+            // const url = window.URL.create ObjectURL(blob);
+            addMediaToDB(blob, "video");
 
             // download btn
             // let a = document.createElement("a");
