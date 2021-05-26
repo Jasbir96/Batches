@@ -1,7 +1,11 @@
 let videoElem = document.querySelector("video");
 // 1. 
 let recordBtn = document.querySelector(".record");
+let captureImgBtn = document.querySelector(".click-image")
+let filterArr = document.querySelectorAll(".filter");
+let filterOverlay = document.querySelector(".filter_overlay");
 let isRecording = false;
+let filterColor = "";
 // user  requirement send 
 let constraint = {
     audio: true, video: true
@@ -55,3 +59,33 @@ recordBtn.addEventListener("click", function () {
     }
     isRecording = !isRecording
 })
+captureImgBtn.addEventListener("click", function () {
+    // canvas create 
+    let canvas = document.createElement("canvas");
+    canvas.height = videoElem.videoHeight;
+    canvas.width = videoElem.videoWidth;
+    let tool = canvas.getContext("2d");
+    tool.drawImage(videoElem, 0, 0);
+    if(filterColor){
+        tool.fillStyle=filterColor;
+        tool.fillRect(0, 0,canvas.width,canvas.height);
+    }
+
+    let url = canvas.toDataURL();
+    let a = document.createElement("a");
+    a.download = "file.png";
+    a.href = url;
+    a.click();
+    a.remove();
+    // videoELement
+})
+
+
+
+// filter Array
+for (let i = 0; i < filterArr.length; i++) {
+    filterArr[i].addEventListener("click", function () {
+        filterColor = filterArr[i].style.backgroundColor;
+        filterOverlay.style.backgroundColor = filterColor;
+    })
+}
