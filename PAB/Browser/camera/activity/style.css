@@ -52,4 +52,15 @@ body{
     /* width of the background image */
     background-size: 100%;
 }
+.timing{
+    color: white;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    position: fixed;
+    bottom: 17vh;
+    left: 10vw;
+    display: none;
+    z-index: 6;
+}
+
 

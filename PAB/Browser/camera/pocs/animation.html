@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            height: 6rem;
+            width: 6rem;
+            margin: 4rem;
+            border: 5px solid;
+        }
+
+        .box-1 {
+            animation: scaleUp 3s ;
+            /* animation-fill-mode: forwards; */
+        }
+        .box-2 {
+            animation: moveLeftRight 5s;
+            animation-delay: 1s;
+            animation-iteration-count: 5;
+            /* animation-timing-function: ease-in; */
+        }
+
+        .box-3 {
+            animation: fadeIn 3s;
+            /* animation-delay: 5s; */
+            animation-iteration-count: infinite;
+            background-color: lightcoral;
+
+        }
+
+        /* name of the animation */
+        @keyframes scaleUp {
+            0% {
+                transform: scale(1) translateX(0px);
+                border-radius: 10%;
+                background-color: lightcoral;
+            }
+            
+            25% {
+                transform: scale(1.25) translateX(100px);
+                border-radius: 20%;
+                background-color: rgb(155, 75, 75);
+               
+            }
+            
+            50% {
+                transform: scale(1.5) translateX(200px);
+                border-radius: 30%;
+                background-color: rgb(102, 36, 36);
+                
+            }
+            
+            100% {
+                transform: scale(2) translateX(300px);
+                border-radius: 50%;
+                background-color: rgb(82, 29, 29);
+            }
+        }
+
+        @keyframes moveLeftRight {
+            0% {
+                transform: translateX(0px);
+            }
+
+            50% {
+                transform: translateX(300px);
+            }
+
+            100% {
+                transform: translateX(600px);
+            }
+
+        }
+        @keyframes fadeIn {
+            0%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box-1"></div>
+    <div class="box box-2"></div>
+    <div class="box box-3"></div>
+</body>
+
+</html>
