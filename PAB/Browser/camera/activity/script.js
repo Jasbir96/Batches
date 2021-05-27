@@ -29,14 +29,14 @@ usermediaPromise.
         mediarecordingObjectForCurrStream = new MediaRecorder(stream);
         // camera recording add -> recording array
         mediarecordingObjectForCurrStream.ondataavailable = function (e) {
-           
+
             recording.push(e.data);
         }
         // download
         mediarecordingObjectForCurrStream.addEventListener("stop", function () {
             // recording -> url convert 
             // type -> MIME type (extension)
-            
+
             const blob = new Blob(recording, { type: 'video/mp4' });
             const url = window.URL.createObjectURL(blob);
             let a = document.createElement("a");
@@ -57,13 +57,15 @@ recordBtn.addEventListener("click", function () {
     }
     if (isRecording == false) {
         mediarecordingObjectForCurrStream.start();
-        recordBtn.innerText = "Recording....";
+        // recordBtn.innerText = "Recording....";
+        recordBtn.classList.add("record-animation");
         startTimer();
     }
     else {
         stopTimer();
         mediarecordingObjectForCurrStream.stop();
-        recordBtn.innerText = "Record";
+        // recordBtn.innerText = "Record";
+        recordBtn.classList.remove("record-animation");
     }
     isRecording = !isRecording
 })
