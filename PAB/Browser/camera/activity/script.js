@@ -40,8 +40,9 @@ usermediaPromise.
         mediarecordingObjectForCurrStream.addEventListener("stop", function () {
             // recording -> url convert 
             // type -> MIME type (extension)
-
             const blob = new Blob(recording, { type: 'video/mp4' });
+            // you need to save this blob into indexDB
+            // video.srcObject=blob:
             const url = window.URL.createObjectURL(blob);
             let a = document.createElement("a");
             a.download = "file.mp4";
@@ -92,11 +93,12 @@ captureImgBtn.addEventListener("click", function () {
     }
 
     let url = canvas.toDataURL();
-    let a = document.createElement("a");
-    a.download = "file.png";
-    a.href = url;
-    a.click();
-    a.remove();
+    // db put 
+    // let a = document.createElement("a");
+    // a.download = "file.png";
+    // a.href = url;
+    // a.click();
+    // a.remove();
     // videoELement
 })
 // filter Array
@@ -106,7 +108,6 @@ for (let i = 0; i < filterArr.length; i++) {
         filterOverlay.style.backgroundColor = filterColor;
     })
 }
-
 function startTimer() {
     timings.style.display = "block";
     function fn() {
