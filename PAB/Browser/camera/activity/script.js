@@ -1,3 +1,4 @@
+
 let videoElem = document.querySelector("video");
 // 1. 
 let recordBtn = document.querySelector(".record");
@@ -5,10 +6,13 @@ let captureImgBtn = document.querySelector(".click-image")
 let filterArr = document.querySelectorAll(".filter");
 let filterOverlay = document.querySelector(".filter_overlay");
 let timings = document.querySelector(".timing");
+let plusBtn = document.querySelector(".plus");
+let minusBtn = document.querySelector(".minus");
 let isRecording = false;
 let filterColor = "";
 let counter = 0;
 let clearObj;
+let scaleLevel = 1;
 
 // user  requirement send 
 let constraint = {
@@ -75,11 +79,18 @@ captureImgBtn.addEventListener("click", function () {
     canvas.height = videoElem.videoHeight;
     canvas.width = videoElem.videoWidth;
     let tool = canvas.getContext("2d");
-    tool.drawImage(videoElem, 0, 0);
+    // scaling
+    // top left corner
+    tool.scale(scaleLevel, scaleLevel);
+    const x = (tool.canvas.width / scaleLevel - videoElem.videoWidth) / 2;
+    const y = (tool.canvas.height / scaleLevel - videoElem.videoHeight) / 2;
+    // console.log(x, y);
+    tool.drawImage(videoElem, x, y);
     if (filterColor) {
         tool.fillStyle = filterColor;
         tool.fillRect(0, 0, canvas.width, canvas.height);
     }
+
     let url = canvas.toDataURL();
     let a = document.createElement("a");
     a.download = "file.png";
@@ -116,3 +127,16 @@ function stopTimer() {
     timings.style.display = "none";
     clearInterval(clearObj);
 }
+
+minusBtn.addEventListener("click", function () {
+    if (scaleLevel > 1) {
+        scaleLevel = scaleLevel - 0.1;
+        videoElem.style.transform = `scale(${scaleLevel})`;
+    }
+})
+plusBtn.addEventListener("click", function () {
+    if (scaleLevel < 1.7) {
+        scaleLevel = scaleLevel + 0.1;
+        videoElem.style.transform = `scale(${scaleLevel})`;
+    }
+})

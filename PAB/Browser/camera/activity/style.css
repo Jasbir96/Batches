@@ -3,17 +3,17 @@
 }
 body{
     margin:0px;
+    overflow: hidden;
 }
 .video-container{
     background-color: black;
     width:100vw;
     height: 100vh;
-    
 }
 .video{
     height: 100%;
     width:100%;
-   
+   /* transform: scale(1.5); */
 }
 .btn-container{
     padding-top: 10px;
@@ -41,6 +41,24 @@ body{
 }
 .record{
     background-color: red;
+}
+
+.record-animation{
+    animation: scaleUp 1s ;
+    animation-iteration-count: infinite;
+}
+
+@keyframes scaleUp {
+    0%{
+        transform: scale(1);
+    }
+   50%{
+    transform: scale(1.08);
+   }
+    100%{
+        transform: scale(1);
+    }
+    
 }
 .filter_overlay{
     height: 100vh;
@@ -80,22 +98,30 @@ body{
     z-index: 6;
 }
 
-.record-animation{
-    animation: scaleUp 1s ;
-    animation-iteration-count: infinite;
+/* zoom in zoom out  */
+
+.zoom-parent{
+    width: 2.75rem;
+    position: fixed;
+    top: 12%;
+    right: 61px;
+    border: 1px solid;
+    background-color: #444;
+    height: 6rem;
+    border-radius: 6px;
+    z-index:6;
+}
+.zoom-parent > *{
+    height: 50%;
+    /* border-bottom: 1px solid white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon{
+    font-size: 140%;
+    color:white;
 }
 
-@keyframes scaleUp {
-    0%{
-        transform: scale(1);
-    }
-   50%{
-    transform: scale(1.08);
-   }
-    100%{
-        transform: scale(1);
-    }
-    
-}
 
 
