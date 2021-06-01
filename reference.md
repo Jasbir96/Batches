@@ -39,10 +39,12 @@
 * https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics
 * https://www.30secondsofcode.org/css/t/animation/p/1
 * https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
-
-
-
-
 ### Goto resource for browser theory
 * https://www.youtube.com/channel/UCTBGXCJHORQjivtgtMsmkAQ : Steve Griffith
 * https://www.youtube.com/watch?v=gm1QtePAYTM
+
+## react
+* https://overreacted.io/why-do-we-write-super-props
+* https://www.youtube.com/playlist?list=PLhQjrBD2T381Q6R1jRxgXknYO7VuTYPBI
+
+

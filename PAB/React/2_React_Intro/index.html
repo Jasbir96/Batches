@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- ui highly optimized way -> manipulate  -->
+    <!-- algorithm -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <!-- react through -> Dom change -->
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- bebel -> JSX-> js -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // component 
+        function Hello({name="Default"}) {
+            return (
+                <React.Fragment>
+                    <h1>Hello {name}</h1>
+                    <p>How all of you are</p>
+                </React.Fragment>
+            )
+        }
+        // hello componet render 
+        function Hellos() {
+            return (
+                <React.Fragment>
+                    <Hello />
+                    <Hello name="Rajneesh"/>
+                    <Hello name="Jitu"></Hello>
+                    <Hello name="Bhavesh"></Hello>
+                    <Hello name="Anirudh"></Hello>
+                </React.Fragment>
+            )
+        }
+        // bottom to top
+        ReactDOM.render(<Hellos />,
+            document.getElementById("root"));
+    </script>
+</body>
+
+</html>

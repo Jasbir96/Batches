@@ -6,16 +6,16 @@
 //  a function as an input or return a function as an output
 // functions are first class citizens -> 
 // functions are treated as a variable 
-let a = 10;
-function pureFn( a) {
-    // let tempArr = [];
-    // for (let i = 0; i < arr.length; i++) {
-    //     tempArr[i] = arr[i];
-    // }
-    a++;
-    return a;
-}
-let arr = [1, 2, 3, 4];
-pureFn(arr, a);
-// console.log(pureFn(a));
-console.log(a);
+// let a = 10;
+// function pureFn(a) {
+//     // let tempArr = [];
+//     // for (let i = 0; i < arr.length; i++) {
+//     //     tempArr[i] = arr[i];
+//     // }
+//     a[0]=10;
+//     return a;
+// }
+// let arr = [1, 2, 3, 4];
+// pureFn(arr);
+// // console.log(pureFn(a));
+// console.log(a);
