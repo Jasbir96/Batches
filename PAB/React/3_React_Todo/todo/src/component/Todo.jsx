@@ -1,7 +1,7 @@
 // react snippets
 // rcc
 import React, { Component } from 'react';
-import TaskList from './TaskList';
+// import TaskList from './TaskList';
 
 //1.render -> static ui define
 // /2. identify different variables that 
@@ -10,50 +10,81 @@ import TaskList from './TaskList';
 // 4. event listener to change the state
 export default class Todo extends Component {
     state = {
-        taskList: [],
-        currTask: ""
+        taskList: []
     }
     deleteTask = (id) => {
         // current - rest of the task 
-        let filteredtasks = this.state.taskList.filter(function (task) {return task.id !== id;})
+        let filteredtasks = this.state.taskList.filter(function (task) { return task.id !== id; })
         this.setState({
             taskList: filteredtasks
         });
+    }
+    addTask = (currTask) => {
+        // let currTask = this.state.currTask;
+        // let tempArr = [];
+        // for (let i = 0; i < this.state.taskList.length; i++) {
+        //     tempArr.push(this.state.taskList[i]);
+        // }
+        // tempArr.push(currTask);
+        let tempArr = [...this.state.taskList, 
+            { task: currTask, id: this.state.taskList.length }]
+        this.setState({
+            taskList: tempArr 
+        })
+    }
+    render() {
+        return (
+            <div>
+                {/* passing props to children component */}
+    <InputContainer addTask={this.addTask}></InputContainer>
+<TaskList list={this.state.taskList} deleteTask={this.deleteTask}></TaskList>
+
+            </div>
+        )
+    }
+}
+class InputContainer extends Component {
+    state = {
+        currTask: ""
     }
     handleCurrTask = (e) => {
         let currValue = e.target.value;
         this.setState({
             currTask: currValue
         })
-
     }
-    addTask = () => {
-        let currTask = this.state.currTask;
-        // let tempArr = [];
-        // for (let i = 0; i < this.state.taskList.length; i++) {
-        //     tempArr.push(this.state.taskList[i]);
-        // }
-        // tempArr.push(currTask);
-
-        let tempArr = [...this.state.taskList, { task: currTask, id: this.state.taskList.length }]
+    sendcurrentTaskToparent = () => {
+        this.props.addTask(this.state.currTask);
         this.setState({
-            taskList: tempArr,
             currTask: ""
         })
     }
     render() {
         return (
-            <div>
-                <div className="input-container">
-                    <input type="text" value={this.state.currTask}
-                        onChange={this.handleCurrTask} />
-                    <button onClick={this.addTask}>submit</button>
-                </div>
-                {/* passing props to children component */}
-                <TaskList taskList={this.state.taskList}
-                    deleteTask={this.deleteTask}
-                ></TaskList>
+            <div className="input-container">
+                <input type="text" value={this.state.currTask}
+                    onChange={this.handleCurrTask} />
+                <button onClick={this.sendcurrentTaskToparent}>submit</button>
             </div>
+        )
+    }
+}
+class TaskList extends Component {
+    render() {
+        return (
+            <div className="task-list">
+                <ul>
+                    {this.props.list.map((taskObj) => {
+                        return (
+                            <li className="tasklist" key={taskObj.id}>
+                                <p>{taskObj.task}</p>
+                                <button onClick={() => { this.props.deleteTask(taskObj.id) }}>Delete</button>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
+
         )
     }
 }
