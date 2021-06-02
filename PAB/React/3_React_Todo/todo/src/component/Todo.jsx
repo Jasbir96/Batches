@@ -15,10 +15,7 @@ export default class Todo extends Component {
     }
     deleteTask = (id) => {
         // current - rest of the task 
-        let filteredtasks = this.state.taskList
-            .filter(function (task) {
-                return task.id !== id;
-            })
+        let filteredtasks = this.state.taskList.filter(function (task) {return task.id !== id;})
         this.setState({
             taskList: filteredtasks
         });
@@ -32,11 +29,12 @@ export default class Todo extends Component {
     }
     addTask = () => {
         let currTask = this.state.currTask;
-        // let tempArr = this.state.taskList;
+        // let tempArr = [];
         // for (let i = 0; i < this.state.taskList.length; i++) {
         //     tempArr.push(this.state.taskList[i]);
         // }
         // tempArr.push(currTask);
+
         let tempArr = [...this.state.taskList, { task: currTask, id: this.state.taskList.length }]
         this.setState({
             taskList: tempArr,
