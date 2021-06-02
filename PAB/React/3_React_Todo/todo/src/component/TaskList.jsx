@@ -8,7 +8,7 @@ export default class TaskList extends Component {
                         return (
                             <li className="tasklist" key={taskObj.id}>
                                 <p>{taskObj.task}</p>
-                      <button onClick={this.props.deletetask(taskObj.id)}>
+                      <button onClick={()=>{this.props.deleteTask(taskObj.id)}}>
                                     Delete</button>
                             </li>
                         )
