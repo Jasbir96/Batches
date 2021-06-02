@@ -37,8 +37,9 @@ export default class Todo extends Component {
             <div>
                 {/* passing props to children component */}
     <InputContainer addTask={this.addTask}></InputContainer>
-<TaskList list={this.state.taskList} deleteTask={this.deleteTask}></TaskList>
-
+<TaskList list={this.state.taskList} deleteTask={this.deleteTask}>
+    
+</TaskList>
             </div>
         )
     }
