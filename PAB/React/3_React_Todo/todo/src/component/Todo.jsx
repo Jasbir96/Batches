@@ -1,8 +1,8 @@
 // react snippets
 // rcc
 import React, { Component } from 'react';
-// import TaskList from './TaskList';
-
+import TaskList from './TaskList';
+import InputContainer from './InputContainer';
 //1.render -> static ui define
 // /2. identify different variables that 
 // can change throughout the life time -> state
@@ -38,55 +38,10 @@ export default class Todo extends Component {
                 {/* passing props to children component */}
     <InputContainer addTask={this.addTask}></InputContainer>
 <TaskList list={this.state.taskList} deleteTask={this.deleteTask}>
-    
 </TaskList>
             </div>
         )
     }
 }
-class InputContainer extends Component {
-    state = {
-        currTask: ""
-    }
-    handleCurrTask = (e) => {
-        let currValue = e.target.value;
-        this.setState({
-            currTask: currValue
-        })
-    }
-    sendcurrentTaskToparent = () => {
-        this.props.addTask(this.state.currTask);
-        this.setState({
-            currTask: ""
-        })
-    }
-    render() {
-        return (
-            <div className="input-container">
-                <input type="text" value={this.state.currTask}
-                    onChange={this.handleCurrTask} />
-                <button onClick={this.sendcurrentTaskToparent}>submit</button>
-            </div>
-        )
-    }
-}
-class TaskList extends Component {
-    render() {
-        return (
-            <div className="task-list">
-                <ul>
-                    {this.props.list.map((taskObj) => {
-                        return (
-                            <li className="tasklist" key={taskObj.id}>
-                                <p>{taskObj.task}</p>
-                                <button onClick={() => { this.props.deleteTask(taskObj.id) }}>Delete</button>
-                            </li>
-                        )
-                    })}
-                </ul>
-            </div>
 
-        )
-    }
-}
 
