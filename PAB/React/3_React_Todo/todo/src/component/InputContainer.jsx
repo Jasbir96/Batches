@@ -1,3 +1,5 @@
+import React, { Component } from 'react';
+
 export default class InputContainer extends Component {
     state = {
         currTask: ""

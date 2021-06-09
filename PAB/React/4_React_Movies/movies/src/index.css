@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+input[type="number"]{
+    min-height: 1.5rem;
+    min-width: 4rem;
+}

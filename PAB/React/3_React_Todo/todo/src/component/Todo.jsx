@@ -26,19 +26,19 @@ export default class Todo extends Component {
         //     tempArr.push(this.state.taskList[i]);
         // }
         // tempArr.push(currTask);
-        let tempArr = [...this.state.taskList, 
-            { task: currTask, id: this.state.taskList.length }]
+        let tempArr = [...this.state.taskList,
+        { task: currTask, id: this.state.taskList.length }]
         this.setState({
-            taskList: tempArr 
+            taskList: tempArr
         })
     }
     render() {
         return (
             <div>
                 {/* passing props to children component */}
-    <InputContainer addTask={this.addTask}></InputContainer>
-<TaskList list={this.state.taskList} deleteTask={this.deleteTask}>
-</TaskList>
+                <InputContainer addTask={this.addTask}></InputContainer>
+                <TaskList list={this.state.taskList} deleteTask={this.deleteTask}>
+                </TaskList>
             </div>
         )
     }
