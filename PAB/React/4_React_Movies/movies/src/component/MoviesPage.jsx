@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { getMovies } from '../temp/MovieService'
 export default class MoviesPage extends Component {
     state = {
-        movies: getMovies(),
+        movies: [],
         currSearchText: "",
         limit: 4,
         currentPage: 1
@@ -59,13 +59,30 @@ export default class MoviesPage extends Component {
     changelimit = (e) => {
         // console.log("hello");
         let currLimit = e.target.value;
+        if (currLimit < 1)
+            return;
         // console.log(currPage);
         this.setState({
             limit: currLimit
         })
     }
+    changeCurrentPage = (pageNumber) => {
+        this.setState({
+            currentPage: pageNumber
+        })
+    }
+    async componentDidMount() {
+        // console.log(2);
+        let resp = await fetch("https://react-backend101.herokuapp.com/movies");
+        let jsonMovies = await resp.json()
+        this.setState({
+            movies: jsonMovies.movies
+        });
+    }
     render() {
+        console.log(1);
         let { movies, currSearchText, limit, currentPage } = this.state;
+        console.log(movies);
         let filteredArr = movies.filter((movieObj) => {
             let title = movieObj.title.trim().toLowerCase();
             // console.log(title);
@@ -87,7 +104,6 @@ export default class MoviesPage extends Component {
         let si = (currentPage - 1) * limit;
         let eidx = si + limit;
         filteredArr = filteredArr.slice(si, eidx);
-
         return (
             <div className="row">
                 {/* 12 part */}
@@ -95,8 +111,6 @@ export default class MoviesPage extends Component {
                     hello
                 </div>
                 <div className="col-9">
-
-
                     <input type="search" value={currSearchText}
                         onChange={this.setCurrentText} />
                     <input type="number" className="col-1"
@@ -145,17 +159,20 @@ export default class MoviesPage extends Component {
                         <ul className="pagination ">
                             {
                                 pageNumberArr.map((pageNumber) => {
+                                    let additional = pageNumber == currentPage ? "page-item active" : "page-item";
                                     return (
-                                        <li className="page-item active" aria-current="page">
+                                        <li className={additional}
+                                            aria-current="page" onClick={() => { this.changeCurrentPage(pageNumber) }}>
                                             <span className="page-link">{pageNumber}</span>
-                                        </li>)
+                                        </li>
+                                    )
                                 })
                             }
                         </ul>
                     </nav>
 
                 </div>
-            </div>
+            </div >
 
         )
     }
