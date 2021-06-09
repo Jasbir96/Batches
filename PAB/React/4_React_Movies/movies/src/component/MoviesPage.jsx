@@ -96,6 +96,7 @@ export default class MoviesPage extends Component {
                 </div>
                 <div className="col-9">
 
+
                     <input type="search" value={currSearchText}
                         onChange={this.setCurrentText} />
                     <input type="number" className="col-1"
@@ -150,8 +151,6 @@ export default class MoviesPage extends Component {
                                         </li>)
                                 })
                             }
-
-
                         </ul>
                     </nav>
 
