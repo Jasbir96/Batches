@@ -145,7 +145,7 @@ export default class MoviesPage extends Component {
                             {
                                 pageNumberArr.map((pageNumber) => {
                                     return (
-                                        <li className="page-item " aria-current="page">
+                                        <li className="page-item active" aria-current="page">
                                             <span className="page-link">{pageNumber}</span>
                                         </li>)
                                 })
