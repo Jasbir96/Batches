@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// npm install react-router-dom
 import { Route } from "react-router-dom";
 export default class Routing extends Component {
     render() {
@@ -7,7 +6,7 @@ export default class Routing extends Component {
             <div>
                 Routing Example
                 {/* path-> / ->home*/}
-                {/* route -> path is a suboath route match */}
+                {/* route -> path is a subpath route match */}
                 {/* switch -> every route that i have i will render only one of them */}
                 {/* ui */}
                 <ul>
