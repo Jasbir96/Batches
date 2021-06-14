@@ -1,9 +1,14 @@
 import './App.css';
 import MoviesPage from './component/MoviesPage';
+import New from './component/New';
+
 
 function App() {
   return (
-    <MoviesPage></MoviesPage>
+    <>
+    <New></New>
+     <MoviesPage></MoviesPage>
+     </>
   );
 }
 

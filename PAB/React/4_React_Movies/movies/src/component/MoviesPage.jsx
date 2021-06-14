@@ -3,9 +3,11 @@ import { getMovies } from '../temp/MovieService'
 export default class MoviesPage extends Component {
     state = {
         movies: [],
+        genres: [{ id: 1, name: "All Genres" }],
         currSearchText: "",
         limit: 4,
-        currentPage: 1
+        currentPage: 1,
+        cGenre: "All Genres"
     }
     deleteEntry = (id) => {
         let filtereMovies = this.state.movies.filter((movieObj) => {
@@ -74,14 +76,19 @@ export default class MoviesPage extends Component {
     async componentDidMount() {
         // console.log(2);
         let resp = await fetch("https://react-backend101.herokuapp.com/movies");
-        let jsonMovies = await resp.json()
+        let jsonMovies = await resp.json();
         this.setState({
             movies: jsonMovies.movies
+        });
+        resp = await fetch("https://react-backend101.herokuapp.com/genres");
+        let jsonGenres = await resp.json();
+        this.setState({
+            genres: [...this.state.genres, ...jsonGenres.genres]
         });
     }
     render() {
         console.log(1);
-        let { movies, currSearchText, limit, currentPage } = this.state;
+        let { movies, currSearchText, limit, currentPage, genres } = this.state;
         console.log(movies);
         let filteredArr = movies.filter((movieObj) => {
             let title = movieObj.title.trim().toLowerCase();
@@ -104,11 +111,19 @@ export default class MoviesPage extends Component {
         let si = (currentPage - 1) * limit;
         let eidx = si + limit;
         filteredArr = filteredArr.slice(si, eidx);
+
         return (
             <div className="row">
                 {/* 12 part */}
                 <div className="col-3">
-                    hello
+                    <ul class="list-group">
+                        {
+                            genres.map((cgObj) => {
+                                return (<li class="list-group-item" key={cgObj.id}>{cgObj.name}</li>)
+                            })
+                        }
+
+                    </ul>
                 </div>
                 <div className="col-9">
                     <input type="search" value={currSearchText}
