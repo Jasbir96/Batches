@@ -10,6 +10,11 @@ export default class App extends Component {
   state = {
     movies: []
   }
+  setMovies = (array) => {
+    this.setState({
+      movies: array
+    })
+  }
   deleteEntry = (id) => {
     let filtereMovies =
       this.state.movies.filter((movieObj) => {
@@ -73,7 +78,8 @@ export default class App extends Component {
           <Route path="/" render={(props) => {
             return (<MoviesPage {...props}
               deleteEntry={this.deleteEntry}
-              movies={this.state.movies}></MoviesPage>)
+              movies={this.state.movies}
+              setMovies={this.setMovies}></MoviesPage>)
           }}></Route>
         </Switch>
       </>

@@ -8,10 +8,10 @@ import App from "./App";
 import Hooks from "./Hooks";
 
 ReactDOM.render(
-  // <BrowserRouter>
-  //   <App />
-  // </BrowserRouter>
-  <Hooks></Hooks>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+  // <Hooks></Hooks>
   ,
   document.getElementById('root')
 );

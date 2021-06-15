@@ -21,7 +21,7 @@ export default class MoviesPage extends Component {
     sortByRatings = (e) => {
         let className = e.target.className;
         let sortedMovies;
-        let { movies } = this.state;
+        let { movies } = this.props;
         if (className == "fas fa-sort-up") {
             sortedMovies = movies.sort((movieObjA, movieObjB) => {
                 return movieObjA.dailyRentalRate - movieObjB.dailyRentalRate;
@@ -31,14 +31,12 @@ export default class MoviesPage extends Component {
                 return movieObjB.dailyRentalRate - movieObjA.dailyRentalRate;
             });
         }
-        this.setState({
-            movies: sortedMovies
-        })
+        this.props.setMovies(sortedMovies);
     }
     sortByStock = (e) => {
         let className = e.target.className.trim();
         let sortedMovies;
-        let { movies } = this.state;
+        let { movies } = this.props;
         if (className == "fas fa-sort-up") {
             sortedMovies = movies.sort((movieObjA, movieObjB) => {
                 return movieObjA.numberInStock - movieObjB.numberInStock;
@@ -48,9 +46,8 @@ export default class MoviesPage extends Component {
                 return movieObjB.numberInStock - movieObjA.numberInStock;
             });
         }
-        this.setState({
-            movies: sortedMovies
-        })
+
+        this.props.setMovies(sortedMovies);
     }
     changelimit = (e) => {
         // console.log("hello");
@@ -74,7 +71,7 @@ export default class MoviesPage extends Component {
         })
     }
     async componentDidMount() {
-      
+
         // console.log(2);
         let resp = await fetch("https://react-backend101.herokuapp.com/genres");
         let jsonGenres = await resp.json();
