@@ -11,7 +11,6 @@ export default class MoviesPage extends Component {
         currentPage: 1,
         cGenre: "All Genres"
     }
-
     setCurrentText = (e) => {
         let task = e.target.value;
         // filter 
@@ -75,6 +74,7 @@ export default class MoviesPage extends Component {
         })
     }
     async componentDidMount() {
+      
         // console.log(2);
         let resp = await fetch("https://react-backend101.herokuapp.com/genres");
         let jsonGenres = await resp.json();
@@ -102,7 +102,6 @@ export default class MoviesPage extends Component {
                 return title.includes(currSearchText.toLowerCase());
             })
         }
-
         // impliment
         // console.log(filteredArr);
         // si -> (pagenumber-1)*limit;

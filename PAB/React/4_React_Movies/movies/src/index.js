@@ -5,11 +5,13 @@ import reportWebVitals from './reportWebVitals';
 import Routing from './Routing';
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import Hooks from "./Hooks";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  // <BrowserRouter>
+  //   <App />
+  // </BrowserRouter>
+  <Hooks></Hooks>
   ,
   document.getElementById('root')
 );
