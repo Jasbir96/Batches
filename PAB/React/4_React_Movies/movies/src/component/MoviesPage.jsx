@@ -2,23 +2,16 @@ import React, { Component } from 'react'
 import { getMovies } from '../temp/MovieService';
 import List from "./List.jsx";
 import Pagination from "./Pagination.jsx";
+import { Link } from "react-router-dom";
 export default class MoviesPage extends Component {
     state = {
-        movies: [],
         genres: [{ id: 1, name: "All Genres" }],
         currSearchText: "",
         limit: 4,
         currentPage: 1,
         cGenre: "All Genres"
     }
-    deleteEntry = (id) => {
-        let filtereMovies = this.state.movies.filter((movieObj) => {
-            return movieObj._id != id;
-        })
-        this.setState({
-            movies: filtereMovies
-        })
-    }
+
     setCurrentText = (e) => {
         let task = e.target.value;
         // filter 
@@ -83,20 +76,16 @@ export default class MoviesPage extends Component {
     }
     async componentDidMount() {
         // console.log(2);
-        let resp = await fetch("https://react-backend101.herokuapp.com/movies");
-        let jsonMovies = await resp.json();
-        this.setState({
-            movies: jsonMovies.movies
-        });
-        resp = await fetch("https://react-backend101.herokuapp.com/genres");
+        let resp = await fetch("https://react-backend101.herokuapp.com/genres");
         let jsonGenres = await resp.json();
         this.setState({
             genres: [...this.state.genres, ...jsonGenres.genres]
         });
     }
     render() {
-        console.log(1);
-        let { movies, currSearchText, limit, currentPage, genres, cGenre } = this.state;
+        console.log("movies");
+        let { currSearchText, limit, currentPage, genres, cGenre } = this.state;
+        let { movies, deleteEntry } = this.props;
         // console.log(movies);
         //   genre
         let filteredArr = movies;
@@ -125,12 +114,16 @@ export default class MoviesPage extends Component {
         let eidx = si + limit;
         filteredArr = filteredArr.slice(si, eidx);
         return (
+
             <div className="row">
                 {/* 12 part */}
                 <div className="col-3">
                     <List genres={genres} groupBygenre={this.groupBygenre}></List>
                 </div>
                 <div className="col-9">
+                    <button className="btn btn-primary">
+                        <Link to="/new" className="text-light" >New </Link>
+                    </button>
                     <input type="search" value={currSearchText}
                         onChange={this.setCurrentText} />
                     <input type="number" className="col-1"
@@ -169,7 +162,7 @@ export default class MoviesPage extends Component {
                                     <td>{movieObj.dailyRentalRate}</td>
                                     <td><button type="button" className="btn btn-danger"
                                         onClick={() => {
-                                            this.deleteEntry(movieObj._id);
+                                            deleteEntry(movieObj._id);
                                         }}>Delete</button></td>
                                 </tr>)
                             })}

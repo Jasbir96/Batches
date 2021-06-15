@@ -16,3 +16,6 @@ input[type="number"]{
     min-height: 1.5rem;
     min-width: 4rem;
 }
+a{
+  text-decoration: none;
+}

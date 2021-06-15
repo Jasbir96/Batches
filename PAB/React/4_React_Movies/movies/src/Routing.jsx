@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from "react-router-dom";
+import { Route, Link, Switch, Redirect } from "react-router-dom";
 export default class Routing extends Component {
     render() {
         return (
