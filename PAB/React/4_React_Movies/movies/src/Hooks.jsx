@@ -9,15 +9,15 @@ export default function Hooks() {
     // }
     // Update the document title using the browser API
     // component did mount + component did update -> mounting phase
-    async function fn() {
+     function fn() {
         console.log("Hello from fn", Date.now());
     }
-    // everytime 
+    // // everytime 
     useEffect(fn); 
-    // component did mount  one time after render
+    // // component did mount  one time after render
     useEffect(fn, []);
-    // after everytime the parameter inside that array changes
-    useEffect(fn, [time,count]);
+    // // after everytime the parameter inside that array changes
+    useEffect(fn, [count]);
     // console.log("Hello");
     return (
         <>
