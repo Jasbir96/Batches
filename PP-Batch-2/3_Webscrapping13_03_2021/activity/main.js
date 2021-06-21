@@ -46,7 +46,7 @@ function getRepoLinks(html) {
         // console.log(link);
         let repoName = link.split("/").pop();
         // fileCreator(topicName, fileName);
-        let fullLink = "https://github.com" + link + "/issues"
+        let fullLink = "https://github.com" + link + "/issues";
         getIssuelinks(fullLink, topicName, repoName);
     }
     console.log("`````````````````````````````")

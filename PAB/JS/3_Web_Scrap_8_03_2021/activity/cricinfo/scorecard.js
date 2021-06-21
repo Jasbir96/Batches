@@ -2,7 +2,6 @@
 // ,player Name,
 // a. Runs, balls, sixes , fours, sr for that match
 // b. date ,venue ,result and opponent name for that match
-
 // npm -> play store
 let request = require("request");
 let cheerio = require("cheerio");
@@ -23,12 +22,9 @@ function cb(error, response, html) {
         extractPlayerDetails(html);
     }
 }
-
 // opponent team Name -> player -> team
 // Runs, balls, sixes , fours, sr
 // date ,venue ,result
-
-
 function extractPlayerDetails(html) {
     // date ,venue ,result
     let selTool = cheerio.load(html);
@@ -80,20 +76,20 @@ function processPlayer(myTeamName, name, venue, date, opponentTeamName, result, 
     // team folder -> exist
     // does not exist   
     let folderPath = path.join(__dirname, "ipl", myTeamName);
-    dirCreater(folderPath);
-    // file -> read data update -> write
-    // create -> write
-    // let filePath = path.join(folderPath, name + ".json");
-    let filePath = path.join(folderPath, name + ".xlsx");
-    // [],[{},{}]
-    let content = excelReader(filePath, name);
-    let matchobj = {
-        myTeamName, name, venue, date,
-        opponentTeamName, result, runs, balls, fours, sixes, sr
-    }
+    // dirCreater(folderPath);
+    // // file -> read data update -> write
+    // // create -> write
+    // // let filePath = path.join(folderPath, name + ".json");
+    // let filePath = path.join(folderPath, name + ".xlsx");
+    // // [],[{},{}]
+    // let content = excelReader(filePath, name);
+    // let matchobj = {
+    //     myTeamName, name, venue, date,
+    //     opponentTeamName, result, runs, balls, fours, sixes, sr
+    // }
 
-    content.push(matchobj);
-    excelWriter(filePath, content, name);
+    // content.push(matchobj);
+    // excelWriter(filePath, content, name);
     // if (fs.existsSync(filePath)) {
     //     let buffer = fs.readFileSync(filePath);
     //     content = JSON.parse(buffer);
@@ -101,35 +97,26 @@ function processPlayer(myTeamName, name, venue, date, opponentTeamName, result, 
     // content.push(matchobj);
     // fs.writeFileSync(filePath, JSON.stringify(content));
 }
-
 function excelReader(filePath, name) {
     if (!fs.existsSync(filePath)) {
         return [];
     } else {
-        // workbook => excel
-        let wt = xlsx.readFile(filePath);
-        // csk -> msd
-        // get data from workbook
-        let excelData = wt.Sheets[name];
-        // convert excel format to json => array of obj
+        let wb = xlsx.readFile(filePath);
+        let excelData = wb.Sheets[name];
         let ans = xlsx.utils.sheet_to_json(excelData);
-        // console.log(ans);
         return ans;
     }
 }
 function excelWriter(filePath, json, name) {
     // console.log(xlsx.readFile(filePath));
     let newWB = xlsx.utils.book_new();
-    // console.log(json);
+   
     let newWS = xlsx.utils.json_to_sheet(json);
-    // msd.xlsx-> msd
-    //workbook name as param
+   
     xlsx.utils.book_append_sheet(newWB, newWS, name);
-    //   file => create , replace
-    //    replace
+   
     xlsx.writeFile(newWB, filePath);
 }
-
 function dirCreater(folderPath) {
     if (fs.existsSync(folderPath) == false) {
         fs.mkdirSync(folderPath);

@@ -1,7 +1,6 @@
 import react, { useState, useEffect } from "react";
 import './App.css';
 import auth from "./firebase";
-
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,12 +28,10 @@ function App() {
     setPassword("");
   }
   const handleLogout = async () => {
-
     setLoader(true);
     await auth.signOut();
     setUser(null);
     setLoader(false);
-
   }
   const handleEmailInput = (e) => {
     // console.log(email);
