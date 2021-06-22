@@ -14,9 +14,10 @@ ReactDOM.render(
     {/* <Test></Test> */}
     {/* <UseEffect></UseEffect> */}
     {/* <ContextParent></ContextParent> */}
-    <MyContext.Provider value={3}>
+    {/* <MyContext.Provider value={3}>
       <MyComponent></MyComponent>
-    </MyContext.Provider>
+    </MyContext.Provider> */}
+    <App></App>
 
   </React.StrictMode>,
   document.getElementById('root')
