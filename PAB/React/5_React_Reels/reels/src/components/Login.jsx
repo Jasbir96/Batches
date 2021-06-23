@@ -19,10 +19,10 @@ function Login(props) {
         } catch (err) {
             setError(true);
             setLoader(false);
-
             setEmail("");
             setPassword("");
         }
+
     }
 
     return (
