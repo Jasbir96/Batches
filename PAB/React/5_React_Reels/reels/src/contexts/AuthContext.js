@@ -8,7 +8,6 @@ export function AuthProvider({ children }) {
     async function login(email, password) {
         // firebase
         return await auth.signInWithEmailAndPassword(email, password);
-
     }
     async function signOut() {
         // firebase signup
@@ -22,7 +21,11 @@ export function AuthProvider({ children }) {
             setUser(user);
             setLoading(false)
         })
-        return cleanUp;
+        return () => {
+            console.log("Hello");
+            cleanUp();
+
+        }
     }, []);
     const value = {
         login,

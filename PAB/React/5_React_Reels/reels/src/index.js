@@ -7,18 +7,12 @@ import ContextParent from "./ContextParent";
 import Test from "./TestCOmponent/Test"
 import UseEffect from "./TestCOmponent/UseEffect";
 import MyComponent, { MyContext } from "./TestCOmponent/q5";
-
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
     {/* <Test></Test> */}
-    {/* <UseEffect></UseEffect> */}
+    <UseEffect></UseEffect>
     {/* <ContextParent></ContextParent> */}
-    {/* <MyContext.Provider value={3}>
-      <MyComponent></MyComponent>
-    </MyContext.Provider> */}
-    <App></App>
-
   </React.StrictMode>,
   document.getElementById('root')
 );
