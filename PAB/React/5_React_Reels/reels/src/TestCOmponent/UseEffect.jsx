@@ -16,18 +16,19 @@ export default function UseEffect() {
         console.log("Cleanup function is executed");
     }
 
-    // whenver render function is exceuted
-    // cleanup ->before every next useEffect
-    // useEffect(function(){
-    //     console.log("I will run after every render ")
-    // });
+
     // after first render
     // cleanup -> during unmount 
-    
     // useEffect(function () {
     //     console.log("i will run only after the first render");
+    //     return cleanUp;
     // }, []);
-
+    // whenver render function is exceuted
+    // cleanup ->before every next useEffect
+    // useEffect(function () {
+    //     console.log("I will run after every render ")
+    //     return cleanUp;
+    // });
     // after dependent render 
     // cleanup ->before every next useEffect
     // useEffect(function () {
@@ -72,7 +73,7 @@ function ListItem(props) {
         return () => {
             console.log("cleanup for", taskObj.task, "ran")
         }
-    },[]);
+    }, []);
     return (
         <li key={taskObj.id} onClick={() => {
             handleDelete(taskObj.id)

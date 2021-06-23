@@ -9,9 +9,9 @@ import UseEffect from "./TestCOmponent/UseEffect";
 import MyComponent, { MyContext } from "./TestCOmponent/q5";
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
+    <App />
     {/* <Test></Test> */}
-    <UseEffect></UseEffect>
+    {/* <UseEffect></UseEffect> */}
     {/* <ContextParent></ContextParent> */}
   </React.StrictMode>,
   document.getElementById('root')
