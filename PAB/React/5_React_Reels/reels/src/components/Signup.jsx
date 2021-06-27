@@ -26,7 +26,8 @@ function Signup(props) {
             // 1
             let res = await signup(email, password);
             let uid = res.user.uid;
-            const uploadTaskListener = storage.ref(`/users/${uid}/profileImage`).put(file);
+            const uploadTaskListener = storage
+            .ref(`/users/${uid}/profileImage`).put(file);
             // fn1 -> progress
             // fn2 -> error 
             // fn3-> success
