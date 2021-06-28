@@ -18,7 +18,7 @@ function extractAllLinks(html) {
     for (let i = 0; i < scorecardElems.length; i++) {
         let link = $(scorecardElems[i]).attr("href");
         let fullLink = "https://www.espncricinfo.com" + link;
-        console.log(fullLink);
+        // console.log(fullLink);
         scoreCardObj.ps(fullLink);
         // 
     }

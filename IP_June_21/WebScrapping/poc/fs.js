@@ -2,7 +2,7 @@ let fs = require("fs");
 // sync example
 // console.log("before");
 // let content = fs.readFileSync("f1.txt");
-// // console.log("content " + content);
+console.log("content " + content);
 // console.log("After");
 // async version 
 // console.log("before");
