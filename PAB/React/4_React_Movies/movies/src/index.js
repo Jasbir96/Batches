@@ -7,13 +7,12 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import Hooks from "./Hooks";
 import Login from "./Login";
-
 ReactDOM.render(
-  // <BrowserRouter>
-  //   <App />
-  // </BrowserRouter>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
   // <Hooks></Hooks>
-  <Login></Login>
+  // <Login></Login>
   ,
   document.getElementById('root')
 );

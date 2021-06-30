@@ -8,6 +8,7 @@ import Test from "./TestCOmponent/Test"
 import UseEffect from "./TestCOmponent/UseEffect";
 import MyComponent, { MyContext } from "./TestCOmponent/q5";
 import Material from "./Material";
+import IntersectionDemo from "./intresectionobserver/IntersectionDemo"
 ReactDOM.render(
   <React.StrictMode>
     <App />
@@ -15,6 +16,7 @@ ReactDOM.render(
     {/* <UseEffect></UseEffect> */}
     {/* <ContextParent></ContextParent> */}
     {/* <Material></Material> */}
+    {/* <IntersectionDemo></IntersectionDemo> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

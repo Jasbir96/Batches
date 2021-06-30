@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch, Redirect } from "react-router-dom";
+// /abcd/def
+// /
+// /abcd
+// /abcd/def
 export default class Routing extends Component {
     render() {
         return (
@@ -22,7 +26,6 @@ export default class Routing extends Component {
                     <Route path="/" exact component={Home}></Route>
                     <Route component={Error}></Route>
                 </Switch>
-
             </div>
         )
     }
@@ -35,7 +38,8 @@ class Home extends Component {
             </div>
         )
     }
-} class Profile extends Component {
+} 
+class Profile extends Component {
     render() {
         return (
             <div>
@@ -43,7 +47,8 @@ class Home extends Component {
             </div>
         )
     }
-} class Listing extends Component {
+} 
+class Listing extends Component {
     render() {
         return (
             <div>

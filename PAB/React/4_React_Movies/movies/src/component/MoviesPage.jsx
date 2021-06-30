@@ -71,7 +71,6 @@ export default class MoviesPage extends Component {
         })
     }
     async componentDidMount() {
-
         // console.log(2);
         let resp = await fetch("https://react-backend101.herokuapp.com/genres");
         let jsonGenres = await resp.json();

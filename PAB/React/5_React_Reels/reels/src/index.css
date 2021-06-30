@@ -6,8 +6,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
-  /* display: flex;
-  justify-content: center; */
+  margin:0px;
+   display: flex;
+  justify-content: center; 
+  /* background-color:lightgreen; */
 }
 
 code {

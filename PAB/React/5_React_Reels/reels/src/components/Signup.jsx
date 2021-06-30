@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '../contexts/AuthProvider';
 import { storage, firestore, database } from "../firebase";
-
 function Signup(props) {
     const [email, setEmail] = useState("");
     const [username, setUserName] = useState("");
@@ -10,7 +9,6 @@ function Signup(props) {
     const [loader, setLoader] = useState(false);
     const [file, setFile] = useState(null);
     let { signup } = useContext(AuthContext);
-
     function handlFileSubmit(e) {
         let file = e?.target?.files[0];
         if (file != null) {
@@ -21,13 +19,12 @@ function Signup(props) {
     async function handleSignup(e) {
         e.preventDefault();
         try {
-
             setLoader(true);
             // 1
             let res = await signup(email, password);
             let uid = res.user.uid;
             const uploadTaskListener = storage
-            .ref(`/users/${uid}/profileImage`).put(file);
+                .ref(`/users/${uid}/profileImage`).put(file);
             // fn1 -> progress
             // fn2 -> error 
             // fn3-> success
@@ -42,8 +39,7 @@ function Signup(props) {
             }
             async function fn3() {
                 // link get 
-                let downloadurl = await
-                    uploadTaskListener.snapshot.ref.getDownloadURL();
+                let downloadurl = await uploadTaskListener.snapshot.ref.getDownloadURL();
                 database.users.doc(uid).set({
                     email: email,
                     userId: uid,
@@ -54,8 +50,6 @@ function Signup(props) {
                 setLoader(false);
                 props.history.push("/")
             }
-
-
         } catch (err) {
             setError("");
             setLoader(false);
@@ -91,5 +85,4 @@ function Signup(props) {
         </div>
     )
 }
-
 export default Signup
