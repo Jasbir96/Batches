@@ -4,13 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import uuid from 'react-uuid'
-
-
+import uuid from 'react-uuid';
 function Feed() {
-    // useEffect(() => {
-    //     console.log("Feed is rendered")
-    // })
     const useStyles = makeStyles((theme) => ({
         root: {
             '& > *': {
@@ -44,7 +39,6 @@ function Feed() {
             // setReel(e.target.files[0]); 
             try {
                 setLoading(true)
-
                 // const uploadTaskListener = storage
                 //     .ref(`/posts`).put(file);
                 // fn1 -> progress
@@ -64,9 +58,9 @@ function Feed() {
                     setLoader(false);
                 }
                 async function fn3() {
-                    let posobj={
-                        likes:[],
-                        comment:[],
+                    let posobj = {
+                        likes: [],
+                        comment: [],
                     }
                     // link get 
                     //  let puid=make postDocument and put in post collection

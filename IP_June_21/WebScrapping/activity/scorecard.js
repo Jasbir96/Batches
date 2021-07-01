@@ -7,6 +7,7 @@ const fs = require("fs");
 const xlsx = require("xlsx");
 // home page 
 function processScorecard(url) {
+    // API
     request(url, cb);
 }
 function cb(err, response, html) {
