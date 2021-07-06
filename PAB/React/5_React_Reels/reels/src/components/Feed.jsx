@@ -23,6 +23,7 @@ function Feed() {
     const [user, setUser] = useState();
     const [pageLoading, setpageLoading] = useState(true);
     const { signout, currentUser } = useContext(AuthContext);
+    const [videos, setVideos] = useState([]);
     // const [reel, setReel] = useState();
     const handleLogout = async () => {
         try {
@@ -85,6 +86,8 @@ function Feed() {
         }
         uploadTask.on('state_changed', f1, f2, f3)
     }
+
+
     // componentdidmount
     useEffect(async () => {
         console.log(currentUser.uid);
@@ -104,6 +107,35 @@ function Feed() {
         setUser(dataObject.data());
         setpageLoading(false);
     }, []);
+    // post get 
+    useEffect(async () => {
+        let unsub = await database.posts.orderBy("createdAt", "desc").onSnapshot(async snapshot => {
+            console.log(snapshot);
+            let videos = snapshot.docs.map(doc => doc.data());
+            // // console.log(videos);
+            // let videoUrls = videos.map(video =>);
+            // let auidArr = videos.map(video => video.auid);
+            // let usersArr = [];
+            // for (let i = 0; i < auidArr.length; i++) {
+            //     let userObject = await database.user.doc(auidArr[i]).get();
+            //     usersArr.push(userObject)
+            // }
+            let videosArr = [];
+            for (let i = 0; i < videos.length; i++) {
+                let videoUrl = videos[i].url;
+                let auid = videos[i].auid;
+                let userObject = await database.users.doc(auid).get();
+                let userProfileUrl = userObject.data().profileUrl;
+                let userName = userObject.data().username;
+                videosArr.push({ videoUrl, userProfileUrl, userName });
+            }
+            setVideos(videosArr);
+
+
+        })
+        return unsub;
+    }, [])
+
     return (
         pageLoading == true ? <div>Loading....</div> :
             <div>
@@ -124,12 +156,40 @@ function Feed() {
                     </div>
                 </div>
                 <div className="feed">
-                    Feed
+                    {videos.map((videoObj, idx) => {
+                        console.log(videoObj);
+                        return <div className="video-container">
+                            <Video
+                                src={videoObj.videoUrl}
+                                id={idx}
+                                userName={videoObj.userName}
+                            >
+
+                            </Video>
+                        </div>
+                    })}
                 </div>
             </div>
 
 
     )
 }
+function Video(props) {
+    console.log(props.userName);
+    return (
+        <>
+            <video controls muted="true" id={props.id} >
+                <source src={
+                    props.src
+                } type="video/mp4"
+
+                >
+                </source>
+            </video >
+            { props.userName}
+        </>
+    )
+}
+
 
 export default Feed
