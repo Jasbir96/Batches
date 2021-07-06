@@ -109,7 +109,8 @@ function Feed() {
     }, []);
     // post get 
     useEffect(async () => {
-        let unsub = await database.posts.orderBy("createdAt", "desc").onSnapshot(async snapshot => {
+        let unsub = await database.posts.orderBy("createdAt", "desc")
+        .onSnapshot(async snapshot => {
             console.log(snapshot);
             let videos = snapshot.docs.map(doc => doc.data());
             // // console.log(videos);
