@@ -1,5 +1,8 @@
 // let a=10;
 // script -> grid
+
+
+
 let topRow = document.querySelector(".top-row");
 let str = "";
 for (let i = 0; i < 26; i++) {
@@ -23,6 +26,11 @@ for (let i = 0; i < 100; i++) {
     str += "</div>";
 }
 grid.innerHTML = str;
+
+
+
+
+
 // initial load
 let workSheetDB = [];
 function initCurrentSheetDb() {

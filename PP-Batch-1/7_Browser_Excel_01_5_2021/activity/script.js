@@ -146,7 +146,7 @@ leftBtn.addEventListener("click", function () {
 rightBtn.addEventListener("click", function () {
     let address = addressBar.value;
     let { rid, cid } = getRIdCIdfromAddress(address);
-    console.log(rid, cid);
+    // console.log(rid, cid);
     let cell = document.querySelector(`.col[rid="${rid}"][cid="${cid}"]`);
     cell.style.textAlign = "right";
     for (let i = 0; i < allAlignBtns.length; i++) {
@@ -197,7 +197,7 @@ boldElem.addEventListener("click", function () {
         // cell text bold
         cell.style.fontWeight = "bold";
         boldElem.classList.add("active-btn");
-        cellObject.bold = true
+        cellObject.bold = true;
     } else {
         // cell text normal
         cell.style.fontWeight = "normal";
@@ -355,7 +355,7 @@ function setFormula(value, formula, rid, cid, address) {
     cellObject.value = value;
     cellObject.formula = formula;
     let formulaTokens = formula.split(" ");
-    (A1 + A2)
+    // (A1 + A2)
     for (let i = 0; i < formulaTokens.length; i++) {
         let firstCharOfToken = formulaTokens[i].charCodeAt(0);
         if (firstCharOfToken >= 65 && firstCharOfToken <= 90) {

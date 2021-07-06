@@ -23,8 +23,7 @@ function Signup(props) {
             // 1
             let res = await signup(email, password);
             let uid = res.user.uid;
-            const uploadTaskListener = storage
-                .ref(`/users/${uid}/profileImage`).put(file);
+            const uploadTaskListener = storage.ref(`/users/${uid}/profileImage`).put(file);
             // fn1 -> progress
             // fn2 -> error 
             // fn3-> success
@@ -45,7 +44,8 @@ function Signup(props) {
                     userId: uid,
                     username,
                     createdAt: database.getUserTimeStamp(),
-                    profileUrl: downloadurl
+                    profileUrl: downloadurl,
+                    postIds: []
                 })
                 setLoader(false);
                 props.history.push("/")
@@ -77,7 +77,6 @@ function Signup(props) {
                 <div>
                     <label htmlFor="">Profile Image</label>
                     <input type="file" accept="image/*"
-
                         onChange={(e) => { handlFileSubmit(e) }}></input>
                 </div>
                 <button type="submit" disabled={loader}>Login</button>

@@ -37,9 +37,15 @@ function nFileReader(n) {
             console.log(err);
         } else {
             console.log("" + data);
+            if(data.byteLength>10){
+                // t3
+            }else{
+                // t4
+            }
             nFileReader(n + 1);
         }
     });
+
 }
 nFileReader(0);
 

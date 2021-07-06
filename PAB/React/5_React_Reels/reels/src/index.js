@@ -11,12 +11,12 @@ import Material from "./Material";
 import IntersectionDemo from "./intresectionobserver/IntersectionDemo"
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
+    <App />
     {/* <Test></Test> */}
     {/* <UseEffect></UseEffect> */}
     {/* <ContextParent></ContextParent> */}
     {/* <Material></Material> */}
-    <IntersectionDemo></IntersectionDemo>
+    {/* <IntersectionDemo></IntersectionDemo> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
