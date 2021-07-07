@@ -5,9 +5,11 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import uuid from 'react-uuid';
 import { database, storage } from '../firebase';
 import FavouriteIcon from '@material-ui/icons/Favorite';
+import Overlay from "./Overlay";
 
 function Feed() {
     const useStyles = makeStyles((theme) => ({
@@ -19,12 +21,17 @@ function Feed() {
         input: {
             display: 'none',
         },
-        heart: {
+        icon: {
             // backgroundColor: "red"
             position: "absolute",
-            left: "27vw",
             bottom: "-5vh",
             fontSize: "2rem"
+        },
+        heart: {
+            left: "25vw",
+        },
+        chat: {
+            left: "32vw"
         },
         notSelected: {
             color: "lightgray"
@@ -33,7 +40,6 @@ function Feed() {
         selected: {
             color: "red"
         }
-
     }));
     const classes = useStyles();
     const [loading, setLoading] = useState(false);
@@ -104,7 +110,6 @@ function Feed() {
         }
         uploadTask.on('state_changed', f1, f2, f3)
     }
-
     const handleLiked = async (puid) => {
         console.log(puid)
         let postRef = await database.posts.doc(puid).get();
@@ -123,6 +128,15 @@ function Feed() {
             })
         }
         setLiked(!isLiked)
+    }
+    const handleCommentClicked = async (puid) => {
+        let copyofVideos = [...videos];
+        let idx = copyofVideos.findIndex((video) => {
+            return video.puid == puid;
+        });
+        let videoObj = copyofVideos[idx];
+        videoObj.isOverlayActive = true;
+        setVideos(copyofVideos);
     }
     // componentdidmount
     useEffect(async () => {
@@ -149,7 +163,7 @@ function Feed() {
             .onSnapshot(async snapshot => {
                 console.log(snapshot);
                 let videos = snapshot.docs.map(doc => doc.data());
-                
+
                 // // console.log(videos);
                 // let videoUrls = videos.map(video =>);
                 // let auidArr = videos.map(video => video.auid);
@@ -169,8 +183,11 @@ function Feed() {
                     let userProfileUrl = userObject.data().profileUrl;
                     let userName = userObject.data().username;
                     videosArr.push({
-                        videoUrl, userProfileUrl, userName,
-                        puid: id
+                        videoUrl,
+                        userProfileUrl,
+                        userName,
+                        puid: id,
+                        isOverlayActive: false
                     });
                 }
                 setVideos(videosArr);
@@ -209,13 +226,18 @@ function Feed() {
                                 userName={videoObj.userName}
                             >
                             </Video>
-                            <FavouriteIcon className={[classes.heart, isLiked == false ? classes.notSelected : classes.selected]}
+                            <FavouriteIcon className={[classes.icon, classes.heart, isLiked == false ? classes.notSelected : classes.selected]}
                                 onClick={() => { handleLiked(videoObj.puid) }}
                             ></FavouriteIcon>
+                            <ChatBubbleIcon className={[classes.icon, classes.chat, classes.notSelected]} onClick={() => { handleCommentClicked(videoObj.puid) }}>
+                            </ChatBubbleIcon>
+                            {/* user click */}
+                            {videoObj.isOverlayActive == true ? < Overlay></Overlay> : null}
+
                         </div>
                     })}
                 </div>
-            </div>
+            </div >
 
 
     )
@@ -224,7 +246,7 @@ function Video(props) {
     console.log(props.userName);
     return (
         <>
-            <video controls muted="true" id={props.id} >
+            <video autoPlay muted="true" id={props.id} >
                 <source src={
                     props.src
                 } type="video/mp4"
