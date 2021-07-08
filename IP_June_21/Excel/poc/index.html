@@ -19,10 +19,31 @@
 </head>
 
 <body>
+    <!-- click blur  focus -->
     <input type="text" class="input">
-    <button class="add">Add</button>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime iste perferendis cum iusto voluptatum amet, id
+        aut omnis illum ut consectetur nihil! Consequatur earum laboriosam harum incidunt tenetur repellat, aperiam
+        sequi. Fugiat, amet ut. Maxime nisi ipsum totam similique maiores iure reiciendis rem modi. Reprehenderit iste
+        rem eos et dolore quas quibusdam dolor? Harum ipsa facilis, voluptatum, eaque vero nostrum veniam, esse maiores
+        suscipit tenetur nisi sit repellendus nobis est? Quia animi autem provident accusamus nostrum eligendi harum
+        facere! Maiores illo quidem molestiae alias, dolorum quae sed repellat similique odit animi sunt? Eum corporis
+        voluptatum, expedita neque magni facere pariatur.</p>
+    <!-- <button class="add">Add</button>
     <ul></ul>
-    <script src="domExample.js"></script>
+    <script src="domExample.js"></script> -->
+    <script>
+        let input = document.querySelector(".input");
+        input.addEventListener("focus", function () {
+            console.log("Focus was called");
+        })
+        input.addEventListener("blur", function () {
+            console.log("blur was called");
+        })
+        input.addEventListener("click", function () {
+            console.log("click  happened");
+
+        })
+    </script>
 </body>
 
 </html>

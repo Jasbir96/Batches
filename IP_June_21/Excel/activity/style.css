@@ -1,0 +1,211 @@
+body{
+    margin:0;
+}
+*{
+    box-sizing: border-box;
+    /* border:1px solid red; */
+}
+/* ********************* */
+.menu-container{
+    background-color: lightblue;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+/* future */
+.menu-container > *{
+height:80%;
+width:20%;
+border-right:2px solid;
+}
+.formatting-container{
+    display: flex;
+    justify-content: space-around;
+}
+.active-btn{
+    background-color:rgb(110, 104, 104)
+}
+/* inline input /select */
+.subgroup{
+     display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;  
+    width:45%;
+    height: 100%;   
+}
+.subgroup>*{
+width:100%
+}
+.BUI_container{
+    display: flex;
+    justify-content: space-between;
+}
+.BUI_container>*{
+    width:30%;
+}
+
+.color-container>*{
+    width:45%;
+}
+.color-container{
+    display: flex;
+    justify-content: space-between;
+}
+.alignment-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.alignment-container>*{
+    width:20%;
+}
+
+
+
+
+
+
+/* ********************** */
+/* formula container styling starts here */
+.formula-container{
+    background-color: rgb(151, 169, 175);
+    height: 30px;
+    display: flex;
+    align-items: center;
+justify-content: space-evenly;
+}
+.address-box{
+width:10%;
+}
+.seperator{
+    width:2%;
+}
+.formula-box{
+    width:80%;
+}
+
+
+
+
+
+
+
+
+
+/*  */
+
+.sheets{
+    background-color: lightgrey;
+    height:40px;
+    display: flex;
+}
+.add-sheet_container{
+    height: 100%;
+    min-width:30px;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon{
+    font-size: 1.2rem;
+    color:lightgreen;
+}
+.sheets-list{
+
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+}
+.sheets-list::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .sheets-list {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+.sheet{
+    min-width:60px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.active-sheet
+{
+    background-color: white;
+}
+
+
+
+
+
+
+
+/************************ grid container css *************************************/
+.top-left-block {
+    height: 30px;
+    width: 25px;
+    background-color: gray;
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index:100;
+}
+.top-row {
+    height: 30px;
+    background-color: lightgreen;
+    display: flex;
+    position: absolute;
+    top: 0px;
+    left: 25px;
+    z-index:90;
+}
+
+/* .grid_container {
+    position: relative;
+    border:5px solid red
+} */
+.row {
+    display: flex;
+}
+
+.col {
+    min-width: 80px;
+    max-width:80px;
+    border: 1px solid;
+    min-height: 30px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.left-col {
+    width: 25px;
+    border: 1px solid red;
+    position: absolute;
+    top:30px;
+    left:0px;
+    z-index:90;
+}
+.left-col_box {
+    height: 30px;
+    background-color: lightgreen;
+    text-align: center;
+    border: 1px solid;
+}
+
+.grid_container{
+    height:calc(100vh - ( 80px + 30px + 40px) );
+    overflow: auto;
+    position: relative;
+}
+.grid{
+    position:absolute;
+    top:30px;
+    left:25px;
+}
+
+
+

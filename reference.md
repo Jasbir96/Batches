@@ -31,6 +31,14 @@
 * https://javascript.info -> Part 2
 * https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications
 * https://htmldom.dev/download-a-file/
+## OpenBoard
+### Canvas :
+* https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Drawing_graphics
+* https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
+* Document API: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents
+* Files: * https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications#Example_Using_object_URLs_to_display_images * https://stackoverflow.com/questions/12796513/html5-canvas-to-png-file
+* Event Reference : https://developer.mozilla.org/en-US/docs/Web/Events
+* Socketio(Ise Pakka dekhna ) : https://www.youtube.com/watch?v=8ARodQ4Wlf4
 ### Camera
 * https://developer.mozilla.org/en-US/docs/Web/API
 * https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
