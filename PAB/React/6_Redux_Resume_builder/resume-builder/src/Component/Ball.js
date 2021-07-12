@@ -6,7 +6,6 @@ function Ball(props) {
     // state -> props (redux)
     // prop -> function 
     // const [balls, setBalls] = useState(15);
-    // 6
     return (
         <div>
             <h1>Number of Balls {props.balls}</h1>
@@ -23,7 +22,7 @@ function Ball(props) {
 const mapStateToProps = store => {
     console.log("in map state to prop", store);
     // state variables change  
-    return store;
+    return store.Ball;
 }
 // dispatch action provide to reducer
 const mapDispatchtoProps = dispatch => {
@@ -40,7 +39,7 @@ const mapDispatchtoProps = dispatch => {
     }
 }
 // higher order function
-const HigherOrderComponent = 
-connect(mapStateToProps,
-     mapDispatchtoProps)(Ball)
+const HigherOrderComponent =
+    connect(mapStateToProps,
+        mapDispatchtoProps)(Ball)
 export default HigherOrderComponent;
