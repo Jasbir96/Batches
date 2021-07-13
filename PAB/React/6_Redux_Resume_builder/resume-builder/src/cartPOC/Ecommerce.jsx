@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import NaVBar from './cartComponents/NaVBar';
 import ProductPage from "./cartComponents/ProductPage";
