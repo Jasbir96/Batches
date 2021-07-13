@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Ecommerce() {
+function ProductPage() {
     return (
         <div>
-            Ecommerce
+            Product Page
         </div>
     )
 }
 
-export default Ecommerce
+export default ProductPage
