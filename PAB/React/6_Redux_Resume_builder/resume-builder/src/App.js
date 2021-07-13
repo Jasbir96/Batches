@@ -7,13 +7,15 @@ import User from './Component/User';
 function App() {
   return (
     // 4
-    <Provider store={store}>
-      <div className="App">
-        <Ball></Ball>
-        <Bat></Bat>
-        <User></User>
-      </div>
-    </Provider>
+    // redux example
+    // <Provider store={store}>
+    //   <div className="App">
+    //     <Ball></Ball>
+    //     <Bat></Bat>
+    //     <User></User>
+    //   </div>
+    // </Provider>
+    <Ecommerce></Ecommerce>
   );
 }
 export default App;

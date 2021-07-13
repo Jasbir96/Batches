@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import { userFetchMiddleWare } from '../redux/user/userFetchMiddleWare';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 function User(props) {
     // const [loading, setLoading] = useState(true);
     // const [error, setError] = useState('');
     // const [users, setUsers] = useState([]);
     const { loading, error, users } = props;
-    useEffect(async () => {
+    useEffect( () => {
         // try {
         //     let resp = await fetch("https://jsonplaceholder.typicode.com/users");
         //     let users = await resp.json();
@@ -18,7 +18,7 @@ function User(props) {
         // }
         props.fetchUser();
         console.log("will make async request");
-    }, [])
+    }, []);
     return (
         <div>
             {loading ? <h2>Loading...</h2>
@@ -42,8 +42,8 @@ function mapStatetoProps(store) {
 }
 function mapDispatchtoProps(dispatch) {
     return {
-        fetchUser: ()=> {
-           return  dispatch(userFetchMiddleWare);
+        fetchUser: () => {
+            return dispatch(userFetchMiddleWare);
         }
     }
 }
