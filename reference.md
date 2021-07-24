@@ -55,6 +55,11 @@
 * https://overreacted.io/why-do-we-write-super-props
 * https://www.youtube.com/playlist?list=PLhQjrBD2T381Q6R1jRxgXknYO7VuTYPBI
 
+## SASS
+https://www.youtube.com/watch?v=kpcjSaRngg8
+https://www.youtube.com/watch?v=Zz6eOVaaelI&t=1s
+https://blog.logrocket.com/the-definitive-guide-to-scss/
+
 ## Git 
 * https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc
 

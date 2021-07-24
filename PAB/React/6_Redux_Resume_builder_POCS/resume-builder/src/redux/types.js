@@ -1,0 +1,1 @@
+export const Buy_Bat ="buy_bat";
