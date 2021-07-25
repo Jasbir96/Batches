@@ -12,7 +12,7 @@ console.log("content", content);
 let currentpath = process.cwd();
 // console.log("currentPath",currentpath);
 // // // path -> paths -> platform independent
-// let joinedPath=path.join(currentpath,"abc","def","efg");
+let joinedPath=path.join(currentpath,"abc","def","efg");
 // console.log("joinedPath",joinedPath);
 let filePath=path.join( currentpath,"dir1",fileName);
 console.log("filePath",filePath);
