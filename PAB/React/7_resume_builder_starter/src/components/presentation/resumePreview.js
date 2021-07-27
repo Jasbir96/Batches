@@ -8,17 +8,21 @@ function ResumePreview(props){
         }
         return '';
     }
+    
     const rvEducation=(key, valToAppend)=>{
         if(props.educationSection){
           return props.educationSection[key]?props.educationSection[key] + (valToAppend?valToAppend:'') :'';
         }
         return '';
     }
+
+    // skin css logic
         return (
             <div className={props.skinCd + " resume-preview "}>
                 <div className={'name-section'}>
                     <p className={'center contact-name text-upper' }> {rvContact(fieldCd.FirstName,' ')  + rvContact(fieldCd.LastName)}  </p>
-                    <p className={'center address'}>{rvContact(fieldCd.City,', ') + rvContact(fieldCd.State,', ') +  rvContact(fieldCd.Country,', ') + rvContact(fieldCd.ZipCode,', ')}</p>
+                    <p className={'center address'}>{rvContact(fieldCd.City,', ') + rvContact(fieldCd.State,', ') + 
+                     rvContact(fieldCd.Country,', ') + rvContact(fieldCd.ZipCode,', ')}</p>
                     <p className={'center'}>{rvContact(fieldCd.Email ) }</p>
                     <p className={'center'}>{rvContact(fieldCd.Phone) } </p>
                 </div>

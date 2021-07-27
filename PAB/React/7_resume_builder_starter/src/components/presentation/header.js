@@ -1,68 +1,47 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../static/images/logo.png";
 
-function LoggesOut(props) {
-  return (
-    <ul>
-      <li className="signup ">
-        <NavLink className=" btnv-1" to="/register">
-        Register
-        </NavLink>
-      </li>
-      <li className="signin"> 
-        <NavLink className="text-blue btnv-3" to="/login">
-        Sign In
-        </NavLink>         
-      </li>
-    </ul>
-  )
-}
+
 
 const Header = (props) => {
   // const auth = props.auth;
-  const handleLogOut=()=>{
-   console.log('The user will sign out');
-  }
+  // const handleLogOut=()=>{
+  //  console.log('The user will sign out');
+  // }
 
   return (  
   <header className="header">
   <nav className="nav">
-      <a href="/" className="holder-logo">
+      <Link to="/" className="holder-logo">
         <img className='logo' src={logo}></img>
-      </a> 
+      </Link> 
         <div className="header-links full-height">
-
-        {/* { isLoaded(auth) && !isEmpty(auth) ?<> */}
-
           <ul>
             <li className="signin ">
-              <NavLink className="  " to="/">
+              <Link className="  " to="/">
                Logged in as 
-              </NavLink>
+              </Link>
             </li>
             <li className="signin"> 
-              <button className="text-blue btnv-3" onClick={handleLogOut}>
+              <button className="text-blue btnv-3" >
              Signout
               </button>         
             </li>
           </ul>
-
         {/* </>:<LoggesOut></LoggesOut>} */}
-          
           <ul id="nav-mid">
             <li>
-            <NavLink className="btn-nvt-gm" to="/resume-templates">
+            <Link className="btn-nvt-gm" to="/resume-templates">
             Resume Templates
-            </NavLink>
+            </Link>
             </li> 
             <li className="holder-pricing">            
-              <NavLink className="btn-nvt-gm" to="/about-us">
+              <Link className="btn-nvt-gm" to="/about-us">
               About Us
-              </NavLink>
+              </Link>
             </li>        
-          </ul>
-            
+          </ul>     
       </div>   
     </nav>
   </header>

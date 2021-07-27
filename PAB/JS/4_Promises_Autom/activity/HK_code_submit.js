@@ -26,26 +26,12 @@ browserOpenPromise
         let loginPromise = cTab.click("button[data-analytics='LoginPassword']");
         return loginPromise;
     })
-    // .then(function () {
-    //     let waitForIpKit = cTab.waitForSelector(".ui-btn.ui-btn-normal.ui-btn-large.ui-btn-primary.ui-btn-link.ui-btn-styled",
-    //         { visible: true });
-    //     return waitForIpKit;
-    // })
-    // .then(function () {
-    //     let goToIPKit = cTab.click(".ui-btn.ui-btn-normal.ui-btn-large.ui-btn-primary.ui-btn-link.ui-btn-styled");
-    //     return goToIPKit;
-    // })
+    
     .then(function () {
         let IpKitClickePromise = waitAndClick(".ui-btn.ui-btn-normal.ui-btn-large.ui-btn-primary.ui-btn-link.ui-btn-styled");
         return IpKitClickePromise;
     })
-    // .then(function () {
-    //     let waitForWarmUp = cTab.waitForSelector("a[data-attr1= 'warmup']", { visible: true });
-    //     return waitForWarmUp;
-    // }).then(function () {
-    //     let clickOnWarmUp = cTab.click("a[data-attr1='warmup']");
-    //     return clickOnWarmUp;
-    // })
+   
     .then(function () {
         let warmUpPagePromise = waitAndClick("a[data-attr1='warmup']");
         return warmUpPagePromise;
@@ -98,7 +84,6 @@ function waitAndClick(selector) {
             }).catch(function (err) {
                 reject(err);
             })
-
     })
 }
 function questionSolver(url, idx) {
@@ -161,5 +146,4 @@ function questionSolver(url, idx) {
     })
 }
     // dynamic site -> id change
-
     // create new promise -> wait ->

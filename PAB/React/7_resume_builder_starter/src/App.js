@@ -1,8 +1,7 @@
 import React from 'react';
-
 import './static/scss/app.scss';
 import 'react-router-dom';
-import { Route,Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header from './components/presentation/header';
 import Footer from './components/presentation/footer';
 import LandingPage from './components/presentation/landingPage';
@@ -12,13 +11,20 @@ import Register from './components/presentation/register';
 import AboutUs from './components/presentation/aboutUs';
 import Contacts from './components/presentation/contact';
 import Education from './components/presentation/education';
-import Finalize from  './components/presentation/finalizePage';
-
+import Finalize from './components/presentation/finalizePage';
+import { useState } from "react"
 function App() {
+  // let count = 0;
+  let [firstName, setFirstName] = useState("");
+  function getValue() {
+    // console.log(++count);
+    return firstName;
+  }
   return (
     <div>
+      
      <Header></Header>
-
+     
      <Switch>
           <Route path="/education" component={Education}></Route>
           <Route path="/contact" component={Contacts}></Route>
@@ -32,7 +38,15 @@ function App() {
       </Switch>
       <Footer></Footer>   
     </div>
-   
+    // <>
+    //   <div>
+    //     First Name
+    //     <input type="text" value={getValue()}
+    //       onChange={(e) => {
+    //         console.log("setting value");
+    //         setFirstName(e.currentTarget.value)
+    //       }}></input></div>
+    // </>
   );
 }
 
