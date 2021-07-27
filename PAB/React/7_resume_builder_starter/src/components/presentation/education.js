@@ -3,16 +3,17 @@ import { NavLink } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 import ResumePreview from './resumePreview'
 import { skinCodes, fieldCd } from './../../constants/typeCodes';
+import { connect } from 'react-redux';
 // import { connect } from 'react-redux'
 // import * as educationActions from '../../actions/educationActions';
 // import {bindActionCreators} from 'redux';
 import { useHistory } from "react-router-dom";
 
 function Education(props) {
+  console.log(props.contact);
   console.log('Education');
   let history = useHistory();
   const [education, setEducation] = useState(props.educationSection);
-
   const onchange = (event) => {
     var key = event.target.name;
     var val = event.target.value;
@@ -25,17 +26,15 @@ function Education(props) {
     return "";
   }
   const onSubmit = async (e) => {
-    //console.log(this.state.educationSection);
-    // if(props.educationSection!=null){
-    //     props.updateEducation(props.document.id,education);
-    // }else{
-    //     props.addEducation(props.document.id,education);
-    // }
+   
     history.push('/finalize')
   }
 
+  
+
 
   return (
+    // -> if props.contact , 
     <div className="container med education" >
       <div className="section funnel-section">
         <div className="form-card">
@@ -94,7 +93,7 @@ function Education(props) {
           {/* contact */}
           {/* education */}
           <ResumePreview
-            contactSection={props.contactSection}
+            contactSection={props.contact}
             educationSection={education}
             skinCd={props?.document?.skinCd}></ResumePreview>
         </div>
@@ -102,5 +101,12 @@ function Education(props) {
     </div>
   );
 }
-export default Education
+function mapStatetoProps(store) {
+  return {
+    document: store.document,
+    contact: store.contact
+  }
+}
+
+export default withRouter(connect(mapStatetoProps)(Education))
 

@@ -48,7 +48,6 @@ function GettingStarted(props) {
             </div>
         </div>
     );
-
 }
 function mapStatetoProps(store) {
     return store.document;

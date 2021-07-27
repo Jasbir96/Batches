@@ -2,14 +2,19 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 // import update from 'immutability-helper';
 import { fieldCd, skinCodes } from '../../constants/typeCodes';
+import * as taskActions from "../../redux/actionTypes";
+
 // import * as contactActions from '../../actions/contactActions';
 // import { bindActionCreators } from 'redux';
 // import { withRouter } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import ResumePreview from './resumePreview'
 // import { connect } from "react-redux";
-
+import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
+import { map } from "cheerio/lib/api/traversing";
 function Contact(props) {
+    console.log(props.contact)
     let history = useHistory();
     let initFormState = {
         [fieldCd.FirstName]: "",
@@ -23,8 +28,8 @@ function Contact(props) {
         [fieldCd.State]: "",
         [fieldCd.Country]: "",
         [fieldCd.ZipCode]: ""
-
     }
+    
     const [contact, setContact] = useState(initFormState);
     //    console.log("contact",contact)
     //    useEffect(() => {
@@ -40,7 +45,16 @@ function Contact(props) {
         setContact({ ...contact, [key]: val })
     }
     const onSubmit = async () => {
-
+        let keys = Object.keys(props.contact)
+        if (keys.length == 0) {
+            // set 
+            props.setContact(contact);
+        } else {
+            // update 
+            props.updateContact(contact);
+        }
+        // props update 
+        // contact save 
         history.push('/education');
     }
     const getFieldData = (key) => {
@@ -49,7 +63,18 @@ function Contact(props) {
         }
         return "";
     }
+
+    useEffect(() => {
+        // redux store contact 
+        let keys = Object.keys(props.contact)
+        if (keys.length != 0) {
+            // back 
+            setContact(props.contact);
+        }
+
+    }, []);
     return (
+
         <div className="container med contact">
             <div className="section funnel-section">
                 <div className="form-card">
@@ -126,23 +151,41 @@ function Contact(props) {
                             <NavLink to='/getting-started' className="center">Back</NavLink>
                         </div>
                     </div>
-
                 </div>
-
                 <div className="preview-card">
                     {/* contact details preview */}
                     {/* template changes  */}
-                    <ResumePreview 
-                    contactSection={contact} 
-                    skinCd={props?.document?.skinCd}
+                    <ResumePreview
+                        contactSection={contact}
+                        skinCd={props?.document?.skinCd}
                     ></ResumePreview>
                 </div>
-
             </div>
         </div>
     );
 }
-
-
-export default Contact
+function mapStatetoProps(store) {
+    return {
+        document: store.document,
+        contact: store.contact
+    }
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        setContact: (object) => {
+            dispatch({
+                type: taskActions.ADD_CONTACT,
+                payload: object
+            })
+        }
+        ,
+        updateContact: (object) => {
+            dispatch({
+                type: taskActions.UPDATE_CONTACT,
+                payload: object
+            })
+        }
+    }
+}
+export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Contact))
 
