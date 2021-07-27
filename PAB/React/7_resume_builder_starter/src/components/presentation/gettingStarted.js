@@ -21,7 +21,7 @@ function GettingStarted(props) {
             props.updateSkin(skinCd)
         }
         // use 
-        // props.history.push('/contact');
+        props.history.push('/contact');
     }
     // // 
     return (

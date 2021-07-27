@@ -32,7 +32,6 @@ function ResumePreview(props){
                      <div className={'divider'}></div>
                      <p>{rvContact(fieldCd.ProfSummary)}</p>
                 </div>
-
                 <div className={'educationSection text-upper'}>                   
                     <p className="heading bold">EDUCATIONAL DETAILS</p>
                      <div className={'divider'}></div>
@@ -47,4 +46,5 @@ function ResumePreview(props){
             </div>
         )
     }
+
 export default ResumePreview;
