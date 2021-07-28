@@ -3,16 +3,10 @@ import { NavLink } from "react-router-dom";
 // import update from 'immutability-helper';
 import { fieldCd, skinCodes } from '../../constants/typeCodes';
 import * as taskActions from "../../redux/actionTypes";
-
-// import * as contactActions from '../../actions/contactActions';
-// import { bindActionCreators } from 'redux';
-// import { withRouter } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import ResumePreview from './resumePreview'
-// import { connect } from "react-redux";
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
-import { map } from "cheerio/lib/api/traversing";
 function Contact(props) {
     console.log(props.contact)
     let history = useHistory();
@@ -29,7 +23,6 @@ function Contact(props) {
         [fieldCd.Country]: "",
         [fieldCd.ZipCode]: ""
     }
-    
     const [contact, setContact] = useState(initFormState);
     //    console.log("contact",contact)
     //    useEffect(() => {
@@ -63,7 +56,6 @@ function Contact(props) {
         }
         return "";
     }
-
     useEffect(() => {
         // redux store contact 
         let keys = Object.keys(props.contact)
@@ -71,10 +63,8 @@ function Contact(props) {
             // back 
             setContact(props.contact);
         }
-
-    }, []);
+    },[]);
     return (
-
         <div className="container med contact">
             <div className="section funnel-section">
                 <div className="form-card">
@@ -88,7 +78,6 @@ function Contact(props) {
                             </div>
                             <div className="error"></div>
                         </div>
-
                         <div className="input-group"><label>Last Name</label>
                             <div className="effect"><input type="text" name={fieldCd.LastName} value={getFieldData(fieldCd.LastName)} onChange={onchange} /><span></span>
                             </div>
@@ -99,19 +88,16 @@ function Contact(props) {
                             </div>
                             <div className="error"></div>
                         </div>
-
                         <div className="input-group"><label>Email</label>
                             <div className="effect"><input type="text" name={fieldCd.Email} value={getFieldData(fieldCd.Email)} onChange={onchange} /><span></span>
                             </div>
                             <div className="error"></div>
                         </div>
-
                         <div className="input-group"><label>Phone</label>
                             <div className="effect"><input type="text" name={fieldCd.Phone} value={getFieldData(fieldCd.Phone)} onChange={onchange} /><span></span>
                             </div>
                             <div className="error"></div>
                         </div>
-
                         <div className="input-group"><label>Profession</label>
                             <div className="effect"><input type="text" name={fieldCd.Profession} value={getFieldData(fieldCd.Profession)} onChange={onchange} /><span></span>
                             </div>
@@ -122,20 +108,16 @@ function Contact(props) {
                             </div>
                             <div className="error"></div>
                         </div>
-
                         <div className="input-group"><label>City</label>
                             <div className="effect"><input type="text" name={fieldCd.City} value={getFieldData(fieldCd.City)} onChange={onchange} /><span></span>
                             </div>
                             <div className="error"></div>
                         </div>
-
                         <div className="input-group"><label>State</label>
                             <div className="effect"><input type="text" name={fieldCd.State} value={getFieldData(fieldCd.State)} onChange={onchange} /><span></span>
                             </div>
                             <div className="error"></div>
                         </div>
-
-
                         <div className="input-group"><label>Country</label>
                             <div className="effect"><input type="text" name={fieldCd.Country} value={getFieldData(fieldCd.Country)} onChange={onchange} /><span></span>
                             </div>
@@ -188,4 +170,3 @@ function mapDispatchToProps(dispatch) {
     }
 }
 export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Contact))
-

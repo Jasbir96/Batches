@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 import ResumePreview from './resumePreview'
@@ -8,9 +8,9 @@ import { connect } from 'react-redux';
 // import * as educationActions from '../../actions/educationActions';
 // import {bindActionCreators} from 'redux';
 import { useHistory } from "react-router-dom";
-
+import * as taskActions from "../../redux/actionTypes";
 function Education(props) {
-  console.log(props.contact);
+  console.log(props.education);
   console.log('Education');
   let history = useHistory();
   const [education, setEducation] = useState(props.educationSection);
@@ -26,13 +26,24 @@ function Education(props) {
     return "";
   }
   const onSubmit = async (e) => {
-   
+    let keys = Object.keys(props.education)
+    if (keys.length == 0) {
+      // set 
+      props.setEducation(education);
+    } else {
+      // update 
+      props.updateEducation(education);
+    }
     history.push('/finalize')
   }
-
-  
-
-
+  useEffect(() => {
+    // redux store contact 
+    let keys = Object.keys(props.education)
+    if (keys.length != 0) {
+      // back 
+      setEducation(props.edcation);
+    }
+  }, []);
   return (
     // -> if props.contact , 
     <div className="container med education" >
@@ -74,7 +85,6 @@ function Education(props) {
               </div>
               <div className="error"></div>
             </div>
-
             <div className="input-group"><label>Graduation Year</label>
               <div className="effect"><input type="text" name={fieldCd.GraduationYear}
                 onChange={onchange} value={getFieldData(fieldCd.GraduationYear)} /><span></span>
@@ -104,9 +114,25 @@ function Education(props) {
 function mapStatetoProps(store) {
   return {
     document: store.document,
-    contact: store.contact
+    contact: store.contact,
+    education: store.education
   }
 }
-
-export default withRouter(connect(mapStatetoProps)(Education))
-
+function mapDispatchToProps(dispatch) {
+  return {
+    setEducation: (object) => {
+      dispatch({
+        type: taskActions.ADD_EDUCATION,
+        payload: object
+      })
+    }
+    ,
+    updateEducation: (object) => {
+      dispatch({
+        type: taskActions.UPDATE_EDUCATION,
+        payload: object
+      })
+    }
+  }
+}
+export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Education))

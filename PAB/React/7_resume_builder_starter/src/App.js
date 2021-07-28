@@ -12,42 +12,23 @@ import AboutUs from './components/presentation/aboutUs';
 import Contacts from './components/presentation/contact';
 import Education from './components/presentation/education';
 import Finalize from './components/presentation/finalizePage';
-import { useState } from "react"
 function App() {
-  // let count = 0;
-  let [firstName, setFirstName] = useState("");
-  function getValue() {
-    // console.log(++count);
-    return firstName;
-  }
   return (
     <div>
-      
-     <Header></Header>
-     
-     <Switch>
-          <Route path="/education" component={Education}></Route>
-          <Route path="/contact" component={Contacts}></Route>
-          <Route path="/getting-started" component={GettingStarted}></Route>
-          <Route path="/resume-templates" component={GettingStarted}></Route>
-          <Route path="/about-us"     component={AboutUs}></Route>
-          <Route path="/finalize" component={Finalize}></Route>
-          <Route path="/login" component={Login}></Route>
-          <Route path="/register" component={Register}></Route>             
-          <Route path="/" component={LandingPage}></Route>
+      <Header></Header>
+      <Switch>
+        <Route path="/education" component={Education}></Route>
+        <Route path="/contact" component={Contacts}></Route>
+        <Route path="/getting-started" component={GettingStarted}></Route>
+        <Route path="/resume-templates" component={GettingStarted}></Route>
+        <Route path="/about-us" component={AboutUs}></Route>
+        <Route path="/finalize" component={Finalize}></Route>
+        <Route path="/login" component={Login}></Route>
+        <Route path="/register" component={Register}></Route>
+        <Route path="/" component={LandingPage}></Route>
       </Switch>
-      <Footer></Footer>   
+      <Footer></Footer>
     </div>
-    // <>
-    //   <div>
-    //     First Name
-    //     <input type="text" value={getValue()}
-    //       onChange={(e) => {
-    //         console.log("setting value");
-    //         setFirstName(e.currentTarget.value)
-    //       }}></input></div>
-    // </>
   );
 }
-
 export default App;
