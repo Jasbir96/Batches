@@ -8,7 +8,6 @@ import { createFirestoreInstance } from 'redux-firestore';
 import { ReactReduxFirebaseProvider, } from 'react-redux-firebase';
 import firebase from 'firebase/app';
 import firebaseConfig from "./secrets";
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter >
