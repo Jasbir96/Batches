@@ -8,8 +8,9 @@ function fn() {
 function notToBeexported() {
     console.log("I don't want to be exported");
 }
-// code export 
-module.exports = {
-    varName: a,
-    fxn: fn
+
+// export either function, variable or objects 
+module.exports={
+    varName:a,
+    fxn:fn
 }

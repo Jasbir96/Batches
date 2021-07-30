@@ -31,3 +31,5 @@ switch (command) {
 
             // 2. node main.js organize "path"
             // 3. node main.js help
+
+            
