@@ -7,8 +7,10 @@ let types = {
     app: ['exe', 'dmg', 'pkg', "deb"]
 }
 function organizeFn(srcPath) {
-    if (srcPath == undefined)
+    if (srcPath == undefined) {
+
         srcPath = process.cwd();
+    }
     // console.log("organize implemneted", srcPath);
     // 1 create organized_files -> directory
     let organizedFilesPath = path.join(srcPath, "organized_files");
@@ -22,7 +24,6 @@ function organizeFn(srcPath) {
     for (let i = 0; i < allTheFiles.length; i++) {
         let fullOriginalPath = path.join(srcPath, allTheFiles[i]);
         if (fs.lstatSync(fullOriginalPath).isFile() == true) {
-
             let folderName = checkextnTellFolder(allTheFiles[i]);
             copyFileTOdest(folderName, fullOriginalPath, srcPath);
         }
@@ -34,19 +35,19 @@ function organizeFn(srcPath) {
     // // file copy  
 }
 function copyFileTOdest(folderName, fullOriginalPath, srcPath) {
-    let destFolderPath = path.join(srcPath, "organized_files",folderName);
+    let destFolderPath = path.join(srcPath, "organized_files", folderName);
     if (fs.existsSync(destFolderPath) == false) {
         fs.mkdirSync(destFolderPath);
     }
     let originalFileName = path.basename(fullOriginalPath);
     let destFilePath = path.join(destFolderPath, originalFileName)
     fs.copyFileSync(fullOriginalPath, destFilePath);
-    console.log(originalFileName, "copeid to ", folderName);
-
+    console.log(originalFileName, "copied to", folderName);
 }
 function checkextnTellFolder(fileName) {
     let extName = path.extname(fileName);
-    extName = extName.slice(1);
+
+    extName = extName.substring(1);
     for (let key in types) {
         for (let i = 0; i < types[key].length; i++) {
             if (types[key][i] == extName) {
