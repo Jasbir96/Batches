@@ -6,7 +6,6 @@ import * as authMiddleWare from "../../redux/reducers/authMiddleWare"
 // import { isLoaded } from 'react-redux-firebase'
 import { useHistory } from "react-router";
 import { connect } from "react-redux";
-import { isLoaded } from 'react-redux-firebase'
 
 
 function Login(props) {
@@ -29,7 +28,7 @@ function Login(props) {
   const onSubmit = () => {
     let obj = { email: email, password: password }
     // console.log(obj)
-    //  async function
+    //  async function  
     props.signIn(obj)
   }
   return (
@@ -47,7 +46,6 @@ function Login(props) {
                       <div className="effect"><input type="text" name="email" value={email || ''} onChange={handleEmail} /><span></span>
                       </div>
                     </div>
-
                     <div className="input-group full"><label>Password</label>
                       <div className="effect"><input type="password" name="password" value={password || ''} onChange={handlePassword} /><span></span>
                       </div>
@@ -61,17 +59,13 @@ function Login(props) {
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           }
         </>
-     
     </>
   );
 }
-
-
 const mapStateToProps = (state) => {
   //  actual user data -> auth
   // auth mine -> loading error 

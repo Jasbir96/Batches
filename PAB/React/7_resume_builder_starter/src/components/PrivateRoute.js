@@ -7,7 +7,7 @@ const PrivateRoute = (props) => {
     let auth = props.auth;
     let Component = props.component;
     // /is loaded -> get
-    // console.log(auth.uid);
+    console.log(auth.uid);
     return (<Route {...props}
             render={({ props }) => {
                 return( auth.uid ? 
