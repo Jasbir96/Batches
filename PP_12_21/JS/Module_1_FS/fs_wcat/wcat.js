@@ -79,20 +79,20 @@ if (indexOfN > -1 && indexofB > -1) {
 }
 if (finalOption != "") {
     if (finalOption == "-n") {
-        modifyContentByN(contentArr);
+        modifyContentByN();
     } else if (finalOption == "-b") {
         // implement
-        modifyContentByB(contentArr);
+        modifyContentByB();
 
     }
 }
 
-function modifyContentByN(contentArr) {
+function modifyContentByN() {
     for (let i = 1; i <= contentArr.length; i++) {
         contentArr[i] = i + " " + contentArr[i];
     }
 }
-function modifyContentByB(contentArr) {
+function modifyContentByB() {
     let count = 1;
     for (let i = 0; i < contentArr.length; i++) {
         if (contentArr[i] != "") {
