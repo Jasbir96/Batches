@@ -18,6 +18,8 @@ function Ball(props) {
 // return part of the store
 //  component prop form 
 // state 
+// use selector -> deep comparison -> slower 
+//  mapStateToProps-> high level compare -> faster
 function mapStateTOProps(store) {
     return store.Ball;
 }

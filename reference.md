@@ -22,7 +22,12 @@
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch
 * https://github.com/kriskowal/q/blob/v1/design/README.md
-* https://www.youtube.com/watch?v=fyGSyqEX2dw&t=1311s
+
+## Videos 
+* https://www.youtube.com/watch?v=Em2jqwROdZc
+* https://www.youtube.com/watch?v=4GpwM8FmVgQ  -> Promises implementation
+* https://www.youtube.com/watch?v=Em2jqwROdZc -> async await 
+
 ## Browser
 ### DOM
 * https://developer.mozilla.org/en-US/docs/Web/Events
@@ -38,7 +43,13 @@
 * Document API: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents
 * Files: * https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications#Example_Using_object_URLs_to_display_images * https://stackoverflow.com/questions/12796513/html5-canvas-to-png-file
 * Event Reference : https://developer.mozilla.org/en-US/docs/Web/Events
+
+#### Videos
+* Dom tutorial : https://www.youtube.com/playlist?list=PL4cUxeGkcC9gfoKa5la9dsdCNpuey2s-V
+* Canvas Crash Course: https://youtu.be/Yvz_axxWG4Y
 * Socketio(Ise Pakka dekhna ) : https://www.youtube.com/watch?v=8ARodQ4Wlf4
+
+
 ### Camera
 * https://developer.mozilla.org/en-US/docs/Web/API
 * https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
