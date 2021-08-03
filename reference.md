@@ -48,8 +48,6 @@
 * Dom tutorial : https://www.youtube.com/playlist?list=PL4cUxeGkcC9gfoKa5la9dsdCNpuey2s-V
 * Canvas Crash Course: https://youtu.be/Yvz_axxWG4Y
 * Socketio(Ise Pakka dekhna ) : https://www.youtube.com/watch?v=8ARodQ4Wlf4
-
-
 ### Camera
 * https://developer.mozilla.org/en-US/docs/Web/API
 * https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
