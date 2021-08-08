@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<style>
+    /* descendent combinator */
+    .c1 .c2 {
+        color: blue;
+    }
+</style>
+
+<body>
+
+    <!-- Select "I'm here. find me" and make it blue  -->
+
+    <div class="c1">
+        <p class="c2">Hello</p>
+        <span>
+            <div class="c2">I'm here. find me</div>
+        </span>
+    </div>
+
+    <span>
+        <div class="c2">Dont select me</div>
+    </span>
+</body>
+
+</html>
