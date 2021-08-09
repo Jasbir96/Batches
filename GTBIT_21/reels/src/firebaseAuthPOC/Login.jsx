@@ -11,6 +11,7 @@ function Login() {
     const loginFn = async () => {
         try {
             setLoginLoader(true);
+            // firebase 
             let res = await auth.signInWithEmailAndPassword(email, password);
             // unique id
             console.log(res.user.uid);
@@ -57,8 +58,7 @@ function Login() {
     return (
         // form will available
         loginLoder == true ? <h1>Loading....</h1>
-            : userId ?
-                <>
+            : userId ?<>
                     <h1>{userId}
                     </h1>
                     <button
@@ -84,4 +84,4 @@ function Login() {
                 </div >
     )
 }
-export default Login
+export default Login;
