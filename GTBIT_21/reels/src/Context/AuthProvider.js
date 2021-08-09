@@ -12,7 +12,10 @@ export default function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true);
     async function genericlogin(email, password) {
         // vendor function
-        return auth.signInWithEmailAndPassword(email, password)
+        return auth.signInWithEmailAndPassword(email, password);
+    }
+    async function genericSignup(email, password) {
+        return auth.createUserWithEmailAndPassword(email, password)
     }
     useEffect(() => {
         console.log("useEffect ran");
@@ -26,6 +29,7 @@ export default function AuthProvider({ children }) {
     }, [])
     const value = {
         genericlogin,
+        genericSignup,
         currentUser
     }
     return (

@@ -4,7 +4,9 @@ import Profile from "./Components/Profile";
 import Signup from "./Components/Signup";
 import AuthProvider from "./Context/AuthProvider";
 import { Switch, Route, Redirect } from "react-router-dom";
-let isAuthenticated = false;
+import { AuthContext } from "./Context/AuthProvider";
+import { useContext } from "react";
+// let isAuthenticated = false;
 function App() {
   return (
     <>
@@ -16,8 +18,8 @@ function App() {
         <Switch>
           <Route path="/login" component={Login}></Route>
           <Route path="/signup" component={Signup}></Route>
-          <Route path="/feed" component={Feed}></Route>
-          <Route path="/profile" component={Profile}></Route>
+          <ProtectedRoute path="/feed" abc={Feed}></ProtectedRoute>
+          <ProtectedRoute path="/profile" abc={Profile}></ProtectedRoute>
           <Redirect path="/" to="/feed"></Redirect>
         </Switch>
       </AuthProvider>
@@ -25,11 +27,12 @@ function App() {
   );
 }
 function ProtectedRoute(props) {
-  console.log(props);
+  let { currentUser } = useContext(AuthContext);
   let Component = props.abc;
+
   return (<Route {...props} render={(props) => {
-    console.log(isAuthenticated);
-    return (isAuthenticated == true ? <Component {...props} ></Component> : <Redirect to="/login"></Redirect>
+    // console.log(isAuthenticated);
+    return (currentUser?<Component {...props} ></Component> : <Redirect to="/login"></Redirect>
     )
   }}></Route>
 

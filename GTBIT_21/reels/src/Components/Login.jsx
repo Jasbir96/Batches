@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { AuthContext } from "../Context/AuthProvider";
 // authectication use 
 
-function Login() {
+function Login(props) {
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
     let [loginLoder, setLoginLoader] = useState(false);
@@ -15,7 +15,7 @@ function Login() {
             // firebase 
             await genericlogin(email, password);
             // unique id
-            setLoginLoader(false)
+            setLoginLoader(false);
         } catch (err) {
             setLoginLoader(false);
             setError(err.message);
@@ -24,7 +24,15 @@ function Login() {
             }, 2000);
         }
     }
-    console.log("Inside login componenet")
+    console.log("Inside login componenet");
+    // as soon as you loggedIn  You send the user to feed page   
+    useEffect(() => {
+        if (currentUser) {
+            // send to feed page
+            props.history.push('/feed');
+        }
+    });
+
     return (
         // form will available
         loginLoder == true ? <h1>Loading....</h1>
@@ -32,7 +40,6 @@ function Login() {
                 <h1>user Logged In
                 </h1>
                 <button
-
                 >Logout</button>
             </>
                 : <div>
