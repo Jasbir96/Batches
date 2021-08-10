@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { AuthContext } from "../Context/AuthProvider";
 // authectication use 
-
 function Login(props) {
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
@@ -29,36 +28,29 @@ function Login(props) {
     useEffect(() => {
         if (currentUser) {
             // send to feed page
+            // loggedIN 
             props.history.push('/feed');
         }
-    });
-
+    },);
     return (
         // form will available
-        loginLoder == true ? <h1>Loading....</h1>
-            : currentUser ? <>
-                <h1>user Logged In
-                </h1>
-                <button
-                >Logout</button>
-            </>
-                : <div>
-                    <div> Email:
-                        <input type="Email" placeholder="Your Email" value={email}
-                            onChange={function (e) {
-                                // logic
-                                setEmail(e.target.value)
-                            }} />
-                    </div>
-                    <div>Password:
-                        <input type="password" placeholder="********" value={password} onChange={(e) => {
-                            setPassword(e.target.value)
-                        }}
-                        />
-                    </div>
-                    <button onClick={loginFn}>Login</button>
-                    {error ? <h1>{error}</h1> : <></>}
-                </div >
+        loginLoder == true ? <h1>Loading....</h1> : <div>
+            <div> Email:
+                <input type="Email" placeholder="Your Email" value={email}
+                    onChange={function (e) {
+                        // logic
+                        setEmail(e.target.value)
+                    }} />
+            </div>
+            <div>Password:
+                <input type="password" placeholder="********" value={password} onChange={(e) => {
+                    setPassword(e.target.value)
+                }}
+                />
+            </div>
+            <button onClick={loginFn}>Login</button>
+            {error ? <h1>{error}</h1> : <></>}
+        </div >
     )
 }
 export default Login;

@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '../contexts/AuthProvider';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
@@ -65,7 +64,6 @@ function Feed() {
         let file = e?.target?.files[0];
         if (file != null) {
             console.log(e.target.files[0])
-
         }
         // 
         if (file.size / (1024 * 1024) < 20) {
@@ -196,7 +194,6 @@ function Feed() {
             })
         return unsub;
     }, [])
-
     return (
         pageLoading == true ? <div>Loading....</div> :
             <div>
@@ -258,6 +255,4 @@ function Video(props) {
         </>
     )
 }
-
-
-export default Feed
+export default Feed;

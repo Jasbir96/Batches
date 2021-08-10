@@ -8,8 +8,7 @@ import { AuthContext } from "./Context/AuthProvider";
 import { useContext } from "react";
 // let isAuthenticated = false;
 function App() {
-  return (
-    <>
+  return (   <>
       {/* <h1>Hello Reels</h1> */}
       {/* <Login></Login> */}
       {/* <Todo></Todo> */}
@@ -27,15 +26,16 @@ function App() {
   );
 }
 function ProtectedRoute(props) {
+  // use 
   let { currentUser } = useContext(AuthContext);
   let Component = props.abc;
-
   return (<Route {...props} render={(props) => {
     // console.log(isAuthenticated);
-    return (currentUser?<Component {...props} ></Component> : <Redirect to="/login"></Redirect>
+    return (currentUser?
+    <Component {...props} ></Component> : 
+    <Redirect to="/login"></Redirect>
     )
   }}></Route>
-
   )
 }
 export default App;

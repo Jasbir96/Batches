@@ -17,6 +17,8 @@ export default function AuthProvider({ children }) {
     async function genericSignup(email, password) {
         return auth.createUserWithEmailAndPassword(email, password)
     }
+
+    
     useEffect(() => {
         console.log("useEffect ran");
         function action(user) {
