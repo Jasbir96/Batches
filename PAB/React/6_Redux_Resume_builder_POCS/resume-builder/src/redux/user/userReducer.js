@@ -12,12 +12,12 @@ function userReducer(state = initialState, action) {
                 loading: false,
                 error: action.payload
             }
-        case "success_users":
+       case "success_users":
             return {
                 users: action.payload,
                 error: "",
                 loading: false
-            }
+            } 
         default:
             return state;
     }

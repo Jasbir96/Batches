@@ -14,13 +14,14 @@ let state ={
 // console.log(copy);
 //////////////////////////////////////////////////////////////////////////////
 
-// let copy = {...state};
-// copy.name = 'Tushar';
-// console.log(state);
-// console.log(copy);
-// copy.address.city='Delhi';
-// console.log(state);
-// console.log(copy);
+
+let copy = {...state};
+copy.name = 'Tushar';
+console.log(state);
+console.log(copy);
+copy.address.city='Delhi';
+console.log(state);
+console.log(copy);
 
 // Shallow copy for an object that is spread, 
 // the uppermost level is created at a new memory space
@@ -51,8 +52,8 @@ let state ={
 //     }
 // }
 
-let dcopy = JSON.parse(JSON.stringify(state));
+// let dcopy = JSON.parse(JSON.stringify(state));
+// // console.log(dcopy);
+// dcopy.address.country.countryName='India';
+// console.log(state);
 // console.log(dcopy);
-dcopy.address.country.countryName='India';
-console.log(state);
-console.log(dcopy);

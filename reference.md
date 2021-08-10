@@ -73,7 +73,8 @@ https://blog.logrocket.com/the-definitive-guide-to-scss/
 * https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc
 
 
-## React revision
-https://overreacted.io/why-do-we-write-super-props 
-
+# Interveiw Questions 
+* https://github.com/sudheerj/reactjs-interview-questions#what-is-redux
+https://github.com/sudheerj/ 
+* javascript-interview-questions#what-are-the-possible-ways-to-create-objects-in-javascript
 
