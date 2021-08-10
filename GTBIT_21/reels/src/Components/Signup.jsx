@@ -9,7 +9,6 @@ function Signup(props) {
     let [error, setError] = useState("");
     const [file, setFile] = useState(null);
     let { genericSignup, currentUser } = useContext(AuthContext);
-
     const handleEmail = (e) => {
         setEmail(e.target.value);
     }
@@ -24,7 +23,7 @@ function Signup(props) {
         let file = e?.target?.files[0];
         if (file != null)
             setFile(file);
-        // console.log(file)
+
     }
     useEffect(() => {
         if (currentUser) {
@@ -56,8 +55,7 @@ function Signup(props) {
             }
             async function onsucess() {
                 // /url 
-                let downloadUrl = await uploadListener
-                    .snapshot.ref.getDownloadURL();
+                let downloadUrl = await uploadListener.snapshot.ref.getDownloadURL();
                 console.log(downloadUrl);
                 // user details add firestore
                 database.users.doc(uid).set({
