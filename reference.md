@@ -73,3 +73,7 @@ https://blog.logrocket.com/the-definitive-guide-to-scss/
 * https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc
 
 
+## React revision
+https://overreacted.io/why-do-we-write-super-props 
+
+
