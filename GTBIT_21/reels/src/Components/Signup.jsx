@@ -66,10 +66,9 @@ function Signup(props) {
                     likes: [],
                     comments: []
                 })
-                //    user details firestore
+                //user details firestore
             }
         } catch (err) {
-
         }
 
     }

@@ -12,6 +12,7 @@ export const storage = firebase.storage();
 // collection>>
 export const database = {
     users: firestore.collection('users'),
-    createdAt: firestore.FieldValue
+    reels: firestore.collection('reels'),
+    createdAt: firestore.FieldValue,
 }
 export default firebase;
