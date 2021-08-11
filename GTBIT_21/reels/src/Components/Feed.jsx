@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../Context/AuthProvider'
 import firebase, { database, storage } from "../firebaseAuthPOC/firebase";
-import uuid from 'react-uuid'
-
+import uuid from 'react-uuid';
 function Feed() {
     let { currentUser } = useContext(AuthContext);
     // null-> firestore user 
@@ -44,7 +43,6 @@ function Header(props) {
         </div >
     )
 }
-
 // export const LineItem = item => <li key={uuid()}>{item}</li>
 function Upload(props) {
     const handleUpload = async (e) => {
@@ -104,9 +102,56 @@ function Upload(props) {
     )
 }
 function Reels() {
+    let [reels, setReels] = useState([]);
+    const handleMuted = function (e) {
+        e.target.muted = !e.target.muted;
+    }
+    useEffect(async () => {
+        let entries = await database.reels.orderBy("createdAt","desc").get();
+        console.log(entries)
+        let arr = [];
+        entries.forEach((entry) => {
+            let newentry = entry.data();
+            arr.push(newentry);
+        })
+        console.log("reels", arr)
+        setReels(arr);
+    }, [])
     return (
         <div>
-
+            <div className="reels"
+                style={{
+                    height: "90vh",
+                    boxShadow: "10px 5px 5px gray",
+                    overflow: "auto"
+                }}
+            >
+                {
+                    reels.map(function (videoObject,idx) {
+                        return (
+                            <div className="video-container" style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center"
+                            }}
+                                key={idx}
+                            >
+                                <video style={{
+                                    height: "80vh",
+                                    marginBottom: "3rem"
+                                }}
+                                    src={videoObject.videoUrl}
+                                    autoPlay={true}
+                                    muted={true}
+                                    controls={false}
+                                    onClick={handleMuted}
+                                ></video>
+                                {console.log(videoObject.createdAt,idx)}
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }
