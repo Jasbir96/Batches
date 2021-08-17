@@ -54,7 +54,6 @@ function Upload(props) {
                 // // 
                 // // 1.reel folder -> uid name file store
                 const uploadListener = storage.ref("/reels/" + ruid).put(file);
-
                 uploadListener.on("state_changed", onprogress, onerror, onsucess);
                 function onprogress(snapshot) {
                     let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -77,8 +76,9 @@ function Upload(props) {
                         authourDPicUrl: user.profileUrl,
                         likes: [],
                         comments: [],
-                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                    })
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        ruid: ruid
+                    });
                     console.log("reel added firestore ")
                     // 4. author -> reels array -> ruid add (profile page ) 
                     let updatedReelsIds = [...user.reels, ruid]

@@ -63,8 +63,11 @@ function Signup(props) {
                     fullName: fullName,
                     profileUrl: downloadUrl,
                     reels: [],
+                    // activity feed 
                     likes: [],
                     comments: []
+                    ,
+                    uid: uid
                 })
                 //user details firestore
             }
