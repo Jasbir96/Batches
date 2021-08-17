@@ -107,7 +107,7 @@ function Reels() {
         e.target.muted = !e.target.muted;
     }
     useEffect(async () => {
-        let entries = await database.reels.orderBy("createdAt","desc").get();
+        let entries = await database.reels.orderBy("createdAt", "desc").get();
         console.log(entries)
         let arr = [];
         entries.forEach((entry) => {
@@ -127,7 +127,7 @@ function Reels() {
                 }}
             >
                 {
-                    reels.map(function (videoObject,idx) {
+                    reels.map(function (videoObject, idx) {
                         return (
                             <div className="video-container" style={{
                                 display: "flex",
@@ -146,7 +146,9 @@ function Reels() {
                                     controls={false}
                                     onClick={handleMuted}
                                 ></video>
-                                {console.log(videoObject.createdAt,idx)}
+                                {/* comment */}
+                                {/* like */}
+                                {console.log(videoObject.createdAt, idx)}
                             </div>
                         )
                     })
