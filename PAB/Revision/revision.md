@@ -16,7 +16,7 @@ Test-1
 // null vs undefined vs undeclared
 // error handling
 // event loop and async architecture
-// setTimeout and setInterval,clearInterval
+// setTimeout and setInterval,clearInterval and realtion to enviornment 
 // callbacks
 <!-- Q6-->
 ## Class 3 
