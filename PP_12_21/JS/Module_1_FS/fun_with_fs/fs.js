@@ -26,7 +26,7 @@ let path = require("path");
 // let doesExist = fs.existsSync("fs1.js");
 // console.log("This path exist ?", doesExist);
 //  path -> belongs to a directory  or file
-// let statsOfAPath = fs.lstatSync("dir1");
+// let statsOfAPath = fs.lstatSync("dir1");`
 // console.log("stats", statsOfAPath);
 // console.log("isFile? ", statsOfAPath.isFile());
 // console.log("isDirectory? ", statsOfAPath.isDirectory());

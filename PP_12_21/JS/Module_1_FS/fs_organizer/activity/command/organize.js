@@ -8,7 +8,6 @@ let types = {
 }
 function organizeFn(srcPath) {
     if (srcPath == undefined) {
-
         srcPath = process.cwd();
     }
     // console.log("organize implemneted", srcPath);
@@ -46,7 +45,6 @@ function copyFileTOdest(folderName, fullOriginalPath, srcPath) {
 }
 function checkextnTellFolder(fileName) {
     let extName = path.extname(fileName);
-
     extName = extName.substring(1);
     for (let key in types) {
         for (let i = 0; i < types[key].length; i++) {

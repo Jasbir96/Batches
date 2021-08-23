@@ -7,7 +7,7 @@ let command = inputArr[0];
 switch (command) {
     case "tree":
         // node main.js tree "C:\Users\Ritik Singh\Desktop\Batches\PP_12_21\JS\Module_1_FS\randomFolder"   
-        treeObj.treefxn(inputArr[1]);
+        treeObj.treeFn(inputArr[1]);
         break;
         //  input -> node main.js organize "C:\Users\Ritik Singh\Desktop\Batches\PP_12_21\JS\Module_1_FS\randomFolder"
     case "organize":
