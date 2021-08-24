@@ -4,9 +4,9 @@ function promisifiedFn() {
         // setTimeout(function () {
         //     // resolve(20);
         // }, 0);
-        // resolve(10);
+        resolve(10);
         // console.log("Hello");
-        reject("Hello");
+        // resol("Hello");
     })
 }
 // data -> immediatley return ;
@@ -26,4 +26,16 @@ console.log("before");
 //         }).then(function (thenkadata) {
 //             console.log("later", thenkadata)
 //         })
+async function fn() {
+    // syntax sugar for then
+    try {
+        console.log("Inside fn");
+        let data = await promiseObject;
+        console.log("data", data);
+        
+    } catch (err) {
+        console.log(err);
+    }
+}
+fn();
 console.log("after");
