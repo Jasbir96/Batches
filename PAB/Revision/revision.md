@@ -20,7 +20,7 @@ Test-1
 // callbacks
 <!-- Q6-->
 ## Class 3 
-<!--Test -2 Q10 -->
+<!--Test-2 Q10 -->
 <!-- test-2 Q7 -->
 // promises => then catch finally resolve reject create promise,all,race
 //async await 
