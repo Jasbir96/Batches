@@ -87,7 +87,7 @@ function sortBirthDay(bowlersArr) {
         let age = obj.age;
         let ageArr = obj.age.split(" ");
         let years = ageArr[0].slice(0, ageArr[0].length - 1);
-        let days = ageArr[0].slice(0, ageArr[1].length - 1);
+        let days = ageArr[1].slice(0, ageArr[1].length - 1);
         let ageInDays = Number(years) * 365 + Number(days)
         return {
             name: name,
@@ -96,6 +96,7 @@ function sortBirthDay(bowlersArr) {
         }
     }
     let sortedArr = newArr.sort(cb);
+    // console.table(sortedArr);
     function cb(objA, objB) {
         return objA.ageInDays - objB.ageInDays;
     }
