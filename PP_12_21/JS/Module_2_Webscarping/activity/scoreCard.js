@@ -3,6 +3,7 @@ let request = require("request");
 let cheerio = require("cheerio");
 let fs = require("fs");
 let path = require("path");
+let xlsx = require("xlsx");
 function processSinglematch(url) {
 
     request(url, cb);
@@ -46,7 +47,7 @@ function dataExtracter(html) {
                 let fours = searchTool(numberofTds[5]).text();
                 let sixes = searchTool(numberofTds[6]).text();
                 // myTeamName	name	venue	date opponentTeamName	result	runs	balls	fours	sixes	sr
-   console.log(playerName, "played for", teamName, "scored", runs, "in", balls, "with ", fours, "fours and ", sixes, "sixes");
+                console.log(playerName, "played for", teamName, "scored", runs, "in", balls, "with ", fours, "fours and ", sixes, "sixes");
                 processPlayer(playerName, teamName, runs, balls, fours, sixes);
             }
         }
@@ -65,31 +66,56 @@ function processPlayer(playerName, teamName, runs, balls, fours, sixes) {
         sixes
     }
     let dirPath = path.join(__dirname, teamName);
-//    folder 
+    //    folder 
     if (fs.existsSync(dirPath) == false) {
         fs.mkdirSync(dirPath)
     }
     // playerfile 
-    let playerFilePath = path.join(dirPath, playerName + ".json");
+    let playerFilePath = path.join(dirPath, playerName + ".xlsx");
     let playerArray = [];
     if (fs.existsSync(playerFilePath) == false) {
         playerArray.push(obj);
     } else {
         // append
-        playerArray = getContent(playerFilePath);
+        playerArray = excelReader(playerFilePath, playerName);
         playerArray.push(obj);
     }
     // write in the files
-    writeContent(playerFilePath, playerArray);
+    // writeContent(playerFilePath, playerArray);
+    excelWriter(playerFilePath, playerArray, playerName);
 }
-function getContent(playerFilePath) {
-    let content = fs.readFileSync(playerFilePath);
-    return JSON.parse(content);
-}
+// function getContent(playerFilePath) {
+//     let content = fs.readFileSync(playerFilePath);
+//     return JSON.parse(content);
+// }
 function writeContent(playerFilePath, content) {
     let jsonData = JSON.stringify(content)
     fs.writeFileSync(playerFilePath, jsonData);
 }
 module.exports = {
     processSinglematch
+}
+
+function excelWriter(filePath, json, sheetName) {
+    // workbook create
+    let newWB = xlsx.utils.book_new();
+    // worksheet
+    let newWS = xlsx.utils.json_to_sheet(json);
+    xlsx.utils.book_append_sheet(newWB, newWS, sheetName);
+    // excel file create 
+    xlsx.writeFile(newWB, filePath);
+}
+// // json data -> excel format convert
+// // -> newwb , ws , sheet name
+// // filePath
+// read 
+//  workbook get
+function excelReader(filePath, sheetName) {
+    // player workbook
+    let wb = xlsx.readFile(filePath);
+    // get data from a particular sheet in that wb
+    let excelData = wb.Sheets[sheetName];
+    // sheet to json 
+    let ans = xlsx.utils.sheet_to_json(excelData);
+    return ans;
 }
