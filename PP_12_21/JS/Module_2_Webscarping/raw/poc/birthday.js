@@ -95,7 +95,6 @@ function sortBirthDay(bowlersArr) {
             age: age
         }
     }
-
     let sortedArr = newArr.sort(cb);
     function cb(objA, objB) {
         return objA.ageInDays - objB.ageInDays;
@@ -106,8 +105,6 @@ function sortBirthDay(bowlersArr) {
             name: obj.name,
             age: obj.age
         }
-
-
     }
     console.table(finalArr);
 }
