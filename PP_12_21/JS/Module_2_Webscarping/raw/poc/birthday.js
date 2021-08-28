@@ -6,6 +6,7 @@ let fs = require("fs");
 // data extract-> cheerio
 let bowlersArr = [];
 let bowlersCount = 0;
+//get listed of all the bolwers in a match in a sorted order 
 let url = "https://www.espncricinfo.com/series/ipl-2020-21-1210595/royal-challengers-bangalore-vs-sunrisers-hyderabad-eliminator-1237178/full-scorecard";
 console.log("Before");
 request(url, cb);
@@ -63,7 +64,6 @@ function newcb(error, response, html) {
         if (bowlersArr.length == bowlersCount) {
             console.table(bowlersArr);
             sortBirthDay(bowlersArr);
-
         }
     }
 }
@@ -80,7 +80,6 @@ console.log("After");
 function sortBirthDay(bowlersArr) {
     // sort
     // age -> convert
-
     let newArr = bowlersArr.map(singleFn);
     function singleFn(obj) {
         let name = obj.name;
