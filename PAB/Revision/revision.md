@@ -72,7 +72,6 @@ let and dynamic behavior
 * cascading, inheritance & specificity 
 * how css works
 * storage -> local storage,  session storage, indexeddb, cache,cookies.
-* 
 ## DOM Links 
 * csrf-> https://medium.com/@charithra/introduction-to-csrf-a329badfca49
 * http verbs- https://www.restapitutorial.com/lessons/httpmethods.html
@@ -88,7 +87,6 @@ let and dynamic behavior
 * Background- https://cssreference.io/property/background/
 Z-index- https://cssreference.io/property/z-index/
 * Canvas- https://flaviocopes.com/canvas/
-
 <!--100 questions-->
 <!-- git in-depth videos  -->
 * https://www.javascripttutorial.net/javascript-enumerable-properties/

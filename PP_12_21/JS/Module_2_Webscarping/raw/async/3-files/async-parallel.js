@@ -5,7 +5,6 @@ console.log("Before");
 fs.readFile("f1.txt", cb);
 fs.readFile("f2.txt", cb1);
 fs.readFile("f3.txt", cb2);
-
 function cb(err, content) {
     console.log("content" + content);
 }

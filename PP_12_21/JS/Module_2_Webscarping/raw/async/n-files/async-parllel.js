@@ -7,16 +7,14 @@ let files = ["f1.txt", "f2.txt", "f3.txt", "f4.txt", "f5.txt"];
 console.log("before")
 let count = 0;
 for (let i = 0; i < files.length; i++) {
-
+    // call
     fs.readFile(files[i], cb);
 }
 function cb(err, data) {
     count++;
     console.log(data.byteLength);
     console.log("content: " + data);
-    if (count ==files.length) {
-        console.log()
-    }
+    
 }
 
 console.log("after");

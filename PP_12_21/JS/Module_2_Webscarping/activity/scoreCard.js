@@ -45,7 +45,6 @@ function dataExtracter(html) {
         }
         console.log("``````````````````````````````````````")
         // fs.writeFileSync(`innning${i+1}.html`,scoreCard);
-
     }
     // players name
 }
