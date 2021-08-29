@@ -53,7 +53,9 @@ browserStartPromise
         return clickModal;
     }).then(function () {
         // page element -> cheerio 
+
         let allLisPromise = page.$$(".site-nav-li");
+       
         return allLisPromise;
     }).then(function (allElem) {
         let elementWillBeclickedPromise = allElem[6].click({ delay: 100 });
@@ -63,7 +65,6 @@ browserStartPromise
     .then(function () {
         let future2secondAfter = Date.now() + 2000;
         while (Date.now() < future2secondAfter) {
-
         }
         let listofOpenedTabsPromise = browser.pages();
         return listofOpenedTabsPromise;
