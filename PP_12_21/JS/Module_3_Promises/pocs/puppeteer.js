@@ -68,7 +68,6 @@ browserStartPromise
         let listofOpenedTabsPromise = browser.pages();
         return listofOpenedTabsPromise;
     })
-    
     .then(function (array) {
         rTab = array[array.length - 1];
         let waitforLevel1Promise = rTab.waitForSelector('h2[title="Data Structures and Algorithms in Java [Level 1 - Foundation]"]',
