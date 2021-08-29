@@ -61,10 +61,10 @@ browserStartPromise
     })
     // resources page is on next tab and next tab will take some time to open 
     .then(function () {
-        let waitPromise = page.waitFor(2000);
-        return waitPromise;
-    })
-    .then(function () {
+        let future2secondAfter = Date.now() + 2000;
+        while (Date.now() < future2secondAfter) {
+
+        }
         let listofOpenedTabsPromise = browser.pages();
         return listofOpenedTabsPromise;
     })
