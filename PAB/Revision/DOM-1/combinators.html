@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* adjacent selector */
+        div+p {
+            background-color: yellow;
+        }
+
+        /* general sibling  */
+        div~p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 2rem
+        }
+        /* .a.b, .a .b */
+    </style>
+</head>
+<body>
+    <h2>Adjacent Sibling Selector</h2>
+    <p>The + selector is used to select an element that is directly after another specific element.</p>
+    <p>The following example selects the first p element that are placed immediately after div elements:</p>
+    <p>Paragraph N. After a div.</p>
+
+    <div>
+        <p>Paragraph 1 in the div.</p>
+        <p>Paragraph 2 in the div.</p>
+    </div>
+    <p>Paragraph 3. After a div.</p>
+    <p>Paragraph 4. After a div.</p>
+    <div>
+        <p>Paragraph 5 in the div.</p>
+        <p>Paragraph 6 in the div.</p>
+    </div>
+    <p>Paragraph 7. After a div.</p>
+    <p>Paragraph 8. After a div.</p>
+
+</body>
+</html>

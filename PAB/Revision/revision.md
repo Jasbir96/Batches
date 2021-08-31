@@ -70,7 +70,7 @@ let and dynamic behavior
 <!-- test-3 Q3.1, 3.2 -->
 * css selector and combinators
 * cascading, inheritance & specificity 
-* how css works
+* how css works: https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_works
 * storage -> local storage,  session storage, indexeddb, cache,cookies.
 ## DOM Links 
 * csrf-> https://medium.com/@charithra/introduction-to-csrf-a329badfca49

@@ -14,15 +14,15 @@
 //             console.log("special", this);
 //         }
 //         // // i am calling special such that it's this is outer obj
-//         // special.call(this);
+//         special.call(this);
 //         // special();
 //         // special.call(this, "hello", "hi");
-//         special.call(abc, "hello", "hi");
+//         special.call(abc, ["hello", "hi"]);
 //         // console.log(this.name, "say's Hi");
 //     }
 // }
 // // method call -> this send
-// obj.sayHi();
+obj.sayHi();
 // // 2 you can provide method of any other object to a object 
 // obj.sayHi.call(abc);
 // function sayHi() {
