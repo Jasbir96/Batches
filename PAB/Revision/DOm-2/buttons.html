@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            height: 20rem;
+            width: 20rem;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<!--event delegation-> 
+     parent handles events of a children elements  -->
+
+<body>
+    <div class="container">
+        <button id="b1">Click Me </button>
+        <button id="b2">Click Me </button>
+        <button id="b3">Click Me </button>
+        <button id="b4">Click Me </button>
+    </div>
+    <script>
+        let buttonContainer = document.querySelector(".container");
+        buttonContainer.addEventListener("click", function (e) {
+            console.log("e occurred");
+            if (e.target == e.currentTarget) return;
+            let button = e.target.id;
+            console.log("button", button);
+        },true)
+    </script>
+</body>
+
+</html>

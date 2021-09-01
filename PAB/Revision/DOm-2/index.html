@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .grand-parent {
+        height: 10rem;
+        width: 10rem;
+        background-color: yellow;
+
+    }
+
+    .parent {
+        height: 50%;
+        width: 50%;
+        background-color: blue;
+
+    }
+
+    .children {
+        height: 70%;
+        width: 70%;
+        background-color: green;
+    }
+</style>
+
+<body>
+    <div class="grand-parent">
+        <div class="parent">
+
+            <button type="button">click ME </button>
+
+        </div>
+    </div>
+    <script>
+        let gp = document.querySelector(".grand-parent");
+        let parent = document.querySelector(".parent");
+        let button = document.querySelector("button");
+        button.addEventListener("click", function (e) {
+            // e.stopPropagation();
+            console.log("bubble");
+            // alert("Event occured on btn ")
+            // console.log(e.currentTarget)
+        }, false)
+        button.addEventListener("click", function (e) {
+            // e.stopPropagation();
+            console.log("capture");
+            // alert("Event occured on btn ")
+            // console.log(e.currentTarget)
+        }, true)
+        // gp.addEventListener("click", function (e) {
+        //     //    e.target is the element on which event occured
+        //     console.log("target", e.target);
+        //     //    e.target is the elment on which event handler is attached           
+        //     console.log("current Target", e.currentTarget)
+        //     alert("click occured for grand parent");
+        // }, true)
+        // parent.addEventListener("click", function (e) {
+        //     // e.stopPropagation();
+        //     alert("click occured for  parent");
+        //     console.log("current Target", e.currentTarget)
+        // }, true)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!-- Debouncing -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debounce</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        div {
+            border: 1px solid;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .products {
+            margin: 2rem;
+            height: 15rem;
+            width: 15rem;
+        }
+
+        .products {
+            text-align: center;
+        }
+
+        .products h3 {
+            font-size: 2rem;
+        }
+
+        button {
+            font-size: 1.5rem;
+            display: inline-block;
+            width: 8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="products">
+            <h3>Price: Rs300</h3>
+            <button data-price="300">Buy</button>
+        </div>
+        <div class="products">
+            <h3>Price: Rs100</h3>
+            <button data-price="100">Buy</button>
+        </div>
+        <div class="products">
+            <h3>Price: Rs200</h3>
+            <button data-price="200">Buy</button>
+        </div>
+        <div class="products">
+            <h3>Price: Rs400</h3>
+            <button data-price="400">Buy</button>
+        </div>
+    </div>
+    <div class="cart-total">
+        <h3>Total:</h3>
+        <p>Rs <span>0</span></p>
+    </div>
+    <script>
+        // Q- Right now if user continously clicks on a buy button 
+        // of a product it keeps adding the item. 
+        // This should not happen in a real site.
+        //  Even if in a continous go user clicks multiple times on buy button only once it should be added and after adding if user clicks again then add again but not in continous successive clicks. Write a script to just that.
+
+        // Given Code:
+        let tPrice = 0;
+        let btns = document.querySelectorAll("button");
+        let pricetext = document.querySelector("p span");
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function (e) {
+                let price = Number(e.currentTarget.getAttribute("data-price"));
+                tPrice += price;
+                pricetext.innerText = tPrice;
+            });
+        }
+
+        // Solution:
+        function debounce(fn, delay) {
+            let timeoutId;
+            return function (...args) {
+                if (timeoutId) {
+                    // reset 
+                    clearTimeout(timeoutId);
+                    console.log(1);
+                }
+                // timer start again 
+                timeoutId = setTimeout(function () {
+                    fn(...args);
+                }, delay);
+            };
+        }
+        btn.addEventListener("click", debounce(fn, 2000));
+
+
+
+      // let tPrice = 0;
+      // let btns = document.querySelectorAll("button");
+      // let pricetext = document.querySelector("p span");
+      // for (let i = 0; i < btns.length; i++) {
+      //   btns[i].addEventListener(
+      //     "click",
+      //     debounce(function (e) {
+      //       let price = Number(btns[i].getAttribute("data-price"));
+      //       tPrice += price;
+      //       pricetext.innerText = tPrice;
+      //     }, 500)
+      //   );
+      // }
+    </script>
+</body>
+
+</html>

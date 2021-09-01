@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>throttle</title>
+</head>
+
+<body>
+    <button>click</button>
+    <script>
+        // Q- On click of button it should console log "clicked", 
+        // We have used throttling to avoid continous successive clicks. 
+        // But the very first click which should work instantly is not working.
+        //  Find the bug and fix it.
+        let btn = document.querySelector("button");
+        function fn(e) {
+            console.log("clicked");
+        }
+        btn.addEventListener("click", throttle(fn, 2000));
+
+        function throttle(fn, delay) {
+            //Solution: make last = 0
+            let last = 0;
+            return function (e) {
+                let now = Date.now();
+                if (now - last < delay) return;
+                fn(e);
+                last = now;
+            };
+        }
+    </script>
+</body>
+
+</html>
