@@ -1,0 +1,1 @@
+let loginLink = "https://www.hackerrank.com/auth/login";

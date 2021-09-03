@@ -1,26 +1,22 @@
 module.exports = {
     answers: [
         `#include <bits/stdc++.h>
-using namespace std;
-
-
-int main() {
-    int n;
-    cin>>n;
-    int freq[101] = {};
-    for(int i = 0; i < n; i++) {
-        int c;
-        cin >> c;
-        freq[c]++;
-    }
-
-    int res = 0;
-    for(int i = 0; i <= 100; i++){
-         res += freq[i] / 2;
-     }
-    cout << res << endl;
-    return 0;
-}
+        using namespace std;
+        
+        int main(){
+            int number_of_elements;
+            cin >> number_of_elements;
+            vector <int> array(number_of_elements);
+            int sum_of_array = 0;
+            
+            for(int i = 0; i < number_of_elements; i++){
+               cin >> array[i];
+               sum_of_array += array[i];
+            }
+            
+            cout << sum_of_array;
+            return 0;
+        }
 `
     ]
 }
