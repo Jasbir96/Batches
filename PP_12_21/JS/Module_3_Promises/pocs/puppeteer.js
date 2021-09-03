@@ -36,34 +36,22 @@ browserStartPromise
         // next page 
         //wait for element to be visible on the page-> whenver you go to a new page 
         console.log("wait for element to be visible");
-        let waitForElementPromise = page.waitForSelector(".LC20lb.DKV0Md", { visible: true });
+        let waitForElementPromise = waitAndClick(".LC20lb.DKV0Md", page);
         return waitForElementPromise;
-    }).then(function () {
-        // mouse function 
-        let elemClickPromise = page.click(".LC20lb.DKV0Md");
-        return elemClickPromise;
     })
-    // .then(function () {
-    //     // 30 seconds 
-    //     let waitForModalPromise = page.waitForSelector("#lp_modal_close", { visible: true });
-    //     return waitForModalPromise;
-    // })
-    // .then(function () {
-    //     let clickModal = page.click("#lp_modal_close", { delay: 100 });
-    //     return clickModal;
-    // })
     .then(function () {
-        let wcPromise = waitAndClick("#lp_modal_close", page);
+        let wcPromise = handleIfNotPresent("#lp_modal_close", page);
+        console.log("wcPromise", wcPromise);
         return wcPromise;
     })
     .then(function () {
         // page element -> cheerio 
-
         let allLisPromise = page.$$(".site-nav-li");
-
         return allLisPromise;
-    }).then(function (allElem) {
-        let elementWillBeclickedPromise = allElem[6].click({ delay: 100 });
+    })
+    .then(function (allElem) {
+        // Nados
+        let elementWillBeclickedPromise = allElem[7].click({ delay: 100 });
         return elementWillBeclickedPromise;
     })
     // resources page is on next tab and next tab will take some time to open 
@@ -76,34 +64,43 @@ browserStartPromise
     })
     .then(function (array) {
         rTab = array[array.length - 1];
-        let waitforLevel1Promise = rTab.waitForSelector('h2[title="Data Structures and Algorithms in Java [Level 1 - Foundation]"]',
-            { visible: true });
+        let waitforLevel1Promise = waitAndClick('h2[title="Data Structures and Algorithms in Java [Level 1 - Foundation]"]', rTab);
         return waitforLevel1Promise;
-    }).then(function () {
-        let clickLevel1Promise = rTab.click('h2[title="Data Structures and Algorithms in Java [Level 1 - Foundation]"]');
-        return clickLevel1Promise;
     }).then(function () {
         console.log("level 1 will be opened");
     })
-// user defined promise based function -> it will return  a promise that will be 
+// user defined promise based function -> it will return  
+// a promise that will be 
 // resolved when the user has waited for element to appear as well as we have clicked on it
 function waitAndClick(selector, cPage) {
     return new Promise(function (resolve, reject) {
-        let waitForModalPromise =
-            cPage.waitForSelector(selector, { visible: true });
-        waitForModalPromise.then(function () {
-            let clickModal = cPage.click(selector, { delay: 100 });
-            return clickModal;
-        }).then(function () {
-            resolve();
-        }).catch(function (err) {
-            reject(err)
-        })
+        let waitForModalPromise = cPage.waitForSelector(selector, { visible: true });
+        waitForModalPromise
+            .then(function () {
+                let clickModal =
+                    cPage.click(selector, { delay: 100 });
+                return clickModal;
+            }).then(function () {
+                resolve();
+            }).catch(function (err) {
+                reject(err)
+            })
     }
     )
 }
-
-
+// promise -> banner is present or not  -> the code will run 
+function handleIfNotPresent(selector, cPage) {
+    return new Promise(function (resolve, reject) {
+        // wait clickModal
+        let waitAndClickPromise = waitAndClick(selector, cPage);
+        waitAndClickPromise.then(function () {
+            resolve();
+        })
+        waitAndClickPromise.catch(function (err) {
+            resolve();
+        })
+    })
+}
 
 
 
