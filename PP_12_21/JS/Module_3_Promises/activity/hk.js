@@ -40,6 +40,13 @@ browserStartPromise
     }).then(function () {
         let getToWarmUp = waitAndClick("input[value='warmup']", page);
         return getToWarmUp;
+    }).then(function () {
+        let waitFor3SecondsPromise = page.waitFor(3000);
+        return waitFor3SecondsPromise;
+    }).then(function () {
+        let challengeClickPromise = page.click(".challenge-submit-btn", { delay: 100 });
+        return challengeClickPromise;``
+
     })
 function waitAndClick(selector, cPage) {
     return new Promise(function (resolve, reject) {
