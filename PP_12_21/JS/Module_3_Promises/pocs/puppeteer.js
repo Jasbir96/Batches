@@ -23,7 +23,8 @@ browserStartPromise
         console.log("new tab opened ")
         let gPageOpenPromise = newTab.goto("https://www.google.com/");
         return gPageOpenPromise;
-    }).then(function () {
+    })
+    .then(function () {
         console.log("Google home page opened");
         // keyboard -> data entry 
         let waitforTypingPromise = page.type("input[title='Search']", "pepcoding");
