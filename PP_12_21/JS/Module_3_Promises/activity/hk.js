@@ -1,6 +1,7 @@
+'use strict';
 const loginLink = "https://www.hackerrank.com/auth/login";
 const emailpassObj = require("./secrets");
-const { answers } = require("./codes");
+const codesObj = require("./codes");
 const puppeteer = require("puppeteer")
 // creates headless browser
 let browserStartPromise = puppeteer.launch({
@@ -97,7 +98,7 @@ function questionSolver(page, question, answer) {
             .then(function () {
                 return waitAndClick(".checkbox-input", page);
             }).then(function () {
-     return page.waitForSelector("textarea.custominput", { visible: true });
+                return page.waitForSelector("textarea.custominput", { visible: true });
             })
             .then(function () {
                 return page.type("textarea.custominput", answer, { delay: 10 });
