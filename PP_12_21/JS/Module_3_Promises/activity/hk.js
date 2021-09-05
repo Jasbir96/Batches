@@ -80,7 +80,6 @@ function waitAndClick(selector, cPage) {
 function questionSolver(page, question, answer) {
     return new Promise(function (resolve, reject) {
         let qWillBeCLickedPromise = question.click();
-
         qWillBeCLickedPromise
             //click
             // code type 
