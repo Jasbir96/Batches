@@ -5,18 +5,18 @@ let fs = require("fs");
 function myPromisiedFsReader(filePath) {
     // using this existing function
     return new Promise(function cb(resolve, reject) {
-        console.log("8")
+        // console.log("8")
         fs.readFile(filePath, function cb(err, data) {
-            console.log("10")
+            // console.log("10")
             if (err) {
                 reject(err);
             }
             else {
-                console.log("15")
+                // console.log("15")
                 resolve(data)
             }
         })
-        console.log("9");
+        // console.log("9");
     })
 
 }
@@ -33,14 +33,14 @@ console.log("24", fileReadPromise);
 function scb(data) {
     console.log("hello", data);
     // return new Error("This is a error");
-    return "Hello value returend from scb"
+return undefined;
 }
-console.log("33");
+// console.log("33");
 // let thenNpromise = fileReadPromise.then(scb)
 fileReadPromise.then(scb).then(scb2);
 function scb2(data) {
     console.log("42", data);
-}
+}``
 // setTimeout(function () {
 //     console.log("41", thenNpromise)
 // }, 2000);
@@ -49,6 +49,6 @@ function scb2(data) {
 //     console.log("hello", err);
 // }
 // fileReadPromise.catch(fcb);
-console.log("35")
+// console.log("35")
 
 console.log("after");

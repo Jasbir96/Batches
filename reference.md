@@ -21,7 +21,10 @@
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch
+
+### Dive Deeper with Promises
 * https://github.com/kriskowal/q/blob/v1/design/README.md
+* https://www.promisejs.org/implementing/
 
 ## Videos 
 * https://www.youtube.com/watch?v=Em2jqwROdZc

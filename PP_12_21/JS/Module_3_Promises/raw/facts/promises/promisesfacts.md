@@ -18,4 +18,4 @@ determined by the function that returns the promise
                         nothing=> undefined 
                         Error-> error
                         Promise-> promise
-                        
+* why are promises are actual better then callbacks??                        
