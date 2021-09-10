@@ -2,7 +2,6 @@ module.exports = {
     answers: [
         `#include <bits/stdc++.h>
         using namespace std;
-        
         int main(){
             int number_of_elements;
             cin >> number_of_elements;
@@ -87,7 +86,7 @@ int main()
         }
     }
 
-    fout << "\n";
+    fout << ""\n"";
 
     fout.close();
 

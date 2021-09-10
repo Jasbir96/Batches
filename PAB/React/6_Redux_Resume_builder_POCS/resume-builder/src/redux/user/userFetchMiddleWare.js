@@ -3,9 +3,7 @@
 // data
 export async function userFetchMiddleWare(dispatch) {
     try {
-        let resp = await 
-        fetch
-("https://jsonplaceholder.typicode.com/users");
+        let resp = await fetch("https://jsonplaceholder.typicode.com/users");
         let users = await resp.json();
         dispatch({
             type: "success_users",
