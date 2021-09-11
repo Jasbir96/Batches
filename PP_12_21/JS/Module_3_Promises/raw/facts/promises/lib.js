@@ -17,7 +17,6 @@ function promisifiedAnalyzedata(product) {
             reject();
         }, 2000);
     })
-
 }
 module.exports = {
     analyzedata: analyzedata,
