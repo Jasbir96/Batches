@@ -1,7 +1,6 @@
 let fs = require("fs");
 // paralley 
 let files = ["f1.txt", "f2.txt", "f3.txt", "f4.txt", "f5.txt"];
-
 console.log("before");
 // function serialReader(i) {
 //     if (i == files.length) {
@@ -13,7 +12,6 @@ console.log("before");
 //     });
 // }
 // serialReader(0);
-
 let intitalPromise = fs.promises.readFile(files[0]);
 for (let i = 1; i < files.length; i++) {
     intitalPromise = intitalPromise.then(function cb(data) {
