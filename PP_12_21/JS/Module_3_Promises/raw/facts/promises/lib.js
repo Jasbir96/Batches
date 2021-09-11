@@ -4,18 +4,17 @@ function analyzedata(product, cb) {
         // dfdvjdfbvjhdf
         cb();
         cb();
-                
+        cb();
     }, 2000);
 }
-
-
 function promisifiedAnalyzedata(product) {
     return new Promise(function (resolve, reject) {
         setTimeout(function () {
             // kdjdhvbjdhvbbv
             // dfdvjdfbvjhdf
             resolve();
-           
+            resolve();
+            reject();
         }, 2000);
     })
 

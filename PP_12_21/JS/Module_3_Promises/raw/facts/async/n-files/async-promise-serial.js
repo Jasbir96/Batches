@@ -21,6 +21,5 @@ for (let i = 1; i < files.length; i++) {
 }
 intitalPromise.then(function cb(data) {
     console.log("data" + data);
-
 })
 console.log("after");

@@ -20,4 +20,6 @@ determined by the function that returns the promise
                         nothing=> undefined 
                         Error-> error
                         Promise-> promise
-* why are promises are actual better then callbacks??                        
+* why are promises are actual better then callbacks
+* promise cb priority is more then normal async fns
+* promise can be resolved /rejected once in a life time                         
