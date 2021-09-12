@@ -65,11 +65,12 @@ let page;
         elem.scrollIntoView();
     }, lastVideo);
     // time 
+    //    await  page.waitFor(3000);
     let timeList = await page.$$("span[id='text']");
     console.log(timeList.length);
 
     let videosArr = [];
-    for (let i = 0; i < timeList.length; i++) {
+    for (let i = 0; i < videoNameElementList.length; i++) {
         let timeNTitleObj = await page.evaluate(getTimeAndTitle, timeList[i], videoNameElementList[i]);
         videosArr.push(timeNTitleObj);
     }
@@ -92,15 +93,13 @@ const waitTillHTMLRendered = async (page, timeout = 10000) => {
     let checkCounts = 1;
     let countStableSizeIterations = 0;
     const minStableSizeIterations = 3;
-
     while (checkCounts++ <= maxChecks) {
+        // html
         let html = await page.content();
         let currentHTMLSize = html.length;
-
+        // body part
         let bodyHTMLSize = await page.evaluate(() => document.body.innerHTML.length);
-
         console.log('last: ', lastHTMLSize, ' <> curr: ', currentHTMLSize, " body html size: ", bodyHTMLSize);
-
         if (lastHTMLSize != 0 && currentHTMLSize == lastHTMLSize)
             countStableSizeIterations++;
         else
@@ -110,7 +109,6 @@ const waitTillHTMLRendered = async (page, timeout = 10000) => {
             console.log("Page rendered fully..");
             break;
         }
-
         lastHTMLSize = currentHTMLSize;
         await page.waitFor(checkDurationMsecs);
     }
