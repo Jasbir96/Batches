@@ -83,8 +83,6 @@ function getTimeAndTitle(element1, element2) {
         title: element2.textContent.trim()
     }
 }
-
-
 // 
 const waitTillHTMLRendered = async (page, timeout = 10000) => {
     const checkDurationMsecs = 1000;
@@ -98,8 +96,7 @@ const waitTillHTMLRendered = async (page, timeout = 10000) => {
         let html = await page.content();
         let currentHTMLSize = html.length;
         // body part
-        let bodyHTMLSize = await page.evaluate(() => document.body.innerHTML.length);
-        console.log('last: ', lastHTMLSize, ' <> curr: ', currentHTMLSize, " body html size: ", bodyHTMLSize);
+        console.log('last: ', lastHTMLSize, ' <> curr: ', currentHTMLSize);
         if (lastHTMLSize != 0 && currentHTMLSize == lastHTMLSize)
             countStableSizeIterations++;
         else
