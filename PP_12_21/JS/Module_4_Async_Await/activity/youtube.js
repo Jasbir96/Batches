@@ -82,6 +82,9 @@ function getTimeAndTitle(element1, element2) {
         title: element2.textContent.trim()
     }
 }
+
+
+// 
 const waitTillHTMLRendered = async (page, timeout = 10000) => {
     const checkDurationMsecs = 1000;
     const maxChecks = timeout / checkDurationMsecs;
