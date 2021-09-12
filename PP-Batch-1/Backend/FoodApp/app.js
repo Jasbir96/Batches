@@ -1,6 +1,7 @@
 // npm init -y
 // npm i express
-// npm i nodemon 
+// npm i nodemon -g 
+
 const express = require("express");
 // Server: // route  -> request -> response/file 
 // File system// path -> interact/type -> file /folder
@@ -44,9 +45,10 @@ app.delete("/user", function (req, res) {
     user = {}
     res.status(200).json(user);
 })
+
 //template routes 
 app.get("/user/:id", function (req, res) {
-    console.log(req.params.id);
+    console.log(req.params);
     res.status(200).send("Hello");
 })
 //localhost:8080 ??
