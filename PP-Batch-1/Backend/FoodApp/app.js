@@ -7,17 +7,15 @@ const express = require("express");
 // server init
 const app = express();
 // post accept -> folder designate  
-
+app.use(express.static('public'))
+app.use(express.json());
 // function -> route  path
 // frontend -> req -> /
-
 // getting data from server
 // giving data to server
 // crud app 
 // create
 // .form fill
-app.use(express.static('public'))
-app.use(express.json());
 const userRouter = express.Router();
 const authRouter = express.Router();
 // /api/user/:id
@@ -29,13 +27,21 @@ userRouter
     .post(createUser)
     .patch(updateUser)
     .delete(deletUser);
+    
 userRouter
     .route("/:id")
     .get(getUserById);
 authRouter
-    .post("/signup", signupUser)
+    .post("/signup", setCreatedAt, signupUser)
     .post("/login", loginUser);
-// database 
+// middleware 
+function setCreatedAt(req, res, next) {
+    req.body.createdAt = new Date().toISOString();
+    // return res.json({
+    //     text: "Bye bye "
+    // })
+    next();
+}
 let user = [];
 function signupUser(req, res) {
     //email,user name ,password
@@ -74,6 +80,7 @@ function getUserById(req, res) {
     console.log(req.params);
     res.status(200).send("Hello");
 }
+// database 
 
 function loginUser(req, res) {
 

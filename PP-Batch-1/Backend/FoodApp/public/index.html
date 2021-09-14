@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
     <form>
         <label>Email</label>
@@ -33,12 +31,9 @@ crossorigin="anonymous">
     let password = document.querySelector("input[type='password']").value;
             //name
     let name = document.querySelector("input[type='text']").value;
-    let resp = await axios.post("/api/auth/signup", {
-                email, password, name
-            })
+    let resp = await axios.post("/api/auth/signup", {email, password, name})
             console.log(resp.data);
         })
-
     </script>
 </body>
 
