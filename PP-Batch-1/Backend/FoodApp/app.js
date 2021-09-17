@@ -27,7 +27,7 @@ userRouter
     .post(createUser)
     .patch(updateUser)
     .delete(deletUser);
-    
+
 userRouter
     .route("/:id")
     .get(getUserById);
@@ -42,6 +42,8 @@ function setCreatedAt(req, res, next) {
     // })
     next();
 }
+// let flag = true;
+// authRouter.get("/private",fn1,fn2)
 let user = [];
 function signupUser(req, res) {
     //email,user name ,password
