@@ -9,7 +9,7 @@ const app = express();
 // post accept -> folder designate  
 app.use(express.static('public'))
 app.use(express.json());
-// function -> route  path
+// function -> route  path\
 // frontend -> req -> /
 // getting data from server
 // giving data to server
@@ -36,6 +36,14 @@ authRouter
     .post("/login", loginUser);
 // middleware 
 function setCreatedAt(req, res, next) {
+    // {}
+    let body = req.body;
+    let length = Object.keys(body).length;
+    if (length == 0) {
+        return res.status(400).json({
+            message: "can't create user when body i empty "
+        })
+    }
     req.body.createdAt = new Date().toISOString();
     // return res.json({
     //     text: "Bye bye "
@@ -44,18 +52,30 @@ function setCreatedAt(req, res, next) {
 }
 // let flag = true;
 // authRouter.get("/private",fn1,fn2)
-let user = [];
-function signupUser(req, res) {
+// let user = [];
+const userModel = require("./models/userModel");
+async function signupUser(req, res) {
     //email,user name ,password
-    let { email, password, name } = req.body;
-    console.log("user", req.body);
-    user.push({
-        email, name, password
-    })
-    res.status(200).json({
-        message: "user created",
-        createdUser: req.body
-    })
+    try {
+        let userObj = req.body;
+        console.log("userObj", req.body);
+        let user = await userModel.create(userObj);
+        console.log("user", user);
+        // put database 
+        // user.push({
+        //     email, name, password
+        // })
+        res.status(200).json({
+            message: "user created",
+            createdUser: user
+        })
+    } catch (err) {
+        res.status(500).json({
+            message: err.message
+        })
+
+    }
+
 }
 function createUser(req, res) {
     console.log("req.data", req.body);
@@ -85,7 +105,9 @@ function getUserById(req, res) {
 // database 
 
 function loginUser(req, res) {
-
+// email ,password -> userModel -> 
+// email??
+// email -> user get -> password
 }
 
 // mounting in express 
@@ -103,6 +125,6 @@ function loginUser(req, res) {
 
 //localhost:8080 ??
 app.listen(8080, function () {
-    console.log("server started");
+    console.log("server started at http://localhost:8080");
 })
 // / port, ip,localhost
