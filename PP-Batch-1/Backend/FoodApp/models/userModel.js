@@ -3,7 +3,9 @@ const emailValidator = require("email-validator")
 let { DB_LINK } = require("../secrets");
 // link
 // connnection form 
-mongoose.connect(DB_LINK).then(function (db) {
+mongoose.connect(DB_LINK,{useNewUrlParser: true,
+    
+    useUnifiedTopology: true,}).then(function (db) {
     // console.log(db);
     console.log("connected to db")
 }).catch(function (err) {
@@ -26,7 +28,6 @@ const userSchema = new mongoose.Schema({
     age: {
         type: Number
     },
-
     password: {
         type: String,
         minlength: 7,

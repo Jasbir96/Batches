@@ -23,14 +23,15 @@ app.use('/api/user', userRouter);
 app.use("/api/auth", authRouter);
 userRouter
     .route("/")
-    .get(getUser)
-    .post(createUser)
-    .patch(updateUser)
-    .delete(deletUser);
+    .get(getUsers)
+
+
 
 userRouter
     .route("/:id")
-    .get(getUserById);
+    .get(getUserById)
+    .patch(updateUser)
+    .delete(deleteUser)
 authRouter
     .post("/signup", setCreatedAt, signupUser)
     .post("/login", loginUser);
@@ -77,16 +78,34 @@ async function signupUser(req, res) {
     }
 
 }
-function createUser(req, res) {
-    console.log("req.data", req.body);
-    user = req.body;
-    res.status(200).send("data recieved and user added ");
-}
-function getUser(req, res) {
-    console.log("users")
-    res.json(user);
+// function createUser(req, res) {
+//     console.log("req.data", req.body);
+//     user = req.body;
+//     res.status(200).send("data recieved and user added ");
+// }
+// find
+async function getUsers(req, res) {
+    try {
+        let users = await userModel.find();
+        res.status(200).json({
+            "message": "list of all the users",
+            users: users
+        })
+    } catch (err) {
+        res.status(500).json({
+            error: err.message,
+            "message": "can't get users"
+        })
+
+    }
+
     // for sending key value pair
 }
+
+// ****************************************************
+
+// Homework 
+// findBYIdAndUpdate ->
 function updateUser(req, res) {
     let obj = req.body;
     for (let key in obj) {
@@ -94,21 +113,28 @@ function updateUser(req, res) {
     }
     res.status(200).json(user);
 }
-function deletUser(req, res) {
+// findByIdnDelete
+function deleteUser(req, res) {
     user = {}
     res.status(200).json(user);
 }
+// id
 function getUserById(req, res) {
     console.log(req.params);
     res.status(200).send("Hello");
 }
 // database 
-
 function loginUser(req, res) {
-// email ,password -> userModel -> 
-// email??
-// email -> user get -> password
+    // email ,password -> userModel -> 
+    // email??
+    // email -> user get -> password
+    // findOne 
 }
+// planModel
+// create , updatePlan ,deletePlan getAllPlans
+// ****************************************************
+
+
 
 // mounting in express 
 

@@ -81,3 +81,8 @@ https://blog.logrocket.com/the-definitive-guide-to-scss/
 https://github.com/sudheerj/ 
 * javascript-interview-questions#what-are-the-possible-ways-to-create-objects-in-javascript
 
+
+
+# Backend
+* https://mongoosejs.com/docs/queries.html
+
