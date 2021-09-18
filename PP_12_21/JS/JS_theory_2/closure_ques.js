@@ -42,7 +42,6 @@
 // arrFno[0]();
 // arrFno[1]();
 // arrFno[2]();
-
 function outer() {
     let arrFn = [];
     // local -> 3
