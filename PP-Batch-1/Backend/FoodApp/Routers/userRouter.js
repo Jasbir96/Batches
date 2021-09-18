@@ -1,6 +1,7 @@
 const userModel = require("../models/userModel");
 const express = require('express');
 const userRouter = express.Router();
+const protectRoute = require("./authHelper");
 userRouter
     .route("/:id")
     .get(getUserById)
@@ -9,7 +10,7 @@ userRouter
 // ****************************************************
 userRouter
     .route("/")
-    .get(protectRoute, getUsers)
+    .get(protectRoute, getUsers);
 // Homework 
 // findBYIdAndUpdate ->
 async function getUsers(req, res) {
@@ -46,20 +47,5 @@ function getUserById(req, res) {
     console.log(req.params);
     res.status(200).send("Hello");
 }
-let flag = true;
-function protectRoute(req, res, next) {
-    try {
-        if (flag) {
-            next();
-        } else {
-            res.status(401).json({
-                message: "You are not allowed"
-            })
-        }
-    } catch (err) {
-        res.status(500).json({
-            message: "server error"
-        })
-    }
-}
+
 module.exports = userRouter;

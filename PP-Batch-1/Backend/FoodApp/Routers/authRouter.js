@@ -1,6 +1,9 @@
 const userModel = require("../models/userModel");
 const express = require('express');
+const jwt = require('jsonwebtoken');
+const { JWT_KEY } = require("../secrets");
 const authRouter = express.Router();
+
 authRouter
     .post("/signup", setCreatedAt, signupUser)
     .post("/login", loginUser)
@@ -61,16 +64,30 @@ async function loginUser(req, res) {
     try {
         if (req.body.email) {
             let user = await userModel.findOne({ "email": req.body.email })
-            if (user.email == req.body.email && user.password == req.body.password) {
-                return res.status(200).json({
-                    user,
-                    "message": "user logged in "
-                })
+            if (user) {
+                if (user.password == req.body.password) {
+                    // header 
+                    let payload = user["_id"];
+                    // console.log(JWT_KEY)
+                    let token = jwt.sign({ id: payload }, JWT_KEY);
+                    res.cookie("jwt", token, {
+                        httpOnly: true,
+                    })
+                    return res.status(200).json({
+                        user,
+                        "message": "user logged in "
+                    })
+                } else {
+                    return res.status(401).json({
+                        "message": "Email or password is wrong"
+                    })
+                }
             } else {
                 return res.status(401).json({
                     "message": "Email or password is wrong"
                 })
             }
+
         } else {
             return res.status(403).json({
                 message: "Email is not present"
@@ -78,8 +95,10 @@ async function loginUser(req, res) {
         }
 
     } catch (err) {
+        console.log(err);
         res.status(500).json({
             message: err.message
+
         })
 
     }
@@ -87,6 +106,8 @@ async function loginUser(req, res) {
     // email -> user get -> password
     // findOne 
 }
+let flag = true;
+
 // forget
 // reset
 // protect Route 

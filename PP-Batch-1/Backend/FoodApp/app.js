@@ -6,9 +6,11 @@ const express = require("express");
 // File system// path -> interact/type -> file /folder
 // server init
 const app = express();
+const cookieParser = require("cookie-parser");
 // post accept -> folder designate  
 app.use(express.static('public'))
 app.use(express.json());
+app.use(cookieParser());
 // function -> route  path\
 // frontend -> req -> /
 // getting data from server
