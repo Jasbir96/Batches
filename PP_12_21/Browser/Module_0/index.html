@@ -1,0 +1,39 @@
+!
+<!DOCTYPE html>
+<html lang="en">
+<!-- SEO -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- document object model -->
+    <h1>Hello DOM</h1>
+    <!-- js -->
+    <script>
+        // Html,css 
+        // // Create 
+        // browser -> browser
+        let p = document.createElement("p");
+        p.textContent = "Thank you for buying";
+        // // Read
+        let body = document.querySelector("body");
+        body.appendChild(p);
+        // // Update
+        setTimeout(function () {
+            p.textContent = "Come again";
+        },1000)
+        // // Delete
+        setTimeout(function () {
+            p.remove();
+        }, 2000)
+        p.style.backgroundColor = "red";
+        // // add css using dom 
+    </script>
+</body>
+
+</html>

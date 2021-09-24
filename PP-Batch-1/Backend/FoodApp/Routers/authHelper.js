@@ -1,14 +1,12 @@
 
 const jwt = require("jsonwebtoken");
 const { JWT_KEY } = require("../secrets");
-
 function protectRoute(req, res, next) {
     console.log(req.cookies)
     try {
         if (req.cookies.jwt) {
             let isVerified = jwt.verify(req.cookies.jwt, JWT_KEY);
             if (isVerified) {
-
                 next();
             }
         } else {

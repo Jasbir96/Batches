@@ -1,5 +1,5 @@
 // polyfill
-function mySetInterval(fn, timeout) {
+function mySetInterval(fn, interval) {
 //   shall your function run
     let clearObj = {
         shallIRun: true
@@ -10,11 +10,11 @@ function mySetInterval(fn, timeout) {
         fn();
         //  2nd call -> 2sec
         // 3rd call -> 2sec finish
-        setTimeout(larger, timeout);
+        setTimeout(larger, interval);
     }
     // 1st call-> 2sec
     if (clearObj.shallIRun == true) {
-        setTimeout(larger, timeout);
+        setTimeout(larger, interval);
 
     }
     return clearObj;
