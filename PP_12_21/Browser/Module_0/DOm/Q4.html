@@ -106,15 +106,13 @@
         <h3 class="heading">Example-10</h3>
         <p class="price" data-category="comedy">Rs 200</p>
     </div>
-
     <script>
         // Q Make the filter work
         let select = document.querySelector("select");
         select.addEventListener("change", function () {
-            // value -> present -> input.value
+            // value->present->input.value
             //    hide something
             let category = select.value;
-            
             let movieLists = document.querySelectorAll(".movies");
             if (category == "none") {
                 // show all
