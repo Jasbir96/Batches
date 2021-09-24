@@ -21,10 +21,14 @@
         <li>10</li>
     </ul>
     <script>
-      // Q fix the list by making it go from 1 to 10. Use only 
-    //   all matching element
-    //   querySelectorAll, createElement and insertBefore
-
+        // Q fix the list by making it go from 1 to 10. Use only 
+        //   all matching element
+        //   querySelectorAll, createElement and insertBefore
+        let lis = document.querySelectorAll("li");
+        let ul = document.querySelector("ul");
+        let newLi = document.createElement("li");
+        newLi.textContent = 7;
+        ul.insertBefore(newLi, lis[6]);
     </script>
 </body>
 
