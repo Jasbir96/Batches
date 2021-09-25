@@ -8,6 +8,7 @@ authRouter
     .post("/signup", setCreatedAt, signupUser)
     .post("/login", loginUser)
     .post("/forgetPassword", forgetPassword)
+    .post("/resetPassword", resetPassword)
 
 // middleware 
 function setCreatedAt(req, res, next) {
@@ -117,7 +118,8 @@ async function forgetPassword(req, res) {
             await userModel.updateOne({ email }, { token: seq });
             // email send to
             // nodemailer -> table tag through
-            //  service -> gmail 
+            //  service -> gmail
+
             let user = await userModel.findOne({ email });
             console.log(user);
             if (user?.token) {
@@ -142,7 +144,38 @@ async function forgetPassword(req, res) {
         })
     }
 }
+async function resetPassword(req, res) {
+    let { token, password, confirmPassword } = req.body;
+    try {
+        if (token) {
+            // 
+            // findOne
+            let user = await userModel.findOne({ token });
+            if (user) {
+                // user.resetHandler(password, confirmPassword);
+                user.password = password;
+                user.confirmPassword = confirmPassword;
+                // token reuse is not possible
+                user.token = undefined;
+                await user.save();
+            } else {
+                return res.status(404).json({
+                    message: "incorrect token"
+                })
+            }
+        } else {
+            return res.status(404).json({
+                message: "user not found"
+            })
+        }
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({
+            message: err.message
+        })
+    }
 
+}
 let flag = true;
 // forget
 // reset
