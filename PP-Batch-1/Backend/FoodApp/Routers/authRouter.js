@@ -120,7 +120,7 @@ async function forgetPassword(req, res) {
             // nodemailer -> table tag through
             //  service -> gmail
             let user = await userModel.findOne({ email });
-            await emailSender(token);
+            await emailSender(seq, user.email);
             console.log(user);
             if (user?.token) {
                 return res.status(200).json({
@@ -148,16 +148,19 @@ async function resetPassword(req, res) {
     let { token, password, confirmPassword } = req.body;
     try {
         if (token) {
-            // 
             // findOne
             let user = await userModel.findOne({ token });
             if (user) {
-                // user.resetHandler(password, confirmPassword);
-                user.password = password;
-                user.confirmPassword = confirmPassword;
+                user.resetHandler(password, confirmPassword);
+                // user.password = password;
+                // user.confirmPassword = confirmPassword;
                 // token reuse is not possible
-                user.token = undefined;
+                // user.token = undefined;
+                console.log(user);
                 await user.save();
+                res.status(200).json({
+                    message: "user password changed"
+                })
             } else {
                 return res.status(404).json({
                     message: "incorrect token"
