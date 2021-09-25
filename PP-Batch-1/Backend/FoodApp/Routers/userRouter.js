@@ -10,7 +10,7 @@ userRouter
 // ****************************************************
 userRouter
     .route("/")
-    .get(protectRoute, getUsers);
+    .get(getUsers);
 // Homework 
 // findBYIdAndUpdate ->
 async function getUsers(req, res) {
@@ -29,7 +29,6 @@ async function getUsers(req, res) {
 
     // for sending key value pair
 }
-
 function updateUser(req, res) {
     let obj = req.body;
     for (let key in obj) {

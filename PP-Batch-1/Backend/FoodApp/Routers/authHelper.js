@@ -1,6 +1,7 @@
 
 const jwt = require("jsonwebtoken");
 const { JWT_KEY } = require("../secrets");
+// ahead -> protect that route 
 function protectRoute(req, res, next) {
     console.log(req.cookies)
     try {
@@ -20,5 +21,4 @@ function protectRoute(req, res, next) {
         })
     }
 }
-
 module.exports = protectRoute;

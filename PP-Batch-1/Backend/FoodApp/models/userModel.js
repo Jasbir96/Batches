@@ -3,9 +3,11 @@ const emailValidator = require("email-validator")
 let { DB_LINK } = require("../secrets");
 // link
 // connnection form 
-mongoose.connect(DB_LINK,{useNewUrlParser: true,
-    
-    useUnifiedTopology: true,}).then(function (db) {
+mongoose.connect(DB_LINK, {
+    useNewUrlParser: true,
+
+    useUnifiedTopology: true,
+}).then(function (db) {
     // console.log(db);
     console.log("connected to db")
 }).catch(function (err) {
@@ -42,9 +44,8 @@ const userSchema = new mongoose.Schema({
             },
         required: true
     },
-    createdAt: {
-        type: Date
-    }
+    createdAt: Date,
+    token: String
 })
 // order matters 
 userSchema.pre("save", function () {

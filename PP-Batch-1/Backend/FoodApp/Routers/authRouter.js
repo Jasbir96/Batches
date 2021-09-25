@@ -7,6 +7,8 @@ const authRouter = express.Router();
 authRouter
     .post("/signup", setCreatedAt, signupUser)
     .post("/login", loginUser)
+    .post("/forgetPassword", forgetPassword)
+
 // middleware 
 function setCreatedAt(req, res, next) {
     // {}
@@ -106,8 +108,42 @@ async function loginUser(req, res) {
     // email -> user get -> password
     // findOne 
 }
-let flag = true;
+async function forgetPassword(req, res) {
+    let email = req.body.email;
+    let seq = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
+    // console.log(seq);
+    try {
+        if (email) {
+            await userModel.updateOne({ email }, { token: seq });
+            // email send to
+            // nodemailer -> table tag through
+            //  service -> gmail 
+            let user = await userModel.findOne({ email });
+            console.log(user);
+            if (user?.token) {
+                return res.status(200).json({
+                    message: "Email send with token" + seq
+                })
+            } else {
+                return res.status(404).json({
+                    message: "user not found"
+                })
+            }
+        } else {
+            return res.status(400).json({
+                message: "kindly enter email"
+            })
+        }
 
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            message: err.message
+        })
+    }
+}
+
+let flag = true;
 // forget
 // reset
 // protect Route 
