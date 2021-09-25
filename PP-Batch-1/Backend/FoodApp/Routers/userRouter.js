@@ -4,13 +4,13 @@ const userRouter = express.Router();
 const protectRoute = require("./authHelper");
 userRouter
     .route("/:id")
-    .get(getUserById)
+    .get(protectRoute, authorizeUser(["admin", "manager"]), getUserById)
     .patch(updateUser)
-    .delete(deleteUser)
+    .delete(protectRoute, authorizeUser(["admin"]), deleteUser)
 // ****************************************************
 userRouter
     .route("/")
-    .get(getUsers);
+    .get(protectRoute, getUsers);
 // Homework 
 // findBYIdAndUpdate ->
 async function getUsers(req, res) {
@@ -37,6 +37,7 @@ function updateUser(req, res) {
     res.status(200).json(user);
 }
 // findByIdnDelete
+
 function deleteUser(req, res) {
     user = {}
     res.status(200).json(user);
@@ -46,5 +47,20 @@ function getUserById(req, res) {
     console.log(req.params);
     res.status(200).send("Hello");
 }
+// Logic ??
+function authorizeUser(rolesArr) {
+    return async function (req, res, next) {
+        let uid = req.uid;
+        let { role } = await userModel.findById(uid);
+        let isAuthorized = rolesArr.includes(role);
+        if (isAuthorized) {
+            next();
+        } else {
+            res.status(403).json({
+                message: "user not authorized contact admin"
+            })
+        }
 
+    }
+}
 module.exports = userRouter;

@@ -45,7 +45,13 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     createdAt: Date,
-    token: String
+    token: String,
+    
+    role: {
+        type: String,
+        enum: ["admin", "user", "manager"],
+        default: "user"
+    }
 })
 // order matters 
 // middleware 
