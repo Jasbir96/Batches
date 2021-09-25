@@ -3,7 +3,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const { JWT_KEY } = require("../secrets");
 const authRouter = express.Router();
-
+let emailSender = require("../externalServices/emailSender");
 authRouter
     .post("/signup", setCreatedAt, signupUser)
     .post("/login", loginUser)
@@ -119,8 +119,8 @@ async function forgetPassword(req, res) {
             // email send to
             // nodemailer -> table tag through
             //  service -> gmail
-
             let user = await userModel.findOne({ email });
+            await emailSender(token);
             console.log(user);
             if (user?.token) {
                 return res.status(200).json({
