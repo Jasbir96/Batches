@@ -20,7 +20,9 @@ app.use(cookieParser());
 // .form fill
 const authRouter = require("./Routers/authRouter");
 const userRouter = require("./Routers/userRouter");
+const planRouter = require("./Routers/planRouter");
 // /api/user/:id
+app.use("/api/plan", planRouter);
 app.use('/api/user', userRouter);
 app.use("/api/auth", authRouter);
 

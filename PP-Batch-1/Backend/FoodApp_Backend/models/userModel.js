@@ -17,7 +17,7 @@ mongoose.connect(DB_LINK, {
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        required: [true, "kindly enter the name"],
     },
     email: {
         type: String,
@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema({
     },
     createdAt: Date,
     token: String,
-    
+
     role: {
         type: String,
         enum: ["admin", "user", "manager"],
