@@ -26,6 +26,7 @@ app.use("/api/plan", planRouter);
 app.use('/api/user', userRouter);
 app.use("/api/auth", authRouter);
 
+
 // create , updatePlan ,deletePlan getAllPlans
 // ****************************************************
 // mounting in express 
