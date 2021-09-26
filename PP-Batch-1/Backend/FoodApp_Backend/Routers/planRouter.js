@@ -35,22 +35,7 @@ async function createPlan(req, res) {
         });
     }
 }
-async function getPlans(req, res) {
-    try {
-        let Plans = await PlanModel.find();
-        res.status(200).json({
-            "message": "list of all the Plans",
-            Plans: Plans
-        })
-    } catch (err) {
-        res.status(500).json({
-            error: err.message,
-            "message": "can't get Plans"
-        })
-    }
 
-    // for sending key value pair
-}
 async function getPlans(req, res) {
     try {
 // filter
