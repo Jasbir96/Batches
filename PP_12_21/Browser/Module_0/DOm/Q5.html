@@ -28,15 +28,13 @@
     // select elem
     // add eventListener
     let cell = document.querySelector(".cell");
-    cell.onmouseover = function () {
+    cell.onmouseover = function (edescObj) {
+      // console.log(edescObj)
       cell.style.backgroundImage = "url('jail.jpg')"
     }
-    cell.onmouseout = function () {
+    cell.onmouseout = function (edescObj) {
       cell.style.backgroundImage = "none";
     }
-
-
   </script>
 </body>
-
 </html>

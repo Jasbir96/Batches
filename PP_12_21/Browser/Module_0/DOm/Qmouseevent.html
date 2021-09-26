@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            border: 1px solid red;
+        }
+    </style>
+    <ul id="test">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    <script>
+        let test = document.getElementById("test");
+
+        // Briefly make the list purple when the mouse moves off the
+        // <ul> element
+        // test.addEventListener("mouseout", function (event) {
+        //     // highlight the mouseleave target
+        //     console.log("Hello");
+        //     console.log(event.target);
+        //     event.target.style.color = "purple";
+
+        //     // reset the color after a short delay
+        //     setTimeout(function () {
+        //         event.target.style.color = "";
+        //     }, 1000);
+        // }, false);
+
+        // // // Briefly make an <li> orange when the mouse moves off of it
+        // //    once you enter -> children move out 
+        // test.addEventListener("mouseleave", function (event) {
+            // highlight the mouseout target
+        //     event.target.style.color = "orange";
+        //     console.log(event.target);
+        //     // reset the color after a short delay
+        //     setTimeout(function () {
+        //         event.target.style.color = "";
+        //     }, 500);
+        // }, false);
+        
+        test.addEventListener("mousemove", function (e) {
+            console.log("e",e);
+        })
+    </script>
+</body>
+
+</html>

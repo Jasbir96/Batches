@@ -700,12 +700,13 @@
   </p>
   <script>
     // Q Implement key taps such that on pressing 1 you scroll to section 1,  pressing 2 you scroll to section 2 and  pressing 3 you scroll to section 3. Also implement key tap b to go to bottom of the page and key tap t to go to top of the page
-    document.addEventListener("keydown", function (edesc) {
+    document.addEventListener("keydown", function (edescObj) {
       let keyPressed = edesc.key;
       // specifically designd for ids
       let s1 = document.getElementById('s1');
       let s2 = document.getElementById('s2');
       let s3 = document.getElementById('s3');
+      
       if (keyPressed == "1") {
         s1.scrollIntoView();
       } else if (keyPressed == "2") {
