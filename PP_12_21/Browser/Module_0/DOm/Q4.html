@@ -109,6 +109,7 @@
     <script>
         // Q Make the filter work
         let select = document.querySelector("select");
+        ///change 
         select.addEventListener("change", function () {
             // value->present->input.value
             //    hide something
@@ -119,9 +120,12 @@
                 for (let i = 0; i < movieLists.length; i++) {
                     // children -> 
                     // list of childrens inside a html element
+                    // traversal
                     let ptag = movieLists[i].children[1];
+                    // 
                     movieLists[i].style.display = "block";
-
+                    // movieLists[i].style.visibility = "block";
+                    // movieLists[i].style.opacity = "1";  
                 }
             } else {
                 // selection 
@@ -130,13 +134,15 @@
                     // list of childrens inside a html element
                     let ptag = movieLists[i].children[1];
                     // get Attribute 
-                    let cCategory =
-                     ptag.getAttribute("data-category");
+                    // setAttribute
+                    let cCategory =ptag.getAttribute("data-category");
                     if (cCategory != category) {
                         // disapper -> from the page 
                         movieLists[i].style.display = "none";
+                        // movieLists[i].style.opacity = "0";
                     } else {
                         // show  it -> visible 
+                        // movieLists[i].style.opacity = "1";
                         movieLists[i].style.display = "block";
                     }
                 }
