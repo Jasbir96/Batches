@@ -1,1 +1,17 @@
-[{"name":"jasbir","age":24},{"name":"Aaron FInch","age":25},{"name":"MaTHEW HAIDDEN","age":25},{"name":"Andrew symonds","age":25},{"name":"Andrew symonds","age":25},{"name":"Andrew symonds","age":25},{"name":"Andrew symonds","age":25},{"name":"Andrew symonds","age":25},{},{},{},{},{"name":"arun","age":23}]
+[
+    {
+        "name": "Jasbir",
+        "email": "abc@gmail.com",
+        "password": 12345678
+    },
+    {
+        "name": "Jasbir",
+        "email": "abc@gmail.com",
+        "password": 12345678
+    },
+    {
+        "name": "jasbir",
+        "email": "abc@gmail.com",
+        "password": "12345678"
+    }
+]
