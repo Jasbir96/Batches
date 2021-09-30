@@ -1,3 +1,4 @@
+// Q1.
 // function outer() {
 //     let arrFn = [];
 //     for (var i = 0; i < 3; i++) {
@@ -8,13 +9,12 @@
 //     return arrFn;
 // }
 // let arrFn = outer();
-
 // arrFn[0]();
 // arrFn[1]();
 // arrFn[2]();
 // output -> 3,3,3
 // 
-// solution 1
+// solution 1 -> IFFEE
 // function outer() {
 //     let arrFn = [];
 //     for (var i = 0; i < 3; i++) {
@@ -25,6 +25,7 @@
 //     return arrFn;
 // }
 // outer();
+// solution -> execution context 
 // function outer() {
 //     let arrFn = [];
 //     for (var i = 0; i < 3; i++) {
@@ -42,25 +43,25 @@
 // arrFno[0]();
 // arrFno[1]();
 // arrFno[2]();
-function outer() {
-    let arrFn = [];
-    // local -> 3
-    // let i = 0
-    // 
-    // block 0,block 1 ,block 2
-    for (let i=0; i < 3; i++) {
-        // block scope
-        arrFn.push(function fn() {
-            console.log(i);
-        })
-    }
-    return arrFn;
-}
-let arrFn = outer();
-
-arrFn[0]();
-arrFn[1]();
-arrFn[2]();
+// solution 3 -> let 
+// function outer() {
+//     let arrFn = [];
+//     // local -> 3
+//     // let i = 0
+//     // 
+//     // block 0,block 1 ,block 2
+//     for (let i = 0; i < 3; i++) {
+//         // block scope
+//         arrFn.push(function fn() {
+//             console.log(i);
+//         })
+//     }
+//     return arrFn;
+// }
+// let arrFn = outer();
+// arrFn[0]();
+// arrFn[1]();
+// arrFn[2]();
 
 function createIncrement() {
     let count = 0;
@@ -81,6 +82,7 @@ increment();
 increment();
 increment();
 log();
+// Q1 new form 
 // for (var i = 0; i < 3; i++) {
 //     setTimeout(function () {
 //         console.log(i)

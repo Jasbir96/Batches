@@ -54,18 +54,21 @@ function fn() {
 // }
 // // let solution -> in the
 // //  case of let we get value because of block scope
-// function fn() {
-//     let nArr = [];
-//     for (let i = 0; i < 3; i++) {
-//         nArr.push(function () {
-//             // wrap -> primitive -> object form 
-//             console.log(i);});}
-//     return nArr;
-// }
-// let nArr = fn();
-// nArr[0]();
-// nArr[1]();
-// nArr[2]();
+function fn() {
+    let nArr = [];
+    let i = 0;
+    for (; i < 3; i++) {
+        nArr.push(function () {
+            // wrap -> primitive -> object form 
+            console.log(i);
+        });
+    }
+    return nArr;
+}
+let nArr = fn();
+nArr[0]();
+nArr[1]();
+nArr[2]();
 // Browser ->
 //  global -> global object
 //  of enviornment (Browser -> window, node-> global)
@@ -85,11 +88,11 @@ function fn() {
 // closure 
 // bind,IIFEE, let 
 for (var i = 0; i < 3; i++) {
-  let Bfn=  (function log(i) {
+    let Bfn = (function log(i) {
         console.log(i); // What is logged?
-    }).bind(null,i)
+    }).bind(null, i)
     setTimeout(Bfn, 1000);
 }
-// setTimeout, 
+// setTimeout,
 // setInterval,clearInterval ,console.log()-> enviornment
 // console.log(global);
