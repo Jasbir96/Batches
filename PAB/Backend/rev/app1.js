@@ -3,6 +3,9 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = require("./secrets");
+const cookieParser = require('cookie-parser')
 // Server: // route  -> request -> response/file 
 // File system// path -> interact/type -> file /folder
 // server init
@@ -20,6 +23,7 @@ const app = express();
 // reserve a folder only from which client can acces the files 
 app.use(express.static("Frontend_folder"));
 app.use(express.json());
+app.use(cookieParser());
 
 // // function -> route  path
 // // frontend -> req -> /
@@ -44,6 +48,7 @@ userRouter
 
 authRouter.route("/signup")
     .post(bodyChecker, signupUser);
+
 authRouter.route("/login")
     .post(bodyChecker, loginUser);
 function getUsers(req, res) {
@@ -52,20 +57,29 @@ function getUsers(req, res) {
     })
 }
 function protectRoute(req, res, next) {
-    console.log("reached body checker");
-    // jwt 
-    // -> verify everytime that if 
-    // you are bringing the token to get your response
-    let isallowed = false;
-    if (isallowed) {
-        next();
-    } else {
-        res.send("kindly login to access this resource ");
+    try {
+        console.log("reached body checker");
+        // cookie-parser
+        console.log("61", req.cookies)
+        // jwt 
+        // -> verify everytime that if 
+        // you are bringing the token to get your response
+ let decryptedToken = jwt.verify(req.cookies.JWT, JWT_SECRET);
+        // console.log("66", decryptedToken)
+        console.log("68", decryptedToken)
+        if (decryptedToken) {
+            next();
+        } else {
+            res.send("kindly login to access this resource ");
+        }
+    } catch (err) {
+
+        res.status(200).json({
+            message: err.message
+        })
     }
+
 }
-
-
-
 function bodyChecker(req, res, next) {
     console.log("reached body checker");
     let isPresent = Object.keys(req.body).length;
@@ -109,7 +123,13 @@ function loginUser(req, res) {
         })
     }
     if (obj.password == password) {
-        
+        var token = jwt.sign({ email: obj.email },
+            JWT_SECRET);
+        // header
+        console.log(token);
+        res.cookie("JWT", token);
+        // sign with RSA SHA256
+        // res body 
         res.status(200).json({
             message: "user logged In",
             user: obj
