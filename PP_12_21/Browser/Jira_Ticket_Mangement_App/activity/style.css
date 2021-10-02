@@ -73,6 +73,14 @@ padding-left:3rem;
    font-weight:400;
 }
 
+/* input styling */
+.task_input{
+   color:white;
+}
+
+
+
+
 
 
 
@@ -81,6 +89,12 @@ padding-left:3rem;
 
 
  /* ***********main container */
+
+
+
+
+
+
 .main-container{
    /* border: 1px solid green; */
    /*vh,vw*/
