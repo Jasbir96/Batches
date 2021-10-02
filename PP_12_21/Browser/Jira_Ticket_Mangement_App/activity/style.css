@@ -14,7 +14,7 @@ padding-left:3rem;
 }
 /* common styling */
 .header-container>*{
-   background-color:rgb(96, 88, 88);
+   background-color:#454444;
    height:65%;
    border-radius: 6px;
 }
@@ -43,9 +43,43 @@ padding-left:3rem;
 .black{
    background-color:black;
 }
+
+
+
+
+/* **********add cross */
  .add-cross_container{
   width:20%;
+  display:flex; 
 }
+.add-cross_container>*{
+   width:50%;
+   height:100%;
+   background-color:red
+}
+.plus-container{
+   background-color:yellow;
+}
+.plus-container,.multiply-container{
+  /* perefectly center an element inside a div */
+   display: flex;
+   justify-content:center;
+   align-items: center; 
+}
+/* icons are treated as text  */
+.fa-plus,.fa-times{
+   font-size:2rem;
+   /* boldness */
+   font-weight:400;
+}
+
+
+
+
+
+
+
+
  /* ***********main container */
 .main-container{
    /* border: 1px solid green; */
