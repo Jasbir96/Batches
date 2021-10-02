@@ -3,6 +3,8 @@
 body{
 /* border:2px solid red; */
 margin:0px;
+font-family: sans-serif;
+
 }
 .header-container{
 /* border:1px solid black; */
@@ -102,5 +104,26 @@ padding-left:3rem;
    /* 100% height of the visible screen-> 100vh; */
    height: calc(100vh - 3.5rem); 
    background-color: #f2f2f2;
+   padding:4rem;
 }
+.task_container{
+   /* border:1px solid black; */
+   background-color: white;
+   height: 8rem;
+   width:13rem;
+}
+.task_main-container{
+   padding:0.5rem
+}
+.task_header{
+   height:0.5rem;
+   background-color: black;
+}
+.task_id{
+   color:rgb(150, 144, 144);
+   /* left,right ,top bottom  */
+   margin:0.2rem;
+   margin-left:0px;
+}
+
 
