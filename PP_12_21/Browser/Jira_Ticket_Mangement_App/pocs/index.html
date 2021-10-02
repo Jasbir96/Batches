@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        .parent {
+            height: 100vh;
+            width: 80vw;
+            background-color: lightgreen;
+            display: flex;
+            /* align horizontally */
+            justify-content: space-evenly;
+            /* align vertically  */
+            align-items: center;
+            /* for warpping the content  */
+            flex-wrap: wrap;
+        }
+        .children {
+            font-size: 2rem;
+            text-align: center;
+            height: 8rem;
+            width: 8rem;
+            background-color: lightcoral;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="children">1</div>
+        <div class="children">2</div>
+        <div class="children">3</div>
+        <div class="children">3</div>
+        <div class="children">4</div>
+        <div class="children">5</div>
+        <div class="children">6</div>
+        <div class="children">7</div>
+    </div>
+    <p>hello</p>
+</body>
+
+</html>

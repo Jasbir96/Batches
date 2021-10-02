@@ -1,0 +1,58 @@
+/* universal selector */
+/* user agent stylesheet -> browser styling */
+body{
+/* border:2px solid red; */
+margin:0px;
+}
+.header-container{
+/* border:1px solid black; */
+height:5.2rem;
+background-color:#333;
+display:flex;
+align-items: center;
+padding-left:3rem;
+}
+/* common styling */
+.header-container>*{
+   background-color:rgb(96, 88, 88);
+   height:65%;
+   border-radius: 6px;
+}
+.color-group_container{
+    /* relative unit which derived it's value from the parent */
+    width:40%;
+    margin-right:3rem;
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+ }
+ .color{
+    height:50%;
+    width:12%;
+    border-radius:4px;
+ }
+ .pink{
+   background-color:lightpink;
+}
+.blue{
+   background-color:lightblue; 
+}
+.green{
+   background-color:lightgreen;
+}
+.black{
+   background-color:black;
+}
+ .add-cross_container{
+  width:20%;
+}
+ /* ***********main container */
+.main-container{
+   /* border: 1px solid green; */
+   /*vh,vw*/
+   /* 100% width of the visible screen-> 100vw; */
+   /* 100% height of the visible screen-> 100vh; */
+   height: calc(100vh - 3.5rem); 
+   background-color: #f2f2f2;
+}
+
