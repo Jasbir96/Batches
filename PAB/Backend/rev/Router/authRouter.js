@@ -14,6 +14,7 @@ authRouter.route("/signup").post(signupUser);
 
 authRouter.route("/login").post(loginUser);
 authRouter.route("/forgetPassword").post(forgetPassword)
+authRouter.route("/resetPassword").post(resetPassword);
 // routes -> functions
 async function signupUser(req, res) {
     try {
@@ -67,10 +68,13 @@ async function forgetPassword(req, res) {
         // search on the basis of email
         let user = await userModel.findOne({ email })
         if (user) {
-            let token = (Math.floor(Math.random() * 10000) + 10000)
+            let token = 
+            (Math.floor(Math.random() * 10000) + 10000)
                 .toString().substring(1);
-            let updateRes = await userModel.updateOne({ email }, { token })
-        //    console.log("updateQuery",updateRes)
+                // date.now ->300
+            let updateRes = await userModel.updateOne({ email }, { token,validUpto })
+            //    console.log("updateQuery",updateRes)
+            // 
             let newUser = await userModel.findOne({ email });
             // console.log("newUser", newUser)
             // email
@@ -90,6 +94,43 @@ async function forgetPassword(req, res) {
         }
         // create token
         // -> update the user with a new token 
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            message: err.message
+        })
+    }
+}
+
+async function resetPassword(req, res) {
+    // token,confirmPassword,password
+    // 10 lakh -> 10 lakh users
+    // frontend -> local storage  
+    try {
+        let { token, confirmPassword, password } = req.body;
+        let user = await userModel.findOne({ token });
+        // console.log("user 108", user);
+        if (user) {
+            // await userModel.updateOne({ token }, {
+            //     token: undefined,
+            //     password: password,
+            //     confirmPassword: confirmPassword,
+            // },{runValidators:true} )
+            // server
+            user.resetHandler(password,confirmPassword);
+            // database entry 
+            await user.save();
+            let newUser = await userModel.findOne({ email: user.email });
+            // console.log("newUser", newUser)
+            // email
+            // email send
+            // await emailSender(token, user.email);
+            res.status(200).json({
+                message: "user token send to your email",
+                user: newUser,
+            })
+        }
+
     } catch (err) {
         console.error(err);
         res.status(500).json({

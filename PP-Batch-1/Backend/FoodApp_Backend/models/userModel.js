@@ -60,13 +60,7 @@ userSchema.pre("save", function () {
     console.log("Hello");
     this.confirmPassword = undefined;
 })
-// document method
-userSchema.methods.resetHandler = function (password, confirmPassword) {
-    this.password = password;
-    this.confirmPassword = confirmPassword;
-    // token reuse is not possible
-    this.token = undefined;
-}
+
 const userModel = mongoose.model("userModel", userSchema);
 
 

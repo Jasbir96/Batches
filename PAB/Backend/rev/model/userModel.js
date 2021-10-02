@@ -46,7 +46,8 @@ const userSchema = new mongoose.Schema({
         type: String,
 
     },
-    token: String
+    token: String,
+    validUpto: Date
 })
 // hook
 userSchema.pre('save', function (next) {
@@ -54,7 +55,12 @@ userSchema.pre('save', function (next) {
     this.confirmPassword = undefined;
     next();
 });
-
+// document method
+userSchema.methods.resetHandler = function (password, confirmPassword) {
+    this.password = password;
+    this.confirmPassword = confirmPassword;
+    this.token = undefined;
+}
 // model
 let userModel = mongoose.model("UserModel", userSchema);
 module.exports = userModel;
