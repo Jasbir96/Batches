@@ -45,7 +45,8 @@ const userSchema = new mongoose.Schema({
     createdAt: {
         type: String,
 
-    }
+    },
+    token: String
 })
 // hook
 userSchema.pre('save', function (next) {

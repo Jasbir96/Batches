@@ -13,6 +13,7 @@
   "dependencies": {
     "cookie-parser": "^1.4.5",
     "email-validator": "^2.0.4",
-    "mongoose": "^6.0.8"
+    "mongoose": "^6.0.8",
+    "nodemailer": "^6.6.5"
   }
 }
