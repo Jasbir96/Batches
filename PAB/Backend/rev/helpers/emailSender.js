@@ -20,7 +20,7 @@ module.exports = async function main(token, userEmail) {
     });
     // send mail with defined transport object
     let info = await transporter.sendMail({
-        from: '"Fred Foo 👻" <contact@gmail.com>', // sender address
+        from: '"Fred Foo 👻" ', // sender address
         to: "jasbir.singh@pepcoding.com", // list of receivers
         subject: "Token for reset", // Subject line        
         text: "Hello world?", // plain text body
