@@ -15,6 +15,7 @@ authRouter.route("/signup").post(signupUser);
 authRouter.route("/login").post(loginUser);
 authRouter.route("/forgetPassword").post(forgetPassword)
 authRouter.route("/resetPassword").post(resetPassword);
+
 // routes -> functions
 async function signupUser(req, res) {
     try {
