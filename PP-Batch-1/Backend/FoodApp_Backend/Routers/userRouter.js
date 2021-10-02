@@ -6,7 +6,7 @@ userRouter
     .route("/:id")
     .get(protectRoute, authorizeUser(["admin", "manager"]), getUserById)
     .patch(updateUser)
-    .delete(protectRoute, authorizeUser(["admin"]), deleteUser)
+    .delete(protectRoute, authorizeUser(["admin"]), deleteUser);
 // ****************************************************
 userRouter
     .route("/")

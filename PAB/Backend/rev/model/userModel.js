@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 let { PASSWORD } = require("../secrets");
 const validator = require("email-validator");
 let dbLink
-    = `mongodb+srv://admin:${PASSWORD}@cluster0.y9gic.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+    = `mongodb+srv://admin:${PASSWORD}@cluster0.3gwfq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 mongoose
     .connect(dbLink)
     .then(function (connection) {
@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-       
+        unique: true,
         validate: function () {
             // third party library 
             return validator.validate(this.email)
@@ -47,6 +47,13 @@ const userSchema = new mongoose.Schema({
 
     }
 })
+// hook
+userSchema.pre('save', function (next) {
+    // do stuff
+    this.confirmPassword = undefined;
+    next();
+});
+
 // model
 let userModel = mongoose.model("UserModel", userSchema);
 module.exports = userModel;
