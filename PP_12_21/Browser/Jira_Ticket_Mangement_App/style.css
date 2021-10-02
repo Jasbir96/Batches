@@ -1,0 +1,19 @@
+/* universal selector */
+/* user agent stylesheet -> browser styling */
+body{
+/* border:2px solid red; */
+margin:0px;
+}
+.header-container{
+/* border:1px solid black; */
+height:3.5rem;
+background-color:#333;
+}
+.main-container{
+   /* border: 1px solid green; */
+   /* vh,vw */
+   /* 100% width of the visible screen-> 100vw; */
+   /* 100% height of the visible screen-> 100vh; */
+   height: calc(100vh - 3.5rem); 
+   background-color: #f2f2f2;
+}
