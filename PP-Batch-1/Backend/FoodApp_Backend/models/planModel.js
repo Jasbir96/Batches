@@ -44,7 +44,11 @@ const planSchema = new mongoose.Schema({
             message: "Discount must be less than actual price",
         },
     },
-
+    reviews:{
+//   array of object id 
+        type:[mongoose.Schema.ObjectId],
+        ref:"reviewModel"
+    }
 })
 // order matters 
 // middleware 

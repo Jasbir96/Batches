@@ -10,7 +10,6 @@ const deletePlan = factory.deleteElement(PlanModel);
 const updatePlan = factory.updateElement(PlanModel);
 const getPlanById = factory.getElementById(PlanModel);
 PlanRouter.use(protectRoute);
-
 PlanRouter
     .route("/:id")
     .get(getPlanById)
