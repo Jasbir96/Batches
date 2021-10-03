@@ -3,6 +3,7 @@ let input = document.querySelector(".task_input");
 let mainContainer = document.querySelector(".main-container");
 let colors = ["pink", "blue", "green", "black"];
 let defaultColor = "black";
+let cFilter = "";
 input.addEventListener("keydown", function (e) {
     if (e.code == "Enter" && input.value) {
         console.log("task Value", input.value);
@@ -27,15 +28,15 @@ function createTask(id, task) {
     taskHeader.addEventListener("click", function () {
         //    class -> change 
         // get all the classes on an element
-        console.log(taskHeader.classList);
+        // console.log(taskHeader.classList);
         let cColor = taskHeader.classList[1];
-
         // let cColor = window
         //     .getComputedStyle(taskHeader)
         //     .backgroundColor;
         // next color
         // element.style.backgroundColor = nextColor;
-        console.log("cColor", cColor);
+
+        // console.log("cColor", cColor);
         let idx = colors.indexOf(cColor);
         let nextIdx = (idx + 1) % 4;
         let nextColor = colors[nextIdx];
@@ -44,5 +45,49 @@ function createTask(id, task) {
     })
 }
 
+
+// filtering 
+let colorContainer = document.querySelector(".color-group_container");
+colorContainer.addEventListener("click", function (e) {
+    let element = e.target;
+    if (element != colorContainer) {
+        let filteredCardColor = element.classList[1];
+        filterCards(filteredCardColor);
+    }
+})
+// console.log(colorBtns);
+// for (let i = 0; i < colorBtns.length; i++) {
+//     colorBtns[i].addEventListener("click", function () {
+//         let filteredCardColor = colorBtns[i].classList[1];
+//         console.log(filteredCardColor);
+//         filterCards(filteredCardColor);
+//     })
+// }
+function filterCards(filterColor) {
+    let allTaskCards =
+        document.querySelectorAll(".task_container");
+    if (cFilter != filterColor) {
+        for (let i = 0; i < allTaskCards.length; i++) {
+            // header color -> 
+            let taskHeader = allTaskCards[i]
+                .querySelector(".task_header");
+            let taskColor = taskHeader.classList[1];
+            if (taskColor == filterColor) {
+                // show 
+                allTaskCards[i].style.display = "block"
+            } else {
+                // hide 
+                allTaskCards[i].style.display = "none"
+            }
+        }
+        cFilter = filterColor;
+    } else {
+        cFilter = "";
+        for (let i = 0; i < allTaskCards.length; i++) {    
+                allTaskCards[i].style.display = "block"
+           
+    }
+    }
+}
 
 
