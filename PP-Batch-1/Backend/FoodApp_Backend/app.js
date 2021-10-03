@@ -24,6 +24,7 @@ const planRouter = require("./Routers/planRouter");
 // /api/user/:id
 app.use("/api/plan", planRouter);
 app.use('/api/user', userRouter);
+// auth router -> verb 
 app.use("/api/auth", authRouter);
 
 

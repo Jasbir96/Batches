@@ -44,8 +44,6 @@ function createTask(id, task) {
         taskHeader.classList.add(nextColor);
     })
 }
-
-
 // filtering 
 let colorContainer = document.querySelector(".color-group_container");
 colorContainer.addEventListener("click", function (e) {
