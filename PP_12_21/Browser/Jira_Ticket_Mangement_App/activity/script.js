@@ -1,6 +1,8 @@
 var uid = new ShortUniqueId();
 let input = document.querySelector(".task_input");
 let mainContainer = document.querySelector(".main-container");
+let colors = ["pink", "blue", "green", "black"];
+let defaultColor = "black";
 input.addEventListener("keydown", function (e) {
     if (e.code == "Enter" && input.value) {
         console.log("task Value", input.value);
@@ -13,12 +15,33 @@ function createTask(id, task) {
     let taskContainer = document.createElement("div");
     taskContainer.setAttribute("class", "task_container");
     mainContainer.appendChild(taskContainer);
-    taskContainer.innerHTML =`<div class="task_header"></div>
+    taskContainer.innerHTML = `<div class="task_header 
+    ${defaultColor}"></div>
             <div class="task_main-container">
                 <h3 class="task_id">#${id}</h3>
                 <div class="text">${task}</div>
-            </div>`
+            </div>
+    `;
+    // addEventListener for color changes
+    let taskHeader = taskContainer.querySelector(".task_header");
+    taskHeader.addEventListener("click", function () {
+        //    class -> change 
+        // get all the classes on an element
+        console.log(taskHeader.classList);
+        let cColor = taskHeader.classList[1];
 
+        // let cColor = window
+        //     .getComputedStyle(taskHeader)
+        //     .backgroundColor;
+        // next color
+        // element.style.backgroundColor = nextColor;
+        console.log("cColor", cColor);
+        let idx = colors.indexOf(cColor);
+        let nextIdx = (idx + 1) % 4;
+        let nextColor = colors[nextIdx];
+        taskHeader.classList.remove(cColor);
+        taskHeader.classList.add(nextColor);
+    })
 }
 
 

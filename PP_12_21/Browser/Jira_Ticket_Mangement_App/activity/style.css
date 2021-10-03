@@ -32,7 +32,7 @@ padding-left:3rem;
     width:12%;
     border-radius:4px;
  }
- .pink{
+.pink{
    background-color:lightpink;
 }
 .blue{
@@ -44,7 +44,6 @@ padding-left:3rem;
 .black{
    background-color:black;
 }
-
 
 
 
@@ -93,6 +92,10 @@ padding-left:3rem;
    height: calc(100vh - 3.5rem); 
    background-color: #f2f2f2;
    padding:4rem;
+   display:flex;
+   justify-content:space-evenly;
+   align-items:center;
+   flex-wrap: wrap;
 }
 .task_container{
    /* border:1px solid black; */
@@ -105,7 +108,7 @@ padding-left:3rem;
 }
 .task_header{
    height:0.5rem;
-   background-color: black;
+   /* background-color: black; */
 }
 .task_id{
    color:rgb(150, 144, 144);
@@ -113,5 +116,4 @@ padding-left:3rem;
    margin:0.2rem;
    margin-left:0px;
 }
-
 
