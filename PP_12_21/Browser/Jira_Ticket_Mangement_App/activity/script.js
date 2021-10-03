@@ -20,7 +20,7 @@ function createTask(id, task) {
     ${defaultColor}"></div>
             <div class="task_main-container">
                 <h3 class="task_id">#${id}</h3>
-                <div class="text">${task}</div>
+                <div class="text" contentEditable="true">${task}</div>
             </div>
     `;
     // addEventListener for color changes
@@ -50,6 +50,7 @@ function createTask(id, task) {
 let colorContainer = document.querySelector(".color-group_container");
 colorContainer.addEventListener("click", function (e) {
     let element = e.target;
+    console.log("e.target",element);
     if (element != colorContainer) {
         let filteredCardColor = element.classList[1];
         filterCards(filteredCardColor);
@@ -84,8 +85,7 @@ function filterCards(filterColor) {
     } else {
         cFilter = "";
         for (let i = 0; i < allTaskCards.length; i++) {    
-                allTaskCards[i].style.display = "block"
-           
+                allTaskCards[i].style.display = "block"    
     }
     }
 }
