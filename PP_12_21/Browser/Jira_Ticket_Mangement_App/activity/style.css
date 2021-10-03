@@ -56,10 +56,10 @@ padding-left:3rem;
 .add-cross_container>*{
    width:50%;
    height:100%;
-   background-color:red
+   /* background-color:red */
 }
 .plus-container{
-   background-color:yellow;
+   /* background-color:yellow; */
 }
 .plus-container,.multiply-container{
   /* perefectly center an element inside a div */
