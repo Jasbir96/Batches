@@ -3,6 +3,11 @@ const express = require('express');
 const userRouter = express.Router();
 const protectRoute = require("./authHelper");
 const factory = require("../helpers/factory");
+const createUser = factory.createElement(userModel);
+const getUsers = factory.getElements(userModel);
+const deleteUser = factory.deleteElement(userModel);
+const updateUser = factory.updateElement(userModel);
+const getUserById = factory.getElementById(userModel);
 userRouter
     .route("/:id")
     .get(protectRoute, authorizeUser(["admin", "manager"]), getUserById)
@@ -17,11 +22,7 @@ userRouter
     )
 // Homework 
 // findBYIdAndUpdate ->
-const createUser = factory.createElement(UserModel);
-const getUsers = factory.getElements(UserModel);
-const deleteUser = factory.deleteElement(UserModel);
-const updateUser = factory.updateElement(UserModel);
-const getUserById = factory.getElementById(UserModel);
+
 // original code 
 // async function createUser(req, res) {
 //     try {

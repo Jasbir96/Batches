@@ -4,7 +4,11 @@ const express = require('express');
 const PlanRouter = express.Router();
 const factory = require("../helpers/factory");
 const protectRoute = require("./authHelper");
-
+const createPlan = factory.createElement(PlanModel);
+const getPlans = factory.getElements(PlanModel);
+const deletePlan = factory.deleteElement(PlanModel);
+const updatePlan = factory.updateElement(PlanModel);
+const getPlanById = factory.getElementById(PlanModel);
 PlanRouter.use(protectRoute);
 
 PlanRouter
@@ -20,11 +24,7 @@ PlanRouter
 // Homework 
 // findBYIdAndUpdate ->
 
-const createPlan = factory.createElement(PlanModel);
-const getPlans = factory.getElements(PlanModel);
-const deletePlan = factory.deleteElement(PlanModel);
-const updatePlan = factory.updateElement(PlanModel);
-const getPlanById = factory.getElementById(PlanModel);
+
 // async function createPlan(req, res) {
 //     try {
 //         let plan = req.body;
