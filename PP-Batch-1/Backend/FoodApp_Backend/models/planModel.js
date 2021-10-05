@@ -29,7 +29,7 @@ const planSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true,
-        
+
     },
     ratingsAverage: {
         type: Number,
@@ -44,15 +44,15 @@ const planSchema = new mongoose.Schema({
             message: "Discount must be less than actual price",
         },
     },
-    reviews:{
-//   array of object id 
-        type:[mongoose.Schema.ObjectId],
-        ref:"reviewModel"
-    }
+    reviews: {
+        //   array of object id 
+        type: [mongoose.Schema.ObjectId],
+        ref: "reviewModel"
+    },
+    
+    averageRating: Number,
 })
 // order matters 
 // middleware 
-
 const planModel = mongoose.model("planModel", planSchema);
-
 module.exports = planModel;

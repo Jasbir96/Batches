@@ -21,7 +21,7 @@ app.use(cookieParser());
 const authRouter = require("./Routers/authRouter");
 const userRouter = require("./Routers/userRouter");
 const planRouter = require("./Routers/planRouter");
-const reviewRouter = require("./Routers/planRouter");
+const reviewRouter = require("./Routers/reviewRouter");
 // /api/user/:id
 app.use("/api/plan", planRouter);
 app.use('/api/user', userRouter);

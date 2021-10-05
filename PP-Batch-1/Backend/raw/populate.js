@@ -23,12 +23,6 @@ const author = new Person({
 });
 
 
-
-
-
-
-
-
 author.save(function (err) {
     if (err) return handleError(err);
 
@@ -42,23 +36,6 @@ author.save(function (err) {
         // that's it!
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Story.
     findOne({ title: 'Casino Royale' }).
     populate('author').

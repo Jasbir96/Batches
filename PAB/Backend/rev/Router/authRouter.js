@@ -11,11 +11,9 @@ const authRouter = express.Router();
 // routes 
 authRouter.use(bodyChecker)
 authRouter.route("/signup").post(signupUser);
-
 authRouter.route("/login").post(loginUser);
 authRouter.route("/forgetPassword").post(forgetPassword)
 authRouter.route("/resetPassword").post(resetPassword);
-
 // routes -> functions
 async function signupUser(req, res) {
     try {
@@ -69,11 +67,11 @@ async function forgetPassword(req, res) {
         // search on the basis of email
         let user = await userModel.findOne({ email })
         if (user) {
-            let token = 
-            (Math.floor(Math.random() * 10000) + 10000)
-                .toString().substring(1);
-                // date.now ->300
-            let updateRes = await userModel.updateOne({ email }, { token,validUpto })
+            let token =
+                (Math.floor(Math.random() * 10000) + 10000)
+                    .toString().substring(1);
+            // date.now ->300
+            let updateRes = await userModel.updateOne({ email }, { token, validUpto })
             //    console.log("updateQuery",updateRes)
             // 
             let newUser = await userModel.findOne({ email });
@@ -102,7 +100,6 @@ async function forgetPassword(req, res) {
         })
     }
 }
-
 async function resetPassword(req, res) {
     // token,confirmPassword,password
     // 10 lakh -> 10 lakh users
@@ -118,6 +115,9 @@ async function resetPassword(req, res) {
             //     confirmPassword: confirmPassword,
             // },{runValidators:true} )
             // server
+            // user.password = password;
+            // user.confirmPassword = confirmPassword;
+            // user.token = undefined;
             user.resetHandler(password,confirmPassword);
             // database entry 
             await user.save();
@@ -130,6 +130,10 @@ async function resetPassword(req, res) {
                 message: "user token send to your email",
                 user: newUser,
             })
+        } else {
+            res.status(404).json({
+                message: "user with this token not found"
+            })
         }
 
     } catch (err) {
@@ -139,6 +143,7 @@ async function resetPassword(req, res) {
         })
     }
 }
+
 // forget 
 // reset
 // function tempLoginUser(req, res) {

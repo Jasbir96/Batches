@@ -10,6 +10,8 @@ const deletePlan = factory.deleteElement(PlanModel);
 const updatePlan = factory.updateElement(PlanModel);
 const getPlanById = factory.getElementById(PlanModel);
 PlanRouter.use(protectRoute);
+PlanRouter.route("/top3plans")
+    .get(getTop3Plans)
 PlanRouter
     .route("/:id")
     .get(getPlanById)
@@ -20,10 +22,37 @@ PlanRouter
     .route("/")
     .get(getPlans)
     .post(createPlan)
+
+async function getTop3Plans(req, res) {
+    try {
+        console.log("hello")
+        let plans = await PlanModel.find()
+        .sort("-averageRating")
+        .limit(3)    
+        .populate({
+                path: 'reviews',
+                select:"review"
+            })
+
+
+        // let plansArr = []
+        // for (let i = 0; i < plans.length; i++) {
+        //     let plan = await PlanModel.findById(plans[i]["_id"]).populate("reviews");
+        //     plansArr.push(plan)
+        // }
+        console.log(plans);
+        res.status(200).json({
+            plans
+        })
+    } catch (err) {
+        console.log(err);
+        res.status(200).json({
+            message: err.message
+        })
+    }
+}
 // Homework 
 // findBYIdAndUpdate ->
-
-
 // async function createPlan(req, res) {
 //     try {
 //         let plan = req.body;
