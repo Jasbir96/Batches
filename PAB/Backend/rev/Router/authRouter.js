@@ -36,7 +36,7 @@ async function loginUser(req, res) {
         if (user) {
             // password
             if (user.password == password) {
-                let token = jwt.sign({ id: user["_id"] }, JWT_SECRET, { httpOnly: true })
+                let token = jwt.sign({ id: user["_id"] }, JWT_SECRET )
 
                 res.cookie("JWT", token);
                 res.status(200).json({
@@ -71,7 +71,7 @@ async function forgetPassword(req, res) {
                 (Math.floor(Math.random() * 10000) + 10000)
                     .toString().substring(1);
             // date.now ->300
-            let updateRes = await userModel.updateOne({ email }, { token, validUpto })
+            await userModel.updateOne({ email }, { token })
             //    console.log("updateQuery",updateRes)
             // 
             let newUser = await userModel.findOne({ email });

@@ -32,6 +32,7 @@ app.use(cookieParser());
 // // localhost / auth / 10-> patch
 
 app.use('/api/user', userRouter);
+// app.use("")
 app.use('/api/auth', authRouter);
 app.listen(8081, function () {
     console.log("server started");

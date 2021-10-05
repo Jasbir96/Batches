@@ -5,33 +5,21 @@ const userModel =
 // router
 const userRouter = express.Router();
 const { protectRoute, bodyChecker } = require("./utilFns");
-// routes
+// routes-> id
+userRouter.use(protectRoute);
+let authCheckerCE = isAuthorized(["admin", "ce"]);
+let authChecker = isAuthorized(["admin"]);
 userRouter
     .route('/')
-    .post(bodyChecker, createUser)
+    .post(bodyChecker, authChecker, createUser)
     // localhost/user -> get
-    .get(protectRoute, getUsers);
+    .get(protectRoute, authChecker, getUsers);
 userRouter.route("/:id")
     .get(getUser)
-    .patch(bodyChecker, updateUser)
-    .delete(bodyChecker, deleteUser)
+    .patch(bodyChecker, authCheckerCE, updateUser)
+    .delete(bodyChecker, authChecker, deleteUser)
 // functions
-async function createUser(req, res) {
-    try {
-
-        let user = await userModel.create(req.body);
-        res.status(200).json({
-            user: user
-        });
-
-
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            message: "Server error"
-        });
-    }
-}
+// moderator ,user
 async function getUser(req, res) {
     let { id } = req.params
     try {
@@ -60,12 +48,21 @@ async function getUsers(req, res) {
 async function updateUser(req, res) {
     let { id } = req.params;
     try {
+        if (req.body.password || req.body.confirmPassword) {
+            return res.json({
+                message: "use forget password instead"
+            })
+        }
         let user = await userModel.findById(id);
+        console.log("60", user)
         if (user) {
-            for (let key in user) {
+            for (let key in req.body) {
                 user[key] = req.body[key];
             }
-            await user.save();
+            // save -> confirm ,password
+            await user.save({
+                validateBeforeSave: false
+            });
             res.status(200).json({
                 user: user
             });
@@ -74,6 +71,20 @@ async function updateUser(req, res) {
                 message: "user not found"
             })
         }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            message: "Server error"
+        });
+    }
+}
+// only authorized to admin
+async function createUser(req, res) {
+    try {
+        let user = await userModel.create(req.body);
+        res.status(200).json({
+            user: user
+        });
     } catch (err) {
         console.error(err);
         res.status(500).json({
@@ -94,6 +105,33 @@ async function deleteUser(req, res) {
             message: "Server error"
         });
     }
+}
+function isAuthorized(roles) {
+    console.log("I will run when the server is started")
+    // function call 
+    return async function (req, res) {
+        console.log("I will run when a call is made ")
+        let { userId } = req;
+        // id -> user get ,user role,
+        try {
+            let user = userModel.findById(userId);
+            let userisAuthorized = roles.includes(user.role);
+            if (userisAuthorized) {
+                req.user = user;
+                next();
+            } else {
+                res.status(200).json({
+                    message: "user not authorized"
+                })
+            }
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({
+                message: "Server error"
+            });
+        }
+    }
+
 }
 
 module.exports = userRouter;
