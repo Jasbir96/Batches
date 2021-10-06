@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const userRouter = require('./Router/userRouter');
 const authRouter = require('./Router/authRouter');
 const planRouter = require('./Router/planRouter');
+const reviewRouter = require('./Router/reviewRouter');
 // Server: // route  -> request -> response/file 
 // File system// path -> interact/type -> file /folder
 // server init
@@ -31,10 +32,10 @@ app.use(cookieParser());
 // localhost/user/10 -> post 
 // let content = JSON.parse(fs.readFileSync("./data.json"));
 // // localhost / auth / 10-> patch
-
 app.use('/api/user', userRouter);
 app.use("/api/plan", planRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/review', reviewRouter);
 app.listen(8081, function () {
     console.log("server started");
 })

@@ -13,7 +13,6 @@ function createElement(elementModel) {
         }
     }
 }
-
 function deleteElement(elementModel) {
     return async function deleteelement(req, res) {
         let { id } = req.params;
@@ -45,10 +44,7 @@ function getElement(elementModel) {
         }
     }
 }
-
-
-
-function getElements() {
+function getElements(elementModel) {
     return async function (req, res) {
         try {
             let elements = await elementModel.find();
@@ -62,7 +58,7 @@ function getElements() {
         }
     }
 }
-function updateElement() {
+function updateElement(elementModel) {
     return async function updateElement(req, res) {
         let { id } = req.params;
         try {

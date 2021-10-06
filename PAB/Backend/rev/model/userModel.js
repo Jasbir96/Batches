@@ -14,7 +14,8 @@ mongoose
 //mongoose -> data -> exact -> data -> that is required to form an entity 
 //  data completness , data validation
 // name ,email,password,confirmPassword-> min ,max,confirmPassword,required ,unique 
-const userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema(
+    {
     name: {
         type: String,
         required: true,

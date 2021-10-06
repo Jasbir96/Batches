@@ -42,12 +42,14 @@ module.exports.bodyChecker =
 module.exports.isAuthorized = function (roles) {
     console.log("I will run when the server is started")
     // function call 
-    return async function (req, res) {
+    console.log()
+    return async function (req, res,next) {
         console.log("Inner function");
         let { userId } = req;
         // id -> user get ,user role,
         try {
-            let user = userModel.findById(userId);
+            let user = await userModel.findById(userId);
+            // console.log("role", user)
             let userisAuthorized = roles.includes(user.role);
             if (userisAuthorized) {
                 req.user = user;

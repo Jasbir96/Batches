@@ -10,6 +10,11 @@ const { createElement,
     updateElement,
     deleteElement } = require("../helpers/factory");
 // routes-> id
+const createUser = createElement(userModel);
+const deleteUser = deleteElement(userModel)
+const updateUser = updateElement(userModel)
+const getUser = getElement(userModel)
+const getUsers = getElements(userModel)
 userRouter.use(protectRoute);
 console.log(1)
 userRouter
@@ -20,15 +25,11 @@ userRouter
 // console.log(2)
 userRouter.route("/:id")
     .get(getUser)
-    .patch(bodyChecker, isAuthorized(["admin", "ce"]), updateUser)
+    .patch(bodyChecker, isAuthorized(["admin", "ce"]),updateUser)
     .delete(bodyChecker, isAuthorized(["admin"]), deleteUser)
 console.log(3)
 // functions
-const createUser = createElement(userModel);
-const deleteUser = deleteElement(userModel)
-const updateUser = updateElement(userModel)
-const getUser = getElement(userModel)
-const getUsers = getElements(userModel)
+
 
 // moderator ,user
 // async function getUser(req, res) {

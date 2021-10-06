@@ -29,7 +29,6 @@ const planSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true,
-
     },
     discount: {
         type: Number,
@@ -43,7 +42,6 @@ const planSchema = new mongoose.Schema({
     planImages: {
         type: [String]
     }
-
 })
 // model
 let planModel = mongoose.model("PABPlanModel", planSchema);
