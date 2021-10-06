@@ -6,6 +6,7 @@ const path = require("path");
 const cookieParser = require('cookie-parser');
 const userRouter = require('./Router/userRouter');
 const authRouter = require('./Router/authRouter');
+const planRouter = require('./Router/planRouter');
 // Server: // route  -> request -> response/file 
 // File system// path -> interact/type -> file /folder
 // server init
@@ -32,7 +33,7 @@ app.use(cookieParser());
 // // localhost / auth / 10-> patch
 
 app.use('/api/user', userRouter);
-// app.use("")
+app.use("/api/plan", planRouter);
 app.use('/api/auth', authRouter);
 app.listen(8081, function () {
     console.log("server started");
