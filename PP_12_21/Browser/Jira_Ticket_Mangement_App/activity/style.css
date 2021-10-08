@@ -48,26 +48,29 @@ padding-left:3rem;
 
 
 /* **********add cross */
- .add-cross_container{
+ .add-cross_container,.lock-unlock_container{
   width:20%;
   display:flex; 
+  margin-right:1rem
 }
-.add-cross_container>*{
+.add-cross_container>*,.lock-unlock_container>*{
    width:50%;
    height:100%;
    /* background-color:red */
 }
-.plus-container{
-   /* background-color:yellow; */
-}
-.plus-container,.multiply-container{
+
+.plus-container,.multiply-container,.lock-container,.unlock-container{
   /* perefectly center an element inside a div */
    display: flex;
    justify-content:center;
    align-items: center; 
+   
+}
+.active{
+  background-color: rgb(62, 56, 56);
 }
 /* icons are treated as text  */
-.fa-plus,.fa-times{
+.tool_icons{
    font-size:2rem;
    /* boldness */
    font-weight:400;
@@ -77,10 +80,6 @@ padding-left:3rem;
 .task_input{
    color:white;
 }
-
-
-
-
 
  /* ***********main container */
 

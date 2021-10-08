@@ -1,9 +1,20 @@
+
 var uid = new ShortUniqueId();
-let input = document.querySelector(".task_input");
-let mainContainer = document.querySelector(".main-container");
+// variables 
 let colors = ["pink", "blue", "green", "black"];
 let defaultColor = "black";
 let cFilter = "";
+let locked = false;
+// let isLocked = false;
+// elements 
+let input = document.querySelector(".task_input");
+let mainContainer = document.querySelector(".main-container");
+let colorContainer = document.querySelector(".color-group_container");
+let lockContainer = document.querySelector(".lock-container");
+let unlockContainer = document.querySelector(".unlock-container");
+let plusContainer = document.querySelector(".plus-container");
+let multiplyContainer = document.querySelector(".multiply-container");
+// event Listeners
 input.addEventListener("keydown", function (e) {
     if (e.code == "Enter" && input.value) {
         console.log("task Value", input.value);
@@ -12,6 +23,38 @@ input.addEventListener("keydown", function (e) {
         input.value = "";
     }
 })
+// filtering 
+colorContainer.addEventListener("click", function (e) {
+    let element = e.target;
+    console.log("e.target", element);
+    if (element != colorContainer) {
+        let filteredCardColor = element.classList[1];
+        filterCards(filteredCardColor);
+    }
+})
+
+lockContainer.addEventListener("click", function (e) {
+    let numberOFElements = document.querySelectorAll(".task_main-container>div")
+    for (let i = 0; i < numberOFElements.length; i++) {
+        numberOFElements[i].contentEditable = false;
+    }
+    // ui match
+    lockContainer.classList.add("active");
+    unlockContainer.classList.remove("active");
+})
+unlockContainer.addEventListener("click", function (e) {
+  let  numberOFElements = document.querySelectorAll(".task_main-container>div")
+    for (let i = 0; i < numberOFElements.length; i++) {
+        numberOFElements[i].contentEditable = true;
+    }
+    lockContainer.classList.remove("active");
+    unlockContainer.classList.add("active");
+})
+
+
+
+
+// helpers
 function createTask(id, task) {
     let taskContainer = document.createElement("div");
     taskContainer.setAttribute("class", "task_container");
@@ -44,16 +87,8 @@ function createTask(id, task) {
         taskHeader.classList.add(nextColor);
     })
 }
-// filtering 
-let colorContainer = document.querySelector(".color-group_container");
-colorContainer.addEventListener("click", function (e) {
-    let element = e.target;
-    console.log("e.target",element);
-    if (element != colorContainer) {
-        let filteredCardColor = element.classList[1];
-        filterCards(filteredCardColor);
-    }
-})
+
+// lock -> click -> con
 // console.log(colorBtns);
 // for (let i = 0; i < colorBtns.length; i++) {
 //     colorBtns[i].addEventListener("click", function () {
@@ -82,10 +117,12 @@ function filterCards(filterColor) {
         cFilter = filterColor;
     } else {
         cFilter = "";
-        for (let i = 0; i < allTaskCards.length; i++) {    
-                allTaskCards[i].style.display = "block"    
-    }
+        for (let i = 0; i < allTaskCards.length; i++) {
+            allTaskCards[i].style.display = "block"
+        }
     }
 }
 
 
+
+// lock/ unlock features
