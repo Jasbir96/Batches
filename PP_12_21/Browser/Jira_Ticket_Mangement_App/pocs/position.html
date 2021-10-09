@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+
+            font-family: sans-serif;
+            color: white;
+        }
+
+        body {
+            background-color: rgb(172, 29, 172);
+            margin: 0;
+        }
+
+        .grandpa {
+            height: 50rem;
+            width: 30rem;
+            border: 2px solid white;
+            padding:4rem;
+            position: relative;
+        }
+        .parent {
+            height: 40rem;
+            width: 20rem;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+        h1 {
+            /* text-align: center; */
+            margin-bottom: 3rem;
+            /* margin:0px; */
+        }
+
+        .child {
+            color: black;
+            height: 10rem;
+            width: 10rem;
+            font-weight: bolder;
+            font-size: 3rem;
+            /* border: 1px solid black; */
+        }
+        .one {
+            background-color: lightgreen;
+            /* relative to my original position */
+            position: relative;
+            top: 0px;
+            left: 170px;
+        }
+        .two {
+            background-color: rgb(255, 182, 193);
+            /* new layer -> element next to you takes your place*/
+            position: absolute;
+            /* top and left are with respect to 
+            top left corner of the new layer */
+            /* if you want adjust the top left calaculation */
+            top: 10px;
+            left: 0px; 
+        }
+
+        .three {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- normal flow position : static -->
+    <!-- html write ->render -> top-bottom , left to right-->
+    <h1>POSTIONING</h1>
+    <div class="grandpa">
+        <div class="parent">
+            <div class="child one">1</div>
+            <div class="child two">2</div>
+            <div class="child three">3</div>
+        </div>
+    </div>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ea quam? Laudantium libero, impedit, sunt
+        nostrum officia illo iusto odit possimus hic dolorem placeat maxime! Ipsam repudiandae beatae velit, sint saepe
+        consequatur non quam atque laudantium ad totam, error dicta eveniet inventore cumque aut asperiores mollitia
+        quaerat nemo nihil magni impedit odio. Voluptatibus aut ea odit dolor perspiciatis repellendus, minima a
+        accusamus, totam perferendis distinctio doloremque ut similique iure reiciendis labore ipsa aperiam quidem sequi
+        necessitatibus, delectus quo dolores. Consectetur iusto tempore rem velit repudiandae suscipit impedit
+        praesentium odio. Aspernatur beatae nihil qui fugit, dolores aut eos nemo nostrum eius!</p>
+</body>
+
+</html>
