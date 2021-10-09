@@ -59,14 +59,15 @@ deleteContainer.addEventListener("click", function (e) {
     }
 })
 // helpers
-function createTask(id, task, flag) {
-    console.log("create task ran", id);
+function createTask(id, task, flag, color) {
+    // console.log("create task ran", id);
     // add to local storage
+    // ticket create
     let taskContainer = document.createElement("div");
     taskContainer.setAttribute("class", "task_container");
     mainContainer.appendChild(taskContainer);
     taskContainer.innerHTML = `<div class="task_header 
-    ${defaultColor}"></div>
+    ${color ? color : defaultColor}"></div>
             <div class="task_main-container">
                 <h3 class="task_id">#${id}</h3>
                 <div class="text" contentEditable="true">${task}</div>
@@ -74,6 +75,9 @@ function createTask(id, task, flag) {
     `;
     // addEventListener for color changes
     let taskHeader = taskContainer.querySelector(".task_header");
+    let inputTask = taskContainer.querySelector(".task_main-container>div");
+    // functionality -> color change ,delete 
+    // local storage 
     // color
     let nextColor;
     // ****************color change********************
@@ -84,7 +88,6 @@ function createTask(id, task, flag) {
         // get all the classes on an element
         // console.log(taskHeader.classList);
         let cColor = taskHeader.classList[1];
-
         // let cColor = window
         //     .getComputedStyle(taskHeader)
         //     .backgroundColor;
@@ -99,7 +102,6 @@ function createTask(id, task, flag) {
         taskHeader.classList.add(nextColor);
         //  id -> localstorage search -> tell -> color update 
         // console.log("parent", taskHeader.parentNode);
-
         // console.log("taskcontainer", taskHeader.parentNode.children[1]);
         let idWalaElem = taskHeader.parentNode.children[1].children[0];
         let id = idWalaElem.textContent;
@@ -126,6 +128,19 @@ function createTask(id, task, flag) {
             taskContainer.remove();
 
         }
+    })
+    inputTask.addEventListener("blur", function (e) {
+        let content = inputTask.textContent;
+        let tasksString = localStorage.getItem("tasks");
+        let tasksArr = JSON.parse(tasksString)
+        // {id: "nDCn8Q", task: "ffdsjbdshf", color: "pink} , {}
+        for (let i = 0; i < tasksArr.length; i++) {
+            if (tasksArr[i].id == id) {
+                tasksArr[i].task = content;
+                break;
+            }
+        }
+        localStorage.setItem("tasks", JSON.stringify(tasksArr));
     })
     // local storage add 
     if (flag == true) {
@@ -183,13 +198,13 @@ function filterCards(filterColor) {
 
 (function () {
     // localStorage
-    let tasks = JSON.parse(localStorage.getItem('tasks'));
+    let tasks = JSON.parse(localStorage.getItem('tasks'))||[];
     for (let i = 0; i < tasks.length; i++) {
         let { id, task, color } = tasks[i];
-        createTask(id, task, false);
+        createTask(id, task, false, color);
     }
     // get it to ui
-})();
+})()
 // localStorage.setItem("todo", "Hello again todo");
 // localStorage.setItem("todo tomorrow", "Hello again");
 // localStorage.setItem("todo yesterday", "Hello again");
