@@ -93,7 +93,7 @@ padding-left:3rem;
    padding:4rem;
    display:flex;
    justify-content:space-evenly;
-   align-items:center;
+   /* align-items:center; */
    flex-wrap: wrap;
 }
 .task_container{

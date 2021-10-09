@@ -1,4 +1,3 @@
-
 var uid = new ShortUniqueId();
 // variables 
 let colors = ["pink", "blue", "green", "black"];
@@ -15,12 +14,6 @@ let lockContainer = document.querySelector(".lock-container");
 let unlockContainer = document.querySelector(".unlock-container");
 let plusContainer = document.querySelector(".plus-container");
 let deleteContainer = document.querySelector(".multiply-container");
-
-
-
-
-
-
 // event Listeners
 input.addEventListener("keydown", function (e) {
     if (e.code == "Enter" && input.value) {
@@ -66,7 +59,8 @@ deleteContainer.addEventListener("click", function (e) {
     }
 })
 // helpers
-function createTask(id, task,flag) {
+function createTask(id, task, flag) {
+    console.log("create task ran", id);
     // add to local storage
     let taskContainer = document.createElement("div");
     taskContainer.setAttribute("class", "task_container");
@@ -82,7 +76,10 @@ function createTask(id, task,flag) {
     let taskHeader = taskContainer.querySelector(".task_header");
     // color
     let nextColor;
+    // ****************color change********************
     taskHeader.addEventListener("click", function () {
+        // console.log("id", id);
+        // console.log("color change logic");
         //    class -> change 
         // get all the classes on an element
         // console.log(taskHeader.classList);
@@ -100,18 +97,39 @@ function createTask(id, task,flag) {
         nextColor = colors[nextIdx];
         taskHeader.classList.remove(cColor);
         taskHeader.classList.add(nextColor);
-        // color update 
+        //  id -> localstorage search -> tell -> color update 
+        // console.log("parent", taskHeader.parentNode);
+
+        // console.log("taskcontainer", taskHeader.parentNode.children[1]);
+        let idWalaElem = taskHeader.parentNode.children[1].children[0];
+        let id = idWalaElem.textContent;
+        id = id.split("#")[1];
+        // console.log("id", id);
+        let tasksString = localStorage.getItem("tasks");
+        let tasksArr = JSON.parse(tasksString)
+        // {id: "nDCn8Q", task: "ffdsjbdshf", color: "pink} , {}
+        for (let i = 0; i < tasksArr.length; i++) {
+            if (tasksArr[i].id == id) {
+                tasksArr[i].color = nextColor;
+                break;
+            }
+        }
+        localStorage.setItem("tasks", JSON.stringify(tasksArr));
+
+
     })
+    // *************************delete********************** 
     taskContainer.addEventListener("click", function (e) {
         if (deleteMode == true) {
             // delete ->ui , storage
-
+            // local storage -> remove;
             taskContainer.remove();
 
         }
     })
     // local storage add 
     if (flag == true) {
+        // old task
         let tasksString = localStorage.getItem("tasks");
         let tasksArr = JSON.parse(tasksString) || [];
         let taskObject = {
@@ -119,11 +137,11 @@ function createTask(id, task,flag) {
             task: task,
             color: defaultColor
         }
+        // 1 new task
         tasksArr.push(taskObject);
+        // set 
         localStorage.setItem("tasks", JSON.stringify(tasksArr));
     }
-
-
 }
 // lock -> click -> con
 // console.log(colorBtns);
@@ -159,7 +177,6 @@ function filterCards(filterColor) {
         }
     }
 }
-
 // check if any of the tasks are in local storage 
 //  bring it to ui
 
@@ -169,7 +186,7 @@ function filterCards(filterColor) {
     let tasks = JSON.parse(localStorage.getItem('tasks'));
     for (let i = 0; i < tasks.length; i++) {
         let { id, task, color } = tasks[i];
-        createTask(id,task,false);
+        createTask(id, task, false);
     }
     // get it to ui
 })();

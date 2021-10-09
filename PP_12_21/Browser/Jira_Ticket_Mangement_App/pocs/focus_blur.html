@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            height: 10rem;
+            width: 10rem;
+            background-color: rgb(45, 79, 45);
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" class="main">
+    <div class="box"></div>
+    <input type="text" class="secondary">
+    <select name="" id="">
+        <option value="English">A</option>
+        <option value="Hindi">B</option>
+        <option value="German">C</option>
+        <option value="Punjabi">D</option>
+    </select>
+    <!-- focus
+
+    blur
+    change -->
+    <script>
+        let mainInput = document.querySelector(".main");
+        let secondaryInput = document.querySelector(".secondary");
+        let selectInput = document.querySelector("select");
+        mainInput.addEventListener("focus", function () {
+            // console.log(mainInput.value);
+            console.log("mainIput is in focus")
+        })
+        mainInput.addEventListener("change", function () {
+            console.log("value changed to", mainInput.value);
+        })
+        mainInput.addEventListener("blur", function () {
+            // console.log(mainInput.value);
+            console.log("main is blurred")
+        })
+        secondaryInput.addEventListener("focus", function () {
+            // console.log(mainInput.value);
+            console.log("secondaryInput is in focus")
+        })
+        secondaryInput.addEventListener("change", function () {
+            console.log("value changed to", secondaryInput.value);
+        })
+        secondaryInput.addEventListener("blur", function () {
+            // console.log(mainInput.value);
+            console.log("main is blurred")
+        })
+        selectInput.addEventListener("focus", function () {
+            console.log("select is in focus");
+        })
+        selectInput.addEventListener("change", function () {
+            console.log("value changed to", selectInput.value);
+        })
+        selectInput.addEventListener("blur", function () {
+            console.log("select is in blur");
+
+        })
+    </script>
+</body>
+
+</html>
