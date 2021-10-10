@@ -7,20 +7,25 @@ let locked = false;
 let deleteMode = false;
 // let isLocked = false;
 // elements 
-let input = document.querySelector(".task_input");
+let input = document.querySelector(".input_container_text");
 let mainContainer = document.querySelector(".main-container");
 let colorContainer = document.querySelector(".color-group_container");
 let lockContainer = document.querySelector(".lock-container");
 let unlockContainer = document.querySelector(".unlock-container");
 let plusContainer = document.querySelector(".plus-container");
 let deleteContainer = document.querySelector(".multiply-container");
+let colorChooser = document.querySelector(".color_container");
+let allCOlorElements = document.querySelectorAll(".color_picker");
+let modal = document.querySelector(".modal");
 // event Listeners
 input.addEventListener("keydown", function (e) {
     if (e.code == "Enter" && input.value) {
         console.log("task Value", input.value);
         let id = uid();
+        modal.style.display = "none";
         createTask(id, input.value, true);
         input.value = "";
+
     }
 })
 // filtering 
@@ -30,6 +35,21 @@ colorContainer.addEventListener("click", function (e) {
     if (element != colorContainer) {
         let filteredCardColor = element.classList[1];
         filterCards(filteredCardColor);
+    }
+})
+colorChooser.addEventListener("click", function (e) {
+    let element = e.target;
+    console.log("e.target", element);
+    if (element != colorContainer) {
+        let filteredCardColor = element.classList[1];
+        defaultColor = filteredCardColor;
+        // border change 
+        for (let i = 0; i < allCOlorElements.length; i++) {
+            // remove  from all
+            allCOlorElements[i].classList.remove("selected");
+        }
+        // add
+        element.classList.add("selected")
     }
 })
 lockContainer.addEventListener("click", function (e) {
@@ -57,6 +77,9 @@ deleteContainer.addEventListener("click", function (e) {
         deleteContainer.classList.remove("active")
 
     }
+})
+plusContainer.addEventListener("click", function (e) {
+    modal.style.display = "flex";
 })
 // helpers
 function createTask(id, task, flag, color) {
@@ -157,6 +180,10 @@ function createTask(id, task, flag, color) {
         // set 
         localStorage.setItem("tasks", JSON.stringify(tasksArr));
     }
+    defaultColor = "black";
+    //  unhide modal
+    // appear on plus click
+
 }
 // lock -> click -> con
 // console.log(colorBtns);
@@ -198,12 +225,13 @@ function filterCards(filterColor) {
 
 (function () {
     // localStorage
-    let tasks = JSON.parse(localStorage.getItem('tasks'))||[];
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     for (let i = 0; i < tasks.length; i++) {
         let { id, task, color } = tasks[i];
         createTask(id, task, false, color);
     }
     // get it to ui
+    modal.style.display = "none";
 })()
 // localStorage.setItem("todo", "Hello again todo");
 // localStorage.setItem("todo tomorrow", "Hello again");
