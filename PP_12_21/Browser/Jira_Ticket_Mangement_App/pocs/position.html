@@ -22,9 +22,10 @@
             height: 50rem;
             width: 30rem;
             border: 2px solid white;
-            padding:4rem;
+            padding: 4rem;
             position: relative;
         }
+
         .parent {
             height: 40rem;
             width: 20rem;
@@ -32,11 +33,13 @@
             margin-left: 1rem;
             /* position: relative; */
         }
+
         h1 {
             text-align: center;
             margin-bottom: 3rem;
             /* margin:0px; */
         }
+
         .child {
             color: black;
             height: 10rem;
@@ -45,6 +48,7 @@
             font-size: 3rem;
             /* border: 1px solid black; */
         }
+
         .one {
             background-color: lightgreen;
             /* relative to my original position */
@@ -52,6 +56,7 @@
             /* top: 0px; */
             left: 170px;
         }
+
         .two {
             background-color: rgb(255, 182, 193);
             /* new layer -> element next to you takes your place*/
@@ -65,6 +70,24 @@
 
         .three {
             background-color: lightblue;
+        }
+        .four {
+            background-color: lightcoral;
+            /* It is similar to absolute but with relative
+            it is position with respect to current viewport */
+            position: fixed;
+            top: 10px;
+            left: 30px;
+        }
+        .five {
+            background-color: lightgoldenrodyellow;
+            /* It is similar to absolute but with relative
+            it is position with respect to current viewport */
+            /* it behaves like normal element 
+            until it covers a particular threshold it connverted into position fixed*/
+            position: sticky;
+            top: 100px;
+            left: 200px;
         }
     </style>
 </head>
@@ -81,6 +104,9 @@
         </div>
     </div>
 
+    <div class="child four">4</div>
+    <div class="child five">5</div>
+
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ea quam? Laudantium libero, impedit, sunt
         nostrum officia illo iusto odit possimus hic dolorem placeat maxime! Ipsam repudiandae beatae velit, sint saepe
         consequatur non quam atque laudantium ad totam, error dicta eveniet inventore cumque aut asperiores mollitia
@@ -88,6 +114,39 @@
         accusamus, totam perferendis distinctio doloremque ut similique iure reiciendis labore ipsa aperiam quidem sequi
         necessitatibus, delectus quo dolores. Consectetur iusto tempore rem velit repudiandae suscipit impedit
         praesentium odio. Aspernatur beatae nihil qui fugit, dolores aut eos nemo nostrum eius!</p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ea quam? Laudantium libero, impedit, sunt
+        nostrum officia illo iusto odit possimus hic dolorem placeat maxime! Ipsam repudiandae beatae velit, sint saepe
+        consequatur non quam atque laudantium ad totam, error dicta eveniet inventore cumque aut asperiores mollitia
+        quaerat nemo nihil magni impedit odio. Voluptatibus aut ea odit dolor perspiciatis repellendus, minima a
+        accusamus, totam perferendis distinctio doloremque ut similique iure reiciendis labore ipsa aperiam quidem sequi
+        necessitatibus, delectus quo dolores. Consectetur iusto tempore rem velit repudiandae suscipit impedit
+        praesentium odio. Aspernatur beatae nihil qui fugit, dolores aut eos nemo nostrum eius!</p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ea quam? Laudantium libero, impedit, sunt
+        nostrum officia illo iusto odit possimus hic dolorem placeat maxime! Ipsam repudiandae beatae velit, sint saepe
+        consequatur non quam atque laudantium ad totam, error dicta eveniet inventore cumque aut asperiores mollitia
+        quaerat nemo nihil magni impedit odio. Voluptatibus aut ea odit dolor perspiciatis repellendus, minima a
+        accusamus, totam perferendis distinctio doloremque ut similique iure reiciendis labore ipsa aperiam quidem sequi
+        necessitatibus, delectus quo dolores. Consectetur iusto tempore rem velit repudiandae suscipit impedit
+        praesentium odio. Aspernatur beatae nihil qui fugit, dolores aut eos nemo nostrum eius!</p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ea quam? Laudantium libero, impedit, sunt
+        nostrum officia illo iusto odit possimus hic dolorem placeat maxime! Ipsam repudiandae beatae velit, sint saepe
+        consequatur non quam atque laudantium ad totam, error dicta eveniet inventore cumque aut asperiores mollitia
+        quaerat nemo nihil magni impedit odio. Voluptatibus aut ea odit dolor perspiciatis repellendus, minima a
+        accusamus, totam perferendis distinctio doloremque ut similique iure reiciendis labore ipsa aperiam quidem sequi
+        necessitatibus, delectus quo dolores. Consectetur iusto tempore rem velit repudiandae suscipit impedit
+        praesentium odio. Aspernatur beatae nihil qui fugit, dolores aut eos nemo nostrum eius!</p>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ea quam? Laudantium libero, impedit, sunt
+        nostrum officia illo iusto odit possimus hic dolorem placeat maxime! Ipsam repudiandae beatae velit, sint saepe
+        consequatur non quam atque laudantium ad totam, error dicta eveniet inventore cumque aut asperiores mollitia
+        quaerat nemo nihil magni impedit odio. Voluptatibus aut ea odit dolor perspiciatis repellendus, minima a
+        accusamus, totam perferendis distinctio doloremque ut similique iure reiciendis labore ipsa aperiam quidem sequi
+        necessitatibus, delectus quo dolores. Consectetur iusto tempore rem velit repudiandae suscipit impedit
+        praesentium odio. Aspernatur beatae nihil qui fugit, dolores aut eos nemo nostrum eius!</p>
+
 </body>
 
 </html>
