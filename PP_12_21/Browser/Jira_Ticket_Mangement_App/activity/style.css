@@ -1,5 +1,8 @@
 /* universal selector */
 /* user agent stylesheet -> browser styling */
+*{
+   box-sizing: border-box;
+}
 body{
 /* border:2px solid red; */
 margin:0px;
@@ -115,4 +118,57 @@ padding-left:3rem;
    margin:0.2rem;
    margin-left:0px;
 }
+
+/***************modal*****************************************/
+.modal{
+   height:20rem;
+   width:35rem;
+   background-color: white;
+   /* put it fixed*/
+   position: fixed;
+   /* center */
+   top:calc( 50% - 10rem);
+   left: calc( 50% - (35/2)rem);
+   display:flex;
+}
+.input_container{
+   width:65%;
+   /* border: 1px solid black; */
+   height:100%;
+   padding:2rem;
+   /* background-color: red; */
+
+}
+.input_container_text{
+   outline: none;
+   height:100%;
+   width:100%;
+   border:none;
+   font-size: 1.5rem;
+   /* font-weight: 100; */
+   font-family: sans-serif; 
+}
+.color_container{
+   background-color: #343131;
+   height:100%;
+   width:35%;
+}
+
+.color_container{
+   padding:  1.5rem;
+   /* text-align: center; */
+   display: flex;
+   /* flex direction -> flex for spacing */
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center;
+}
+.color_picker{
+   height:3rem;
+   width:6rem;
+}
+.selected{
+   border: 0.2rem solid white;
+}
+
 

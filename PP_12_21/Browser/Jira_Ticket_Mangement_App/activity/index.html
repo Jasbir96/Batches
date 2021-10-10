@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
     <!-- block level -> width of parent element -->
     <!-- height -> content unless specified -->
@@ -42,9 +44,23 @@
     <div class="main-container">
         <!-- this should come from dom  -->
         <!-- static html modal -->
-        
+        <div class="modal">
+            <div class="input_container">
+                <textarea 
+                class="input_container_text" 
+                placeholder="Enter the task "
+                ></textarea>
+            </div>
+            <div class="color_container">
+                <div class="color_picker pink selected"></div>
+                <div class="color_picker blue"></div>
+                <div class="color_picker green"></div>
+                <div class="color_picker black"></div>
+            </div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/short-unique-id@latest/dist/short-unique-id.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
