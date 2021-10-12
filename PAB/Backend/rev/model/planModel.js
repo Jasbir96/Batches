@@ -41,7 +41,14 @@ const planSchema = new mongoose.Schema({
     },
     planImages: {
         type: [String]
-    }
+    },
+    // reviews, averagerating
+    reviews: {
+        //   array of object id 
+        type: [mongoose.Schema.ObjectId],
+        ref: "reviewModel"
+    },
+    averageRating: Number,
 })
 // model
 let planModel = mongoose.model("PABPlanModel", planSchema);

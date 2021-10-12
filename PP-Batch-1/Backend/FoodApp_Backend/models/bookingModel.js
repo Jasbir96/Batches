@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
 let { DB_LINK } = require("../secrets");
-mongoose.connect(DB_LINK, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(function (db) {
+mongoose.connect(DB_LINK).then(function (db) {
     // console.log(db);
     console.log("connected to db")
 }).catch(function (err) {
@@ -27,8 +24,13 @@ const bookingSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: "planModel",
         required: [true, "Booking must belong to a plan "]
+    },
+    status: {
+        type: String,
+        enum: ["pending", "successful", "rejected"],
+        default: "pending"
     }
 })
-const BookingModel = 
-mongoose.model("bookingModel", bookingSchema);
+const BookingModel =
+    mongoose.model("bookingModel", bookingSchema);
 module.exports = BookingModel;

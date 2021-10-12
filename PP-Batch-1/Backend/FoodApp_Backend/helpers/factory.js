@@ -28,14 +28,30 @@ module.exports.getElements = function (ElementModel) {
             // sort
             // sort
             // paginate
-            let ans = JSON.parse(req.query.myquery);
+            let ans;
+            if (Object.keys(req.query).length) {
+                ans = JSON.parse(req.query.myquery);
+            } else {
+                console.log(req.query);
+                ans = {};
+            }
             console.log("ans", ans);
             let ElementsQuery = ElementModel.find(ans);
             let sortField = req.query.sort;
-            let sortQuery = ElementsQuery.sort(`-${sortField}`);
-            let params = req.query.select.split("%").join(" ");
-            let fileteredQuery = sortQuery
-                .select(`${params} -_id`);
+            let sortQuery;
+            if (sortField) {
+                sortQuery = ElementsQuery.sort(`-${sortField}`);
+            } else {
+                sortQuery = ElementsQuery
+            }
+            let fileteredQuery;
+            if (req.query.select) {
+                let params = req.query.select.split("%").join(" ");
+                fileteredQuery = sortQuery
+                    .select(`${params} -_id`);
+            } else {
+                fileteredQuery = sortQuery;
+            }
             let page = Number(req.query.page) || 1;
             let limit = Number(req.query.limit) || 3;
             let toSkip = (page - 1) * limit;
@@ -50,6 +66,7 @@ module.exports.getElements = function (ElementModel) {
                 Elements: result
             })
         } catch (err) {
+            console.log(err);
             res.status(500).json({
                 error: err.message,
                 "message": "can't get Elements"

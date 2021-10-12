@@ -7,6 +7,9 @@ const PlanModel = require("../models/PlanModel");
 const factory = require("../helpers/factory");
 const getBookings = factory.getElements(BookingModel);
 // create -> booking model me change as well as userModel -> change user 
+// async function createBooking(req, res) {
+//     // status 
+// }
 // delete  -> booking model me change as well as userModel -> change user 
 const updateBooking = factory.updateElement(BookingModel);
 const getBookingById = factory.getElementById(BookingModel);
@@ -15,7 +18,7 @@ BookingRouter
     .route("/:id")
     .get(getBookingById)
     .patch(updateBooking)
-    // .delete(deleteBooking)
+// .delete(deleteBooking)
 // ****************************************************
 BookingRouter
     .route("/")

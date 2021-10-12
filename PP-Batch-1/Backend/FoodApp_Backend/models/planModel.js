@@ -4,9 +4,7 @@ let { DB_LINK } = require("../secrets");
 // link
 // connnection form 
 mongoose.connect(DB_LINK, {
-    useNewUrlParser: true,
 
-    useUnifiedTopology: true,
 }).then(function () {
     // console.log(db);
     console.log("connected to db")
@@ -29,11 +27,9 @@ const planSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true,
-
     },
     ratingsAverage: {
         type: Number,
-
     },
     discount: {
         type: Number,
@@ -49,8 +45,10 @@ const planSchema = new mongoose.Schema({
         type: [mongoose.Schema.ObjectId],
         ref: "reviewModel"
     },
-    
     averageRating: Number,
+    planImages: {
+        type: [String]
+    }
 })
 // order matters 
 // middleware 
