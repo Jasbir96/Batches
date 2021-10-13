@@ -23,17 +23,16 @@ PlanRouter
     .get(getPlans)
     .post(createPlan)
 
+    .limit(3)    
 async function getTop3Plans(req, res) {
     try {
         console.log("hello")
         let plans = await PlanModel.find()
         .sort("-averageRating")
-        .limit(3)    
         .populate({
                 path: 'reviews',
                 select:"review"
             })
-
 
         // let plansArr = []
         // for (let i = 0; i < plans.length; i++) {
