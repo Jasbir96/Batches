@@ -28,6 +28,7 @@ planRouter.route("/:id")
 async function getbestPlans(req, res) {
     console.log("hello")
     try{
+        
     let plans = await PlanModel.find()
     .sort("-averageRating").populate({
             path: 'reviews',
@@ -44,6 +45,6 @@ async function getbestPlans(req, res) {
     })
 }
 
-
+}
 // createPlan
 module.exports = planRouter;

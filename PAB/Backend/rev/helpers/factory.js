@@ -47,7 +47,31 @@ function getElement(elementModel) {
 function getElements(elementModel) {
     return async function (req, res) {
         try {
-            let elements = await elementModel.find();
+            let requestPromise;
+            // query
+            if (req.query.myQuery) {
+                requestPromise = elementModel.find(req.query.myQuery);
+            } else {
+                requestPromise = elementModel.find();
+            }
+            // sort
+            
+            if (req.query.sort) {
+                requestPromise = requestPromise.sort(req.query.sort)
+            }
+            // select
+            if (req.query.select) {
+                let params = req.query.select.split("%").join(" ");
+             requestPromise = requestPromise.select(params);
+            }
+            // paginate 
+            let page = Number(req.query.page) || 1;
+            let limit = Number(req.query.limit) || 4;
+            let toSkip = (page - 1) * limit;
+            requestPromise = requestPromise
+                .skip(toSkip)
+                .limit(limit);
+            let elements = await requestPromise;
             res.status(200).json({
                 "message": elements
             })
@@ -68,7 +92,7 @@ function updateElement(elementModel) {
                 return res.json({
                     message: "use forget password instead"
                 })
-            }        
+            }
             let element = await elementModel.findById(id);
             console.log("60", element)
             if (element) {
