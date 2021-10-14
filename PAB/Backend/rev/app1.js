@@ -8,6 +8,7 @@ const userRouter = require('./Router/userRouter');
 const authRouter = require('./Router/authRouter');
 const planRouter = require('./Router/planRouter');
 const reviewRouter = require('./Router/reviewRouter');
+const bookingRouter = require('./Router/bookingRouter');
 // Server: // route  -> request -> response/file 
 // File system// path -> interact/type -> file /folder
 // server init
@@ -36,6 +37,7 @@ app.use('/api/user', userRouter);
 app.use("/api/plan", planRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/review', reviewRouter);
+app.use('/api/booking', bookingRouter);
 app.listen(8081, function () {
     console.log("server started");
 })
@@ -45,22 +47,6 @@ app.use(function (req, res) {
     res.status(404).sendFile
         (path.join(__dirname, "404.html"));
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

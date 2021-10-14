@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
-let { DB_LINK } = require("../secrets");
-mongoose.connect(DB_LINK, {
+const { PASSWORD } = require("../secrets");
+let dbLink
+    = `mongodb+srv://admin:${PASSWORD}@cluster0.3gwfq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+mongoose.connect(dbLink, {
     useNewUrlParser: true,
 
     useUnifiedTopology: true,

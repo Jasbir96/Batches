@@ -16,45 +16,50 @@ mongoose
 // name ,email,password,confirmPassword-> min ,max,confirmPassword,required ,unique 
 const userSchema = new mongoose.Schema(
     {
-    name: {
-        type: String,
-        required: true,
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-        validate: function () {
-            // third party library 
-            return validator.validate(this.email)
+        name: {
+            type: String,
+            required: true,
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            validate: function () {
+                // third party library 
+                return validator.validate(this.email)
+            }
+        },
+        password: {
+            type: String,
+            required: true,
+            minlength: 8,
         }
-    },
-    password: {
-        type: String,
-        required: true,
-        minlength: 8,
-    }
-    ,
-    confirmPassword: {
-        type: String,
-        required: true,
-        minlength: 8,
-        validate: function () {
-            return this.password == this.confirmPassword
-        }
-    },
-    createdAt: {
-        type: String,
+        ,
+        confirmPassword: {
+            type: String,
+            required: true,
+            minlength: 8,
+            validate: function () {
+                return this.password == this.confirmPassword
+            }
+        },
+        createdAt: {
+            type: String,
 
-    },
-    token: String,
-    validUpto: Date,
-    role: {
-        type: String,
-        enum: ["admin", "ce", "user"],
-        default: "user"
-    }
-})
+        },
+        token: String,
+        validUpto: Date,
+        role: {
+            type: String,
+            enum: ["admin", "ce", "user"],
+            default: "user"
+        },
+        bookings: {
+            //   array of object id 
+            type: [mongoose.Schema.ObjectId],
+            ref: "bookingModel"
+        },
+    })
 // hook
 userSchema.pre('save', function (next) {
     // do stuff

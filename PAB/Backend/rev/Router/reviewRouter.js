@@ -1,5 +1,10 @@
+// dependency
+const express = require("express");
+
+// router
+const ReviewRouter = express.Router();
 const ReviewModel = require("../model/reviewModel");
-const PlanModel = require("../model/PlanModel");
+const PlanModel = require("../model/planModel");
 const { protectRoute } = require("./utilFns")
 const {
     getElement, getElements,
