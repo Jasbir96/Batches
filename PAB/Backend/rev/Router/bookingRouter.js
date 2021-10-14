@@ -12,6 +12,12 @@ const {
 const updatebooking = updateElement(bookingModel);
 const getbooking = getElement(bookingModel);
 const getbookings = getElements(bookingModel);
+const Razorpay = require("razorpay");
+let { KEY_ID, KEY_SECRET } = require("../secrets");
+var razorpay = new Razorpay({
+    key_id: KEY_ID,
+    key_secret: KEY_SECRET,
+});
 // createbooking
 const initiateBooking = async function (req, res) {
     try {
@@ -21,16 +27,53 @@ const initiateBooking = async function (req, res) {
         let user = await userModel.findById(userId);
         user.bookings.push(bookingId);
         await user.save();
+        const payment_capture = 1;
+        const amount = 500;
+        const currency = "INR";
+        const options = {
+            amount,
+            currency,
+            receipt: `rs_${bookingId}`,
+            payment_capture,
+        };
+        const response = await razorpay.orders.create(options);
+        console.log(response);
         res.status(200).json({
+            id: response.id,
+            currency: response.currency,
+            amount: response.amount,
+            booking: booking,
             message: "booking created",
-            booking: booking
-        })
-    } catch (err) {
+        });
+    }
+    catch (err) {
         res.status(500).json({
             message: err.message
         })
     }
 }
+async function verifyPayment(req, res) {
+    // JWT 
+    const secret = KEY_SECRET
+
+    // console.log(req.body);
+    // 
+    const shasum = crypto.createHmac("sha256", secret);
+    shasum.update(JSON.stringify(req.body));
+    const digest = shasum.digest("hex");
+
+    console.log(digest, req.headers["x-razorpay-signature"]);
+
+    if (digest === req.headers["x-razorpay-signature"]) {
+        console.log("request is legit");
+        res.status(200).json({
+            message: "OK",
+        });
+    } else {
+        res.status(403).json({ message: "Invalid" });
+    }
+};
+
 const deletebooking = async function (req, res) {
     try {
         let booking = await bookingModel.findByIdAndDelete(req.body.id);
@@ -51,6 +94,7 @@ const deletebooking = async function (req, res) {
     }
 };
 // deletebooking
+bookingRouter.route("/verification").post(verifyPayment)
 bookingRouter
     .route("/:id")
     .get(getbooking)
