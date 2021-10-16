@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <style>
+        body {
+            margin: 0px;
+        }
+        .block {
+            background-color: red;
+            /* available width 100% -> parent */
+            /*content*/
+            /* you can also provide height and width to element  */
+            /* height:100px; */
+            width: 200px;
+        }
+        h1 {
+            height: 200px;
+            width: 200px;
+            /* background-color: lightsalmon; */
+            border: 1px solid black;
+        }
+        .inline {
+            /* height and width are equalent to content  */
+            /* padding  ,width*/
+            background-color: lightgreen;
+            padding: 10px;
+            margin: 10px;
+            /* you can't 
+            give height and width to an inline element */
+        }
+        /* inline block  */
+        .inline-block {
+            /* height width -> inline  */
+            display: inline-block;
+            background-color: rgb(190, 190, 17);
+            /* set height and width  */
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+    <!-- block -->
+    <!-- div ,h1,p ul li -> block level elems -->
+    <div class="block">
+        <h1>Hello</h1>
+    </div>
+    <!-- inline -->
+    <span class="inline">Hello again</span>
+    <span class="inline">Hello again</span>
+    <span class="inline">Hello again</span>
+    <!-- inline-block-->
+    <!-- display:none -->
+    <div class="inline-block">
+        Hello inline block
+    </div>
+</body>
+</html>
