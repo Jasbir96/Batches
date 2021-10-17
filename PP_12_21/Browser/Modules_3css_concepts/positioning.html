@@ -51,6 +51,10 @@
             background-color: rgb(255, 182, 193);
         }
 
+        .three {
+            background-color: lightblue;
+        }
+
         .four {
             background-color: lightgray;
         }
@@ -74,10 +78,10 @@
             width: 30rem;
             border: 2px solid red;
             padding-top: 5rem;
-            /* position: relative; */
         }
 
         .parent-absolute {
+            position: relative;
         }
 
         .parent-absolute>.two {
@@ -90,8 +94,29 @@
             left: 20px;
         }
 
-        .three {
-            background-color: lightblue;
+
+        .parent-fixed,
+        .parent-sticky {
+            height: 40rem;
+            width: 20rem;
+            border: 2px solid white;
+            margin-left: 1rem;
+            margin-top: 10rem;
+            margin-bottom: 10rem;
+        }
+
+        .parent-fixed>.child {
+            /* it remains fixed with respect to the page  */
+            position: fixed;
+            left: 100px;
+            top: 200px;
+        }
+
+        .parent-sticky>.child {
+            /* it act as a normal element  until a threshold is reached  */
+            position: sticky;
+            top: 200px;
+            left:400px;
         }
     </style>
 </head>
@@ -103,6 +128,15 @@
      ui element order html -> 
      it will print the same order  -->
     <h1>POSTIONING</h1>
+    <div class="parent-fixed">
+
+        <div class="child one">1fx</div>
+    </div>
+    <div class="parent-sticky">
+
+        <div class="child one">1 sticky</div>
+    </div>
+
     <div class="parent">
         <div class="child one">1</div>
         <div class="child two">2</div>
