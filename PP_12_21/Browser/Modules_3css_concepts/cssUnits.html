@@ -14,7 +14,7 @@
         responsive design -> device and layout -> change*/
         /* default 1rem -> 16px */
         html {
-            font-size: 16px;
+            font-size: 15px;
         }
         body {
             margin: 0px;
@@ -41,19 +41,22 @@
             border-bottom: 5px solid black;
         }
         /* relative unit -> calculate   */
+        /* rem */
         .type-b>* {
             height: 10rem;
             width: 10rem;
         }
+        /* vh vw */
         .type-c>* {
-            height: 50vh;
-            width: 50vw;
+            height: 40vh;
+            width: 30vw;
         }
         .type-d {
             height: 20rem;
-            width: 15rem;
+            width: 20rem;
             background-color:lightgreen
         }
+        /* percentage  */
         .type-d>.one{
             height:40%;
             width:50%;

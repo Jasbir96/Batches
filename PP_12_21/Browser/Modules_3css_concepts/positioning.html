@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: sans-serif;
+            color: white;
+        }
+
+        body {
+            background-color: rgb(172, 29, 172);
+        }
+
+        .parent {
+            height: 30rem;
+            width: 20rem;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        h1 {
+            /* text-align: center; */
+            margin-bottom: 3rem;
+        }
+
+        .child {
+            color: black;
+            height: 10rem;
+            width: 10rem;
+            font-weight: bolder;
+            font-size: 3rem;
+
+
+        }
+        .one {
+            background-color: lightgreen;
+        }
+        .two {
+            background-color: rgb(255, 182, 193);
+            /* relative to it's original pos*/
+            position: relative;
+            /* vertically move */
+            top: -100px;
+            /* horizontal */
+            left: 200px;
+        }
+        .three {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- position :static -->
+    <!-- normal flow  -->
+    <!-- order wise ->
+     ui element order html -> 
+     it will print the same order  -->
+    <h1>POSTIONING</h1>
+    <div class="parent">
+        <div class="child one">1</div>
+        <div class="child two">2</div>
+        <div class="child three">3</div>
+    </div>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel explicabo natus ipsum illo, obcaecati mollitia
+        soluta maxime perspiciatis provident recusandae debitis nostrum omnis eligendi deserunt? Fugiat sapiente vel ea
+        maiores. Illum, in asperiores totam at labore dolores suscipit exercitationem cum maxime soluta tempore, dolorum
+        culpa, unde officia odit. Nesciunt architecto voluptatum pariatur blanditiis dolore temporibus laudantium optio
+        reiciendis iste consequatur quo dolores, sequi impedit ex totam repellendus nisi. Culpa asperiores aspernatur
+        unde! Impedit, libero? Dolorum voluptas impedit saepe quibusdam quas sed eius accusamus consequatur commodi
+        perferendis possimus dicta labore modi provident deserunt, aspernatur doloremque alias, incidunt ipsa velit
+        quam! Odio.</p>
+</body>
+
+</html>
