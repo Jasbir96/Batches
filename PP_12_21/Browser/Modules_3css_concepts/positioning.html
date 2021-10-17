@@ -29,6 +29,7 @@
             margin-bottom: 10rem;
         }
 
+
         h1 {
             /* text-align: center; */
             margin-bottom: 3rem;
@@ -40,8 +41,6 @@
             width: 10rem;
             font-weight: bolder;
             font-size: 3rem;
-
-
         }
 
         .one {
@@ -68,16 +67,23 @@
             /* next element -> respect original place */
         }
 
+
+
+        .grand-parent {
+            height: 45rem;
+            width: 30rem;
+            border: 2px solid red;
+            padding-top: 5rem;
+            /* position: relative; */
+        }
+
         .parent-absolute {
-            position: relative;
         }
 
         .parent-absolute>.two {
             position: absolute;
             background-color: rgb(255, 182, 193);
             /* next element -> no respect original place */
-
-
             /* page top left portion */
             /* top left measure parent -> positon absolute  */
             top: 10px;
@@ -103,11 +109,15 @@
         <div class="child three">3</div>
     </div>
     <!-- absolute -->
-    <div class="parent-absolute">
-        <div class="child one">1</div>
-        <div class="child two">2 ABS</div>
-        <div class="child three">3</div>
-        <div class="child four">4</div>
+    <div class="grand-parent">
+        <div class="parent-absolute">
+            <div class="child one">1</div>
+            <div class="child two">2 ABS</div>
+            <div class="child three">3</div>
+            <div class="child four">4</div>
+        </div>
     </div>
+
 </body>
+
 </html>
