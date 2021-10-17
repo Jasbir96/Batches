@@ -1,0 +1,74 @@
+.profileBox{
+    height: 100vh;
+    width: 100%;
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #eef0ef;
+}
+.profileDetails{
+    height: 80%;
+    width: 40%;
+}
+.profileImg{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    align-items: center;
+}
+.profileImg img{
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 50%;
+}
+.inputBox{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.userDetail{
+    height: 40%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.profdetail{
+    height: 20%;
+    width: 70%;
+    color: #302f2f;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: rosybrown; */
+}
+.profdetail h3{
+    height: 100%;
+    margin: 0;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+}
+.profdetail p{
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: antiquewhite; */
+}
+.profdetail button{
+    height: 80%;
+    width: 10%;
+
+}

@@ -1,0 +1,134 @@
+.pDetailBox{
+    padding: 105px 0;
+    margin: 0 60px;
+    background-color: #eef0ef;
+}
+.planDetailBox{
+    height: 550px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+}
+.planDetail{
+    width: 50%;
+    padding: 10px;
+    /* border:1px solid; */
+    margin-top: 10px;
+    box-shadow: 0 10px 22px 10px rgb(27 38 49 / 10%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.entryText{
+    padding: 0 10px;
+}
+.entryBox .input{
+    height: 35px;
+    margin-top: 10px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.reviewBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+}
+.reviewEnrty{
+    height: 85px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+
+}
+.reviewEnrty input{
+    height: 55%;
+    width: 35%;
+    margin-right: 20px;
+    border: none;
+    padding: 5px;
+}
+
+.reviewEnrty select{
+    width: 25%;
+    margin-right: 20px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+.reviewsCard{
+    width: 50%;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 22px 10px rgb(27 38 49 / 10%);
+}
+.pdreviews{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    padding:  10px 20px;
+}
+.pdrdetail{
+    width: 100%;
+}
+.pdrdetail h3{
+    color: #3d3c3c;
+    
+}
+.pdrdetail .input{
+    color: #5c5b5b;
+    height: 30px;
+    border: none;
+    width: 100%;
+}
+.rcBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+    padding-bottom: 5px;
+}
+.rcBtn button{
+    height: 30px;
+    width: 100px;
+}
+.rate {
+    width: 100%;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+

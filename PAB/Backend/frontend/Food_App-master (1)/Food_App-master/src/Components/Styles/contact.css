@@ -1,0 +1,101 @@
+.contactCard{
+    height: 120vh;
+    width: 100%;
+    background-color: #212529;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.contactCard .h1Box{
+    height: 15%;
+}
+.cDetail{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.videoBox{
+    height: 70%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.video{
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+.contactInfo{
+    height: 80%;
+    width: 35%; 
+    color: #6e6e6e;
+}
+.entry{
+    height: 15%;
+    width: 100%;
+    margin-bottom:3%;
+}
+.entry-text {
+    width: 100%;
+    font-size: 110%;
+    margin-bottom: 5px;
+}
+.contactCard input[type="text"], input[type="email"], input[type="password"], select, textarea{
+    height: 65%;
+    width: 95%;
+    border: none;
+    outline: none;
+    border-radius: 3%;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: rgb(241, 237, 237);
+}
+.textBox{
+    height: 30%;
+}
+.textBox textarea{
+    height: 80%;
+}
+input[type="checkbox"] {
+  margin-bottom: 5%;
+  /* height: 100%; */
+}
+.checkbox-conditions{
+    font-size: 14px;
+    margin-left: 5px;
+}
+.sendBtn{
+    height: 10%;
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-full{
+    text-decoration: none;
+    color: whitesmoke;
+    height: 50px;
+    width:  35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    background-color: #F7115F;
+    transition: 0.3s;
+}
+.btn-full:hover{
+    transform: scale(1.05);
+}
+@media only screen and (max-width: 850px) {
+    .contactInfo{
+        width: 70%;
+    }
+    .videoBox{
+        display: none;
+    }
+}
