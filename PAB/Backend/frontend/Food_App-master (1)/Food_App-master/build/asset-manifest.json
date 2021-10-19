@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.667c8ed4.chunk.css",
+    "main.js": "/static/js/main.a4ab28ec.chunk.js",
+    "main.js.map": "/static/js/main.a4ab28ec.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b0837650.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b0837650.js.map",
+    "static/js/2.b2546196.chunk.js": "/static/js/2.b2546196.chunk.js",
+    "static/js/2.b2546196.chunk.js.map": "/static/js/2.b2546196.chunk.js.map",
+    "static/js/3.465f953a.chunk.js": "/static/js/3.465f953a.chunk.js",
+    "static/js/3.465f953a.chunk.js.map": "/static/js/3.465f953a.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.667c8ed4.chunk.css.map": "/static/css/main.667c8ed4.chunk.css.map",
+    "static/js/2.b2546196.chunk.js.LICENSE.txt": "/static/js/2.b2546196.chunk.js.LICENSE.txt",
+    "static/media/Avocado.a47677c6.mp4": "/static/media/Avocado.a47677c6.mp4",
+    "static/media/Capture.611de11d.png": "/static/media/Capture.611de11d.png",
+    "static/media/carrot.6508ea02.png": "/static/media/carrot.6508ea02.png",
+    "static/media/check-mark.1c103279.png": "/static/media/check-mark.1c103279.png",
+    "static/media/date.fcfd3f00.png": "/static/media/date.fcfd3f00.png",
+    "static/media/fast.f1644b7d.png": "/static/media/fast.f1644b7d.png",
+    "static/media/footer.css": "/static/media/foodiesfeed.com_pizza-ready-for-baking.848a780e.jpg",
+    "static/media/star.49259244.png": "/static/media/star.49259244.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b0837650.js",
+    "static/js/2.b2546196.chunk.js",
+    "static/css/main.667c8ed4.chunk.css",
+    "static/js/main.a4ab28ec.chunk.js"
+  ]
+}
