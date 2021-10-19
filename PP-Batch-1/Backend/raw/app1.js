@@ -2,6 +2,11 @@
 // npm i express
 const express = require("express");
 let fs = require("fs");
+const rateLimit = require("express-rate-limit");
+const hpp = require("hpp");
+const helmet = require("helmet");
+const xss = require("xss-clean");
+const mongoSanitize = require('express-mongo-sanitize');
 // Server: // route  -> request -> response/file 
 // File system// path -> interact/type -> file /folder
 // server init
@@ -13,10 +18,31 @@ const app = express();
 //     console.log("before", body);
 //     next();
 // })
-// inbuilt menthods of express has next already implmeneted
+// inbuilt methods of express has next already implmeneted
 // always use me
-//  express json -> req.body add  
+//  express json -> req.body add;
+app.use(rateLimit({
+    max: 100,
+    windowMs: 15 * 60 * 1000,
+    message:
+        "Too many accounts created from this IP, please try again after an hour"
+}))
+// extra param na ho bas
+app.use(hpp({
+    whiteList: [
+        'select',
+        'page',
+        'sort',
+        'myquery'
+    ]
+}))
+// to set http headers
+app.use(helmet());
 app.use(express.json());
+// cross site scripting 
+app.use(xss());
+// mongodb query sanatize
+app.use(mongoSanitize());
 // // function -> route  path
 // // frontend -> req -> /
 // read data storage
@@ -45,7 +71,7 @@ userRouter
 // authRouter.route("/:id").patch(forgetPassword)
 function createUser(req, res) {
     console.log("create users");
-    
+
     let body = req.body;
     console.log("req.body", req.body);
     content.push(body);
@@ -56,8 +82,8 @@ function createUser(req, res) {
 function bodyChecker(req, res, next) {
     console.log("reached body checker");
     let isPresent = Object.keys(req.body).length;
-    
-    console.log("ispresent",isPresent)
+
+    console.log("ispresent", isPresent)
     if (isPresent) {
         next();
     } else {

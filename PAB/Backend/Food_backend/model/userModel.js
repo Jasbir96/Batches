@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 let { PASSWORD } = require("../secrets");
 const validator = require("email-validator");
+const bcrypt = require("bcrypt");
+const ratelimit=require
+
 let dbLink
     = `mongodb+srv://admin:${PASSWORD}@cluster0.3gwfq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 mongoose
@@ -62,12 +65,18 @@ const userSchema = new mongoose.Schema(
 // hook
 userSchema.pre('save', function (next) {
     // do stuff
+    const salt = await bcrypt.genSalt(10);
+    // password convert text
+    this.password = await bcrypt.hash(this.password, salt);
     this.confirmPassword = undefined;
     next();
 });
 // document method
 userSchema.methods.resetHandler = function (password, confirmPassword) {
-    this.password = password;
+    const salt = await bcrypt.genSalt(10);
+    // password convert text
+    this.password = await bcrypt.hash(this.password, salt);
+
     this.confirmPassword = confirmPassword;
     this.token = undefined;
 }
