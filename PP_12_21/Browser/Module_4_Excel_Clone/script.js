@@ -38,7 +38,12 @@ for (let i = 0; i < 100; i++) {
     for (let j = 0; j < 26; j++) {
         let div = document.createElement("div");
         div.setAttribute("class", "cell");
-        div.textContent = i + "," + j;
+        // div.textContent = String.fromCharCode(j+65)+(i+1)  
+        // div.textContent = i + "," + j
+        div.setAttribute("contentEditable", "true")
+        //   every cell identification required 
+        div.setAttribute("rId", i);
+        div.setAttribute("cId", j);
         row.appendChild(div);
     }
     grid.appendChild(row)
