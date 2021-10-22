@@ -14,16 +14,25 @@ body{margin:0px;}
     background-color:lightgoldenrodyellow;
     height:2.5rem;
 }
+/* ************grid css************** */
 .grid_container{
  height:calc(100vh - ( 5rem + 2rem + 2.5rem) );
     background-color:lightgreen;
+    overflow: scroll;
 }
 .top_row{
-
+    display: flex;
+}
+.top_row .cell{
+    text-align: center;
+    /* these cells are flexed  */
+    min-width:5rem;
+}
+.left_col{
+    width:2rem;
     text-align: center;
 }
 .cell{
     border:2px solid gray;
     height:2rem;
-    width:5rem;
 }
