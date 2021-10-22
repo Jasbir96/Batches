@@ -22,6 +22,9 @@ body{margin:0px;}
 }
 .top_row{
     display: flex;
+    position: relative;
+    top:-2rem;
+    left:2.1rem;
 }
 .top_row .cell{
     text-align: center;
@@ -31,8 +34,27 @@ body{margin:0px;}
 .left_col{
     width:2rem;
     text-align: center;
+    position: relative;
+    top:-1.9rem;
 }
 .cell{
-    border:2px solid gray;
+    border:0.5px solid gray;
     height:2rem;
+    text-align: center;}
+.top_left_cell{
+    height:2rem;
+    width:2rem;
+    background-color:grey; 
 }
+.row{    
+    display: flex;}
+.grid .cell{
+    min-width:5rem;}
+.grid_container{
+    position: relative;}
+.grid{
+    position: absolute;
+    top:2rem;
+    left:2.1rem;
+}
+

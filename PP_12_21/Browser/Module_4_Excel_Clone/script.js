@@ -30,3 +30,16 @@ for (let i = 1; i <= 100; i++) {
     leftCol.appendChild(div)
 }
 // 2 d loop -> columns*rows
+// grid
+let grid = document.querySelector(".grid");
+for (let i = 0; i < 100; i++) {
+    let row = document.createElement("div");
+    row.setAttribute("class", "row");
+    for (let j = 0; j < 26; j++) {
+        let div = document.createElement("div");
+        div.setAttribute("class", "cell");
+        div.textContent = i + "," + j;
+        row.appendChild(div);
+    }
+    grid.appendChild(row)
+}
