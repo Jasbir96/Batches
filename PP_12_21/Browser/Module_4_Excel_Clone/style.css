@@ -7,7 +7,7 @@ body{margin:0px;}
     background-color:lightblue;
     height:5rem;}
 .formula_bar{
-    background-color:lightpink;
+    /* background-color:lightpink; */
     height:2rem;
 }
 .sheets_container{
@@ -19,6 +19,12 @@ body{margin:0px;}
  height:calc(100vh - ( 5rem + 2rem + 2.5rem) );
     background-color:lightgreen;
     overflow: scroll;
+}
+.cell{
+    border:0.5px solid gray;
+    height:2rem;
+    text-align: center;
+    outline:none;
 }
 .top_row{
     display: flex;
@@ -37,26 +43,31 @@ body{margin:0px;}
     position: relative;
     top:-1.9rem;
 }
-.cell{
-    border:0.5px solid gray;
-    height:2rem;
-    text-align: center;}
+
+
 .top_left_cell{
     height:2rem;
     width:2rem;
     background-color:grey; 
 }
+
 .row{    
     display: flex;}
+
 .grid .cell{
-    min-width:5rem;}
+    min-width:5rem;
+}
+
 .grid_container{
-    position: relative;}
+    position: relative;
+}
 .grid{
     position: absolute;
     top:2rem;
     left:2.1rem;
 }
+
+/* ***********formula bar */
 .formula_bar{
     display: flex;
 align-items: center;
@@ -71,6 +82,7 @@ justify-content: center;
 }
 .address_input{
     width:4rem;
+    text-align: center;
 }
 .formula_input{
     width:calc(100vw - 8rem );
