@@ -2,16 +2,20 @@
 
 // print it to -> address bar
 // top row cells creation
-let topRow = document
-    .querySelector(".top_row");
+let topRow = document.querySelector(".top_row");
+// left col cells creation
+let leftCol = document.querySelector(".left_col");
+// grid
+let grid = document.querySelector(".grid");
+let addressInput = document.querySelector(".address_input");
+
 for (let i = 0; i < 26; i++) {
     let div = document.createElement("div");
     div.setAttribute("class", "cell");
     div.textContent = String.fromCharCode(65 + i);
     topRow.appendChild(div)
 }
-// left col cells creation
-let leftCol = document.querySelector(".left_col");
+
 for (let i = 1; i <= 100; i++) {
     let div = document.createElement("div");
     div.setAttribute("class", "cell");
@@ -19,8 +23,7 @@ for (let i = 1; i <= 100; i++) {
     leftCol.appendChild(div)
 }
 // 2 d loop -> columns*rows
-// grid
-let grid = document.querySelector(".grid");
+
 for (let i = 0; i < 100; i++) {
     let row = document.createElement("div");
     row.setAttribute("class", "row");
@@ -40,11 +43,10 @@ for (let i = 0; i < 100; i++) {
 
 // if i click on any of the cells
 let AllGridCells = document.querySelectorAll(".grid .cell");
-let addressInput = document.querySelector(".address_input");
 
 for (let i = 0; i < AllGridCells.length; i++) {
     AllGridCells[i].addEventListener("click", function (e) {
-        // previous cell address
+        // // previous cell address
         let prevAddress = addressInput.value;
         if (prevAddress != "") {
             let ridcidObj = getRidCidFromAddress(prevAddress);
@@ -52,7 +54,7 @@ for (let i = 0; i < AllGridCells.length; i++) {
             // prev -> remove -> border
             let prevCell = document
                 .querySelector
-            (`.grid .cell[rid='${ridcidObj.rid}'][cid='${ridcidObj.cid}']`);
+            (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
             prevCell.style.border ="0.5px solid gray";
         }
         // 
@@ -72,12 +74,12 @@ for (let i = 0; i < AllGridCells.length; i++) {
     })
 }
 // get first elem
-let firstCell = document.querySelector(".grid .cell[rid='0'][cid='0']");
+let firstCell = document.querySelector(".grid .cell[rId='0'][cId='0']");
 firstCell.click();
+firstCell.focus();
 function getRidCidFromAddress(address) {
     // A-Z, 1-100
-    // A20
-
+    // B
     let AsciiValue = address.charCodeAt(0);
     let cid = AsciiValue - 65;
     let rid = Number(address.substring(1)) - 1;
