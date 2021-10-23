@@ -2,10 +2,36 @@
     box-sizing: border-box;
 }
 body{margin:0px;}
+/* menu bar */
 .menu_bar{
     /* border: 2px solid red; */
-    background-color:lightblue;
-    height:5rem;}
+    /* background-color:brown; */
+    height:5rem;
+    width:100vw;
+    display: flex;
+}
+.new_open_save_container{
+        /* background-color:lightblue; */
+        margin-top:1rem;
+        height:70%;
+        border-right:1px solid black;
+        width:25%;
+        display: flex;
+        justify-content:space-evenly;
+        align-items:center;
+    }
+    .icon_container{
+        height:60%
+    }
+    .fas{
+        font-size:2rem;
+        
+    }
+
+
+
+
+
 .formula_bar{
     /* background-color:lightpink; */
     height:2rem;
@@ -14,6 +40,9 @@ body{margin:0px;}
     background-color:lightgoldenrodyellow;
     height:2.5rem;
 }
+
+
+
 /* ************grid css************** */
 .grid_container{
  height:calc(100vh - ( 5rem + 2rem + 2.5rem) );
