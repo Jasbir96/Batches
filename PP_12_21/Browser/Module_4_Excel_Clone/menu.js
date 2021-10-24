@@ -1,6 +1,5 @@
 let fontSizeInput = document.querySelector(".font_size_input");
 let fontFamilyInput = document.querySelector(".font_family_input");
-
 // change
 fontSizeInput.addEventListener("change", function () {
     let fontSize = fontSizeInput.value;

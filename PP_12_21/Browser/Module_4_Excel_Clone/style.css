@@ -1,40 +1,76 @@
+/* generic styling */
 *{
     box-sizing: border-box;
     font-weight: 100;
 }
-body{margin:0px;
+body{
+    margin:0px;
 font-family:sans-serif;
+}
+select{
+    border: none;
+    padding-right: 0.5rem;
+    border-right: 1px solid;
+    outline:none;
 }
 /* *******************menu *************bar */
 .menu_bar{
     /* border: 2px solid red; */
     /* background-color:brown; */
-    height:5rem;
+    height:3rem;
     width:100vw;
     display: flex;
+    align-items: center;
+}
+.menu_bar>*{
+    border-right:1px solid black;
+    height:70%;
+    display: flex;
+    justify-content:space-evenly;
+    align-items:center;
+}
+.new_open_save_container{
+    width:22%;
+}
+.formatting-container{
+    width:25%;
+}
+.font_family_input{
+    flex:2;
+    /* width: 66.6%; */
+
+}
+.font_size_input{
+    flex:1;
+    /* width:30.33%; */
+}
+
+.bui_container,.alignment_container,.color-container{
+    width:17%;
+
+}
+
+.fas{
+    font-size:1.4rem;
+    color: #2f3542;
+}
+
+.color-container{
+    border-right: none;
+}
+.bui_container>*, .alignment_container>*, .color_container>*{
+font-size: 1rem;
 }
 
 
 
 
+    
 
-
-.new_open_save_container{
-        /* background-color:lightblue; */
-        margin-top:1rem;
-        height:70%;
-        border-right:1px solid black;
-        width:25%;
-        display: flex;
-        justify-content:space-evenly;
-        align-items:center;
-    }
     .icon_container{
         height:60%
     }
-    .fas{
-        font-size:2rem;   
-    }
+    
 .formula_bar{
     /* background-color:lightpink; */
     height:2rem;
@@ -66,7 +102,6 @@ font-family:sans-serif;
     position: relative;
     left: 2rem;
     top: -1.4rem;
-    background-color: #f1f2f6;
 }
 .top_row .cell{
     text-align: center;
@@ -75,7 +110,7 @@ font-family:sans-serif;
     padding-top: 0.21rem;;
     font-size: 0.7rem;
     border-top:0.1px solid gray;
-
+    background-color: #f1f2f6;
 }
 .left_col{
     width: 2rem;
@@ -94,19 +129,17 @@ font-family:sans-serif;
     width: 2rem;
     border-right: 5px solid lightgray;
     border-bottom: 5px solid lightgray;
+   
 }
 
 .row{    
     display: flex;}
-
 .grid .cell{
     min-width:5rem;
     border:0.02px solid rgb(160, 158, 158);
     border-top:none;
     border-right: none;
 }
-
-
 .grid_container{
     position: relative;
 }
@@ -115,24 +148,36 @@ font-family:sans-serif;
     top: 1.35rem;
     left: 2rem;
 }
-
-/* ***********formula bar */
+/* ***********formula bar ****************/
 .formula_bar{
     display: flex;
 align-items: center;
 justify-content: center;
+border:none ;
+border-top:1px solid gray;
 }
-.formula_bar>div{
-    margin-left:1rem;
-    margin-right:1rem;
-}
+
 .formula_bar>*{
     height:70%;
+    
 }
 .address_input{
     width:4rem;
     text-align: center;
+    border:none;
+    outline :none;
+    border-right: 0.5px solid gray;
 }
 .formula_input{
-    width:calc(100vw - 8rem );
+    width:calc(100vw - 12rem );
+    border:none;
+    border-left:1px solid gray;
+    outline: none;
 }
+.formula_bar img{
+    display: inline-block;
+    height: 60%;
+    margin-right:0.2rem;
+    margin-left:1rem;
+}
+
