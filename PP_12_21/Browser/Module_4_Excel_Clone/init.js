@@ -55,8 +55,10 @@ for (let i = 0; i < AllGridCells.length; i++) {
             let prevCell = document
                 .querySelector
             (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
-            prevCell.style.border ="0.5px solid gray";
-        }
+            prevCell.style.border ="0.1px solid gray";
+            prevCell.style.borderRight="none";
+            prevCell.style.borderTop="none";
+                   }
         // 
         // alert("cell was clicked");
         // -> then i will get the address of that particular cell
@@ -70,7 +72,9 @@ for (let i = 0; i < AllGridCells.length; i++) {
         addressInput.value = String.fromCharCode(cid + 65) + (rid + 1);
         // cell styling bhi change
         let cCell = AllGridCells[i];
-        cCell.style.border = "2px solid green";
+        cCell.style.border = "2px solid #1B9CFC";
+        
+
     })
 }
 // get first elem
