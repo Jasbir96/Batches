@@ -1,13 +1,4 @@
-let fontSizeInput = document.querySelector(".font_size_input");
-let fontFamilyInput = document.querySelector(".font_family_input");
-let boldIcon = document.querySelector(".fa-bold");
-let underlineIcon = document.querySelector(".fa-underline");
-let italicIcon = document.querySelector(".fa-italic");
-let alignmentContainer = document.querySelector(".alignment_container");
-let textColorHInput = document.querySelector(".text_color");
-let textColorInput = document.querySelector(".fa-tint");
-let backgroundHInput = document.querySelector(".background_color");
-let backgroundInput = document.querySelector(".fa-fill-drip");
+
 textColorInput.addEventListener("click", function (e) {
     //dom help hidden click trigger 
     textColorHInput.click();
@@ -21,6 +12,9 @@ textColorHInput.addEventListener("change", function (e) {
     let tobeChangedCell = document.querySelector
         (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
     tobeChangedCell.style.color = color;
+    // db me bhi update karta hu
+    let { rid, cid } = getRidCidFromAddress(address);
+    db[rid][cid].color = color;
 })
 backgroundInput.addEventListener("click", function (e) {
     //   dom help hidden click trigger 
@@ -35,6 +29,8 @@ backgroundHInput.addEventListener("change", function (e) {
     let tobeChangedCell = document.querySelector
         (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
     tobeChangedCell.style.backgroundColor = color;
+    let { rid, cid } = getRidCidFromAddress(address);
+    db[rid][cid].color = color;
 })
 // change
 fontSizeInput.addEventListener("change", function () {
@@ -45,6 +41,9 @@ fontSizeInput.addEventListener("change", function () {
         (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
     // change fontSize property
     tobeChangedCell.style.fontSize = fontSize + "px";
+    let { rid, cid } = getRidCidFromAddress(address);
+    let cellObject = db[rid][cid];
+    cellObject.fontSize = fontSize;
 })
 // select -> fontFamily
 fontFamilyInput.addEventListener("change", function () {
@@ -88,6 +87,7 @@ italicIcon.addEventListener("click", function () {
     tobeChangedCell.style.fontStyle = "italic";
     // icon change kar do 
     italicIcon.classList.add("selected");
+    // db me entry
 })
 alignmentContainer.addEventListener("click", function (e) {
     console.log(e.target)

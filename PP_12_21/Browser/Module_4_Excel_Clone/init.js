@@ -9,6 +9,18 @@ let leftCol = document.querySelector(".left_col");
 let grid = document.querySelector(".grid");
 let addressInput = document.querySelector(".address_input");
 
+// *************************Menu Elements *****************************
+let fontSizeInput = document.querySelector(".font_size_input");
+let fontFamilyInput = document.querySelector(".font_family_input");
+let boldIcon = document.querySelector(".fa-bold");
+let underlineIcon = document.querySelector(".fa-underline");
+let italicIcon = document.querySelector(".fa-italic");
+let alignmentContainer = document.querySelector(".alignment_container");
+let textColorHInput = document.querySelector(".text_color");
+let textColorInput = document.querySelector(".fa-tint");
+let backgroundHInput = document.querySelector(".background_color");
+let backgroundInput = document.querySelector(".fa-fill-drip");
+
 for (let i = 0; i < 26; i++) {
     let div = document.createElement("div");
     div.setAttribute("class", "cell");
@@ -40,7 +52,27 @@ for (let i = 0; i < 100; i++) {
     }
     grid.appendChild(row)
 }
+// default value put for every cell
+let db = [];
+for (let i = 0; i < 100; i++) {
+    let rowArr = [];
+    for (let j = 0; j < 26; j++) {
+        let cellObject = {
+            color: "black",
+            backgroundColor: "white",
+            fontFamily: "'Courier New'",
+            fontSize: 14,
+            halign: "center",
+            italic: "none",
+            underline: "none",
+            bold: "normal"
+        }
+        rowArr.push(cellObject)
+    }
+    db.push(rowArr);
+}
 
+console.log(db);
 // if i click on any of the cells
 let AllGridCells = document.querySelectorAll(".grid .cell");
 
@@ -54,11 +86,11 @@ for (let i = 0; i < AllGridCells.length; i++) {
             // prev -> remove -> border
             let prevCell = document
                 .querySelector
-            (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
-            prevCell.style.border ="0.1px solid gray";
-            prevCell.style.borderRight="none";
-            prevCell.style.borderTop="none";
-                   }
+                (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
+            prevCell.style.border = "0.1px solid gray";
+            prevCell.style.borderRight = "none";
+            prevCell.style.borderTop = "none";
+        }
         // 
         // alert("cell was clicked");
         // -> then i will get the address of that particular cell
@@ -73,7 +105,11 @@ for (let i = 0; i < AllGridCells.length; i++) {
         // cell styling bhi change
         let cCell = AllGridCells[i];
         cCell.style.border = "2px solid #1B9CFC";
-        
+
+        // *****************2 way binding menu styling*****************
+        let cellObject = db[rid][cid];
+        let fontSize = cellObject.fontSize;
+        fontSizeInput.value = fontSize;
 
     })
 }
