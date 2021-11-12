@@ -64,7 +64,11 @@ font-size: 1rem;
 
 
 
-
+.selected{
+    background-color: #a28989;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgb(160 158 158);
+}
     
 
     .icon_container{

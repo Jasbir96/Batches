@@ -99,7 +99,8 @@ function createSheet() {
             let cell = {
                 bold: "normal"
                 , italic: "normal",
-                underline: "none", hAlign: "center",
+                underline: "none",
+                 hAlign: "center",
                 fontFamily: "sans-serif"
                 , fontSize: "16",
                 color: "black",
