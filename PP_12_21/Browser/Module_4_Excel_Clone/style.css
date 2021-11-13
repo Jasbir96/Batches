@@ -61,9 +61,6 @@ select{
 .bui_container>*, .alignment_container>*, .color_container>*{
 font-size: 1rem;
 }
-
-
-
 .selected{
     background-color: #a28989;
     border-radius: 50%;

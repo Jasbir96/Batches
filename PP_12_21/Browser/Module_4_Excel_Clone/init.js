@@ -63,19 +63,17 @@ for (let i = 0; i < 100; i++) {
             fontFamily: "'Courier New'",
             fontSize: 14,
             halign: "center",
-            italic: "none",
-            underline: "none",
-            bold: "normal"
+            italic: false,
+            underline: false,
+            bold: false
         }
         rowArr.push(cellObject)
     }
     db.push(rowArr);
 }
-
 console.log(db);
 // if i click on any of the cells
 let AllGridCells = document.querySelectorAll(".grid .cell");
-
 for (let i = 0; i < AllGridCells.length; i++) {
     AllGridCells[i].addEventListener("click", function (e) {
         // // previous cell address
@@ -105,11 +103,24 @@ for (let i = 0; i < AllGridCells.length; i++) {
         // cell styling bhi change
         let cCell = AllGridCells[i];
         cCell.style.border = "2px solid #1B9CFC";
-
         // *****************2 way binding menu styling*****************
         let cellObject = db[rid][cid];
+        // font size 
         let fontSize = cellObject.fontSize;
         fontSizeInput.value = fontSize;
+        boldIcon.classList.remove("selected");
+        italicIcon.classList.remove("selected");
+        underlineIcon.classList.remove("selected");
+        // boldness
+        if (cellObject.bold) {
+            boldIcon.classList.add("selected");
+        }
+        if (cellObject.italic) {
+            italicIcon.classList.add("selected");
+        }
+        if (cellObject.underline) {
+            underlineIcon.classList.add("selected");
+        }
 
     })
 }

@@ -41,6 +41,7 @@ fontSizeInput.addEventListener("change", function () {
         (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
     // change fontSize property
     tobeChangedCell.style.fontSize = fontSize + "px";
+    //    db jaake -> cell property update 
     let { rid, cid } = getRidCidFromAddress(address);
     let cellObject = db[rid][cid];
     cellObject.fontSize = fontSize;
@@ -56,26 +57,24 @@ fontFamilyInput.addEventListener("change", function () {
     tobeChangedCell.style.fontFamily = fontFamily;
 })
 boldIcon.addEventListener("click", function () {
-    // Ui se address get 
     let address = addressInput.value;
     let ridcidObj = getRidCidFromAddress(address);
-    let tobeChangedCell = document.querySelector
-        (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
-    // change fontSize property
-    tobeChangedCell.style.fontWeight = "bold";
-    // icon change kar do 
-    boldIcon.classList.add("selected");
-})
-underlineIcon.addEventListener("click", function () {
     // Ui se address get 
-    let address = addressInput.value;
-    let ridcidObj = getRidCidFromAddress(address);
     let tobeChangedCell = document.querySelector
         (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
+    // db jaake -> value set
+    let cellObject = db[ridcidObj.rid][ridcidObj.cid];
     // change fontSize property
-    tobeChangedCell.style.textDecoration = "underline";
+    if (cellObject.bold) {
+        tobeChangedCell.style.fontWeight = "normal";
+        boldIcon.classList.remove("selected");
+        cellObject.bold = false;
+    } else {
+        tobeChangedCell.style.fontWeight = "bold";
+        boldIcon.classList.add("selected");
+        cellObject.bold = true;
+    }
     // icon change kar do 
-    underlineIcon.classList.add("selected");
 })
 italicIcon.addEventListener("click", function () {
     // Ui se address get 
@@ -84,10 +83,37 @@ italicIcon.addEventListener("click", function () {
     let tobeChangedCell = document.querySelector
         (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
     // change fontSize property
-    tobeChangedCell.style.fontStyle = "italic";
     // icon change kar do 
-    italicIcon.classList.add("selected");
+    let cellObject = db[ridcidObj.rid][ridcidObj.cid];
+    if (cellObject.italic) {
+        tobeChangedCell.style.fontStyle = "none";
+        italicIcon.classList.remove("selected");
+        cellObject.italic = false;
+    } else {
+        tobeChangedCell.style.fontStyle = "italic";
+        italicIcon.classList.add("selected");
+        cellObject.italic = true;
+    }
     // db me entry
+})
+underlineIcon.addEventListener("click", function () {
+    // Ui se address get 
+    let address = addressInput.value;
+    let ridcidObj = getRidCidFromAddress(address);
+    let tobeChangedCell = document.querySelector
+        (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
+        let cellObject = db[ridcidObj.rid][ridcidObj.cid];
+        if (cellObject.underline) {
+            tobeChangedCell.style.textDecoration = "none";
+            underlineIcon.classList.remove("selected");
+            cellObject.underline = false;
+        } else {
+            tobeChangedCell.style.textDecoration = "underline";
+            underlineIcon.classList.add("selected");
+            cellObject.underline = true;
+        }
+ 
+
 })
 alignmentContainer.addEventListener("click", function (e) {
     console.log(e.target)
