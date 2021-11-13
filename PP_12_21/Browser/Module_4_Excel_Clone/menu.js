@@ -40,10 +40,10 @@ fontSizeInput.addEventListener("change", function () {
     let tobeChangedCell = document.querySelector
         (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
     // change fontSize property
-    tobeChangedCell.style.fontSize = fontSize + "px";
     //    db jaake -> cell property update 
     let { rid, cid } = getRidCidFromAddress(address);
     let cellObject = db[rid][cid];
+    tobeChangedCell.style.fontSize = fontSize + "px";
     cellObject.fontSize = fontSize;
 })
 // select -> fontFamily
@@ -86,7 +86,7 @@ italicIcon.addEventListener("click", function () {
     // icon change kar do 
     let cellObject = db[ridcidObj.rid][ridcidObj.cid];
     if (cellObject.italic) {
-        tobeChangedCell.style.fontStyle = "none";
+        tobeChangedCell.style.fontStyle = "normal";
         italicIcon.classList.remove("selected");
         cellObject.italic = false;
     } else {
@@ -102,17 +102,17 @@ underlineIcon.addEventListener("click", function () {
     let ridcidObj = getRidCidFromAddress(address);
     let tobeChangedCell = document.querySelector
         (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
-        let cellObject = db[ridcidObj.rid][ridcidObj.cid];
-        if (cellObject.underline) {
-            tobeChangedCell.style.textDecoration = "none";
-            underlineIcon.classList.remove("selected");
-            cellObject.underline = false;
-        } else {
-            tobeChangedCell.style.textDecoration = "underline";
-            underlineIcon.classList.add("selected");
-            cellObject.underline = true;
-        }
- 
+    let cellObject = db[ridcidObj.rid][ridcidObj.cid];
+    if (cellObject.underline) {
+        tobeChangedCell.style.textDecoration = "none";
+        underlineIcon.classList.remove("selected");
+        cellObject.underline = false;
+    } else {
+        tobeChangedCell.style.textDecoration = "underline";
+        underlineIcon.classList.add("selected");
+        cellObject.underline = true;
+    }
+
 
 })
 alignmentContainer.addEventListener("click", function (e) {
@@ -126,8 +126,16 @@ alignmentContainer.addEventListener("click", function (e) {
             (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
         // change fontSize property
         tobeChangedCell.style.textAlign = hAlignment;
-        // *********Bug prone
+        //set selected 
+        let optionElements = alignmentContainer.children;
+        for (let i = 0; i < optionElements.length; i++) {
+            optionElements[i].classList.remove("selected");
+        }
+        // *********Bug prone***********
         e.target.classList.add("selected");
+        // db update 
+        let cellObject = db[ridcidObj.rid][ridcidObj.cid];
+        cellObject.halign=hAlignment;
     }
 })
 

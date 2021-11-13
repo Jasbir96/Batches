@@ -111,6 +111,10 @@ for (let i = 0; i < AllGridCells.length; i++) {
         boldIcon.classList.remove("selected");
         italicIcon.classList.remove("selected");
         underlineIcon.classList.remove("selected");
+        let optionElements = alignmentContainer.children;
+        for (let i = 0; i < optionElements.length; i++) {
+            optionElements[i].classList.remove("selected");
+        }
         // boldness
         if (cellObject.bold) {
             boldIcon.classList.add("selected");
@@ -121,7 +125,15 @@ for (let i = 0; i < AllGridCells.length; i++) {
         if (cellObject.underline) {
             underlineIcon.classList.add("selected");
         }
-
+        if (cellObject.halign) {
+            for (let i = 0; i < optionElements.length; i++) {
+                let elementClasses=optionElements[i].classList;
+                let hAlignment = elementClasses[elementClasses.length - 1];
+                if (hAlignment == cellObject.halign) {
+                    elementClasses.add("selected");
+                }
+            }
+        }
     })
 }
 // get first elem
