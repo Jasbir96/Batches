@@ -65,7 +65,8 @@ for (let i = 0; i < 100; i++) {
             halign: "center",
             italic: false,
             underline: false,
-            bold: false
+            bold: false,
+            value:""
         }
         rowArr.push(cellObject)
     }
@@ -127,7 +128,7 @@ for (let i = 0; i < AllGridCells.length; i++) {
         }
         if (cellObject.halign) {
             for (let i = 0; i < optionElements.length; i++) {
-                let elementClasses=optionElements[i].classList;
+                let elementClasses = optionElements[i].classList;
                 let hAlignment = elementClasses[elementClasses.length - 1];
                 if (hAlignment == cellObject.halign) {
                     elementClasses.add("selected");
