@@ -1,7 +1,7 @@
 let downloadBtn = document.querySelector(".fa-save");
 let openBtn = document.querySelector(".fa-envelope-open");
 let openInput = document.querySelector(".open_input");
-
+let newInput = document.querySelector(".fa-file");
 downloadBtn.addEventListener("click", function (e) {
 
     // anchor create
@@ -41,6 +41,14 @@ openInput.addEventListener("change", function (e) {
         console.log(db);
         setUI();
     });
+})
+newInput.addEventListener("click", function () {
+    // set db to empty
+    db = [];
+    // set initial entries
+    initDB(); // -> initial Db
+    // ui -> map accoriding to new db
+    setUI();
 })
 function setUI() {
     for (let i = 0; i < 100; i++) {

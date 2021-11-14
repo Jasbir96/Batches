@@ -68,7 +68,6 @@ formulaBar.addEventListener("keydown", function (e) {
         updateChildren(cellObject);
     }
 })
-
 function evaluateFormula(formula) {
     // ( A1 + A2 )
     // split 
@@ -126,7 +125,6 @@ function setParentCHArray(formula, chAddress) {
             let { rid, cid } = getRIDCIDfromAddress(formulaTokens[i]);
             let parentObj = sheetDB[rid][cid];
             parentObj.children.push(chAddress);
-
         }
     }
 }

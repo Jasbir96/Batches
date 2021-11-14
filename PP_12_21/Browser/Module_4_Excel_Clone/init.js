@@ -54,24 +54,31 @@ for (let i = 0; i < 100; i++) {
 }
 // default value put for every cell
 let db = [];
-for (let i = 0; i < 100; i++) {
-    let rowArr = [];
-    for (let j = 0; j < 26; j++) {
-        let cellObject = {
-            color: "black",
-            backgroundColor: "white",
-            fontFamily: "'Courier New'",
-            fontSize: 14,
-            halign: "center",
-            italic: false,
-            underline: false,
-            bold: false,
-            value:""
+
+function initDB() {
+    for (let i = 0; i < 100; i++) {
+        let rowArr = [];
+        for (let j = 0; j < 26; j++) {
+            let cellObject = {
+                color: "black",
+                backgroundColor: "white",
+                fontFamily: "'Courier New'",
+                fontSize: 14,
+                halign: "center",
+                italic: false,
+                underline: false,
+                bold: false,
+                value: "",
+                formula:""
+            }
+            rowArr.push(cellObject)
         }
-        rowArr.push(cellObject)
+        db.push(rowArr);
     }
-    db.push(rowArr);
 }
+initDB();
+
+
 console.log(db);
 // if i click on any of the cells
 let AllGridCells = document.querySelectorAll(".grid .cell");
