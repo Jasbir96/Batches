@@ -8,6 +8,7 @@ let leftCol = document.querySelector(".left_col");
 // grid
 let grid = document.querySelector(".grid");
 let addressInput = document.querySelector(".address_input");
+let formulaInput = document.querySelector(".formula_input");
 
 // *************************Menu Elements *****************************
 let fontSizeInput = document.querySelector(".font_size_input");
@@ -79,7 +80,7 @@ function initDB() {
 initDB();
 
 
-console.log(db);
+// console.log(db);
 // if i click on any of the cells
 let AllGridCells = document.querySelectorAll(".grid .cell");
 for (let i = 0; i < AllGridCells.length; i++) {
