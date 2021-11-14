@@ -70,7 +70,8 @@ function initDB() {
                 underline: false,
                 bold: false,
                 value: "",
-                formula:""
+                formula: "",
+                children: []
             }
             rowArr.push(cellObject)
         }
@@ -78,8 +79,6 @@ function initDB() {
     }
 }
 initDB();
-
-
 // console.log(db);
 // if i click on any of the cells
 let AllGridCells = document.querySelectorAll(".grid .cell");
@@ -143,6 +142,10 @@ for (let i = 0; i < AllGridCells.length; i++) {
                 }
             }
         }
+
+
+        formulaInput.value = cellObject.formula
+
     })
 }
 // get first elem
