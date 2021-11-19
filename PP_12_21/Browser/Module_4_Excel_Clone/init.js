@@ -165,15 +165,26 @@ function getRidCidFromAddress(address) {
     }
 
 }
+
+
+
+
+
 firstSheet.addEventListener("click", function (e) {
 //    list of sheet me se sabme se aap remove active sheet
     for (let i = 0; i < sheetList.children.length; i++) {
         sheetList.children[i].classList.remove("active-sheet")
     }
     // given sheet add kar lo 
-    firstSheet.classList.add("class", "active-sheet")
+    firstSheet.classList.add("active-sheet")
 
 })
+
+
+
+
+
+
 createSheetIcon.addEventListener("click", function () {
     let noofChildren = sheetList.children.length;
     // dom se create 
@@ -187,7 +198,7 @@ createSheetIcon.addEventListener("click", function () {
         for (let i = 0; i < sheetList.children.length; i++) {
             sheetList.children[i].classList.remove("active-sheet")
         }
-        newSheet.classList.add("class", "active-sheet")
+        newSheet.classList.add("active-sheet")
     })
 })
 
