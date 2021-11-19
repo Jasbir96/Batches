@@ -39,7 +39,7 @@ openInput.addEventListener("change", function (e) {
         let JSONdata = JSON.parse(event.target.result);
         db = JSONdata
         console.log(db);
-        setUI();
+        setinitUI();
     });
 })
 newInput.addEventListener("click", function () {
@@ -48,9 +48,9 @@ newInput.addEventListener("click", function () {
     // set initial entries
     initDB(); // -> initial Db
     // ui -> map accoriding to new db
-    setUI();
+    setinitUI();
 })
-function setUI() {
+function setinitUI  () {
     for (let i = 0; i < 100; i++) {
 
         for (let j = 0; j < 26; j++) {

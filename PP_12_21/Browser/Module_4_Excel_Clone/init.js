@@ -21,7 +21,9 @@ let textColorHInput = document.querySelector(".text_color");
 let textColorInput = document.querySelector(".fa-tint");
 let backgroundHInput = document.querySelector(".background_color");
 let backgroundInput = document.querySelector(".fa-fill-drip");
-
+let createSheetIcon = document.querySelector(".fa-plus");
+let sheetList = document.querySelector(".sheets-list");
+let firstSheet = document.querySelector(".sheet");
 for (let i = 0; i < 26; i++) {
     let div = document.createElement("div");
     div.setAttribute("class", "cell");
@@ -163,3 +165,30 @@ function getRidCidFromAddress(address) {
     }
 
 }
+firstSheet.addEventListener("click", function (e) {
+//    list of sheet me se sabme se aap remove active sheet
+    for (let i = 0; i < sheetList.children.length; i++) {
+        sheetList.children[i].classList.remove("active-sheet")
+    }
+    // given sheet add kar lo 
+    firstSheet.classList.add("class", "active-sheet")
+
+})
+createSheetIcon.addEventListener("click", function () {
+    let noofChildren = sheetList.children.length;
+    // dom se create 
+    let newSheet = document.createElement("div");
+    newSheet.setAttribute("class", "sheet");
+    newSheet.setAttribute("sheetIdx", noofChildren);
+    newSheet.textContent = `Sheet ${noofChildren + 1}`
+    sheetList.appendChild(newSheet);
+    // active me switch
+    newSheet.addEventListener("click", function () {
+        for (let i = 0; i < sheetList.children.length; i++) {
+            sheetList.children[i].classList.remove("active-sheet")
+        }
+        newSheet.classList.add("class", "active-sheet")
+    })
+})
+
+// create sheet logic

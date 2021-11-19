@@ -77,9 +77,47 @@ font-size: 1rem;
     height:2rem;
 }
 .sheets_container{
-    background-color:lightgoldenrodyellow;
+    /* background-color:lightgoldenrodyellow; */
     height:2.5rem;
+    display: flex;
 }
+/* sheets css */
+.add-sheet_container{
+    height: 100%;
+    min-width:30px;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sheets-list{
+
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+}
+.sheets-list::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .sheets-list {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+.sheet{
+    min-width:60px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border:1px solid;
+}
+.active-sheet
+{
+    background-color: gainsboro;
+}
+
 /* ************grid css************** */
 .grid_container{
  height:calc(100vh - ( 5rem + 2rem + 2.5rem) );

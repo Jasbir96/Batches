@@ -1,6 +1,6 @@
 // cell -> formula remove /value set 
 for (let i = 0; i < AllGridCells.length; i++) {
-    AllGridCells[i].addEventListener("blur", function () {
+    AllGridCells[i].addEventListener("blur", function cellHelper(e) {
         let content = AllGridCells[i].textContent;
         let address = addressInput.value;
         let { rid, cid } = getRidCidFromAddress(address);
@@ -16,6 +16,9 @@ for (let i = 0; i < AllGridCells.length; i++) {
         setUI(content, rid, cid);
     })
 }
+
+
+
 // formula bar
 // set Formula/update formula
 formulaInput.addEventListener("keydown", function (e) {
