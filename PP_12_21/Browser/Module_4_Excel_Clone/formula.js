@@ -31,7 +31,7 @@ formulaInput.addEventListener("keydown", function (e) {
         let { rid, cid } = getRidCidFromAddress(addressOfTheCell);
         let cellObject = db[rid][cid];
         if (cellObject.formula != cFormula) {
-            removeFormula(addressOfTheCell, cFormula);
+            removeFormula(addressOfTheCell, cellObject.formula);
         }
         // console.log(cFormula);
         let value = evaluateFormula(cFormula);

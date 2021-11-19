@@ -38,9 +38,17 @@ openInput.addEventListener("change", function (e) {
         let JSONdata = JSON.parse(event.target.result);
         sheetsDb = JSONdata
         db = sheetsDb[0];
+        sheetList.children = [];
         setinitUI();
+        setSheets();
     });
 })
+function setSheets() {
+    console.log(sheetsDb.length)
+    for (let i = 0; i < sheetsDb.length - 1; i++) {
+        sheetOpenHandler();
+    }
+}
 newInput.addEventListener("click", function () {
     // set db to empty
     sheetsDb = [];

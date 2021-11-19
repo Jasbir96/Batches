@@ -57,8 +57,6 @@ for (let i = 0; i < 100; i++) {
 }
 // default value put for every cell
 let sheetsDb = [];
-
-
 function initDB() {
     let db = [];
     for (let i = 0; i < 100; i++) {
@@ -153,6 +151,7 @@ for (let i = 0; i < AllGridCells.length; i++) {
         formulaInput.value = cellObject.formula
 
     })
+
 }
 // get first elem
 let firstCell = document.querySelector(".grid .cell[rId='0'][cId='0']");
@@ -186,7 +185,8 @@ firstSheet.addEventListener("click", function (e) {
 
 })
 
-createSheetIcon.addEventListener("click", function () {
+createSheetIcon.addEventListener("click", sheetHandler);
+function sheetHandler() {
     let noofChildren = sheetList.children.length;
     // dom se create 
     let newSheet = document.createElement("div");
@@ -205,6 +205,26 @@ createSheetIcon.addEventListener("click", function () {
         db = sheetsDb[idx];
         setinitUI();
     })
-})
+}
 
+function sheetOpenHandler() {
+    let noofChildren = sheetList.children.length;
+    // dom se create 
+    let newSheet = document.createElement("div");
+    newSheet.setAttribute("class", "sheet");
+    newSheet.setAttribute("sheetIdx", noofChildren);
+    newSheet.textContent = `Sheet ${noofChildren + 1}`
+    sheetList.appendChild(newSheet);
+    // initDB();
+    // active me switch
+    newSheet.addEventListener("click", function () {
+        for (let i = 0; i < sheetList.children.length; i++) {
+            sheetList.children[i].classList.remove("active-sheet")
+        }
+        newSheet.classList.add("active-sheet");
+        let idx = newSheet.getAttribute("sheetIdx");
+        db = sheetsDb[idx];
+        setinitUI();
+    })
+}
 // create sheet logic
