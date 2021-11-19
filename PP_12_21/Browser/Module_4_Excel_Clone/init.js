@@ -56,9 +56,11 @@ for (let i = 0; i < 100; i++) {
     grid.appendChild(row)
 }
 // default value put for every cell
-let db = [];
+let sheetsDb = [];
+
 
 function initDB() {
+    let db = [];
     for (let i = 0; i < 100; i++) {
         let rowArr = [];
         for (let j = 0; j < 26; j++) {
@@ -79,8 +81,10 @@ function initDB() {
         }
         db.push(rowArr);
     }
+    sheetsDb.push(db);
 }
 initDB();
+let db = sheetsDb[0];
 // console.log(db);
 // if i click on any of the cells
 let AllGridCells = document.querySelectorAll(".grid .cell");
@@ -171,19 +175,16 @@ function getRidCidFromAddress(address) {
 
 
 firstSheet.addEventListener("click", function (e) {
-//    list of sheet me se sabme se aap remove active sheet
+    //    list of sheet me se sabme se aap remove active sheet
     for (let i = 0; i < sheetList.children.length; i++) {
         sheetList.children[i].classList.remove("active-sheet")
     }
     // given sheet add kar lo 
-    firstSheet.classList.add("active-sheet")
+    firstSheet.classList.add("active-sheet");
+    db = sheetsDb[0];
+    setinitUI();
 
 })
-
-
-
-
-
 
 createSheetIcon.addEventListener("click", function () {
     let noofChildren = sheetList.children.length;
@@ -193,12 +194,16 @@ createSheetIcon.addEventListener("click", function () {
     newSheet.setAttribute("sheetIdx", noofChildren);
     newSheet.textContent = `Sheet ${noofChildren + 1}`
     sheetList.appendChild(newSheet);
+    initDB();
     // active me switch
     newSheet.addEventListener("click", function () {
         for (let i = 0; i < sheetList.children.length; i++) {
             sheetList.children[i].classList.remove("active-sheet")
         }
-        newSheet.classList.add("active-sheet")
+        newSheet.classList.add("active-sheet");
+        let idx = newSheet.getAttribute("sheetIdx");
+        db = sheetsDb[idx];
+        setinitUI();
     })
 })
 

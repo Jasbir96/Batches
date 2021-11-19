@@ -3,11 +3,10 @@ let openBtn = document.querySelector(".fa-envelope-open");
 let openInput = document.querySelector(".open_input");
 let newInput = document.querySelector(".fa-file");
 downloadBtn.addEventListener("click", function (e) {
-
     // anchor create
     let a = document.createElement("a");
     // file put -> db array 
-    var StringCode = encodeURIComponent(JSON.stringify(db));
+    var StringCode = encodeURIComponent(JSON.stringify(sheetsDb));
     var dataStr = "data:text/json;charset=utf-8," +
         StringCode;
     a.href = dataStr;
@@ -37,20 +36,20 @@ openInput.addEventListener("change", function (e) {
     reader.addEventListener('load', (event) => {
         // img.src = event.target.result;
         let JSONdata = JSON.parse(event.target.result);
-        db = JSONdata
-        console.log(db);
+        sheetsDb = JSONdata
+        db = sheetsDb[0];
         setinitUI();
     });
 })
 newInput.addEventListener("click", function () {
     // set db to empty
-    db = [];
+    sheetsDb = [];
     // set initial entries
     initDB(); // -> initial Db
     // ui -> map accoriding to new db
     setinitUI();
 })
-function setinitUI  () {
+function setinitUI() {
     for (let i = 0; i < 100; i++) {
 
         for (let j = 0; j < 26; j++) {
