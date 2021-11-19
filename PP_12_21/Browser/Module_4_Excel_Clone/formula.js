@@ -9,9 +9,8 @@ for (let i = 0; i < AllGridCells.length; i++) {
         if (cellObject.value == content) {
             return;
         }
-
         if (cellObject.formula) {
-            removeFormula(address, formula);
+            removeFormula(address, cellObject.formula);
             cellObject.formula = "";
         }
         setUI(content, rid, cid);
@@ -29,23 +28,22 @@ formulaInput.addEventListener("keydown", function (e) {
         let { rid, cid } = getRidCidFromAddress(addressOfTheCell);
         let cellObject = db[rid][cid];
         if (cellObject.formula != cFormula) {
-            removeFormula(addressOfTheCell, formula);
+            removeFormula(addressOfTheCell, cFormula);
         }
         // console.log(cFormula);
         let value = evaluateFormula(cFormula);
-        console.log(value);
+        // console.log(value);
         setUI(value, rid, cid);
         cellObject.formula = cFormula;
         setFormula(addressOfTheCell, cFormula);
-
     }
 })
 function evaluateFormula(formula) {
-    console.log(formula);
+    // console.log(formula);
     // ( A1 + A2 ) -> ( 10 + 20 )
     let formulaEntities = formula.split(" ");
     // [(,A1,+,A2,)]
-    console.log(formulaEntities);
+    // console.log(formulaEntities);
     for (let i = 0; i < formulaEntities.length; i++) {
         let ascii = formulaEntities[i].charCodeAt(0);
         if (ascii >= 65 && ascii <= 90) {
@@ -57,7 +55,7 @@ function evaluateFormula(formula) {
             formula = formula.replace(formulaEntities[i], value);
         }
     }
-    console.log(formula);
+    // console.log(formula);
     // eval -> evaluate-> inbuilt 
     let result = eval(formula);
     return result;
@@ -78,11 +76,11 @@ function setUI(value, rid, cid) {
 }
 //  to set a cell as children of a cell jispe depenedent 
 function setFormula(address, formula) {
-    console.log(formula);
+    // console.log(formula);
     // ( A1 + A2 ) -> ( 10 + 20 )
     let formulaEntities = formula.split(" ");
     // [(,A1,+,A2,)]
-    console.log(formulaEntities);
+    // console.log(formulaEntities);
     for (let i = 0; i < formulaEntities.length; i++) {
         let ascii = formulaEntities[i].charCodeAt(0);
         if (ascii >= 65 && ascii <= 90) {
@@ -99,11 +97,11 @@ function setFormula(address, formula) {
 }
 //  to set a cell as children of a cell jispe depenedent 
 function removeFormula(address, formula) {
-    console.log(formula);
+    // console.log(formula);
     // ( A1 + A2 ) -> ( 10 + 20 )
     let formulaEntities = formula.split(" ");
     // [(,A1,+,A2,)]
-    console.log(formulaEntities);
+    // console.log(formulaEntities);
     for (let i = 0; i < formulaEntities.length; i++) {
         let ascii = formulaEntities[i].charCodeAt(0);
         if (ascii >= 65 && ascii <= 90) {
@@ -112,9 +110,8 @@ function removeFormula(address, formula) {
             // db -> value
             let children = db[parentrcObj.rid][parentrcObj.cid].children;
             let idx = children.indexOf(address);
-            children.slice(idx, 1);
+            children.splice(idx, 1);
             // replace in formula
-
         }
     }
     console.log(formula);
