@@ -6,6 +6,10 @@ for (let i = 0; i < AllGridCells.length; i++) {
         let { rid, cid } = getRidCidFromAddress(address);
         let cellObject = db[rid][cid];
         // set self ui as well as children new values and ui
+        if (cellObject.value == content) {
+            return;
+        }
+
         if (cellObject.formula) {
             removeFormula(address, formula);
             cellObject.formula = "";
@@ -71,7 +75,6 @@ function setUI(value, rid, cid) {
         let value = evaluateFormula(chCellObj.formula);
         setUI(value, chriciobj.rid, chriciobj.cid)
     }
-
 }
 //  to set a cell as children of a cell jispe depenedent 
 function setFormula(address, formula) {
