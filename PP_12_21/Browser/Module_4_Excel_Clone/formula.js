@@ -16,9 +16,6 @@ for (let i = 0; i < AllGridCells.length; i++) {
         setUI(content, rid, cid);
     })
 }
-
-
-
 // formula bar
 // set Formula/update formula
 formulaInput.addEventListener("keydown", function (e) {

@@ -198,8 +198,9 @@ function sheetHandler() {
         let idx = newSheet.getAttribute("sheetIdx");
         db = sheetsDb[idx];
         setinitUI();
-        
+
     })
+    newSheet.click();
 }
 
 function sheetOpenHandler() {
