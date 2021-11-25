@@ -168,11 +168,6 @@ function getRidCidFromAddress(address) {
     }
 
 }
-
-
-
-
-
 firstSheet.addEventListener("click", function (e) {
     //    list of sheet me se sabme se aap remove active sheet
     for (let i = 0; i < sheetList.children.length; i++) {
@@ -184,7 +179,6 @@ firstSheet.addEventListener("click", function (e) {
     setinitUI();
 
 })
-
 createSheetIcon.addEventListener("click", sheetHandler);
 function sheetHandler() {
     let noofChildren = sheetList.children.length;
@@ -204,6 +198,7 @@ function sheetHandler() {
         let idx = newSheet.getAttribute("sheetIdx");
         db = sheetsDb[idx];
         setinitUI();
+        
     })
 }
 

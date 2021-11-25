@@ -45,17 +45,23 @@ openInput.addEventListener("change", function (e) {
 })
 function setSheets() {
     console.log(sheetsDb.length)
-    for (let i = 0; i < sheetsDb.length - 1; i++) {
+    sheetList.innerHTML="";
+    for (let i = 0; i < sheetsDb.length; i++) {
         sheetOpenHandler();
     }
 }
 newInput.addEventListener("click", function () {
     // set db to empty
     sheetsDb = [];
+
     // set initial entries
     initDB(); // -> initial Db
     // ui -> map accoriding to new db
+    db = sheetsDb[0];
     setinitUI();
+    setSheets();
+    // ui se remove sheets and sheetsDB;
+
 })
 function setinitUI() {
     for (let i = 0; i < 100; i++) {
