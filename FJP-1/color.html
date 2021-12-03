@@ -83,7 +83,19 @@
     <script>
         // button -> click-> color 
         let colorArea = document.querySelector(".color-area");
-        colorArea.style.backgroundColor ="lightcyan";
+        let redColor = document.querySelector(".red");
+        let greenColor = document.querySelector(".green");
+        let blueColor = document.querySelector(".blue");
+        redColor.addEventListener("click", function () {
+            colorArea.style.backgroundColor = "lightpink";
+        })
+        greenColor.addEventListener("click", function () {
+            colorArea.style.backgroundColor = "lightgreen";
+        })
+        blueColor.addEventListener("click", function () {
+
+            colorArea.style.backgroundColor = "lightblue";
+        })
 
     </script>
 </body>
