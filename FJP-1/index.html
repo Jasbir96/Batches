@@ -31,6 +31,10 @@
 <!-- html js inject-->
 <script>
     let canvasBoard = document.querySelector("canvas");
+
+
+
+
     let rectTool = document.querySelector(".fa-square");
     let lineTool = document.querySelector(".fa-grip-lines-vertical");
     let cTool = "rectTool";
@@ -47,18 +51,20 @@
     lineTool.addEventListener("click", function () {
         cTool = "lineTool";
     })
+    console.log(canvasBoard.getBoundingClientRect());
+    // canavas board -> top point kitna niche hai 
     let boardTop = canvasBoard.getBoundingClientRect().top;
+    // canavas board -> left  point kitna aage  hai 
     let boardLeft = canvasBoard.getBoundingClientRect().left;
-    
     let iX, iY, fX, fY;
-    body.addEventListener("mousedown",
-        function (e) {
-            iX = e.clientX+boardLeft;
-            iY = e.clientY -boardTop;
-        })
-    body.addEventListener("mouseup", function (e) {
+    body.addEventListener("mousedown", function (e) {
+        iX = e.clientX + boardLeft;
+        iY = e.clientY - boardTop;
+    })
+    body.addEventListener("mouseup", 
+    function (e) {
         // console.log(e);
-        fX = e.clientX+boardLeft;;
+        fX = e.clientX + boardLeft;;
         fY = e.clientY - boardTop;
         let width = fX - iX;
         let height = fY - iY;
