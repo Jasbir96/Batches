@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div>
+        <button class="line">Line</button>
+        <button class="box">Box</button>
+    </div>
+    <canvas></canvas>
+    <script>
+
+        let canvasBoard = document.querySelector("canvas");
+        canvasBoard.height = 600;
+        canvasBoard.width = 600;
+        // canavasBoard -> tool -> 2d tool
+        let tool = canvasBoard.getContext("2d");
+        // rectangle draw
+        // tool.fillStyle = "red";
+        // // x,y,w,h
+        // tool.fillRect(30, 50, 120, 120);
+        // tool.fillStyle = "black";
+        // tool.fillRect(30, 80, 120, 120);
+        // tool.strokeStyle = "blue"
+        // tool.strokeRect(20, 20, 160, 160);
+        canvasBoard.addEventListener("mousedown", onMouseDown);
+        canvasBoard.addEventListener("mouseup", onMouseUp);
+        let Top = canvasBoard.getBoundingClientRect().top;
+        let left = canvasBoard.getBoundingClientRect().left;
+        let x1, y1, x2, y2;
+        function onMouseDown(e) {
+            //   console.log(e.clientX);
+            //   console.log(e.clientY);
+            x1 = e.clientX;
+            y1 = e.clientY;
+            x1 = x1 - left;
+            y1 = y1 - Top;
+        }
+        function onMouseUp(e) {
+            x2 = e.clientX;
+            y2 = e.clientY;
+            x2 = x2 - left;
+            y2 = y2 - Top;
+            let w = x2 - x1;
+            let h = y2 - y1;
+            if (cTool == "box") {
+                tool.strokeRect(x1, y1, w, h);
+            } else {
+                tool.beginPath();
+                tool.moveTo(x1, y1);
+                tool.lineTo(x2, y2);
+                tool.stroke();
+            }
+        }
+        // tool change
+        let box = document
+        .querySelector(".box");
+        let line = document
+        .querySelector(".line");
+        let cTool = "line";
+        box.addEventListener("click", 
+        function () {
+            cTool = "box";
+        })
+        line.addEventListener
+        ("click", function () {
+            cTool = "line";
+        })
+        // line draw
+        // tool.beginPath();
+        // tool.moveTo(30,30);
+        // tool.lineTo(100,150);
+        // tool.lineTo(200,150);
+        // tool.moveTo(300,200);
+        // tool.lineTo(350,400);
+        // tool.stroke();
+
+    </script>
+</body>
+
+</html>

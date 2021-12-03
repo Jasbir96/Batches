@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <input type="text">
+    <button>Add</button>
+    <ul class="task">Tasks</ul>
+    <ul class="completed">Completed</ul>
+    <script>
+        //1. add click-> 
+        // a. identify add button
+        let button = document.querySelector("button");
+        let input = document.querySelector("input");
+
+        let list = document.querySelector(".task");
+        let completed = document.querySelector(".completed");
+        // b. click check
+
+        button.addEventListener("click", onBtnClick);
+        function onBtnClick() {
+            if (input.value == "")
+                return;
+            //  input value get
+            let task = input.value;
+            // alert(task);
+            //3.  add to list
+            let li = document.createElement("li");
+            let deleteBtn = document.createElement("button");
+            let box = document.createElement("div");
+            li.innerText = task;
+            deleteBtn.innerText = "Delete";
+            box.appendChild(li);
+            box.appendChild(deleteBtn)
+            list.appendChild(box);
+            input.value = "";
+            deleteBtn.addEventListener("click", removeTask);
+            function removeTask() {
+                let task = li.innerText;
+                let listItem = document.createElement("li");
+                listItem.innerText = task;
+                completed.appendChild(listItem);
+                box.remove();
+                // text -> completed
+            }
+        }
+    </script>
+</body>
+
+</html>
