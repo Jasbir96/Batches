@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <style>
         /* it applies on all the elemens of this page */
@@ -24,12 +25,21 @@
             border: 1px solid green;
             /* background-color: lightpink; */
         }
-/* select */
+
+        /* select */
         .outer {
             border: 3px solid purple;
-            width: 50px;
-            /* height:50px; */
+            width: 200px;
+            height: 50px;
+            /*  */
+            display: flex;
+            /* horizontally align  */
+            justify-content: space-evenly;
+            /* vertical align */
+            align-items: center;
+
         }
+
         .red {
             background-color: lightpink;
             height: 35px;
@@ -37,12 +47,14 @@
             /* curve */
             border-radius: 50%;
         }
+
         .green {
             background-color: lightgreen;
             height: 35px;
             width: 35px;
             border-radius: 50%
         }
+
         .blue {
             background-color: lightblue;
             height: 35px;
@@ -60,4 +72,5 @@
         <div class="blue"></div>
     </div>
 </body>
+
 </html>
