@@ -1,0 +1,95 @@
+        .toolbar {
+            border: 1px solid gray;
+            border-radius: 4px;
+
+            width: 90vw;
+            /* trick element center */
+            margin: 0 auto;
+            /* the children should have
+             space for alignment */
+            height: 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+        }
+        .tool-img {
+            /* img ko change to usko height */
+            height: 50px;
+        }
+
+        .color-container {
+            border: 1px solid gray;
+            border-radius: 3px;
+            height: 50px;
+            width: 150px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .color {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+
+        .red {
+            background-color:
+                lightpink;
+        }
+
+        .blue {
+            background-color:
+                lightblue;
+        }
+
+        .green {
+            background-color:
+                lightgreen;
+        }
+
+        /* tool options */
+        .size-box {
+            width: 150px;
+            height: 30px;
+            border: 1px solid gray;
+            align-items: center;
+            justify-content: space-evenly;
+            /* display: flex; */
+            display: none;
+        }
+
+        .size {
+            background-color: lightsteelblue;
+            border-radius: 50%;
+        }
+
+        .size1 {
+            height: 10px;
+            width: 10px;
+        }
+
+        .size2 {
+            height: 14px;
+            width: 14px;
+        }
+
+        .size3 {
+            height: 18px;
+            width: 18px;
+        }
+
+        .size4 {
+            height: 22px;
+            width: 22px;
+        }
+
+
+        /* icons  */
+        .fas {
+            font-size: 2rem;
+            
+        }

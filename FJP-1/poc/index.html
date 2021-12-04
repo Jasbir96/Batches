@@ -131,11 +131,6 @@
         iX = e.clientX + boardLeft;
         iY = e.clientY - boardTop;
     })
-    body.addEventListener("mousemove", function (e) {
-        console.log("x", e.clientX);
-        console.log("y", e.clientY);
-    })
-    
     body.addEventListener("mouseup",
     function (e) {
         // console.log(e);
@@ -150,11 +145,12 @@
             tool.moveTo(iX, iY);
             tool.lineTo(fX, fY);
             tool.stroke();
-            console.log("Pencil tool is pending")
+            console.log("line tool is pending")
         }
     })
     
 </script> -->
+
 <script>
     let canvasBoard = document.querySelector("canvas");
     let tool = canvasBoard.getContext("2d");
@@ -188,5 +184,4 @@
     })
 
 </script>
-
 </html>

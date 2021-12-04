@@ -6,97 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .toolbar {
-            border: 1px solid gray;
-            border-radius: 4px;
-
-            width: 90vw;
-            /* trick element center */
-            margin: 0 auto;
-            /* the children should have
-             space for alignment */
-            height: 80px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-
-        }
-
-        .tool-img {
-            /* img ko change to usko height */
-            height: 50px;
-        }
-
-        .color-container {
-            border: 1px solid gray;
-            border-radius: 3px;
-            height: 50px;
-            width: 150px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-        }
-
-        .color {
-            height: 40px;
-            width: 40px;
-            border-radius: 50%;
-        }
-
-        .red {
-            background-color:
-                lightpink;
-        }
-
-        .blue {
-            background-color:
-                lightblue;
-        }
-
-        .green {
-            background-color:
-                lightgreen;
-        }
-
-        /* tool options */
-        .size-box {
-            width: 150px;
-            height: 30px;
-            border: 1px solid gray;
-            align-items: center;
-            justify-content: space-evenly;
-            /* display: flex; */
-            display: none;
-        }
-
-        .size {
-            background-color: lightsteelblue;
-            border-radius: 50%;
-        }
-
-        .size1 {
-            height: 10px;
-            width: 10px;
-        }
-
-        .size2 {
-            height: 14px;
-            width: 14px;
-        }
-
-        .size3 {
-            height: 18px;
-            width: 18px;
-        }
-
-        .size4 {
-            height: 22px;
-            width: 22px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -111,7 +22,6 @@
                 <div class="size3 size"></div>
                 <div class="size4 size"></div>
             </div>
-
         </div>
         <div class="tool" id="eraser">
             <img src="./NewIcons/Eraser.svg" alt="" class="tool-img">
@@ -124,7 +34,7 @@
             </div>
         </div>
         <div class="tool" id="rect">
-            <img src="./NewIcons/CloseButton.svg" alt="" class="tool-img">
+            <i class="fas fa-square"></i>
             <div class="size-box">
                 <!-- .size1+.size2+.size3 -->
                 <div class="size1 size"></div>
@@ -134,7 +44,8 @@
             </div>
         </div>
         <div class="tool" id="line">
-            <img src="./NewIcons/MoveIcon.svg" alt="" class="tool-img">
+            <i class="fas fa-grip-lines-vertical"></i>
+
             <div class="size-box">
                 <!-- .size1+.size2+.size3 -->
                 <div class="size1 size"></div>
@@ -150,22 +61,87 @@
             <div class="color blue"></div>
             <div class="color green"></div>
         </div>
-
     </div>
+    <canvas></canvas>
+    <!-- variable declare  -->
+    <!-- tool change -->
+    <script>
+
+        let cTool = "pencil";
+        let canvasBoard = document.querySelector("canvas");
+        let tool = canvasBoard.getContext("2d");
+        let body = document.querySelector("body");
+        canvasBoard.height = window.innerHeight;
+        canvasBoard.width = window.innerWidth;
+    </script>
+
+    <!-- pencil rect line code  -->
+    <script>
+        // canavas board -> left  point kitna aage  hai 
+        let boardLeft = canvasBoard.getBoundingClientRect().left;
+        let boardTop = canvasBoard.getBoundingClientRect().top;
+        let iX, iY, fX, fY;
+        let drawingMode = false;
+        body.addEventListener("mousedown", function (e) {
+            iX = e.clientX - boardLeft
+            iY = e.clientY - boardTop
+            if (cTool == "pencil") {
+                drawingMode = true;
+                tool.beginPath();
+                tool.moveTo(iX, iY);
+            }
+        })
+        body.addEventListener("mouseup", function (e) {
+            if (cTool == "pencil") {
+                drawingMode = false;
+
+            } else if (cTool == "rect" || cTool == "line") {
+                // rect, line
+                fX = e.clientX + boardLeft;;
+                fY = e.clientY - boardTop;
+                let width = fX - iX;
+                let height = fY - iY;
+                if (cTool == "rect") {
+                    tool.strokeRect(iX, iY, width, height);
+                } else if (cTool == "line") {
+                    tool.beginPath();
+                    tool.moveTo(iX, iY);
+                    tool.lineTo(fX, fY);
+                    tool.stroke();
+                    console.log("line tool is pending")
+                }
+            }
+
+        })
+        body.addEventListener("mousemove", function (e) {
+            if (drawingMode == false)
+                return;
+           
+                fX = e.clientX - boardLeft;
+                fY = e.clientY - boardTop;
+                tool.lineTo(fX, fY);
+                tool.stroke();
+                iX = fX;
+                iY = fY;
+
+
+        })
+
+    </script>
+    <!-- tool change -->
     <script>
         let pencil = document.querySelector("#pencil");
         let eraser = document.querySelector("#eraser");
         let rect = document.querySelector("#rect");
         let line = document.querySelector("#line");
         let options = document.querySelectorAll(".size-box");
-        let cTool = "pencil";
         // identify -> click  -> again click
         pencil.addEventListener("click", function (e) {
             if (cTool == "pencil") {
                 // second click
                 // options show 
                 options[0].style.display = "flex";
-            } 
+            }
             else {
                 for (let i = 0; i < options.length; i++) {
 
@@ -218,6 +194,21 @@
             }
         })
     </script>
+    <script>
+        let redColor = document.querySelector(".red");
+        let greenColor = document.querySelector(".green");
+        let blueColor = document.querySelector(".blue");
+        redColor.addEventListener("click", function () {
+            tool.strokeStyle = "lightpink";
+        })
+        greenColor.addEventListener("click", function () {
+            tool.strokeStyle = "lightgreen";
+        })
+        blueColor.addEventListener("click", function () {
+            tool.strokeStyle = "lightblue";
+        })
+    </script>
+
 </body>
 
 </html>
