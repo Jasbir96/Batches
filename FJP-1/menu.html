@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .toolbar {
+            border: 1px solid gray;
+            border-radius: 4px;
+
+            width: 90vw;
+            /* trick element center */
+            margin: 0 auto;
+            /* the children should have
+             space for alignment */
+            height: 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            
+        }
+        .tool-img {
+            /* img ko change to usko height */
+            height: 50px;
+        }
+        .color-container {
+            border: 1px solid gray;
+            border-radius: 3px;
+            height: 50px;
+            width: 150px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        .color {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+        .red {
+            background-color:
+             lightpink;
+        }
+        .blue {
+            background-color:
+             lightblue;
+        }
+        .green {
+            background-color: 
+            lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <!-- div -> content -->
+    <div class="toolbar">
+        <div class="tool">
+            <img src="./NewIcons/Black_Pencil.svg" alt="" class="tool-img">
+        </div>
+        <div class="tool">
+            <img src="./NewIcons/Eraser.svg" alt="" class="tool-img">
+        </div>
+        <div class="tool">
+            <img src="./NewIcons/Download.svg" alt="" class="tool-img">
+        </div>
+        <div class="tool">
+            <img src="./NewIcons/Photo.svg" alt="" class="tool-img">
+        </div>
+        <!-- single unit-->
+        <div class="color-container">
+            <!-- .color*3 -->
+            <div class="color red"></div>
+            <div class="color blue"></div>
+            <div class="color green"></div>
+        </div>
+    </div>
+</body>
+
+</html>
