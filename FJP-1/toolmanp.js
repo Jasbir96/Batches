@@ -4,7 +4,6 @@ let eraser = document.querySelector("#eraser");
 let rect = document.querySelector("#rect");
 let line = document.querySelector("#line");
 let options = document.querySelectorAll(".size-box");
-
 // identify -> click  -> again click
 pencil.addEventListener("click", function (e) {
     if (cTool == "pencil") {
@@ -22,7 +21,6 @@ pencil.addEventListener("click", function (e) {
         cTool = "pencil";
         tool.strokeStyle = "lightpink";
         tool.lineWidth = pencilSize
-
     }
 })
 eraser.addEventListener("click", function (e) {
