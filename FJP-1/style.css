@@ -93,3 +93,48 @@
             font-size: 2rem;
             
         }
+
+
+        /* sticky notes */
+
+        /* div -> parent width  */
+    .navbar {
+        display: flex;
+        height: 24px;
+        justify-content: flex-end;
+        align-items: center;
+        background-color: transparent;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .close {
+        height: 15px;
+        width: 15px;
+        background-color: lightcoral;
+        border-radius: 50%;
+        margin-right: 5px;
+        ;
+    }
+
+    .minimize {
+        height: 15px;
+        width: 15px;
+        background-color: lightgreen;
+        border-radius: 50%;
+        margin-right: 5px;
+        ;
+    }
+
+    .sticky {
+        width: 175px;
+        height: 175px;
+    }
+
+    .textarea {
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        height: 145px;
+        width: 170px;
+        outline: none;
+        border: none;
+        border-top: 2px solid gray
+    }
