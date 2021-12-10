@@ -1,0 +1,24 @@
+/* select */
+/* selector */
+/* universal selector */
+*{
+font-family: Cambria, Cochin, 
+}
+/* element */
+h1{
+background-color: yellow;
+}
+p{
+font-size:2rem;
+color:lightblue;
+}
+/* class */
+.red-color{
+    color:red;
+}
+.green-back{
+    background-color: green;
+}
+#hello{
+  font-style: italic;  
+}
