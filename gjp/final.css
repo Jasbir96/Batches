@@ -1,0 +1,52 @@
+body {
+    padding: 10px;
+}
+
+.header {
+    padding: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.header div.html {
+    margin-left: auto;
+}
+
+.header>div {
+    margin: 0 1rem;
+}
+
+.main .img img{
+    width: 100%;
+}
+
+
+.content {
+    display: flex;
+    align-items: center;
+    margin: 60px;
+    justify-content: space-evenly;
+}
+
+.content .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.footer{
+    padding:20px;
+    background: black;
+    color:white;
+    text-align: center;
+    font-weight: 900;
+}
+
+
+
+
+.card-content{
+    text-align: center
+}
