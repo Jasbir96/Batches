@@ -1,5 +1,6 @@
 function sayHi(name) {
-    console.log("My Name is ", name);
+    console.log("My Name is ",
+     name);
     name();
     // one thing 
     // return { firstName: "Jasbir" };
