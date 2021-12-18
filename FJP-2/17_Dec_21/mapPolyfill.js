@@ -1,4 +1,5 @@
 let arr = [5, 7, 19, 12, 13, 14];
+
 function squarer(x) {
     return x * x;
 }
