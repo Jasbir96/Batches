@@ -122,7 +122,7 @@ function getNolanMovies(movie) {
     return movie["Director"] == "Christopher Nolan";
 }
 function getImdbRatings(movie) {
-    return (movie["imdbRating"]);
+    return movie["imdbRating"];
 }
 function sum(storage, elem) {
     return Number(storage) + Number(elem);
