@@ -8,7 +8,7 @@
 // sayHello("Jasbir");
 // // // haven't called the function -> 
 // function name print
-// console.log(sayHello);
+console.log(sayHello);
 // // // print the function after calling it -> returned value
 // let rVal = sayHello("Jasbir")
 // console.log("11", rVal);

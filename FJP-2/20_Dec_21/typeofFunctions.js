@@ -12,17 +12,22 @@
 let secondName = function originalName() {
     console.log("I am expression");
 }
-
 // secondName();
 // originalName();
 
 console.log("Before");
-// //3. IIFEE-> immediately Invoked function expression
+
+
+
+
+
+
+// //3.
+//  IIFEE-> immediately Invoked function expression
 (function drawBoard() {
     console.log("board is immediately drawn");
 })();
 console.log("After");
-
 // // 4. Anonymous function 
 (function () {
     console.log("board is immediately drawn");
