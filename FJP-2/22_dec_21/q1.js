@@ -29,7 +29,5 @@ arr[0]();
 arr[1]();
 arr[2]();
 console.log("After calling outer");
-
-
 // 3 more cases are there -> let -> 0,1,2 ,let will not work ,iifee
 

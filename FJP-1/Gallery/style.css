@@ -1,0 +1,61 @@
+body {
+    margin: 0px;
+}
+/*********** appmenu  *********/
+/* font size increase */
+.material-icons {
+    font-size: 1.75rem;
+}
+.app-menu {
+    height: 3rem;
+    background-color: lightgrey;
+    /* vertical center icons */
+    display: flex;
+    align-items: center
+}
+/* icons baad space  */
+.app-menu>* {
+    margin-right: 1rem;
+}
+/* **************img list container *********/
+.img-list-container {
+    height: 7rem;
+    background-color: #aaa6a6;
+    /* images align  */
+    display: flex;
+    align-items: center;
+}
+.img-list-container>* {
+    height: 70%;
+    margin-right: 2rem;
+    border-radius: 12%;
+}
+/* hover  */
+.img_preview:hover {
+    box-shadow:
+     rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+/******image preview conainer css ********/
+.img-show_container {
+    /* 100vh -> current height of 
+    your browser window */
+    height: calc( 100vh - 10rem);
+    /* height:30rem; */
+    background-color: #d4cdcd;
+    /* vertically and horizontal centering */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.final_image{
+    width:80%;
+    /* resize image without 
+    lossing it's aspect ratio */
+    object-fit: contain;
+    max-height: 80%;
+}
+.img-show_container>.material-icons{
+    font-size: 2rem;
+}
