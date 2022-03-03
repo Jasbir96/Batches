@@ -21,6 +21,7 @@
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.10",
     "express": "^4.17.1",
+    "jsdom": "^19.0.0",
     "jsonwebtoken": "^8.5.1",
     "pdfkit": "^0.11.0",
     "puppeteer": "^8.0.0",
