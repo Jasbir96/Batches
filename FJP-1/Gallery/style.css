@@ -1,11 +1,13 @@
 body {
     margin: 0px;
 }
+
 /*********** appmenu  *********/
 /* font size increase */
 .material-icons {
     font-size: 1.75rem;
 }
+
 .app-menu {
     height: 3rem;
     background-color: lightgrey;
@@ -13,10 +15,12 @@ body {
     display: flex;
     align-items: center
 }
+
 /* icons baad space  */
 .app-menu>* {
     margin-right: 1rem;
 }
+
 /* **************img list container *********/
 .img-list-container {
     height: 7rem;
@@ -26,38 +30,56 @@ body {
     align-items: center;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
+
 .img-list-container>* {
     height: 70%;
     margin-right: 2rem;
     border-radius: 12%;
 }
+
 /* hover  */
 .img_preview:hover {
     box-shadow:
-     rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transform: scale(1.05);
     cursor: pointer;
 }
+
 /******image preview conainer css ********/
 .img-show_container {
     /* 100vh -> current height of 
     your browser window */
-    height: calc( 100vh - 10rem);
+    height: calc(100vh - 10rem);
     /* height:30rem; */
     background-color: #d4cdcd;
     /* vertically and horizontal centering */
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
-.final_image{
-    width:80%;
+
+.final_image {
     /* resize image without 
     lossing it's aspect ratio */
+    width: 90%;
+    max-width: 100%;
     object-fit: contain;
-    max-height: 80%;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
-.img-show_container>.material-icons{
+
+.img-show_container>.material-icons {
     font-size: 2rem;
+}
+
+.parent-img {
+    text-align: center;
+    width: 80%;
+    max-height: 80%;
+}
+.delete-img{
+    color: black;
+    position:absolute;
+    left:80vw;
+    top:20vh;
+
 }
