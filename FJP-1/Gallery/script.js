@@ -42,18 +42,24 @@ function handleImagFunctionality(uniqueIdentifier, imgLink, previewImg) {
     imgsArr.push(imgIdentifierObj);
     // images aayi unko click waali feature do
     previewImg.addEventListener("click", function () {
-        let CImgid = previewImg.getAttribute("cid");
+        // let CImgid = previewImg.getAttribute("cid");
+        //    O(1)
+        let cImgSrc = previewImg.getAttribute("src");
+
+        setShowImage(cImgSrc);
+
         // console.log(cid);
         // console.log(imgsArr)
-        for (let i = 0; i < imgsArr.length; i++) {
-            let imgIdentifierObj = imgsArr[i];
-            if (CImgid == imgIdentifierObj.cid) {
-                //    wahi url chaiye
-                console.log(imgIdentifierObj.url);
-                // put kisme apne 
-                setShowImage(imgIdentifierObj.url)
-            }
-        }
+        // O(n);
+        // for (let i = 0; i < imgsArr.length; i++) {
+        //     let imgIdentifierObj = imgsArr[i];
+        //     if (CImgid == imgIdentifierObj.cid) {
+        //         //    wahi url chaiye
+        //         console.log(imgIdentifierObj.url);
+        //         // put kisme apne 
+        //     }
+        setShowImage(imgIdentifierObj.url)
+        // }
     })
 }
 
