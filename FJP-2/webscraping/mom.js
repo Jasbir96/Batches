@@ -14,7 +14,7 @@ function cb(err, httpResponse, html) {
     } else if (httpResponse.statusCode == 404) {
         console.log("Page not found");
     } else {
-        // console.log(html);
+        console.log(html);
         console.log("Html data recieved");
         parseHtml(html);
     }
@@ -26,8 +26,7 @@ function parseHtml(html) {
     // queryselector
     // multiple array -> querysSelectorAll
     // , textContext, getAttribute
-    let mom =
-    MyDocument
+    let mom=MyDocument
     .querySelector(".playerofthematch-name");
     // tag -> property get 
     let title = mom.textContent;
