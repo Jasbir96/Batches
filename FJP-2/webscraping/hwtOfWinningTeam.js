@@ -55,6 +55,8 @@ function parseHtml(html) {
             let rows = singleInning.querySelectorAll(".table.bowler tbody tr");
             // -> jo rows belong karti kisko -> bowler 
             // loop -> tr bolwers -> use 
+            let hw = -1;
+            let hwtName = "";
             for (let i = 0; i < rows.length; i++) {
                 let tdlength = rows[i].querySelectorAll("td").length;
                 // rmove commentry columns 
@@ -65,11 +67,16 @@ function parseHtml(html) {
                     let name = tds[0].textContent;
                     let wickets = tds[4].textContent;
                     console.log(name + " " + wickets);
+                    if (hw < wickets) {
+                        hw = wickets;
+                        hwtName = name;
+                    }
                     // compare 
                 }
             }
-
-
+            console.log("`````````````````````````````");
+            console.log(hwtName + " " + hw);
+            // hwt , name 
         }
     }
 }
