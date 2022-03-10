@@ -4,23 +4,29 @@ let request = require('request');
 // data extract 
 let jsdom = require("jsdom");
 let fs = require("fs");
+let path = require("path");
 let { JSDOM } = jsdom;
 // let url = "https://www.espncricinfo.com/series/afghanistan-in-bangladesh-2021-22-1299826/bangladesh-vs-afghanistan-1st-t20i-1299832/full-scorecard";
 // callback -> request -> data get
 function tobecalledBySomeone(url) {
-
     request(url, cb);
+
+
 }
 // cb is called by your request 
 // html -> data 
 function cb(err, httpResponse, html) {
+    // console.log(url);
     if (err) {
         console.log(err);
     } else if (httpResponse.statusCode == 404) {
         console.log("Page not found");
     } else {
         // console.log(html);
-        console.log("Html data recieved");
+        // console.log("````````````````````````````````````````````")
+        // console.log("````````````````````````````````````````````")
+        // console.log("````````````````````````````````````````````")
+        // console.log("Html data recieved");
         parseHtml(html);
     }
 }
@@ -32,12 +38,21 @@ function parseHtml(html) {
     // multiple array -> querysSelectorAll
     // , textContext, getAttribute
     // 1. winning team name 
-    let teamName = MyDocument.querySelector
-        (".match-info.match-info-MATCH.match-info-MATCH-half-width .status-text");
+
+    let losingTeam = MyDocument.querySelector
+        (".match-header-container .team-gray");
+    if (losingTeam == null) {
+        console.log("Match tied and no winner as such");
+        return;
+    }
+    let bothTheTeams = MyDocument.querySelectorAll(".match-header-container .name-link");
+    let WinningTeamName;
+    for (let i = 0; i < bothTheTeams.length; i++) {
+        if (losingTeam.textContent != bothTheTeams[i].textContent) {
+            WinningTeamName = bothTheTeams[i].textContent;
+        }
+    }
     // tag -> property get 
-    let title = teamName.textContent;
-    let teamNameArr = title.split("won");
-    let WinningTeamName = teamNameArr[0].trim();
     // -> my document -> whole page
     let venueSelector = MyDocument.querySelector(".match-header-info.match-info-MATCH  .description");
     let venue = venueSelector.textContent;
@@ -63,7 +78,7 @@ function parseHtml(html) {
                 if (tds.length > 4) {
                     // columns they belong to a valid row-> player 
                     //  Name
-                    let Name = tds[0].textContent;
+                    let name = tds[0].textContent;
                     // runs
                     let runs = tds[2].textContent;
                     // balls
@@ -76,7 +91,7 @@ function parseHtml(html) {
                     let sr = tds[7].textContent;
                     // opponent team name
                     let opponent;
-                    if (i = 0) {
+                    if (i == 0) {
                         // i=1-> opponent 
 
                         opponent = team2
@@ -85,9 +100,10 @@ function parseHtml(html) {
                         opponent = team1
                     }
                     // result 
-                    let result = title;
-                    console.log
-                        (Name + " " + runs + " " + balls + " " + fours + " " + sixes + " " + sr + " " + opponent + " " + result + " " + venue)
+                    // let result = title;
+                    console.log(name + " " + runs + " " + balls + " " + fours + " " + sixes + " " + sr + " " + opponent + " " +  " " + venue+" "+teamName)
+                    saveToFiles(name, runs, balls, fours, sixes, sr, opponent, venue, teamName);
+                // console.log(teamName);
                 }
             }
 
@@ -104,6 +120,37 @@ function getnameOfTheTeam(singleInning) {
     return teamName;
 }
 
+
+function saveToFiles(name, runs, balls, fours, sixes, sr, opponent, venue, teamName) {
+
+    let dataObj = {
+        name, runs, balls, fours, sixes, sr, opponent, venue, teamName
+    }
+    // check whether the folder exist or not
+    let doesTeamExist = fs.existsSync(teamName);
+    // console.log(teamName+" "+doesTeamExist);
+    if (doesTeamExist == false) {
+        fs.mkdirSync(teamName);
+    }
+
+    let pathofPlayerFile = path.join(teamName, name + ".json");
+    let doesPlayerExist = fs.existsSync(pathofPlayerFile);
+    // ram 
+    let entries = [];
+    if (doesPlayerExist == false) {
+        // -> data put 
+        entries = [];
+        entries.push(dataObj);
+    } else {
+        // data update
+        let binaryData = fs.readFileSync(pathofPlayerFile);
+        entries = JSON.parse(binaryData);
+        entries.push(dataObj);
+    }
+    // save file  -> file system 
+    fs.writeFileSync(pathofPlayerFile, JSON.stringify(entries));
+
+}
 module.exports = {
     tobecalledBySomeone: tobecalledBySomeone
 }

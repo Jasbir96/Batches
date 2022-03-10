@@ -19,7 +19,7 @@ function cb(err, httpResponse, html) {
         console.log("Page not found");
     } else {
         // console.log(html);
-        console.log("Html data recieved");
+        // console.log("Html data recieved");
         parseHtml(html);
     }
 }
@@ -27,11 +27,12 @@ function parseHtml(html) {
     let dom = new JSDOM(html);
     let MyDocument = dom.window.document;
     let allanchors = MyDocument.querySelectorAll("a[data-hover='Scorecard']");
+    console.log(allanchors.length);
     // get link of scorecard of every match
     for (let i = 0; i < allanchors.length; i++) {
         let link = allanchors[i].getAttribute("href");
         let fullLink="https://www.espncricinfo.com"+link;
-        console.log(fullLink);
+        // console.log(fullLink);
         tobecalledBySomeone(fullLink)    
         //  call match.js and provide anew match link to match.js 
     
