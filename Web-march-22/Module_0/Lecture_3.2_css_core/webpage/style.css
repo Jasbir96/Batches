@@ -8,10 +8,33 @@ body {
 }
 a {
     text-decoration: none;
+    /*to remove underline in anchor*/
 }
 li {
     list-style: none;
+    /*to remove dot in front of li elements*/
 }
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: red
+}
+
+a:active {
+    color: red;
+}
+a {
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+/* responsive */
 /* footer tag */
 footer {
     /* vertically center */
