@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- google fonts -->
+</head>
+<style>
+    body {
+        background-color: lightgreen;
+    }
+
+    h1 {
+        /* kis type ka font chaiye  */
+        font-family: sans-serif;
+        color: white;
+        text-align: center;
+    }
+    /*visible height= 64px+ 16+16+2+2=100px */
+    /* width:  */
+    .one {
+        border: 2px solid blue;
+        height: 64px;
+        width: 64px;
+        background-color: lightcyan;
+        margin-bottom: 1rem;
+        padding: 16px;
+
+    }
+    /* height width -> given by user = visible height width */
+    .border-box {
+        box-sizing: border-box;
+
+        border: 2px solid blue;
+        height: 64px;
+        width: 64px;
+        background-color: lightcyan;
+        margin-bottom: 1rem;
+        padding: 16px;
+    }
+    .withnothing {
+        height: 64px;
+        width: 64px;
+        background-color: lightcyan;
+    }
+</style>
+<body>
+    <h1>Hello Box Sizing</h1>
+    <div class="one">1</div>
+    <div class="border-box">1</div>
+    <div class="withnothing">1</div>
+
+</body>
+
+</html>
