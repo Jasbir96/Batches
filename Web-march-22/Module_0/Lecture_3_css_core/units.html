@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* 1rem -> html font size -> 16px */
+    html {
+        /* 16px */
+        font-size: 16px;
+    }
+    .one,
+    .two,
+    .three {
+        /* px is an absolute  */
+        border: 1px solid red;
+    }
+    .one {
+        /* view height ,view width */
+        background-color: lightblue;
+        /* browser screen -> 50%width */
+        /* 100vw -> screen width */
+        width: 50vw;
+        /* height -> 40% of browser height*/
+        /* 100vh -> screen height  */
+        height: 40vh;
+    }
+    .two {
+        height: 8rem;
+        width: 15rem;
+        background-color: lightcoral;
+    }
+    .child {
+        background-color: lightgreen;
+        /* percentage-> relative to our parents */
+        height: 50%;
+        width: 50%;
+    }
+
+    .grand_child {
+height:50%;
+background-color: lightgrey;
+border:1px solid red;
+width:50%;
+    }
+
+    .three {
+        height: 8rem;
+        width: 15rem;
+        background-color: lightcyan;
+    }
+</style>
+
+<body>
+    <div class="one"></div>
+    <div class="two">
+        I am parent
+        <div class="child">
+            children
+            <div class="grand_child">grand child</div>
+        </div>
+    </div>
+    <div class="three">
+    </div>
+</body>
+
+</html>
