@@ -1,0 +1,27 @@
+/* basic resets */
+body {
+    margin: 0px;
+}
+* {
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+/* footer tag */
+footer {
+    /* vertically center */
+    height: 5rem;
+    text-align: center;
+    background-color: black;
+    color: white;
+    /* boldness */
+    font-weight: 400;
+    font-size: 1.5rem;
+    /* enforce uppercase */
+    text-transform: uppercase;
+}
