@@ -4,20 +4,20 @@ let fs = require("fs");
 // ************************File*************************
 // functions-> define implement -> call use 
 // no never -> refer -> documentation 
-// let content = fs.readFileSync("profilelookup.js");
+let content = fs.readFileSync("profilelookup.js");
 // // buffer -> hexadecimal form
 // console.log(content);
 // // string me convert ho jaata hai 
 // // console.log(content + "");
 // // file write
 // // /content write 
-// fs.writeFileSync("myfile.txt", "Hello from node");
+fs.writeFileSync("myfile.txt", "Hello from node");
 // // append
-// fs.appendFileSync("myfile.txt", "content appended");
+fs.appendFileSync("myfile.txt", "content appended");
 // //delete
-// fs.unlinkSync("toDelete.txt");
+fs.unlinkSync("toDelete.txt");
 // copy and cut -> file
-
+// copycontent 
 fs.copyFileSync("C:/Users/mrjas/OneDrive/Desktop/Batches/Lrc_Dev/Lecture_1_GettingStarted/arrayAsAnobj.js",
     "C:/Users/mrjas/OneDrive/Desktop/Batches/Lrc_Dev/Lecture_2_objects_Nodejs/arrayAsAnobj-copy.js");
 // cut -> x
@@ -27,7 +27,7 @@ fs.copyFileSync("C:/Users/mrjas/OneDrive/Desktop/Batches/Lrc_Dev/Lecture_1_Getti
 // how to create a folder in nodejs -> folder /file hai ya nahi hai
 // let doesPathExist = fs.existsSync("myfolder");
 // if (doesPathExist == false) {
-//     fs.mkdirSync("myfolder");
+    // fs.mkdirSync("myfolder");
 // } else {
 //     console.log("Folder already exists");
 // }
