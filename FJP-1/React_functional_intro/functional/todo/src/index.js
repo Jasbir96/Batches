@@ -17,21 +17,22 @@ import './index.css';
 
 // react
 class Counter extends React.Component {
- 
+
   state = {
     count: 0
   }
   incrementCounter = () => {
     // this.state,counter++;
     // setState
+
     this.setState({
-      count: count + 1
+      count: this.state.count + 1
     })
   }
   decrementCounter = () => {
     // this.state,counter--;
     this.setState({
-      count: count - 1
+      count: this.state.count - 1
     })
   }
   // ji interaction jo chnage karna wo change kar do 
