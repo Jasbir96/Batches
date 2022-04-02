@@ -1,0 +1,92 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#root {
+    height: 100vh;
+    width: 100vw;
+    background-color: teal;
+    display: flex;
+    flex-direction: row;
+}
+
+.board {
+    height: 100%;
+    width: 50%;
+    border: 3px solid white;
+    display: flex;
+    flex-direction: column;
+}
+
+.display {
+    height: 100%;
+    width: 50%;
+    border: 3px solid white;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    height: 10%;
+    width: 100%;
+    border: 3px solid white;
+
+    text-align: center;
+    font-size: 50px;
+    color: white;
+}
+
+.content {
+    height: 90%;
+    width: 100%;
+    border: 3px solid white;
+}
+
+.ttt {
+    height: 75%;
+    width: 75%;
+    border: 3px solid white;
+    margin: 75px auto;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    height: 100%;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: row;
+}
+
+.row button {
+    width: 100%;
+    cursor: pointer;
+    font-size: 120px;
+}
+
+.row button:hover {
+    background-color: aquamarine;
+}
+
+.history {
+    height: 75%;
+    width: 75%;
+    border: 3px solid white;
+    margin: 75px auto;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.history button {
+    padding: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
