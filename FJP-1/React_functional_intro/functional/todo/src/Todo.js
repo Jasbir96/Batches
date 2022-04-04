@@ -1,16 +1,14 @@
 class AddTask extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
+    
+      state = {
         taskDesc: ''
       }
-    }
+    
     handleTaskTextChange(e) {
       this.setState({
         taskDesc: e.target.value
       })
     }
-  
     handleAddTaskClick() {
       this.props.handlerToCollectTaskInfo(this.state.taskDesc);
       this.setState({

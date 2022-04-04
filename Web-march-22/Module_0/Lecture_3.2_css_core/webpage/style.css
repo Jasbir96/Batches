@@ -2,14 +2,17 @@
 body {
     margin: 0px;
 }
+
 * {
     font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;
 }
+
 a {
     text-decoration: none;
     /*to remove underline in anchor*/
 }
+
 li {
     list-style: none;
     /*to remove dot in front of li elements*/
@@ -30,21 +33,49 @@ a:hover {
 a:active {
     color: red;
 }
+
 a {
     font-size: 1.2rem;
     font-weight: bolder;
 }
-/* responsive */
-/* footer tag */
-footer {
-    /* vertically center */
-    height: 5rem;
+
+/* header */
+header {
+    display: flex;
+    /* manages space horizontally  */
+    justify-content: space-between;
+}
+
+ul {
+    display: flex;
+}
+
+/* ***********main */
+.parent {
+    /* border: 10px solid red; */
+    margin-top: 2rem;
+    display: flex;
+    /* text inside that parent includes image will be centered  */
     text-align: center;
+}
+
+
+/* footer tag */
+.footer_parent {
+    height: 5rem;
     background-color: black;
+/* it is used to perfectly center a div*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.footer_content {
     color: white;
     /* boldness */
     font-weight: 500;
     font-size: 1.5rem;
     /* enforce uppercase */
     text-transform: uppercase;
+
 }

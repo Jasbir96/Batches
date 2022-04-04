@@ -1,7 +1,8 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import PrintMyNames from './PrintMyNames';
+import CounterClass from './CounterClass';
+
 // functional -> html milegi
 // object -> props
 // change -> static
@@ -16,44 +17,40 @@ import './index.css';
 // }
 
 // react
-class Counter extends React.Component {
+import React, { useState } from 'react';
 
-  state = {
-    count: 0
+function CounterFn() {
+  // count -> state varibale define -> initial value ->0 
+  //  update count -> update 
+  let [count, updateCount] = useState(0);
+  const incrementCounter = () => {
+    updateCount(count + 1);
   }
-  incrementCounter = () => {
-    // this.state,counter++;
-    // setState
-
-    this.setState({
-      count: this.state.count + 1
-    })
+  const decrementCounter = () => {
+    updateCount(count - 1);
   }
-  decrementCounter = () => {
-    // this.state,counter--;
-    this.setState({
-      count: this.state.count - 1
-    })
-  }
-  // ji interaction jo chnage karna wo change kar do 
-  // if you change the state then render function will run again with the new state variable
-  render() {
-    return (
-      <div>
-        <button
-          onClick={this.incrementCounter}
-        >+</button>
-        <p>{this.state.count}</p>
-        <button onClick={this.decrementCounter}>-</button>
-      </div>
-    )
-  }
+  return (<div>
+      <button
+        onClick={incrementCounter}
+      >+</button>
+      <p>{count}</p>
+      <button onClick={decrementCounter}>-</button>
+    </div>
+  )
 }
+
+
+
+
+
+
+
 // bottom to top
 // Dom render -> content print -> html root -> id -> 
 ReactDOM.render(
   // <PrintMyNames></PrintMyNames>
-  <Counter></Counter>
+  // <CounterClass></CounterClass>
+  <CounterFn></CounterFn>
   ,
   document.getElementById('root')
 );
