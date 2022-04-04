@@ -1,6 +1,8 @@
 /* basic resets */
 body {
-    margin: 0px;
+    /* margin-left: 1rem;
+    margin-right:1rem; */
+    margin: 0rem 2rem;
 }
 
 * {
@@ -44,14 +46,24 @@ header {
     display: flex;
     /* manages space horizontally  */
     justify-content: space-between;
+    align-items: center;
+   
+}
+
+header h1 {
+    margin-left: 2rem;
+}
+nav {
+    margin-right: 1rem;
+    
 }
 
 ul {
     display: flex;
     justify-content: space-evenly;
     width: 20rem;
-}
 
+}
 ul>li {
     width: 30%;
     font-size: 1.5rem;
@@ -60,9 +72,9 @@ ul>li {
 /* /**********main image */
 /* don't cram just copy paste it */
 .main-img {
-    width: 100vw;
+    width: 100%;
     height: auto;
-    
+
 }
 
 /* ***********main */
@@ -80,7 +92,6 @@ ul>li {
     width: 30%;
 }
 
-
 /* footer tag */
 .footer_parent {
     height: 5rem;
@@ -89,7 +100,6 @@ ul>li {
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .footer_content {
@@ -99,5 +109,4 @@ ul>li {
     font-size: 1.5rem;
     /* enforce uppercase */
     text-transform: uppercase;
-
 }
