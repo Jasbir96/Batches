@@ -48,6 +48,21 @@ header {
 
 ul {
     display: flex;
+    justify-content: space-evenly;
+    width: 20rem;
+}
+
+ul>li {
+    width: 30%;
+    font-size: 1.5rem;
+    ;
+}
+/* /**********main image */
+/* don't cram just copy paste it */
+.main-img {
+    width: 100vw;
+    height: auto;
+    
 }
 
 /* ***********main */
@@ -55,8 +70,14 @@ ul {
     /* border: 10px solid red; */
     margin-top: 2rem;
     display: flex;
-    /* text inside that parent includes image will be centered  */
+    /* text inside that parent 
+    includes image will be centered  */
     text-align: center;
+    justify-content: space-evenly;
+}
+
+.child {
+    width: 30%;
 }
 
 
@@ -64,12 +85,13 @@ ul {
 .footer_parent {
     height: 5rem;
     background-color: black;
-/* it is used to perfectly center a div*/
+    /* it is used to perfectly center a div*/
     display: flex;
     align-items: center;
     justify-content: center;
 
 }
+
 .footer_content {
     color: white;
     /* boldness */
