@@ -46,10 +46,8 @@ header {
     display: flex;
     /* manages space horizontally  */
     justify-content: space-between;
-    align-items: center;
-   
+    align-items: center;  
 }
-
 header h1 {
     margin-left: 2rem;
 }
