@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- react is a ui manipulation (logic)library -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <!-- frontend -> dom  -->
+    <!-- react dom -> webpage ke andar react lib ke help actual changes leke aao  -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- to convert jsx to js  -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- root hi banti  -->
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function Counter(prop) {
+            // jo bhi data change karna hai -> react.useState(initialvalue of that data)-> return 
+            // variable -> data ,function is also given that will change the variable
+            // let stateBelongings = React.useState(0);
+            // let count = stateBelongings[0];
+            // let changeCount = stateBelongings[1];
+            // destructuring in arrays
+            // let [count, changeCount] = React.useState(0);
+
+            let number = prop.number;
+            let increment = () => {
+                changeCount(count + 1);
+            }
+
+            let decrement = () => {
+                changeCount(count - 1);
+            }
+            return (
+                <div>
+                    <button onClick={increment}>+</button>
+                    <p>Counter Number {number} Count :  {count}</p>
+
+                    <button onClick={decrement}>-</button>
+                </div>
+            )
+        }
+        function Counters() {
+            return <div>
+                <Counter number={1} />
+                <Counter number={2} />
+                <Counter number={3} />
+            </div>
+        }
+
+        // create five independent counters 
+        ReactDOM.render(<Counters />, document.querySelector("#root"));
+// bottom to top
+    </script>
+</body>
+
+</html>
