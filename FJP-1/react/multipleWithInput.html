@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- react is a ui manipulation (logic)library -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <!-- frontend -> dom  -->
+    <!-- react dom -> webpage ke andar react lib ke help actual changes leke aao  -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- to convert jsx to js  -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- root hi banti  -->
+    <div id="root"></div>
+    <script type="text/babel">
+        // react code 
+        // JSX -> html +javascript
+        // component
+        function Hello(props) {
+            let name = props.name;
+            let age = props.age;
+            //  curly barce ka use karake kisi html test ke andar dynamic behaviour add kar sakte ho 
+            return <h1>Hello React {name} is of {age}</h1>
+        }
+        function Hellos() {
+            // parameter to a component -> data pass -> props pass
+            return <div>
+                <Hello name="Jasbir" age={25}></Hello>
+                <Hello name="Rajneesh"></Hello>
+                <Hello name="Jitender"></Hello>
+                <Hello name="Aman"></Hello>
+            </div>
+        }
+        // get html from Hello component and put it inside root
+        ReactDOM.render(<Hellos></Hellos>, document.querySelector("#root"));
+// bottom to top
+    </script>
+</body>
+
+</html>

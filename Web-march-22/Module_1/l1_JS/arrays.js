@@ -1,14 +1,14 @@
 // array-> collection of anything 
-let arr = ["Rajneesh", "Jasbir", "Mohit", "Jitender"];
 // print
+let arr = ["Rajneesh", "Jasbir", "Mohit", "Jitender"];
 // console.log(arr);
 // console.log(arr[2]);
 // console.log(arr[1]);
 // iterate 
-// for (let sidx = 0; sidx < arr.length; sidx++) {
-//     // console.log(sidx);
-//     console.log(arr[sidx]);
-// }
+for (let sidx = 0; sidx < arr.length; sidx++) {
+        // console.log(sidx);
+        console.log(arr[sidx]);
+}
 // loop
 // imp functions 
 // *******************last****************
@@ -29,7 +29,7 @@ let arr = ["Rajneesh", "Jasbir", "Mohit", "Jitender"];
 // arr.unshift("Bruce");
 // arr.unshift("Tony");
 // console.log(arr);
-// // remove
+// // // remove
 // arr.shift();
 // console.log("````````````````````````````````````");
 // console.log(arr);
@@ -40,22 +40,22 @@ let arr = ["Rajneesh", "Jasbir", "Mohit", "Jitender"];
 // arr2= [100, 2, 1,10] 
 // Output: [1,2,3,100,10]
 
-let arr1 = [1, 2, 3,];
-let arr2 = [100, 2, 1, 10];
-for (let i = 0; i < arr1.length; i++) {
-    let elementToPut = arr1[i];
-    let isPresent = false;
-    for (let j = 0; j < arr2.length; j++) {
-        if (elementToPut == arr2[j]) {
-            isPresent = true;
-        }
-    }
-    if (isPresent == false) {
-        arr2.push(elementToPut);
-    }
-}
+// let arr1 = [1, 2, 3,];
+// let arr2 = [100, 2, 1, 10];
+// for (let i = 0; i < arr1.length; i++) {
+//     let elementToPut = arr1[i];
+//     let isPresent = false;
+//     for (let j = 0; j < arr2.length; j++) {
+//         if (elementToPut == arr2[j]) {
+//             isPresent = true;
+//         }
+//     }
+//     if (isPresent == false) {
+//         arr2.push(elementToPut);
+//     }
+// }
 
-console.log(arr2);
+// console.log(arr2);
 // slice and splice
 // indexof and includes
 // getting started -> javascript 
