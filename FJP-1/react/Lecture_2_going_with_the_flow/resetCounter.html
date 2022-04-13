@@ -58,17 +58,18 @@
             const setInput2 = (e) => {
                 setCountVal(e.target.value);
             }
-            
+
             const resetCounter = () => {
                 console.log("Counter Number: " + countNumberVal)
                 console.log("CountVal: " + countVal);
                 resetParentCounter(countNumberVal, countVal);
             }
+
             return (<div className="resetBox">
                 <h2>Reset Counter</h2>
                 <div>Counter Number :
-                     <input value={countNumberVal} onChange={setInput1} /></div>
-                <div>Value : 
+                    <input value={countNumberVal} onChange={setInput1} /></div>
+                <div>Value :
                     <input value={countVal} onChange={setInput2} /></div>
                 <button onClick={resetCounter}>Reset Counter</button>
             </div>)
@@ -78,17 +79,25 @@
         function Counters(props) {
             let resetCounterNum = props.resetCounterNum;
             let resetCounterValue = props.resetCounterValue;
-
+            let resetParentProps = props.resetParentProps;
             return <div class="counter">
-                <Counter number={1} 
-                resetCounterValue={resetCounterValue} 
-                resetCounterNum={resetCounterNum} />
+                <Counter number={1}
+                    resetCounterValue={resetCounterValue}
+                    resetCounterNum={resetCounterNum}
+                    resetParentProps={resetParentProps}
+                />
                 <Counter number={2}
-                 resetCounterValue={resetCounterValue} 
-                 resetCounterNum={resetCounterNum} />
-                <Counter number={3} 
-                resetCounterValue={resetCounterValue} 
-                resetCounterNum={resetCounterNum} />
+                    resetCounterValue={resetCounterValue}
+                    resetCounterNum={resetCounterNum}
+                    resetParentProps={resetParentProps}
+
+                />
+                <Counter number={3}
+                    resetCounterValue={resetCounterValue}
+                    resetCounterNum={resetCounterNum}
+                    resetParentProps={resetParentProps}
+
+                />
             </div>
         }
 
@@ -102,21 +111,20 @@
             // destructuring in arrays
             let [count, changeCount] = React.useState(0);
             let number = props.number;
-
-            if (number == props.resetCounterNum && 
-            count !=props.resetCounterValue) {
+            
+            if (number == props.resetCounterNum &&
+                count != props.resetCounterValue) {
                 changeCount(props.resetCounterValue);
-                // reset apna counter 
-
+                // reset apna counter
+                props.resetParentProps();
             }
-                   
+
             let increment = () => {
                 changeCount(Number(count) + 1);
             }
             let decrement = () => {
                 changeCount(Number(count) - 1);
             }
-
             return (
                 <div>
                     <h3> Counter Number {number}</h3>
@@ -126,9 +134,6 @@
                 </div>
             )
         }
-
-
-
 
         function ResetCounters() {
             // lifting the state up 
@@ -140,13 +145,21 @@
                 setResetCounterValue(curCountVal);
             }
 
+            function resetParentProps() {
+                setResetCounterNum("");
+                setResetCounterValue("");
+            }
+
             return <div>
                 <h1>Todo App </h1>
                 <div className="border"></div>
                 <ResetBoxes resetParentCounter={resetParentCounter}></ResetBoxes>
                 <div className="border-small"></div>
- <Counters resetCounterNum={resetCounterNum} 
- resetCounterValue={resetCounterValue}></Counters>
+                <Counters resetCounterNum={resetCounterNum}
+                    resetCounterValue={resetCounterValue}
+                    resetParentProps={resetParentProps}
+
+                ></Counters>
             </div>
         }
 
