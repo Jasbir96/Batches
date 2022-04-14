@@ -63,7 +63,6 @@
                 console.log("CountVal: " + countVal);
                 resetParentCounter(countNumberVal, countVal);
             }
-
             return (<div className="resetBox">
                 <h2>Reset Counter</h2>
                 <div>Counter Number :
@@ -148,7 +147,7 @@
             }
 
             return <div>
-                <h1>Todo App </h1>
+                <h1>Advanced Counter App </h1>
                 <div className="border"></div>
                 <ResetBoxes resetParentCounter={resetParentCounter}></ResetBoxes>
                 <div className="border-small"></div>
@@ -159,7 +158,9 @@
                 ></Counters>
             </div>
         }
-        ReactDOM.render(<ResetCounters></ResetCounters>, document.querySelector("#root"));
+        ReactDOM.render
+        (<ResetCounters></ResetCounters>, 
+        document.getElementById("root"));
 // bottom to top
     </script>
 </body>
