@@ -33,7 +33,6 @@
     .counter>* {
         border: 2px solid gray;
         padding: px;
-
     }
 
     .resetBox {
@@ -92,6 +91,7 @@
                     resetParentProps={resetParentProps}
 
                 />
+
                 <Counter number={3}
                     resetCounterValue={resetCounterValue}
                     resetCounterNum={resetCounterNum}
@@ -100,7 +100,6 @@
                 />
             </div>
         }
-
         // child of sibling 2
         function Counter(props) {
             // jo bhi data change karna hai -> react.useState(initialvalue of that data)-> return 
@@ -111,14 +110,12 @@
             // destructuring in arrays
             let [count, changeCount] = React.useState(0);
             let number = props.number;
-            
             if (number == props.resetCounterNum &&
                 count != props.resetCounterValue) {
                 changeCount(props.resetCounterValue);
                 // reset apna counter
                 props.resetParentProps();
             }
-
             let increment = () => {
                 changeCount(Number(count) + 1);
             }
@@ -162,8 +159,6 @@
                 ></Counters>
             </div>
         }
-
-
         ReactDOM.render(<ResetCounters></ResetCounters>, document.querySelector("#root"));
 // bottom to top
     </script>
