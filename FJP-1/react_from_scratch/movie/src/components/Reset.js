@@ -1,7 +1,7 @@
 // rfce
 import React from 'react'
 import "./Reset.css"
-function Reset() {
+function Reset(props) {
   const [countNumberVal, setcountNumberVal] = React.useState("");
   const [countVal, setCountVal] = React.useState("");
   const setInput1 = (e) => {
@@ -11,8 +11,8 @@ function Reset() {
     setCountVal(e.target.value);
   }
   const resetCounter = () => {
-    console.log("Counter Number: " + countNumberVal)
-    console.log("CountVal: " + countVal);
+    console.log("Reset" + "Counter Number: " + countNumberVal + " CountVal: " + countVal)
+    props.getResetData(countNumberVal, countVal);
   }
   return (
     <div className="reset">
