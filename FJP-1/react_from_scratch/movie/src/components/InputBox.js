@@ -10,7 +10,9 @@ function InputBox(props) {
   }
   const handleCount = (e) => {
     setNumberOfItems(e.target.value);
+    props.setGlobalCount(e.target.value);
   }
+
   return (
     <>
       {/* i will work on new later*/}

@@ -18,17 +18,22 @@ function MoviesTable(props) {
   if (props.searchText!="") {
 
     filteredContent = content.movies.filter((movie) => {
-      
       let lowerCaseTitle = movie.title.toLowerCase();
       let lowercaseSearchText = props.searchText.toLowerCase();
       // movie (title) -> lowercase  
       return lowerCaseTitle.includes(lowercaseSearchText);
     });
-
   
   } else {
     filteredContent = content.movies;
   }
+
+
+if(content.movies) {
+
+  filteredContent=filteredContent.slice(0,props.moviesCount);
+}
+
 
 
   // data
