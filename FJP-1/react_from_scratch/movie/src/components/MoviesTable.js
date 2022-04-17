@@ -14,7 +14,8 @@ function MoviesTable() {
   }, [])
   // data
   return (
-    <div>{isLoaded == true ? <div className="font-bold"> Loading...</div > :
+    <div>{isLoaded == true ? 
+    <div className="font-bold"> Loading...</div > :
       <table className="table-auto">
         <thead>
           <tr>
@@ -41,8 +42,6 @@ function MoviesTable() {
           })}
         </tbody>
       </table>
-
-    
     }
     </div>
   )
