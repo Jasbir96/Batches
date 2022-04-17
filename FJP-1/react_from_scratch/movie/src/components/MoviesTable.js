@@ -13,28 +13,37 @@ function MoviesTable(props) {
     setContent(response);
   }, [])
 
-  let filteredContent = [];
-  
-  if (props.searchText!="") {
-
-    filteredContent = content.movies.filter((movie) => {
-      let lowerCaseTitle = movie.title.toLowerCase();
-      let lowercaseSearchText = props.searchText.toLowerCase();
-      // movie (title) -> lowercase  
-      return lowerCaseTitle.includes(lowercaseSearchText);
-    });
-  
-  } else {
+  let filteredContent ;
+  if (content.movies) {
     filteredContent = content.movies;
+     // **************searching*********
+     if (props.searchText != "") {
+      filteredContent = content.movies.filter((movie) => {
+        let lowerCaseTitle = movie.title.toLowerCase();
+        let lowercaseSearchText = props.searchText.toLowerCase();
+        // movie (title) -> lowercase  
+        return lowerCaseTitle.includes(lowercaseSearchText);
+      });
+
+    } 
+
+    // ************genre******
+    if (props.cGenre != "") {
+      filteredContent = filteredContent.filter(
+        function (movie) {
+          
+          console.log("movies table ",movie.genre.name);
+          return movie.genre.name.trim() == props.cGenre.trim();
+        })
+        console.log("movies table ",filteredContent)
+    }
+
+    
+    // **************number of elems logic***********
+    filteredContent = filteredContent.slice(0, props.moviesCount);
+   
+
   }
-
-
-if(content.movies) {
-
-  filteredContent=filteredContent.slice(0,props.moviesCount);
-}
-
-
 
   // data
   return (

@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
-function Genre() {
+function Genre(props) {
   const [isLoaded, setLoaded] = useState(true);
   const [content, setContent] = useState([]);
+  const sendGenre = (e) => {
+    console.log("genre : "+e.target.textContent)
+    props.setGlobalGenre(e.target.textContent);
+  }
   // so i will run only one time after first execution of return statement  
   useEffect(async function () {
     // fetch is inbuilt feature of browser that makes the request to get data -> promise based
@@ -12,17 +16,20 @@ function Genre() {
     setLoaded(false);
     setContent(response);
   }, [])
-
   return (
-  <div className="Genre">
+    <div className="Genre">
       <div className="
       mr-6 border-2 w-40 text-center h-10 font-bold">All Genre</div>
       {isLoaded == true ?
-      <div className="font-bold"> Loading...</div >
+        <div className="font-bold"> Loading...</div >
         : content.genres.map(function (genre) {
-          return( < div className="mr-6 border-2 w-40 text-center h-10 border-t-0 font-bold">{genre.name}</div>
-            )}
+          return (< div className="mr-6 border-2 w-40 text-center h-10 border-t-0 font-bold"
+            onClick={sendGenre}
+          >
+            {genre.name}</div>
           )
+        }
+        )
       }
     </div >
 
