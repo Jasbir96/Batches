@@ -11,8 +11,7 @@ function MoviesTable(props) {
     // console.log(response); 
     setLoaded(false);
     setContent(response);
-  }, [])
-
+  }, []);
   const deleteMovie = (tobeDeletedMovieId) => {
     let restOfTheMovies = content.movies.filter((movie) => movie._id !== tobeDeletedMovieId);
     let newObject = { movies: restOfTheMovies };
@@ -32,7 +31,7 @@ function MoviesTable(props) {
 
     }
 
-    // ************genre******
+    // ************genre****** -> grouping 
     if (props.cGenre != "") {
       filteredContent = filteredContent.filter(
         function (movie) {
@@ -43,13 +42,13 @@ function MoviesTable(props) {
       console.log("movies table ", filteredContent)
     }
 
-    // **************number of elems logic***********
+    // **************number of elems logic(Pagination)*********** 
     filteredContent = filteredContent.slice(0, props.moviesCount);
   }
   // data
   return (
     <div>{isLoaded == true ?
-      <div className="font-bold"> Loading...</div > :
+      <div className="font-bold">Loading...</div > :
       <table className="table-auto">
         <thead>
           <tr>
@@ -70,8 +69,9 @@ function MoviesTable(props) {
                 <td className="px-4 text-center">{movie.genre.name}</td>
                 <td className="px-2 text-center">{movie.numberInStock}</td>
                 <td className="px-2 text-center">{movie.dailyRentalRate}</td>
-                <td><button className="bg-red-500 hover:bg-red-700 text-white 
-        font-bold py-2 px-4 rounded"  onClick={() => {
+                <td>
+                  <button className="bg-red-500 hover:bg-red-700 text-white 
+        font-bold py-2 px-4 rounded"  onClick={function() {
                     deleteMovie(movie._id);
                   }}>DELETE</button></td>
               </tr>
