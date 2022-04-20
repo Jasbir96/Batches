@@ -72,3 +72,18 @@ VALUES (9369, 'TONY', 'STARK', 'SOFTWARE ENGINEER', 7902, '1980-12-17', 2800,0,2
        (9860, 'ATHENA', 'WILSON', 'ANALYST', 7839, '1992-06-21', 7000, 100, 50,"abc@gmail.com"),
        (9861, 'JENNIFER', 'HUETTE', 'ANALYST', 7839, '1996-07-01', 5000, 100, 50,"abc@gmail.com");
     
+-- select
+    -- everything
+        SELECT * FROM employee; 
+    -- columns
+        SELECT EmpCode,EmpFName,EmpLName FROM employee;
+    --where clause
+        SELECT * FROM employee  
+        WHERE    Salary > 2000; 
+        -- operators :
+            -- comparison  : =,>,<,,>=,<=
+            -- Logical Operator: AND,OR,BETWEEN,NOT,LIKE
+
+
+    
+
