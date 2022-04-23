@@ -7,8 +7,10 @@ import New from './components/New';
 import NavBar from "./components/NavBar";
 import PageNotFound from './components/PageNotFound';
 // import Routing from './Routing';
-// npm i react-router-dom
+// npm uninstall react-router-dom
+// npm i react-router-dom@5.3.1
 import { Route, Switch, Redirect } from "react-router-dom";
+
 function App() {
     return (
         <>
@@ -19,18 +21,15 @@ function App() {
                 <Route path="/home">
                     <Home></Home>
                 </Route>
-
                 <Route path="/login">
                     <Login></Login>
                 </Route>
-
                 <Route path="/new">
                     <New></New>
                 </Route>
 
                 <Redirect from="/"  exact to="/home" >
                 </Redirect>
-
                 <Route>
                     <PageNotFound></PageNotFound>
                 </Route>

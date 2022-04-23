@@ -1,22 +1,14 @@
 import React, { useState } from 'react';
-import { useEffect } from 'react';
 function MoviesTable(props) {
-  const [isLoaded, setLoaded] = React.useState(true);
-  const [content, setContent] = React.useState([]);
   // so i will run only one time after first execution of return statement  
-  useEffect(async function fn () {
-    // fetch is inbuilt feature of browser that makes the request to get data -> promise based
-    let response = await fetch('https://react-backend101.herokuapp.com/movies');
-    response = await response.json();
-    // console.log(response); 
-    setLoaded(false);
-    setContent(response);
-  }, []);
+  let { content, isLoaded, setContent, cPage,moviesCount } = props
+
   const deleteMovie = (tobeDeletedMovieId) => {
     let restOfTheMovies = content.movies.filter((movie) => movie._id !== tobeDeletedMovieId);
     let newObject = { movies: restOfTheMovies };
     setContent(newObject);
   }
+
   let filteredContent;
   if (content.movies) {
     filteredContent = content.movies;
@@ -30,7 +22,6 @@ function MoviesTable(props) {
       });
 
     }
-
     // ************genre****** -> grouping 
     if (props.cGenre != "") {
       filteredContent = filteredContent.filter(
@@ -43,7 +34,10 @@ function MoviesTable(props) {
     }
 
     // **************number of elems logic(Pagination)*********** 
-    filteredContent = filteredContent.slice(0, props.moviesCount);
+    let sidx = (cPage - 1) * moviesCount;
+    let eidx = sidx + moviesCount;
+    filteredContent = filteredContent.slice(sidx, eidx);
+
   }
   // data
   return (
@@ -71,9 +65,9 @@ function MoviesTable(props) {
                 <td className="px-2 text-center">{movie.dailyRentalRate}</td>
                 <td>
                   <button className="bg-red-500 hover:bg-red-700 text-white 
-        font-bold py-2 px-4 rounded"  onClick={function() {
-                    deleteMovie(movie._id);
-                  }}>DELETE</button></td>
+        font-bold py-2 px-4 rounded"  onClick={function () {
+                      deleteMovie(movie._id);
+                    }}>DELETE</button></td>
               </tr>
             })}
         </tbody>

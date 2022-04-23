@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 function InputBox(props) {
   let [searchText, setSearchText] = React.useState("");
-  let [numberOfItems, setNumberOfItems] = React.useState(9);
+  let [numberOfItems, setNumberOfItems] = React.useState(4);
   const handleText = (e) => {
     // local input change karta hai  -> ui
     setSearchText(e.target.value);

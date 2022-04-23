@@ -13,8 +13,6 @@ function NavBar() {
      text-blue-500 
       text-xl hover:text-blue-400" >Login</Link>
     </nav>
-
-
   )
 }
 
