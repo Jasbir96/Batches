@@ -15,5 +15,4 @@ function App() {
         <Routing></Routing>
     )
 }
-
-export default App
+export default App;
