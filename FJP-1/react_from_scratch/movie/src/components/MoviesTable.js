@@ -4,7 +4,7 @@ function MoviesTable(props) {
   const [isLoaded, setLoaded] = React.useState(true);
   const [content, setContent] = React.useState([]);
   // so i will run only one time after first execution of return statement  
-  useEffect(async function () {
+  useEffect(async function fn () {
     // fetch is inbuilt feature of browser that makes the request to get data -> promise based
     let response = await fetch('https://react-backend101.herokuapp.com/movies');
     response = await response.json();
