@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 function MoviesTable(props) {
   // so i will run only one time after first execution of return statement  
-  let { content, isLoaded, setContent, cPage,moviesCount } = props
+  let { content, isLoaded, setContent ,filteredContent} = props
 
   const deleteMovie = (tobeDeletedMovieId) => {
     let restOfTheMovies = content.movies.filter((movie) => movie._id !== tobeDeletedMovieId);
@@ -9,36 +9,6 @@ function MoviesTable(props) {
     setContent(newObject);
   }
 
-  let filteredContent;
-  if (content.movies) {
-    filteredContent = content.movies;
-    // **************searching*********
-    if (props.searchText != "") {
-      filteredContent = content.movies.filter((movie) => {
-        let lowerCaseTitle = movie.title.toLowerCase();
-        let lowercaseSearchText = props.searchText.toLowerCase();
-        // movie (title) -> lowercase  
-        return lowerCaseTitle.includes(lowercaseSearchText);
-      });
-
-    }
-    // ************genre****** -> grouping 
-    if (props.cGenre != "") {
-      filteredContent = filteredContent.filter(
-        function (movie) {
-
-          console.log("movies table ", movie.genre.name);
-          return movie.genre.name.trim() == props.cGenre.trim();
-        })
-      console.log("movies table ", filteredContent)
-    }
-
-    // **************number of elems logic(Pagination)*********** 
-    let sidx = (cPage - 1) * moviesCount;
-    let eidx = sidx + moviesCount;
-    filteredContent = filteredContent.slice(sidx, eidx);
-
-  }
   // data
   return (
     <div>{isLoaded == true ?

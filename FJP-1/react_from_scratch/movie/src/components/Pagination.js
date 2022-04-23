@@ -1,16 +1,15 @@
 import React from 'react'
 
 function Pagination(props) {
-  let { content, moviesCount } = props;
+  let { totalpagesWaliMovies, moviesCount, cPage, setcPage } = props;
   // total movies, // no of movies in single
   let pagesArr = [];
-  if (content.movies) {
-    let noOfPages = Math.ceil(content.movies.length / moviesCount);
+  if (totalpagesWaliMovies) {
+    let noOfPages = Math.ceil(totalpagesWaliMovies.length / moviesCount);
     for (let i = 1; i <= noOfPages; i++) {
       pagesArr.push(i);
     }
   }
-
   return (
     // <div><button className="bg-blue-500  text-white 
     //  py-2 px-3 rounded">1</button>
@@ -21,9 +20,14 @@ function Pagination(props) {
     //  </div>
     <>
       {pagesArr.map(function (pageNumber) {
-        return (<button className="hover:bg-blue-500  border-2 
-     py-2 px-3 rounded
-     ">{pageNumber}</button>)
+        let css = pageNumber == cPage ?
+          "hover:bg-blue-500  border-2 py-2 px-3 rounded bg-blue-500 text-white" :
+          "hover:bg-blue-500  border-2 py-2 px-3 rounded ";
+        return (<button className={css}
+          onClick={() => {
+            setcPage(pageNumber)
+          }}
+        >{pageNumber}</button>)
       })}
     </>
 
