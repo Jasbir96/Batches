@@ -13,13 +13,16 @@ function Movies(props) {
   const [content, setContent] = React.useState([]);
   const [isLoaded, setLoaded] = React.useState(true);
 
-  useEffect(async function fn() {
-    // fetch is inbuilt feature of browser that makes the request to get data -> promise based
-    let response = await fetch('https://react-backend101.herokuapp.com/movies');
-    response = await response.json();
-    // console.log(response); 
-    setLoaded(false);
-    setContent(response);
+  useEffect(function () {
+    async function fn() {
+      // fetch is inbuilt feature of browser that makes the request to get data -> promise based
+      let response = await fetch('https://react-backend101.herokuapp.com/movies');
+      response = await response.json();
+      // console.log(response); 
+      setLoaded(false);
+      setContent(response);
+    }
+    fn();
   }, []);
   // ****************************************************************
   // ****************************************************************
@@ -65,7 +68,7 @@ function Movies(props) {
     let eidx = sidx + moviesCount;
     filteredContent = filteredContent.slice(sidx, eidx);
   }
-// ***********************movies table **************
+  // ***********************movies table **************
 
   // console.log("movies : " + props.cGenre)
   return (<div >
