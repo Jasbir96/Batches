@@ -8,10 +8,12 @@ CREATE TABLE emp(
     age INTEGER DEFAULT 25
     gender ENUM("M","F","TG")
 );
--- DROP 
+
+-- DROP  -> table remove
 DROP TABLE emp;
 
--- INSERT  certain column values
+-- INSERT values enter  
+--  certain column values
 INSERT INTO emp (name,salary,gender)
 VALUES("JASBIR",5000,"M");
 
