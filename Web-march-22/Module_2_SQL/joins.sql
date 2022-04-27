@@ -12,7 +12,9 @@ INSERT INTO DEPARTMENT VALUES (10, 'FINANCE', 'EDINBURGH'),
                               (30, 'SALES', 'MAIDSTONE'),
                               (40,'MARKETING', 'DARLINGTON'),
                               (50,'ADMIN', 'BIRMINGHAM');
- SELECT * FROM department
+
+
+SELECT * FROM department
 INNER JOIN employee 
 ON 
 employee.DEPTCODE=department.DEPTCODE;
