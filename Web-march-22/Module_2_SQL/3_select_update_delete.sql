@@ -44,6 +44,13 @@ SELECT MAX(Salary) from employee;
 SELECT MIN(Salary) from employee;
 --  total salary 
 SELECT SUM(Salary) from employee;
+
+
+
+
+
+
+
 -- get dpt -
 -- it is used to get data on the basis of a group 
 -- it give summary of a group 
@@ -61,7 +68,7 @@ GROUP BY DEPTCODE;
 -- dept code -> min salary -> min salary >2000
 
 -- Group by 
--- 1. on the basis if which you are goinng to do group by 
+-- 1. on the basis if which you are going to do group by 
 -- -> i will print it only once if you select it
 
 -- 2. aggregate function ka output dega group wise

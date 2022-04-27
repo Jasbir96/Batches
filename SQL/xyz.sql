@@ -85,6 +85,4 @@ VALUES (9369, 'TONY', 'STARK', 'SOFTWARE ENGINEER', 7902, '1980-12-17', 2800,0,2
        -- : They are used with aggregate functions: count,sum,Avg,max,min
       --having : It is used with aggregate functions with group by 
             --salary 
- select  
- like
- ilike ''       
+      
