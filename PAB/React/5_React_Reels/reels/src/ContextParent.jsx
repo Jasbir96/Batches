@@ -13,6 +13,7 @@ export default function ContextParent() {
         </div>
     )
 }
+
 function VisitFriendsHouse() {
     const language = useContext(Context);
     return (
@@ -23,6 +24,7 @@ function VisitFriendsHouse() {
         </>
     )
 }
+
 function VisitGrandMasHouse() {
     // const language = useContext(Context);
     return (

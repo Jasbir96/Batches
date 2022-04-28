@@ -12,10 +12,10 @@ export default function UseEffect() {
         setTaskList(newTaskList);
         setCTask("");
     }
+
     function cleanUp() {
         console.log("Cleanup function is executed");
     }
-
 
     // after first render
     // cleanup -> during unmount 
@@ -23,6 +23,7 @@ export default function UseEffect() {
     //     console.log("i will run only after the first render");
     //     return cleanUp;
     // }, []);
+
     // whenver render function is exceuted
     // cleanup ->before every next useEffect
     // useEffect(function () {
@@ -46,6 +47,7 @@ export default function UseEffect() {
         })
         setTaskList(newTaskList);
     }
+
     return (
         <div>
             Todo Example
@@ -80,5 +82,3 @@ function ListItem(props) {
         }}>{taskObj.task}</li>
     )
 }
-
-
