@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from "react";
-function App() {
+
+function UseffectDEMO() {
   const [list, setList] = useState([]);
   const addNewTask = (task) => {
     let copyOfList = [...list]
@@ -25,6 +26,7 @@ function App() {
   </>
   );
 }
+
 function InputBox(prop) {
   let [cInput, setInput] = useState("");
   let [count, setCount] = useState(0);
@@ -87,7 +89,6 @@ function TaskList(prop) {
   })
   )
 }
-
 function ListItem(props) {
   function cleanup() {
     console.log("I am cleanup");
@@ -108,5 +109,4 @@ useEffect(function () {
   )
 
 }
-
-export default App;
+export default UseffectDEMO;
