@@ -2,8 +2,6 @@ import React from 'react'
 import NavBar from './NavBar';
 import Footer from "./Footer";
 export let ThemeContext = React.createContext("");
-
-
 function App() {
     let [theme, setTheme] = React.useState("light");
     const handleTheme = () => {
@@ -14,7 +12,6 @@ function App() {
 
         }
     }
-    
     return (
         <ThemeContext.Provider value={theme}>
             <button type="button"
@@ -27,6 +24,5 @@ function App() {
 
     )
 }
-
 
 export default App;

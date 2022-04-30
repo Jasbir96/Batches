@@ -1,7 +1,6 @@
 import "./theme.css";
 import { ThemeContext } from "./ThemeChanger";
 import { useContext } from "react";
-
 function Footer() {
     return (<>
         <div>Footer</div>
