@@ -129,5 +129,21 @@ ON employee.DEPTCODE=department.DEPTCODE;
 -- right Join
 SELECT employee.DEPTCODE,department.DEPTCODE,employee.EmpFName,department.LOCATION
 from employee
+RIGHT JOIN department
+ON employee.DEPTCODE=department.DEPTCODE;
+
+
+
+-- full outer join 
+
+-- LEFT JOIN 
+SELECT employee.DEPTCODE,department.DEPTCODE,employee.EmpFName,department.LOCATION
+from employee
 LEFT JOIN department
+ON employee.DEPTCODE=department.DEPTCODE
+UNION
+-- right Join
+SELECT employee.DEPTCODE,department.DEPTCODE,employee.EmpFName,department.LOCATION
+from employee
+RIGHT JOIN department
 ON employee.DEPTCODE=department.DEPTCODE;
