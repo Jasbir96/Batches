@@ -72,16 +72,9 @@ VALUES (9369, 'TONY', 'STARK', 'SOFTWARE ENGINEER', 7902, '1980-12-17', 2800,0,2
        (9777, 'MADII', 'HIMBURY', 'ANALYST', 7839, '1981-05-01', 2000, 200, NULL,"abc@gmail.com"),
        (9860, 'ATHENA', 'WILSON', 'ANALYST', 7839, '1992-06-21', 7000, 100, 50,"abc@gmail.com"),
        (9861, 'JENNIFER', 'HUETTE', 'ANALYST', 7839, '1996-07-01', 5000, 100, 50,"abc@gmail.com");
-    
-
-
-
-
-    
-
+   
 
 -- department database 
-
 
 CREATE TABLE DEPARTMENT
 (
@@ -96,3 +89,45 @@ INSERT INTO DEPARTMENT VALUES (10, 'FINANCE', 'EDINBURGH'),
                               (40,'MARKETING', 'DARLINGTON'),
                               (50,'ADMIN', 'BIRMINGHAM');
 
+-- Joins
+
+
+-- Inner Join to get all the results
+-- select everything from employe
+-- SELECT * FROM department 
+-- -- and while selecting from employee make a inner join with Department
+-- INNER JOIN employee
+-- -- on which column we need to  make intersection 
+-- --  on intersection corresponding rows of both the table will be joined
+-- ON DEPARTMENT.DEPTCODE=employee.DEPTCODE;
+
+-- to get my  result in desired  order column wise 
+
+SELECT * FROM department 
+-- and while selecting from employee make a inner join with Department
+INNER JOIN employee
+-- on which column we need to  make intersection 
+--  on intersection corresponding rows of both the table will be joined
+ON DEPARTMENT.DEPTCODE=employee.DEPTCODE;
+
+-- to get you result in a given order
+
+SELECT employee.DEPTCODE,department.DEPTCODE,employee.EmpFName,department.LOCATION
+from employee
+INNER JOIN department
+ON employee.DEPTCODE=department.DEPTCODE;
+-- list of employees who belong a valid particular department
+
+
+-- LEFT JOIN 
+SELECT employee.DEPTCODE,department.DEPTCODE,employee.EmpFName,department.LOCATION
+from employee
+LEFT JOIN department
+ON employee.DEPTCODE=department.DEPTCODE;
+
+
+-- right Join
+SELECT employee.DEPTCODE,department.DEPTCODE,employee.EmpFName,department.LOCATION
+from employee
+LEFT JOIN department
+ON employee.DEPTCODE=department.DEPTCODE;
