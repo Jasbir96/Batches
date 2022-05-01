@@ -1,7 +1,7 @@
 -- customers
 CREATE TABLE  cust(
     cid INTEGER NOT NULL UNIQUE,
-    phNo INTEGER NOT NULL UNIQUE,
+    phNo INTEGER NOT NULL UNIQUE ,
     name VARCHAR(255) NOT NULL,
     PRIMARY KEY(cid)
 );
@@ -14,7 +14,6 @@ CREATE TABLE  cust(
 --     cid INTEGER ,
 -- FOREIGN KEY(cid) REFERENCES cust(cid)
 -- )
-
 -- DROP TABLE  orders;
 -- jab bhi parent table me se aapka ko bhi entry remove hogi to uske associated data children se bhi remove ho jaaye
 --   and same for update
@@ -22,6 +21,6 @@ CREATE TABLE  cust(
 CREATE TABLE orders(
 oid INTEGER NOT NULL UNIQUE,
     pName VARCHAR(255) NOT NULL,
-    cid INTEGER ,
+    cid INTEGER  INDEX,
 FOREIGN KEY(cid) REFERENCES cust(cid) ON UPDATE CASCADE ON DELETE CASCADE
 )
