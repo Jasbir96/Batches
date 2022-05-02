@@ -5,7 +5,6 @@ CREATE TABLE  cust(
     name VARCHAR(255) NOT NULL,
     PRIMARY KEY(cid)
 );
-
 -- without parent you can't have child 
 -- if you have  a fk then you can't delete or update the corresponding parent ki entry
 -- CREATE TABLE orders(
