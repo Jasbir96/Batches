@@ -6,15 +6,13 @@ function BallReducer(state = initialState,
         case "buy_ball":
             // store update 
             return {
-
                 balls: state.balls - 1,
             };
         case "sell_ball":
             return {
                 balls: state.balls + 1,
 
-            };
-       
+            };  
         default:
             return state;
     }

@@ -23,7 +23,6 @@ function mySetInterval(fn, interval) {
 function myClearInterval(clearMe) {
     clearMe.shallIRun = false;
 }
-
 function fn() {
     console.log("I will be called after 2 secs");
 }

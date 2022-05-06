@@ -9,4 +9,5 @@ const rootReducer = combineReducers({
     Bat: BatReducer,
     User: userReducer
 });
+
 export default rootReducer;

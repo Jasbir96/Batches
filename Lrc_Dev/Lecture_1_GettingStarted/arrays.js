@@ -8,11 +8,15 @@ let arr = [];
 let b = [[1, 2, 3], [3, 4, 5], [4, 5, 6]]
 // console.log(b);
 // traverse -> 
-// no index out of bound
 let a = [1, 2, 3, 4, 5, 6];
 // for (let i = 0; i < a.length; i++) {
 //     console.log(i + " : " + a[i]);
 // }
+
+
+
+
+
 
 // methods -> 
 // lastelem ->add/Remove

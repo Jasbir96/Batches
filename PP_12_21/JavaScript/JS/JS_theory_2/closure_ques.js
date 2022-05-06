@@ -15,15 +15,15 @@
 // output -> 3,3,3
 // 
 // solution 1 -> IFFEE
-// function outer() {
-//     let arrFn = [];
-//     for (var i = 0; i < 3; i++) {
-//         arrFn.push((function fn() {
-//             console.log(i);
-//         })());
-//     }
-//     return arrFn;
-// }
+function outer() {
+    let arrFn = [];
+    for (var i = 0; i < 3; i++) {
+        arrFn.push((function fn() {
+            console.log(i);
+        })());
+    }
+    return arrFn;
+}
 // outer();
 // solution -> execution context 
 // function outer() {
@@ -32,7 +32,7 @@
 //         function outerfn() {
 //             var j = i;
 //             return function fn() {
-//                 console.log(j,i);
+//                 console.log(j);
 //             }
 //         }
 //         arrFn.push(outerfn())

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from "react-redux";
 import { Buy_Bat } from "../redux/types";
-
 function Bat(props) {
     // const [bat, setBat] = useState(5);
     const [value, setValue] = useState("");
