@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 function UseState() {
     let [count, setCount] = useState(0);
     const IncrementCount = () => {
@@ -7,10 +6,8 @@ function UseState() {
     }
     const DecrementCount = () => {
         setCount(count - 1);
-
     }
     const IncrementbyFive = () => {
-
         for (let i = 1; i <= 5; i++) {
             // if you are making a new state using the old state 
             // then it should used like this
@@ -28,5 +25,4 @@ function UseState() {
         </>
     )
 }
-
-export default UseState
+export default UseState;

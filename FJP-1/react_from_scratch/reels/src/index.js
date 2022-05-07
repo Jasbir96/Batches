@@ -8,13 +8,15 @@ import App from './App';
 import { BrowserRouter } from "react-router-dom";
 // import ContextNormal from './contextPOCs/context_memo/ContextNormal';
 import UseState from "./POCS/useState/UseState";
+import UseReducer from "./POCS/useState/useReducer"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     // <BrowserRouter>
     //     <App />
     // </BrowserRouter>
     // useState
-    <UseState></UseState>
+    // <UseState></UseState>
+    <UseReducer></UseReducer>
 
     // <ContextNormal></ContextNormal>    
     // <UseffectDEMO></UseffectDEMO>
