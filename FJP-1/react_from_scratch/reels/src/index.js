@@ -6,14 +6,15 @@ import App from './App';
 // import Context from './contextPOCs/theme/Context';
 // import ThemeManager from "./contextPOCs/ThemeChanger";
 import { BrowserRouter } from "react-router-dom";
-import ContextNormal from './contextPOCs/context_memo/ContextNormal';
+// import ContextNormal from './contextPOCs/context_memo/ContextNormal';
+import UseState from "./POCS/useState/UseState";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     // <BrowserRouter>
     //     <App />
     // </BrowserRouter>
-// useState
-
+    // useState
+    <UseState></UseState>
 
     // <ContextNormal></ContextNormal>    
     // <UseffectDEMO></UseffectDEMO>
