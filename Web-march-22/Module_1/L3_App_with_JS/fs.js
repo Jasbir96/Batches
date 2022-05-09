@@ -23,7 +23,7 @@ console.log("before");
 // *************************directory***************************************
 // console.log("After");
 // create 
-// fs.existSync
+// fs.existSync -> files/directories
 // fs.mkdirSync("newFolder");
 // delete
 // fs.rmdirSync("toberemoveFolder");

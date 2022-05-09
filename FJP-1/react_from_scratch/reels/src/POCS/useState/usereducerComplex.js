@@ -2,7 +2,7 @@ import React, { useReducer } from 'react'
 function UseReducer() {
     // 1. initial state variable
     const intialState = {
-        value: 0
+        value: 0,  
     };
     // jo bhi aapke function they jo 
     // state change karenge unka logic kisme switch case ke andar
@@ -10,11 +10,11 @@ function UseReducer() {
     const reducer = (state, action) => {
         switch (action.type) {
             case "increment":
-                return { ...state, value: action.value }
+                return { value: action.value }
             case "decrement":
-                return { ...state, value: action.value };
+                return { value: action.value };
             case "IncrementByFive":
-                return { ...state, value: state.value + 5 };
+                return { value: state.value + 5 };
 
             default:
                 return state;
