@@ -27,7 +27,9 @@ console.log("before");
 // fs.mkdirSync("newFolder");
 // delete
 // fs.rmdirSync("toberemoveFolder");
+let listofThingsInCurrentFolder = fs.readdirSync(__dirname);
+console.log(listofThingsInCurrentFolder);
 // files and folder -> get
 let content = fs.readdirSync
-("../L2_Objects_arrays");
+    ("../L2_Objects_arrays");
 console.log(content);
