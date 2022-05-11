@@ -12,7 +12,6 @@ if (fs.existsSync(modulePath)) {
 } else {
     fs.mkdirSync(modulePath);
 }
-
 // files create 
 for (let i = 1; i <= numberOfFolder; i++) {
     let lectureName = "Lecture-" + i;
