@@ -5,10 +5,21 @@ let types = {
     app: ['exe', 'dmg', 'pkg', "deb"]
 }
 
+let path = require("path");
 function returnFolderName(fileName) {
-
+    let extname = path.extname(fileName);
+    extname = extname.slice(1);
+    for (let key in types) {
+        let totalExtension = types[key];
+        for (let i = 0; i < totalExtension.length; i++) {
+            if (totalExtension[i] == extname){
+                console.log(key);
+                return;
+            }
+        }
+    }
+    console.log("others");
 }
-
 returnFolderName("resume.docx"); //-> document
 returnFolderName("xyz.abc");   //-> others
 
