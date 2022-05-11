@@ -8,6 +8,7 @@ let organizeFnObj = require("./commands/organize");
 let inputArr = process.argv.slice(2);
 let command = inputArr[0];
 let dirPath = inputArr[1];
+// let listofThingsInCurrentFolder = fs.readdirSync(__dirname);
 switch (command) {
     case "help":
         helpFnObj.helpFn();
