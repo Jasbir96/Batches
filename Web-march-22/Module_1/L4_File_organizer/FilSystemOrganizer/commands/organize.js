@@ -7,9 +7,7 @@ let types = {
     app: ['exe', 'dmg', 'pkg', "deb"]
 }
 function organizeFn(dirPath) {
-    console.log("Organize command Executed with the path",
-        dirPath != undefined ? dirPath : process.cwd());
-
+    dirPath = dirPath != undefined ? dirPath : process.cwd()
     organizeHelper(dirPath);
 }
 function organizeHelper(dirPath) {
@@ -19,11 +17,10 @@ function organizeHelper(dirPath) {
     if (doesorganizedFolderExist == false) {
         fs.mkdirSync(organizeddirPath)
     }
-    
     let names = fs.readdirSync(dirPath);
     for (let i = 0; i < names.length; i++) {
-        let assetPath = path.join(dirPath, names);
-        let ans = isFile(names[i], dirPath);
+        let assetPath = path.join(dirPath, names[i]);
+        let ans = isFile(assetPath);
         if (ans == true) {
             let type = getType(assetPath);
             copytothatType(assetPath, type, organizeddirPath);
@@ -32,7 +29,7 @@ function organizeHelper(dirPath) {
 }
 function isFile(assetPath) {
     // file or folder
-
+    // console.log(assetPath);
     let ans = fs.lstatSync(assetPath).isFile();
     return ans;
 }
