@@ -4,11 +4,12 @@ let types = {
     documents: ['docx', 'doc', 'pdf', 'xlsx', 'xls', 'odt', 'ods', 'odp', 'odg', 'odf', 'txt', 'ps', 'tex'],
     app: ['exe', 'dmg', 'pkg', "deb"]
 }
-
 let path = require("path");
 function returnFolderName(fileName) {
+//    file extension
     let extname = path.extname(fileName);
     extname = extname.slice(1);
+
     for (let key in types) {
         let totalExtension = types[key];
         for (let i = 0; i < totalExtension.length; i++) {
