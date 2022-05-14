@@ -31,4 +31,4 @@ function UseReducer() {
         </>
     )
 }
-export default UseState;
+export default UseReducer;
