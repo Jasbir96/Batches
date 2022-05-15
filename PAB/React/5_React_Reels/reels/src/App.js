@@ -35,6 +35,5 @@ function PrivateRoute(props) {
     }}></Route>
     )
 }
-
 export default App;
 // Private Route

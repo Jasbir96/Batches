@@ -18,7 +18,7 @@ root.render(
     // useState
     // <UseState></UseState>
     // <UseReducer></UseReducer>
-    <CounterParent></CounterParent>
+    // <CounterParent></CounterParent>
     // <ContextNormal></ContextNormal>    
     // <UseffectDEMO></UseffectDEMO>
     // <Context />
