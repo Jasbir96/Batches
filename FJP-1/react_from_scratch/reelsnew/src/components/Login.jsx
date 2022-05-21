@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { auth, } from "../firebase";
-import { signInWithEmailAndPassword,signOut } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 function Login() {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
@@ -15,10 +15,11 @@ function Login() {
   const trackPassword = function (e) {
     setPassword(e.target.value);
   }
-  const printDetails = async function () {  
+  const printDetails = async function () {
     // alert(email + " " + password);
     try {
       setLoader(true);
+      // signin call hoga 
       let userCred = await
         signInWithEmailAndPassword(auth, email, password)
       // console.log(userCred.user);
@@ -33,9 +34,28 @@ function Login() {
     setLoader(false);
   }
   const signout = async function () {
+    // ye call hoga 
     await signOut(auth);
     setUser(null);
   }
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        setUser(user)
+        // ...
+      } else {
+        // User is signed out
+        // ...
+        setUser(null);
+      }
+    });
+  }, []);
+
+
+
   return (
     <>
       {
