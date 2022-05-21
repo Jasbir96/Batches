@@ -8,13 +8,14 @@ function Login() {
   let [user, setUser] = useState(null);
   let [loader, setLoader] = useState(false);
   let [error, setError] = useState("");
+
   const trackEmail = function (e) {
     setEmail(e.target.value);
   }
   const trackPassword = function (e) {
     setPassword(e.target.value);
   }
-  const printDetails = async function () {
+  const printDetails = async function () {  
     // alert(email + " " + password);
     try {
       setLoader(true);
@@ -35,8 +36,6 @@ function Login() {
     await signOut(auth);
     setUser(null);
   }
-
-  
   return (
     <>
       {
