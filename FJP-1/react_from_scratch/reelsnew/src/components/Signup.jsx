@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import { auth, } from "../firebase";
+import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword }
     from "firebase/auth";
+import {  addDoc,collection } from "firebase/firestore";
+
 
 function Signup() {
     let [email, setEmail] = useState("");
@@ -17,7 +19,21 @@ function Signup() {
             let userCred = await
                 createUserWithEmailAndPassword(auth, email, password)
             // console.log(userCred.user);
+            // firestore andar user create krunga
+            const docRef = await addDoc(collection(db, "users"), {
+                // "email":email,
+                email,
+                name,
+                reelsIds: [],
+                profileImgUrl: "",
+                userId: userCred.user.uid
+            });
+            
             setUser(userCred.user);
+
+
+
+
         } catch (err) {
             setError(err.message);
             // after some time -> error message remove 
@@ -58,3 +74,5 @@ function Signup() {
 }
 
 export default Signup;
+
+
