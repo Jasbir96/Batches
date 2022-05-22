@@ -3,8 +3,6 @@ import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword }
     from "firebase/auth";
 import {  addDoc,collection } from "firebase/firestore";
-
-
 function Signup() {
     let [email, setEmail] = useState("");
     let [password, setPassword] = useState("");
@@ -12,7 +10,6 @@ function Signup() {
     let [loader, setLoader] = useState(false);
     let [error, setError] = useState("");
     let [user, setUser] = useState("");
-
     async function processSignup() {
         try {
             setLoader(true);
@@ -28,12 +25,7 @@ function Signup() {
                 profileImgUrl: "",
                 userId: userCred.user.uid
             });
-            
             setUser(userCred.user);
-
-
-
-
         } catch (err) {
             setError(err.message);
             // after some time -> error message remove 
