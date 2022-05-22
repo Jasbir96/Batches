@@ -1,4 +1,7 @@
-import React,{useState} from 'react'
+import React, { useEffect, useState } from 'react'
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
+
 import "./profile.css";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
@@ -6,11 +9,22 @@ function Profile() {
   let cUser = useContext(AuthContext);
   // console.log(user);
   let [loading, setLoading] = useState("");
+  useEffect((function fn() {
+    (async function () {
+      if(cUser){
+        const docRef = doc(db, "user", cUser.uid);
+        const docSnap = await getDoc(docRef);
+        console.log("Document data:", docSnap.data());
+      }
+      // if (docSnap.exists()) {
+      // }
+    })()
+  })(), [cUser]);
 
   return (
     <>
       {cUser == null ? <div>Need to login</div> :
-        <div>logged in user is {cocUser.uid}</div>
+        <div>logged in user is {cUser.uid}</div>
 
         // loading == true ? <div>getting data</div> :
         //   <>
