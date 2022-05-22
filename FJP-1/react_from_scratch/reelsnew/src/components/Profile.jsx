@@ -3,14 +3,14 @@ import "./profile.css";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 function Profile() {
-  let contextObj = useContext(AuthContext);
+  let cUser = useContext(AuthContext);
   // console.log(user);
   let [loading, setLoading] = useState("");
 
   return (
     <>
-      {contextObj.cUser == null ? <div>Need to login</div> :
-        <div>logged in user is {contextObj.cUser.uid}</div>
+      {cUser == null ? <div>Need to login</div> :
+        <div>logged in user is {cocUser.uid}</div>
 
         // loading == true ? <div>getting data</div> :
         //   <>

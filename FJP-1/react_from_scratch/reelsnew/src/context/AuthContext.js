@@ -22,7 +22,7 @@ export function AuthContextProvider({ children }) {
             setMainLoader(false);
         });
     }, []);
-    let value = { cUser };
+    let value =  cUser 
     return (
         <AuthContext.Provider value={value}>
             {mainLoader==false &&children}
