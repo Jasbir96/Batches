@@ -32,7 +32,7 @@ function fn() {
         let fruit = "Apple"
         console.log("32", fruit);
         {
-            // let fruit ="grapes";
+            
             console.log("35", fruit);
         }
     }
@@ -41,7 +41,8 @@ function fn() {
 console.log("38", fruit);
 fn();
 console.log("38", fruit);
-/scope -> jha variable
+
+// /scope -> jha variable
 // {} area inside two cruly braces is a bl;ock
 // let is block scope->  if a block
 // var is function scope->  fn does not have a var variable then it will look outside functionn
