@@ -60,16 +60,19 @@ arr1 = arr2;
 // console.log("rVal", rVal);
 
 
-// function outer() {
-//     console.log("I am outer returning inner");
-//     return function inner() {
-//         console.log("I am inner fn and i will run when you will call me ");
-//     }
-// }
+function outer() {
+    console.log("I am outer returning inner");
+    return function inner() {
+        console.log("I am inner fn and i will run when you will call me ");
+    }
+}
 
-// let rFn = outer();
+let rFn = outer();
 // console.log("After this line i will call inner");
-// rfn();
+rfn();
+
+
+
 // closure
 function getFirstName(firstName) {
     console.log("firstName", firstName);
