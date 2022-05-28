@@ -13,37 +13,30 @@ function App() {
       {/* which component should render on which path */}
       <AuthContextProvider>
         <Switch>
-          <Route path="/login">
-            <Login></Login>
-          </Route>
-          <Route path="/signup">
-            <Signup></Signup>
-          </Route>
+          <RedirectToFeed path="/login" comp={Login}>
+          </RedirectToFeed>
+          <RedirectToFeed path="/signup" comp={Signup}>
+          </RedirectToFeed>
+
           <PrivateRoute path="/feed"
-            comp={<Feed></Feed>}
+            comp={Feed}
           >
           </PrivateRoute>
           <PrivateRoute path="/profile"
-            comp={<Profile></Profile>}
+            comp={Profile}
           >
           </PrivateRoute>
           <Route>
             <PageNotFound></PageNotFound>
           </Route>
-
-          {/* <Route path="/">
-            <Feed></Feed>
-          </Route>
-          <Route path="/" render={(props) => {
-            return <Feed {...props}></Feed>
-          }}></Route> */}
+          <Redirect from="/" to="/feed"></Redirect>
         </Switch>
       </AuthContextProvider>
     </>
   );
 }
 function PrivateRoute(props) {
-  console.log("private Route",props)
+  console.log("private Route", props)
   let Component = props.comp;
   // check -> are you loggedIN
   let cUser = useContext(AuthContext);
@@ -56,13 +49,34 @@ function PrivateRoute(props) {
         (props) => {
           // logic
           return cUser != null ? <Component {...props}>
-          </Component> : <Redirect 
-          {...props}
-          to="/login"></Redirect>
+          </Component> : <Redirect
+            {...props}
+            to="/login"></Redirect>
         }
       }
     ></Route>
   )
 }
 
+function RedirectToFeed(props) {
+  let Component = props.comp;
+  // check -> are you loggedIN
+  let cUser = useContext(AuthContext);
+  // cuser-> null ->logi page
+  // cuser-> anything 
+  return (
+    <Route
+      {...props}
+      render={
+        (props) => {
+          // logic
+          return cUser != null ? <Redirect {...props} to="/feed">
+          </Redirect> : <Component
+            {...props}
+          ></Component>
+        }
+      }
+    ></Route>
+  )
+}
 export default App;

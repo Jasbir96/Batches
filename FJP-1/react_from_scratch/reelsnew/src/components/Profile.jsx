@@ -6,7 +6,6 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 function Profile() {
   let cUser = useContext(AuthContext);
-  
   return (
     <>
       {cUser == null ?
@@ -15,7 +14,6 @@ function Profile() {
           <div className="header"></div>
           <div className="main">
             <div className="pimg_container">
-
               <img src="http://via.placeholder.com/640x360" alt=""
                 className="pimg" />
             </div>
@@ -33,8 +31,6 @@ function Profile() {
 
       }
     </>
-
   )
 }
-
 export default Profile

@@ -1,0 +1,43 @@
+.header {
+    display: flex;
+    /* spacing in direction of flex */
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.insta_img {
+    height: 3rem;
+}
+
+.profile_img {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+.main_continer {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top:10px;
+}
+
+.upload_container {
+    border: 3px solid rgb(207, 64, 85);;
+    display: flex;
+    width: 7rem;
+    height: 2rem;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.upload_text ,.movie_icon{
+    color: rgb(207, 64, 85);
+}
+.upload_text{
+    font-weight: bolder;
+}
