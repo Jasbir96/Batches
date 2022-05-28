@@ -10,7 +10,6 @@ import { Switch, Route } from "react-router-dom";
 function App() {
   return (
     <>
-
       {/* which component should render on which path */}
       <AuthContextProvider>
         <Switch>
