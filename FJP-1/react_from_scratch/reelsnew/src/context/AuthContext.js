@@ -7,7 +7,8 @@ export function AuthContextProvider({ children }) {
     let [mainLoader, setMainLoader] = useState(true);
     let [cUser, setUser] = useState(null);
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+        // / /event listener
+        let unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 // User is signed in, see docs for a list of available properties
                 // https://firebase.google.com/docs/reference/js/firebase.User
@@ -20,13 +21,33 @@ export function AuthContextProvider({ children }) {
             }
 
             setMainLoader(false);
+
+            return unsubscribe;
         });
+        return unsubscribe;
     }, []);
-    let value =  cUser 
+    let value = cUser
     return (
         <AuthContext.Provider value={value}>
-            {mainLoader==false &&children}
+            {mainLoader == false && children}
         </ AuthContext.Provider>
     )
 }
+
+
+
+// 1. event listener added
+//  2. it will return a function that is used to remove the listener
+// function onAuthStateChanged() {
+//     //
+//     //
+//     //
+//     // dmfb dfnb f  mdnf
+//     return function unsubscribe() {
+//         // call
+//     }
+
+// }
+
+
 

@@ -17,7 +17,6 @@ function App() {
           </RedirectToFeed>
           <RedirectToFeed path="/signup" comp={Signup}>
           </RedirectToFeed>
-
           <PrivateRoute path="/feed"
             comp={Feed}
           >
@@ -26,10 +25,10 @@ function App() {
             comp={Profile}
           >
           </PrivateRoute>
+          <Redirect from="/" to="/feed"></Redirect>
           <Route>
             <PageNotFound></PageNotFound>
           </Route>
-          <Redirect from="/" to="/feed"></Redirect>
         </Switch>
       </AuthContextProvider>
     </>
