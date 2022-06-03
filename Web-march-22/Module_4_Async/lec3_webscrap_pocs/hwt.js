@@ -50,14 +50,15 @@ function getDataFromBowlingTables(newHtmlString) {
     // you have got all the trs -> bowler ki rows 
     let allRows = document.querySelectorAll("tbody tr.ds-text-tight-s");
     // new thing 
-
+    let hw = 0;
+    let hwName = ""
     for (let i = 0; i < allRows.length; i++) {
         // you can aslo search inside an html element that you have got 
         let singletr = allRows[i];
         let allcols = singletr.querySelectorAll("td");
         let name = allcols[0].textContent;
         let wickets = allcols[4].textContent;
-        console.log("name is ", name, "with wickets ", wickets);
+        // console.log("name is ", name, "with wickets ", wickets);
         // hwt name name
     }
     console.log(allRows.length);
