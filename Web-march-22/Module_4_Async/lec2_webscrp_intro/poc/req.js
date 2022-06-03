@@ -33,6 +33,7 @@ function extractData(html) {
     // pass to newJSDOM 
     let dom = new JSDOM(html);
     // 2. // no meaning 
+    // document represent the whole html page 
     let document = dom.window.document;
     // let firstButton = document.querySelectorAll(".lsb");
     // // input -> value 
