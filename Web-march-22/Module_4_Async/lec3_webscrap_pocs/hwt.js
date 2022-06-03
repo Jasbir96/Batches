@@ -40,7 +40,6 @@ function extractData(body) {
     // using document and your selectors you find element in html page 
     console.log("reached for parsing");
 }
-
 function getDataFromBowlingTables(newHtmlString) {
     const JSDOM = jsdom.JSDOM;
     // pass to newJSDOM 
@@ -48,9 +47,20 @@ function getDataFromBowlingTables(newHtmlString) {
     // 2. // no meaning 
     // document represent the whole html page 
     let document = dom.window.document;
-
+    // you have got all the trs -> bowler ki rows 
     let allRows = document.querySelectorAll("tbody tr.ds-text-tight-s");
-console.log(allRows.length);
+    // new thing 
+
+    for (let i = 0; i < allRows.length; i++) {
+        // you can aslo search inside an html element that you have got 
+        let singletr = allRows[i];
+        let allcols = singletr.querySelectorAll("td");
+        let name = allcols[0].textContent;
+        let wickets = allcols[4].textContent;
+        console.log("name is ", name, "with wickets ", wickets);
+        // hwt name name
+    }
+    console.log(allRows.length);
 
 }
 
