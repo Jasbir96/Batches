@@ -28,17 +28,15 @@ function extractData(body) {
     let allTables = document.querySelectorAll
         ("table.ds-w-full.ds-table.ds-table-xs.ds-table-fixed");
 
-    let firstInningBowling = allTables[1]; // bowling table 1
     let secondInningBowling = allTables[3]; //bowlling table 2
     // element  -> ke anadr jo bhi html wo inne html se  aa jayegi 
-    let newHtmlString = "<table>" + firstInningBowling.innerHTML + "</table>"
-        + "<table>" + secondInningBowling.innerHTML + "</table>";
+    let newHtmlString = "<table>" + secondInningBowling.innerHTML + "</table>";
     // fs.writeFileSync("tables.html", newHtmlString);
     // console.log(newHtmlString);
     getDataFromBowlingTables(newHtmlString);
     // how to narrow;
     // using document and your selectors you find element in html page 
-    console.log("reached for parsing");
+    // console.log("reached for parsing");
 }
 function getDataFromBowlingTables(newHtmlString) {
     const JSDOM = jsdom.JSDOM;
@@ -47,24 +45,35 @@ function getDataFromBowlingTables(newHtmlString) {
     // 2. // no meaning 
     // document represent the whole html page 
     let document = dom.window.document;
-    // you have got all the trs -> bowler ki rows 
     let allRows = document.querySelectorAll("tbody tr.ds-text-tight-s");
     // new thing 
-    let hw = 0;
-    let hwName = ""
     for (let i = 0; i < allRows.length; i++) {
         // you can aslo search inside an html element that you have got 
         let singletr = allRows[i];
-        let allcols = singletr.querySelectorAll("td");
-        let name = allcols[0].textContent;
-        let wickets = allcols[4].textContent;
-        console.log("name is ", name, "with wickets ", wickets);
+        // get all the anchors inside td 
+        let allanchors = singletr.querySelectorAll("td a");
+        let link = allanchors[0].getAttribute("href");
+        let fullLink = "https://www.espncricinfo.com" + link;
+        console.log(fullLink);
+        request(fullLink, bcb)
         // hwt name name
     }
-    console.log(allRows.length);
+}
+function bcb(error, response, body) {
+    if (error) {
+        console.log('error:', error.message); // Print the error message
+    } else if (response && response.statusCode == 404) {
+        console.log("Page not found");
+    } else {
+        console.log("content recieved");
+        console.log(body);
+        console.log("``````````````````````````");
+        console.log("``````````````````````````");
+        console.log("``````````````````````````");
+        console.log("``````````````````````````");
+        console.log("``````````````````````````");
+        // extractData(body);
+        // get birthdays
+    }
 
 }
-
-
-
-
