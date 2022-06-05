@@ -1,16 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from "react-redux";
-// // /all the changes that are possible to the current state
-// function reducer(state, action) {
-//     switch (action.type) {
-//         case "increment":
-//             return state + 1;
-//         case "decrement":
-//             return state - 1;
-//         default:
-//             console.log("Wrong type");
-//     }
-// }
 function Ball(props) {
     console.log(props)
     return (< >
@@ -21,7 +10,7 @@ function Ball(props) {
     </>
     )
 }
-// to get your state varibale from redux store, dispatch function bhi provide karta 
+// to get your state variable from redux store, dispatch function bhi provide karta 
 const mapStateToProps = (store) => {
     return store;
 }
