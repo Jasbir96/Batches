@@ -11,7 +11,7 @@ function Bat() {
     }
     const buyBat = () => {
         // bat ,value
-        setBat(bat + tosell);
+        setBat(bat + Number(tosell));
         setTochangeBat("");
     }
     return (
