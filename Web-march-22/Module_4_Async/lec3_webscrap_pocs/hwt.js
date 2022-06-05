@@ -33,9 +33,9 @@ function extractData(body) {
     // element  -> ke anadr jo bhi html wo inne html se  aa jayegi 
     let newHtmlString = "<table>" + firstInningBowling.innerHTML + "</table>"
         + "<table>" + secondInningBowling.innerHTML + "</table>";
-    // fs.writeFileSync("tables.html", newHtmlString);
+    fs.writeFileSync("tables.html", newHtmlString);
     // console.log(newHtmlString);
-    getDataFromBowlingTables(newHtmlString);
+    // getDataFromBowlingTables(newHtmlString);
     // how to narrow;
     // using document and your selectors you find element in html page 
     console.log("reached for parsing");
