@@ -1,11 +1,13 @@
 import React, { useState, useReducer } from 'react';
-
+// /all the changes that are possible to the current state
 function reducer(state, action) {
     switch (action.type) {
         case "increment":
             return state + 1;
         case "decrement":
             return state - 1;
+        default:
+            console.log("Wrong type");
     }
 }
 function Ball() {
