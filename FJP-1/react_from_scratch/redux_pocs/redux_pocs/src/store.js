@@ -1,4 +1,4 @@
-// npm i redux  react-redux
+// npm i redux react-redux
 import { createStore } from "redux";
 import ballReducer from "./redux/ballReducer";
 // useReducer

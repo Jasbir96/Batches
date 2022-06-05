@@ -5,8 +5,13 @@ function Ball(props) {
     return (< >
         <h1>Balls</h1>
         <h2>No of Balls:{props.balls}</h2>
-        <button>+</button>
-        <button>-</button>
+        <button
+            onClick={props.buyBall}
+        >+</button>
+        <button
+            onClick={props.sellBall}
+
+        >-</button>
     </>
     )
 }
@@ -14,4 +19,18 @@ function Ball(props) {
 const mapStateToProps = (store) => {
     return store;
 }
-export default connect(mapStateToProps)(Ball);
+const mapDispatchtoProps = (dispatch) => {
+    return {
+        sellBall: () => {
+            dispatch({
+                type: "decrement"
+            })
+        },
+        buyBall: () => {
+            dispatch({
+                type: "increment"
+            })
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchtoProps)(Ball);
