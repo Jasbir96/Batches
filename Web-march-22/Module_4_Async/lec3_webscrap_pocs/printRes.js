@@ -30,7 +30,7 @@ function extractData(body) {
     let res = resultElem.textContent;
     console.log("result :", res);
     // using document and your selectors you find element in html page 
-    console.log("reached for parsing");
+    // console.log("reached for parsing");
 }
 
 

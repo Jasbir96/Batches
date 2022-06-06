@@ -7,6 +7,9 @@ function App() {
     <>
       <Provider store={store}>
         <Ball></Ball>
+
+
+        
       </Provider>
     </>
 

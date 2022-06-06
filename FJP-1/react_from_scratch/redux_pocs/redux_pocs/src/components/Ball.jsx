@@ -33,4 +33,9 @@ const mapDispatchtoProps = (dispatch) => {
         }
     }
 }
-export default connect(mapStateToProps, mapDispatchtoProps)(Ball);
+// to give access to the component to two things
+//  first store  -> mapsstatetoprops
+// second  -> dispatch -> mapdispatchtoprops
+const connectdWIthpropsFns = connect(mapStateToProps, mapDispatchtoProps)
+const connectedWithBall = connectdWIthpropsFns(Ball);
+export default connectedWithBall;
