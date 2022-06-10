@@ -3,6 +3,7 @@
 const request = require('request');
 const fs = require("fs");
 const jsdom = require("jsdom");
+const scoreCardObj = require("./scorecard");
 function AllMatchPageExecutor(url) {
     request(url, cb);
 
@@ -31,14 +32,12 @@ function extractData(body) {
         let allAnchors = curMatch.querySelectorAll("a");
         let scoreCardAnchor = allAnchors[2];
         let link = scoreCardAnchor.getAttribute("href");
-        let AllMatchPageKaLink = "https://www.espncricinfo.com" + link;
-        console.log(AllMatchPageKaLink);
+        let scoreCardLink = "https://www.espncricinfo.com" + link;
+        // console.log(AllMatchPageKaLink);
+        scoreCardObj.scoreCardFn(scoreCardLink);
     }
 }
-
-
 module.exports = {
     AllmatchFn: AllMatchPageExecutor
-
 }
 // .ds-text-ui-typo.ds-underline-offset-4.ds-block
