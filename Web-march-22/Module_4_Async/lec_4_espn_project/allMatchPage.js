@@ -3,7 +3,7 @@
 const request = require('request');
 const fs = require("fs");
 const jsdom = require("jsdom");
-function AllMatchPageExecutor() {
+function AllMatchPageExecutor(url) {
     request(url, cb);
 
 }
