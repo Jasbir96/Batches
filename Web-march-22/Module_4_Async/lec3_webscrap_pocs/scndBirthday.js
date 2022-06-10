@@ -1,7 +1,7 @@
 // Q1 print the result 
 // npm i request jsdom 
-const request = require('request');
 const fs = require("fs");
+const request = require('request');
 const jsdom = require("jsdom");
 let url = 'https://www.espncricinfo.com/series/indian-premier-league-2022-1298423/kolkata-knight-riders-vs-lucknow-super-giants-66th-match-1304112/full-scorecard';
 // main page request 
@@ -56,7 +56,6 @@ function getDataFromBowlingTables(newHtmlString) {
     // 2. // no meaning
     // document represent the whole html page
     let document = dom.window.document;
-
     let allRows = document.querySelectorAll("tbody tr.ds-text-tight-s");
     for (let i = 0; i < allRows.length; i++) {
         let singlePlayerDetailElem = allRows[i];
@@ -64,10 +63,10 @@ function getDataFromBowlingTables(newHtmlString) {
         // all -> returns an array ->  [a]
         let href = anchorArr[0].getAttribute("href");
         let fullLink = "https://www.espncricinfo.com" + href;
-        console.log(fullLink);
+        // console.log(fullLink);
+        // request pass -> exceution-> for 
         request(fullLink, bcb);
     }
-
 }
 // response of each palyer page at a time
 function bcb(error, response, body) {
@@ -93,6 +92,9 @@ function extractBirthdays(body) {
     // 2. // no meaning
     // document represent the whole html page
     let document = dom.window.document;
+    let h5Arr = document.querySelectorAll(".ds-text-title-s.ds-font-bold.ds-text-ui-typo");
+    let birthday = h5Arr[1].textContent;
+    let name = h5Arr[0].textContent;
+    console.log(name, "  : ", birthday);
     // selector find -> put -> data print 
-
 }
