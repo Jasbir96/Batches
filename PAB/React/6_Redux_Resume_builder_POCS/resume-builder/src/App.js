@@ -10,16 +10,16 @@ function App() {
   return (
     // 4
     // redux example
-    <Provider store={store}>
-      <div className="App">
-        <Ball></Ball>
-        <Bat></Bat>
-        <User></User>
-      </div>
-    </Provider>
-    // <Provider store={EcommerceStore}>
-    //   <Ecommerce></Ecommerce>
+    // <Provider store={store}>
+    //   <div className="App">
+    //     <Ball></Ball>
+    //     <Bat></Bat>
+    //     <User></User>
+    //   </div>
     // </Provider>
+    <Provider store={EcommerceStore}>
+      <Ecommerce></Ecommerce>
+    </Provider>
   );
 }
 export default App;
