@@ -9,7 +9,7 @@ function App() {
     <>
       {/* <BatuseReducer></BatuseReducer> */}
       <Provider store={store}>
-        {/* <Ball></Ball> */}
+        <Ball></Ball>
         <Bat></Bat>
       </Provider>
     </>
