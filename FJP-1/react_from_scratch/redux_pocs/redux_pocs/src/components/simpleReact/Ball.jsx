@@ -11,16 +11,6 @@ function reducer(state, action) {
     }
 }
 function Ball() {
-    // let [balls, setBalls] = useState(10);
-    // useReducer
-    // const increment = () => {
-    //     setBalls((balls) => {
-    //         balls + 1
-    //     });
-    // }
-    // const decrement = () => {
-    //     setBalls(balls - 1);
-    // }
     const [balls, dispatch] = useReducer(reducer, 10);
     return (
         < >

@@ -19,6 +19,7 @@ function Ball(props) {
 const mapStateToProps = (store) => {
     return store;
 }
+// dispatch
 const mapDispatchtoProps = (dispatch) => {
     return {
         sellBall: () => {
@@ -36,6 +37,7 @@ const mapDispatchtoProps = (dispatch) => {
 // to give access to the component to two things
 //  first store  -> mapsstatetoprops
 // second  -> dispatch -> mapdispatchtoprops
-const connectdWIthpropsFns = connect(mapStateToProps, mapDispatchtoProps)
+const connectdWIthpropsFns = connect(mapStateToProps, mapDispatchtoProps);
+
 const connectedWithBall = connectdWIthpropsFns(Ball);
 export default connectedWithBall;
