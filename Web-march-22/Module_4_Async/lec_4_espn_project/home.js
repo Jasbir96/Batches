@@ -2,11 +2,16 @@
 // npm i request jsdom 
 const request = require('request');
 const fs = require("fs");
+const path = require("path");
 const jsdom = require("jsdom");
 const allMatchPageObj = require("./allMatchPage");
+const helperObj = require("./helper");
 let url = "https://www.espncricinfo.com/series/indian-premier-league-2022-1298423";
-request(url, cb);
 
+let iplPath = path.join(__dirname, "ipl");
+helperObj.dirCreater(iplPath);
+
+request(url, cb);
 function cb(error, response, body) {
     if (error) {
         console.log('error:', error.message); // Print the error message
