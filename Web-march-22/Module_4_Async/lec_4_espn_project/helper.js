@@ -18,7 +18,8 @@ function fileHandler(inputPath, dataObj) {
         fileUpdater(inputPath, dataObj);
     }
 }
-
+// JSON.stringify -> write 
+// JSON.parse-> reading
 function fileCreater(playerPath, dataObj) {
 
     fs.writeFileSync(playerPath, "");
