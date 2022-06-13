@@ -21,12 +21,20 @@ function fileHandler(inputPath, dataObj) {
 // JSON.stringify -> write 
 // JSON.parse-> reading
 function fileCreater(playerPath, dataObj) {
-
-    fs.writeFileSync(playerPath, "");
+    let arr = [dataObj];
+    fs.writeFileSync(playerPath, JSON.stringify(arr));
 }
 
-function fileUpdater(playerPath) {
-    console.log("entry updated ", path.basename(playerPath));
+function fileUpdater(playerPath, dataObj) {
+    // file content read 
+    let dataBuffer = fs.readFileSync(playerPath);
+    // buffer -> JSON
+    let arr = JSON.parse(dataBuffer);
+    // JSON entry add
+    arr.push(dataObj);
+    // 
+    fs.writeFileSync(playerPath, JSON.stringify(arr));
+    // console.log("entry updated ", path.basename(playerPath));
 }
 
 

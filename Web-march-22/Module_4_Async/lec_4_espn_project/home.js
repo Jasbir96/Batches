@@ -6,7 +6,7 @@ const path = require("path");
 const jsdom = require("jsdom");
 const allMatchPageObj = require("./allMatchPage");
 const helperObj = require("./helper");
-let url = "https://www.espncricinfo.com/series/indian-premier-league-2022-1298423";
+let url = "https://www.espncricinfo.com/series/ipl-2021-1249214";
 
 let iplPath = path.join(__dirname, "ipl");
 

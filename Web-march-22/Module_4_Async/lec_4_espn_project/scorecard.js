@@ -1,4 +1,3 @@
-
 // Q1 print the result 
 // npm i request jsdom 
 const request = require('request');
@@ -8,7 +7,6 @@ const jsdom = require("jsdom");
 const helperObj = require("./helper");
 function scorecCardExecutor(url) {
     request(url, cb);
-
 }
 function cb(error, response, body) {
     if (error) {
