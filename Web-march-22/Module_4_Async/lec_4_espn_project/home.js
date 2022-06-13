@@ -9,8 +9,9 @@ const helperObj = require("./helper");
 let url = "https://www.espncricinfo.com/series/indian-premier-league-2022-1298423";
 
 let iplPath = path.join(__dirname, "ipl");
-helperObj.dirCreater(iplPath);
 
+helperObj.dirCreater(iplPath);
+//  first request
 request(url, cb);
 function cb(error, response, body) {
     if (error) {

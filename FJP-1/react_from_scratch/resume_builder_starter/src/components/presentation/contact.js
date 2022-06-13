@@ -12,30 +12,16 @@ import ResumePreview from './resumePreview'
 function Contact(props) {
    let history = useHistory();
    const [contact,setContact]= useState(props.contactSection);
-//    useEffect(() => {
-//        if(!props.document || !props.document.id || !props.document.skinCd)
-//        {
-//            history.push('/getting-started')
-//        }
-//    }, [])
+
   const onchange=(event)=>{
         var key =event.target.name;
         var val =event.target.value;
-        // this.setState({contactSection:update(this.state.contactSection,{$merge: {[key]:val}})});
         setContact({...contact,[key]:val})
     }
     const onSubmit= async()=>{
-        // if(props.contactSection!=null){
-        //     props.updateContact(props.document.id,contact);
-        // }
-        // else{
-        //     props.addContact(props.document.id,contact);
-        // }
 
         history.push('/education');
     }
-
-
     const getFieldData=(key)=>{
         if(contact && contact[key]){
           return contact[key]

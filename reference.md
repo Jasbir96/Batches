@@ -93,3 +93,9 @@ https://github.com/sudheerj/
 * https://codahale.com/how-to-safely-store-a-password/ => Why is bcrypt imp
 * https://speakerdeck.com/ckarande/top-overlooked-security-threats-to-node-dot-js-web-applications -> what is paramter pollution
 * https://severalnines.com/database-blog/securing-mongodb-external-injection-attacks
+
+## Using nvm 
+* Install nvm from https://github.com/coreybutler/nvm-windows/releases
+* nvm list -> list 
+* open cmd in admin -> nvm install 14.17.6
+* nvm use 14.17.6

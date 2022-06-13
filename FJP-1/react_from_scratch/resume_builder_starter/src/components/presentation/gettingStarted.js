@@ -5,20 +5,19 @@ import React from 'react';
 import * as actionTypes from "../../redux/actionTypes";
 import { useHistory } from "react-router-dom";
 const { v4: uuidv4 } = require("uuid");
-// import * as actionTypes from '../../actions/actionTypes';
-// import { bindActionCreators } from 'redux';
 
-// import { withRouter } from "react-router-dom";
 function GettingStarted(props) {
     console.log(props);
     let history = useHistory();
     const onChange = async (skinCd) => {
+
         if (props.document.id) {
             props.updateDocument(props.document.id, skinCd);
         }
         else {
             props.setDocument(skinCd);
         }
+        // send to history page 
         history.push('/contact');
     }
     return (
@@ -31,17 +30,17 @@ function GettingStarted(props) {
                 </p>
                 <div className="styleTemplate ">
                     {
-                        skinCodes.map((value, index) => {
-                            return (<div key={index} className="template-card rounded-border">
-                                <i className={(value == 'demo-value' ? 'selected fa fa-check' : 'hide')} ></i>
-                                <img className='' src={'/images/' + value + '.svg'} />
-                                <button type="button" onClick={() => onChange(value)} className='btn-select-theme'>USE TEMPLATE</button>
-                            </div>);
+                        skinCodes.map(
+                            (value, index) => {
+                                return (<div key={index} className="template-card rounded-border">
+                                    <i className={(value == 'demo-value' ? 'selected fa fa-check' : 'hide')} ></i>
+                                    <img className='' src={'/images/' + value + '.svg'} />
+                                    <button type="button" onClick={() => onChange(value)} className='btn-select-theme'>USE TEMPLATE</button>
+                                </div>);
 
-                        })
+                            })
                     }
                 </div>
-
             </div>
         </div>
     );
@@ -56,10 +55,16 @@ const mapDispatchToProps = dispatch => {
     return {
         setDocument: (skinCd) => {
             let id = uuidv4();
-            dispatch({ type: actionTypes.SET_SKIN, document: { skinCd, id: id } });
+            dispatch({
+                type: actionTypes
+                    .SET_SKIN, document: { skinCd, id: id }
+            });
         },
         updateDocument: (skinCd) => {
-            dispatch({ type: actionTypes.UPDATE_SKIN, document: { skinCd } })
+            dispatch({
+                type: actionTypes.UPDATE_SKIN,
+                document: { skinCd }
+            })
         }
     }
 }

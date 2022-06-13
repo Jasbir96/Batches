@@ -3,9 +3,9 @@
 // npm i request jsdom 
 const request = require('request');
 const fs = require("fs");
+const path = require("path");
 const jsdom = require("jsdom");
 const helperObj = require("./helper");
-const path = require("path");
 function scorecCardExecutor(url) {
     request(url, cb);
 
@@ -36,8 +36,6 @@ function extractData(body) {
     // console.log("result :", res);
     let otherContentElem = document.querySelector(".ds-text-tight-m.ds-font-regular.ds-text-ui-typo-mid");
     let otherContent = otherContentElem.textContent;
-
-
 
     //  0 -> team 1 name , 1-> team 2 name 
     let teamNamesElement = document.querySelectorAll(".ds-flex.ds-items-center.ds-cursor-pointer.ds-px-4");
@@ -77,30 +75,37 @@ function processTeam(teamELement, currTeam, opponentTeam, result, otherDetails) 
         let cols = cRow.querySelectorAll("td");
         // console.log(cols.length)
         if (cols.length == 8) {
-            let name = cols[0].textContent;
+            let name = cols[0].textContent.trim();
             let runs = cols[2].textContent;
             let balls = cols[3].textContent;
             let fours = cols[5].textContent;
             let sixes = cols[6].textContent;
             let sr = cols[7].textContent;
-            // console.log("Name " + name + +"plays for " + currTeam +
-            //     " against " + opponentTeam + " Runs " + runs + " balls " + balls +
+            // console.log("Name " + name + " plays for " + currTeam + " against " + opponentTeam + " Runs " + runs + " balls " + balls +
             //     " fours " + fours + " sixes " + sixes + " sr " + sr +
             //     " result " + result + " other details " + otherDetails
             // );
-            dataOrganizer(currTeam, name);
+            let dataObj = {
+                name, runs, balls, fours, sixes, sr, opponentTeam, result, otherDetails
+            }
+            dataOrganizer(currTeam, name, dataObj);
 
         }
     }
     console.log("``````````````````````````````````````````````````");
 }
-function dataOrganizer(teamName, playerName) {
+function dataOrganizer(teamName, playerName, dataObj) {
     // folder will not be present 
     // folder will be present
     const teamPath = path.join(__dirname, "ipl", teamName);
+
     helperObj.dirCreater(teamPath);
     // file will not be present
+    const playerPath = path.join(teamPath, playerName + ".json");
+
+    helperObj.fileHandler(playerPath, dataObj);
 }
+
 
 module.exports = {
     scoreCardFn: scorecCardExecutor

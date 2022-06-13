@@ -33,8 +33,7 @@ const Header = (props) => {
       </a> 
         <div className="header-links full-height">
 
-        {/* { isLoaded(auth) && !isEmpty(auth) ?<> */}
-
+       
           <ul>
             <li className="signin ">
               <NavLink className="  " to="/">
@@ -47,9 +46,6 @@ const Header = (props) => {
               </button>         
             </li>
           </ul>
-
-        {/* </>:<LoggesOut></LoggesOut>} */}
-          
           <ul id="nav-mid">
             <li>
             <NavLink className="btn-nvt-gm" to="/resume-templates">
@@ -70,14 +66,4 @@ const Header = (props) => {
   );
 };
 
-// const mapStateToProps=(state)=>{
-//   return{
-//      auth: state.firebase.auth
-//   }
-// }
-// const mapDispatchToProps= (dispatch)=>{
-//   return {
-//    signOut:()=>dispatch(authActions.signout())
-//   }
-// }
 export default Header;

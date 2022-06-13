@@ -6,9 +6,5 @@
     "educationSection": {
     },
     "contactSection": {       
-    },
-    "auth":{
-        "ErrorMessage":"",
-        "loading":false
     }
 }
