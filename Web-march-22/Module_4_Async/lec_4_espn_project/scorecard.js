@@ -79,10 +79,10 @@ function processTeam(teamELement, currTeam, opponentTeam, result, otherDetails) 
             let fours = cols[5].textContent;
             let sixes = cols[6].textContent;
             let sr = cols[7].textContent;
-            // console.log("Name " + name + " plays for " + currTeam + " against " + opponentTeam + " Runs " + runs + " balls " + balls +
-            //     " fours " + fours + " sixes " + sixes + " sr " + sr +
-            //     " result " + result + " other details " + otherDetails
-            // );
+            console.log("Name " + name + " plays for " + currTeam + " against " + opponentTeam + " Runs " + runs + " balls " + balls +
+                " fours " + fours + " sixes " + sixes + " sr " + sr +
+                " result " + result + " other details " + otherDetails
+            );
             let dataObj = {
                 name, runs, balls, fours, sixes, sr, opponentTeam, result, otherDetails
             }
@@ -99,7 +99,7 @@ function dataOrganizer(teamName, playerName, dataObj) {
 
     helperObj.dirCreater(teamPath);
     // file will not be present
-    const playerPath = path.join(teamPath, playerName + ".json");
+    const playerPath = path.join(teamPath, playerName + ".xlsx");
 
     helperObj.fileHandler(playerPath, dataObj);
 }
