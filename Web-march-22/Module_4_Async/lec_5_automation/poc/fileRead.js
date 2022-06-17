@@ -5,7 +5,7 @@ const fs = require("fs");
 //     if (err) {
 //         console.log("err", err);
 //     } else {
-//         console.log("content" , data);
+//         console.log("content" + data);
 //     }
 // }
 // console.log("After");
@@ -19,16 +19,22 @@ const fs = require("fs");
 // console.log("after");
 
 // **************************promise example*********************************
-console.log("Before");
-let promise = fs.promises.readFile("f1.txt");
-console.log("Promise before", promise);
-console.log("After");
+// // asynchronous  function -> returns a promise 
 
-function myFn() {
+// what is async  function ??
+// await is only valid in async function 
 
-    console.log("line numbe 29", promise);
+async function myFn() {
+    console.log("Before");
+    let promise = fs.promises.readFile("f1.txt");
+    console.log("Promise before", promise);
+    console.log("After");
+    // it stops the myfn function till promise is fullfilled
+    // and return value of that promise
+    let value = await promise;
+    console.log(value + "");
 }
-setTimeout(myFn, 2000);
+myFn();
 
 
 
