@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-// npm 
+// npm  i xlsx
 const xlsx = require("xlsx");
 function dirCreater(inputPath) {
     let isPresent = fs.existsSync(inputPath);
@@ -41,8 +41,6 @@ function fileUpdater(playerPath, dataObj) {
     fs.writeFileSync(playerPath, JSON.stringify(arr));
     // console.log("entry updated ", path.basename(playerPath));
 }
-
-
 function excelReader(filePath) {
     // file -> read -> workbook
     let wb = xlsx.readFile(filePath);
