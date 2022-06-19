@@ -1,14 +1,14 @@
 const fs = require("fs");
 // console.log("Before");
-// fs.readFile("f1.txt", cb);
-// function cb(err, data) {
-//     if (err) {
-//         console.log("err", err);
-//     } else {
-//         console.log("content" + data);
-//     }
-// }
-// console.log("After");
+fs.readFile("f1.txt", cb);
+function cb(err, data) {
+    if (err) {
+        console.log("err", err);
+    } else {
+        console.log("content" + data);
+    }
+}
+console.log("After");
 // **********************settimout example**********************************
 // async await
 // function myfn() {
