@@ -42,7 +42,7 @@ async function waitAndClickTopic(name, tab) {
     // let elems = await tab.$(".topics-list .topic-card a"); 
     // console.log(elems.length);
     await tab.evaluate(findAndClick, name);
-    // console.log(idx);
+    console.log(idx);
     function findAndClick(name) {
         let alltopics = document.querySelectorAll(".topics-list .topic-card a");
         // return idx
@@ -52,7 +52,6 @@ async function waitAndClickTopic(name, tab) {
             console.log(cTopic);
             if (cTopic == name) {
                 break;
-
             }
         }
         //document  -> elem 
