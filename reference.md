@@ -75,19 +75,21 @@ https://blog.logrocket.com/the-definitive-guide-to-scss/
 ## Git 
 * https://dev.to/unseenwizzard/learn-git-concepts-not-commands-4gjc
 
-
 # Interveiw Questions 
 * https://github.com/sudheerj/reactjs-interview-questions#what-is-redux
 https://github.com/sudheerj/ 
 * javascript-interview-questions#what-are-the-possible-ways-to-create-objects-in-javas
+
 ##  Backend
 * https://mongoosejs.com/docs/queries.html
+
 ### REST API :
   * video : https://www.youtube.com/watch?v=Q-BpqyOT3a8
   * https://restfulapi.net/rest-architectural-constraints
 * Request Methods: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
 * Res Status:https://www.restapitutorial.com/httpstatuscodes.html
 * MVC: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
+
 ### Security :
 * https://en.wikipedia.org/wiki/Bcrypt
 * https://codahale.com/how-to-safely-store-a-password/ => Why is bcrypt imp

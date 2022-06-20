@@ -28,16 +28,41 @@ async function fn() {
     await tab.waitForSelector(".site-nav-li", { visible: true });
     await tab.click(".site-nav-li");
     await tab.waitForSelector(".card", { visible: true });
-    let courseNames = await tab.evaluate(browserMeChalneWalafn);
+    let coursedetails = await tab.evaluate(browserMeChalneWalafn);
+    console.table(coursedetails);
+    // represent -> in good format 
     function browserMeChalneWalafn() {
-        let elemArr = document.querySelectorAll(".card h3");
-        let courseNames = [];
+        let elemArr = document.
+            querySelectorAll("#courses .card.course-tile.card-cs.rounded-border");
+        // 1st course 
+        let detailsArr = [];
         for (let i = 0; i < elemArr.length; i++) {
-            courseNames[i] = elemArr[i].textContent.trim();
+            let singleCourse = elemArr[i];
+            let courseNameElem = singleCourse.querySelector("h3");
+            let dateElem = singleCourse.querySelector(".date");
+            let featuresArr = singleCourse.querySelectorAll("h5");
+
+            let courseName = courseNameElem.textContent.trim();
+            let date = dateElem.textContent.trim();
+            let features = "";
+            for (let j = 0; j < featuresArr.length; j++) {
+                let cFeature = featuresArr[j].textContent.trim();
+                features += cFeature + "\n";
+            }
+            // console.log(courseName, " ", date, " ", features);
+            let priceArr = singleCourse.querySelectorAll(".cart-sec h4");
+            let price = priceArr.length == 1 ? priceArr[0] : priceArr[1];
+            price = price.textContent.trim();
+            console.log(courseName, " ", date,)
+            console.log(features)
+            let courseObj = {
+                features, courseName, date,price
+            }
+
+            detailsArr.push(courseObj);
         }
-        return courseNames;
+        return detailsArr;
     }
-    console.log(courseNames);
 }
 fn();
 // keyboard ,mouse ,scroll
