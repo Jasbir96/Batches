@@ -27,9 +27,10 @@ async function fn() {
     await tab.keyboard.press("Enter");
     //    promises compose 
     await waitAndClickTopic("Java", tab);
+
     await waitAndClickQuestion("Java Stdin and Stdout I", tab)
-    // choose a topic  -> ?? Java
-    // select questions -> ??  Java Stdin and Stdout I
+    // choose a topic  -> ?? Java ✔ 
+     // select questions -> ??  Java Stdin and Stdout I ✔
     // write the code ->  -> code read type   
     // submit the code  -> button click
 
@@ -42,7 +43,7 @@ async function waitAndClickTopic(name, tab) {
     // let elems = await tab.$(".topics-list .topic-card a"); 
     // console.log(elems.length);
     await tab.evaluate(findAndClick, name);
-    console.log(idx);
+    // console.log(idx);
     function findAndClick(name) {
         let alltopics = document.querySelectorAll(".topics-list .topic-card a");
         // return idx
@@ -59,9 +60,36 @@ async function waitAndClickTopic(name, tab) {
         // return idx;
     }
 
-    // await tab.click(selector);
+
 }
 
+async function waitAndClickQuestion(name, tab) {
+    await tab.waitForSelector(".challenges-list", { visible: true });
+    // let elems = await tab.$$(".topics-list .topic-card a"); -> document.querySelectorAll
+    // let elems = await tab.$(".topics-list .topic-card a"); 
+    // console.log(elems.length);
+    let questions = await tab.evaluate(findAndClick, name);
+    console.log(questions);
+    // console.log(idx);
+    function findAndClick(name) {
+        let allQuestions = document.querySelectorAll(".challenges-list .challengecard-title");
+        // return idx
+        let idx;
+        let textContent = []
+        for (idx = 0; idx < allQuestions.length; idx++) {
+            let cTopic = allQuestions[idx].textContent.trim();
+            textContent.push(cTopic);
+            // console.log(cTopic);
+            if (cTopic.includes(name.trim())) {
+                break;
+            }
+        }
+        //document  -> elem 
+        // alltopics[idx].click();
+        // return textContent;
+        allQuestions[idx].click();
+    }
+}
 
 
 
