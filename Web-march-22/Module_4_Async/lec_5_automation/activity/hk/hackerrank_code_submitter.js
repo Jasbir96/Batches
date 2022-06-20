@@ -4,7 +4,7 @@
 // npm i puppeteer
 const puppeteer = require("puppeteer");
 // nearly every function of puppeteer returns a promise
-const credObj = require("./cred");
+const credObj = require("./secrets");
 // module.exports = {
 //     password: "",
 //     email: ""
