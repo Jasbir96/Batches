@@ -6,8 +6,6 @@
 * Puppeteer and it's functions were  used to interacts with the browser to automate it.
 * async await was used to automate the tasks 
 
-
-
 <!-- browser automation  -->
 <!--  -->
 IQ->  selenium-> not well maintained and it has rich support for java 
