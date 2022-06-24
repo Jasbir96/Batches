@@ -5,7 +5,7 @@
 const puppeteer = require("puppeteer");
 // nearly every function of puppeteer returns a promise
 const credObj = require("./secrets");
-const fs=require("fs");
+const fs = require("fs");
 // module.exports = {
 //     password: "",
 //     email: ""
@@ -34,11 +34,11 @@ async function fn() {
     await waitAndClickQuestion("Java Stdin and Stdout I", tab)
     // write the code ->  -> code read type 
     // code -> input 
-    // read -> question ko pass
-    let code = await fs.promises.readFile("code.java","utf-8");
+    // read -> pupptee pass
+    let code = await fs.promises.readFile("code.java", "utf-8");
     await copyPasteQuestion(code, tab);
     // submit the code  -> button click n-> easy -> 
-    await submitCode();
+    await submitCode(tab);
 
 }
 fn();
@@ -99,16 +99,28 @@ async function waitAndClickQuestion(name, tab) {
 }
 
 async function copyPasteQuestion(code, tab) {
-     await tab.waitForSelector('input[type="checkbox"]', { visible: true });
-     await tab.click('input[type="checkbox"]');
-     await tab.waitForSelector("textarea[id='input-1']",{visible: true});
-     await tab.type("textarea[id='input-1']",code );
+    await tab.waitForSelector('input[type="checkbox"]', { visible: true });
+    await tab.click('input[type="checkbox"]');
+    await tab.waitForSelector("textarea[id='input-1']", { visible: true });
+    await tab.type("textarea[id='input-1']", code);
 
+    await tab.keyboard.down('ControlLeft')
+    await tab.keyboard.press('KeyA')
+    await tab.keyboard.press('KeyX');
+    await tab.keyboard.up('ControlLeft');
 
+    // *****************It has a hight to fail
+    await tab.waitForSelector(".monaco-editor");
+    await tab.click(".monaco-editor");
+    await tab.keyboard.down('ControlLeft')
+    await tab.keyboard.press('KeyA')
+    await tab.keyboard.press('KeyV');
+    await tab.keyboard.up('ControlLeft');
 }
 
-async function submitCode() {
-
+async function submitCode(tab) {
+    await tab.waitForSelector(".hr-monaco-submit");
+    await tab.click(".hr-monaco-submit");
 }
 
 
