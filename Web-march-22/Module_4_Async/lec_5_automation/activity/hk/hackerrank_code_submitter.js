@@ -26,13 +26,14 @@ async function fn() {
     await tab.type("input[type='password']", credObj.password, { delay: 20 });
     await tab.keyboard.press("Enter");
     //    promises compose 
+    // choose a topic  -> ?? Java ✔ 
     await waitAndClickTopic("Java", tab);
 
+    // select questions -> ??  Java Stdin and Stdout I ✔
     await waitAndClickQuestion("Java Stdin and Stdout I", tab)
-    // choose a topic  -> ?? Java ✔ 
-     // select questions -> ??  Java Stdin and Stdout I ✔
-    // write the code ->  -> code read type   
-    // submit the code  -> button click
+    // write the code ->  -> code read type 
+      
+    // submit the code  -> button click n-> easy -> 
 
 }
 fn();
@@ -66,6 +67,7 @@ async function waitAndClickTopic(name, tab) {
 async function waitAndClickQuestion(name, tab) {
     await tab.waitForSelector(".challenges-list", { visible: true });
     // let elems = await tab.$$(".topics-list .topic-card a"); -> document.querySelectorAll
+    // text get match and click
     // let elems = await tab.$(".topics-list .topic-card a"); 
     // console.log(elems.length);
     let questions = await tab.evaluate(findAndClick, name);
