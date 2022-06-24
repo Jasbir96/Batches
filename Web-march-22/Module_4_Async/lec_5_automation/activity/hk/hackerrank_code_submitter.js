@@ -5,6 +5,7 @@
 const puppeteer = require("puppeteer");
 // nearly every function of puppeteer returns a promise
 const credObj = require("./secrets");
+const fs=require("fs");
 // module.exports = {
 //     password: "",
 //     email: ""
@@ -16,7 +17,7 @@ async function fn() {
         executablePath: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
         defaultViewport: null,
         args: ["--start-maximized", "--start-in-incognito"],
-        slowMo: 50
+        slowMo: 20
     });
     //new  tab open  
     const tab = await browserRepresentativeObj.newPage();
@@ -32,8 +33,12 @@ async function fn() {
     // select questions -> ??  Java Stdin and Stdout I ✔
     await waitAndClickQuestion("Java Stdin and Stdout I", tab)
     // write the code ->  -> code read type 
-      
+    // code -> input 
+    // read -> question ko pass
+    let code = await fs.promises.readFile("code.java","utf-8");
+    await copyPasteQuestion(code, tab);
     // submit the code  -> button click n-> easy -> 
+    await submitCode();
 
 }
 fn();
@@ -93,6 +98,18 @@ async function waitAndClickQuestion(name, tab) {
     }
 }
 
+async function copyPasteQuestion(code, tab) {
+     await tab.waitForSelector('input[type="checkbox"]', { visible: true });
+     await tab.click('input[type="checkbox"]');
+     await tab.waitForSelector("textarea[id='input-1']",{visible: true});
+     await tab.type("textarea[id='input-1']",code );
+
+
+}
+
+async function submitCode() {
+
+}
 
 
 
