@@ -16,3 +16,10 @@ puppeteer ->well maintained for js
 <!--  2-> function -> task (more than enough) -->
 <!-- 3. callback vs promises -->
 <!-- callback , async await -->
+
+
+
+<!-- fs -> file organizer -->
+<!-- cricinfo -->
+<!-- pepcoding course scrapper -->
+<!-- hackerrank code submitter -->
