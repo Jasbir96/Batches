@@ -6,7 +6,6 @@ console.log("line number 5", elem);
 // array of element 
 let allh1s = document.querySelectorAll("h1");
 console.log("line number 6", allh1s);
-
 // content get 
 // input type of value -> where user set's the data 
 let inputElem = document.querySelector("input");
@@ -21,7 +20,6 @@ let anchorElem = document.querySelector("a");
 let output = anchorElem.getAttribute("href");
 console.log("line number 23", output);
 
-
 // *****************************create*******************
 // create p tag
 let pElem = document.createElement("p");
@@ -29,7 +27,7 @@ let pElem = document.createElement("p");
 pElem.textContent = "Hello DOM";
 // elem -> copy
 let newpElem = pElem.cloneNode(true);
-newpElem.textContent="append child";
+newpElem.textContent = "append child";
 // place it in the dom tree
 let body = document.querySelector("body");
 // it will add at last
@@ -41,6 +39,12 @@ body.insertBefore(pElem, elem);
 pElem.style.backgroundColor = "lightgreen";
 
 
-
-
-
+// *****************update************************
+// content
+newpElem.textContent = "modified";
+// styling 
+pElem.style.backgroundColor = "lightblue";
+// attributes
+anchorElem.setAttribute("href", "http://localhost:3000");
+//************ delete********************************
+elem.remove();
