@@ -32,7 +32,11 @@ import html2canvas from 'html2canvas';
       <div className="container full finalize-page" >
       <div className="funnel-section ">
           <div className="finalize-preview-card " id="resumePreview">
-            <ResumePreview contactSection={contactSection} educationSection={educationSection} skinCd={props?.document?.skinCd}></ResumePreview>   
+            <ResumePreview 
+            contactSection={contactSection} 
+            educationSection={educationSection}
+             skinCd={props?.document?.skinCd}
+             ></ResumePreview>   
           </div>
           <div className="finalize-settings center">            
 

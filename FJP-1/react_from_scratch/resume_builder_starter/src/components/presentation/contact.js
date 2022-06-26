@@ -19,6 +19,7 @@ function Contact(props) {
     const onSubmit = async () => {
         // contact -> entry -> global store me put karani hogi 
         props.addContact(contact);
+        
         history.push('/education');
 
     }
