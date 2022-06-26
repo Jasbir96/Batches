@@ -7,19 +7,22 @@ import { useHistory } from "react-router-dom";
 const { v4: uuidv4 } = require("uuid");
 
 function GettingStarted(props) {
-    console.log(props);
+    console.log(props, props.document.skinCd, props.document.id);
     let history = useHistory();
+    // 3.
     const onChange = async (skinCd) => {
 
         if (props.document.id) {
-            props.updateDocument(props.document.id, skinCd);
+
+            props.updateDocument(skinCd);
         }
         else {
             props.setDocument(skinCd);
         }
         // send to history page 
-        history.push('/contact');
+        // history.push('/contact');
     }
+    // 2.
     return (
         <div className="container med gettingStarted">
             <div className="section">
@@ -33,11 +36,10 @@ function GettingStarted(props) {
                         skinCodes.map(
                             (value, index) => {
                                 return (<div key={index} className="template-card rounded-border">
-                                    <i className={(value == 'demo-value' ? 'selected fa fa-check' : 'hide')} ></i>
+                                    <i className={(value == props.document.skinCd ? 'selected fa fa-check' : 'hide')} ></i>
                                     <img className='' src={'/images/' + value + '.svg'} />
                                     <button type="button" onClick={() => onChange(value)} className='btn-select-theme'>USE TEMPLATE</button>
                                 </div>);
-
                             })
                     }
                 </div>
@@ -45,19 +47,21 @@ function GettingStarted(props) {
         </div>
     );
 }
+// 1.
 const mapStateToProps = (state) => {
-    // console.log("50",state);
+    console.log("50", state);
     return {
-        document: state
+        document: state.documentReducer
     }
 }
+// 4.
 const mapDispatchToProps = dispatch => {
     return {
         setDocument: (skinCd) => {
             let id = uuidv4();
             dispatch({
                 type: actionTypes
-                    .SET_SKIN, document: { skinCd, id: id }
+                    .SET_SKIN, document: { skinCd, id }
             });
         },
         updateDocument: (skinCd) => {

@@ -16,7 +16,6 @@ function App() {
   return (
     <div>
      <Header></Header>
-
      <Switch>
           <Route path="/login" component={Login}></Route>
           <Route path="/register" component={Register}></Route>             
