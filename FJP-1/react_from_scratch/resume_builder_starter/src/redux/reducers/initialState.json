@@ -3,8 +3,6 @@
         "id": null,
         "skinCd": ""
     },
-    "educationSection": {
-    },
-    "contactSection": {       
-    }
+    "contactSection": {},
+    "educationSection": {}
 }

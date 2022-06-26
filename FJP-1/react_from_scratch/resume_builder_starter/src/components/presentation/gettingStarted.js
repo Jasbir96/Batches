@@ -20,7 +20,7 @@ function GettingStarted(props) {
             props.setDocument(skinCd);
         }
         // send to history page 
-        // history.push('/contact');
+        history.push('/contact');
     }
     // 2.
     return (
