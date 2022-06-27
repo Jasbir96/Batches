@@ -34,6 +34,7 @@ body {
     align-items: center
 }
 
+/* generic styling  */
 .color {
     height: 50%;
     width: 50%;
@@ -56,8 +57,21 @@ body {
     background-color: black;
 }
 
+/* options */
 .options {
     height: 65%;
     width: 7rem;
-    background-color: #393c3f
+    background-color: #393c3f;
+    display: flex;
+}
+.box {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.icon{
+    color:white;
+    font-size:2rem;
 }
