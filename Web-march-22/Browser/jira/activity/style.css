@@ -1,10 +1,12 @@
 body {
     margin: 0px;
 }
+
 * {
     box-sizing: border-box;
     /* question*/
 }
+
 .header {
     height: 5rem;
     background-color: black;
@@ -14,14 +16,48 @@ body {
 
 .color_pallete {
     height: 65%;
-    width: 30%;
-    background-color: #2f3640;
+    width: 12rem;
+    background-color: #393c3f;
     margin-right: 5rem;
-    margin-left :2rem;
+    margin-left: 2rem;
+    display: flex;
+    border-radius: 7px;
+}
+
+.color_boxes {
+    width: 25%;
+    height: 100%;
+    /* border: 1px solid red; */
+    /* perefectly center a div inside a div */
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.color {
+    height: 50%;
+    width: 50%;
+    border-radius: 4px;
+}
+
+.pink {
+    background-color: lightpink;
+}
+
+.blue {
+    background-color: lightblue;
+}
+
+.green {
+    background-color: lightgreen;
+}
+
+.black {
+    background-color: black;
 }
 
 .options {
     height: 65%;
-    width: 20%;
-    background-color: #2f3640
+    width: 7rem;
+    background-color: #393c3f
 }
