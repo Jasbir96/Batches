@@ -13,6 +13,9 @@ body {
     display: flex;
     align-items: center;
 }
+.main{
+    height:70vh;
+}
 
 .color_pallete {
     height: 65%;
