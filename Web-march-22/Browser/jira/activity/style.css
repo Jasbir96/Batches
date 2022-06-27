@@ -1,0 +1,27 @@
+body {
+    margin: 0px;
+}
+* {
+    box-sizing: border-box;
+    /* question*/
+}
+.header {
+    height: 5rem;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+
+.color_pallete {
+    height: 65%;
+    width: 30%;
+    background-color: #2f3640;
+    margin-right: 5rem;
+    margin-left :2rem;
+}
+
+.options {
+    height: 65%;
+    width: 20%;
+    background-color: #2f3640
+}
