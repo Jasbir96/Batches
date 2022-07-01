@@ -13,8 +13,9 @@ body {
     display: flex;
     align-items: center;
 }
-.main{
-    height:70vh;
+
+.main {
+    height: 70vh;
 }
 
 .color_pallete {
@@ -67,6 +68,7 @@ body {
     background-color: #393c3f;
     display: flex;
 }
+
 .box {
     width: 50%;
     height: 100%;
@@ -74,7 +76,38 @@ body {
     justify-content: center;
     align-items: center
 }
-.icon{
-    color:white;
-    font-size:2rem;
+
+.icon {
+    color: white;
+    font-size: 2rem;
+}
+
+/* main */
+.ticket {
+    height: 10rem;
+    width: 16rem;
+    margin-top: 10rem;
+    margin-left: 10rem;
+}
+
+.ticket_header {
+    height: 6%;
+    background-color: black;
+}
+
+.ticket_content {
+    height: 94%;
+}
+
+.ticket_id {
+    height: 20%;
+    background-color: rgb(241, 234, 234)
+}
+
+textarea {
+    height: 80%;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: rgb(241, 234, 234)
 }
