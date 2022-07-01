@@ -14,9 +14,7 @@ body {
     align-items: center;
 }
 
-.main {
-    height: 70vh;
-}
+
 
 .color_pallete {
     height: 65%;
@@ -83,11 +81,17 @@ body {
 }
 
 /* main */
+.main {
+    min-height: 90vh;
+    background-color: rgb(241, 234, 234);
+    padding: 2rem;
+}
+
 .ticket {
     height: 10rem;
     width: 16rem;
-    margin-top: 10rem;
-    margin-left: 10rem;
+    /* margin-top: 10rem; */
+    /* margin-left: 10rem; */
 }
 
 .ticket_header {
@@ -101,7 +105,7 @@ body {
 
 .ticket_id {
     height: 20%;
-    background-color: rgb(241, 234, 234)
+    background-color: white;
 }
 
 textarea {
@@ -109,5 +113,10 @@ textarea {
     width: 100%;
     border: none;
     outline: none;
-    background-color: rgb(241, 234, 234)
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    /* verticle distance b/w two lines  */
+    line-height: 145%;
+    text-align: center;
 }
