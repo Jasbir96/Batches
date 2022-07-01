@@ -65,6 +65,7 @@ body {
     width: 7rem;
     background-color: #393c3f;
     display: flex;
+    margin-right: 3rem;
 }
 
 .box {
@@ -99,7 +100,6 @@ body {
 
 .ticket_header {
     height: 6%;
-    background-color: black;
 }
 
 .ticket_content {
