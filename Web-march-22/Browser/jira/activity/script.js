@@ -15,3 +15,8 @@ function changeColor(e) {
     main.style.backgroundColor = color;
     // console.log(elem, " ", allclasses);
 }
+
+
+console.log("uuid", uuidv4());
+
+

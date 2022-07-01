@@ -85,6 +85,9 @@ body {
     min-height: 90vh;
     background-color: rgb(241, 234, 234);
     padding: 2rem;
+    display: flex;
+    justify-content:space-evenly;
+    flex-wrap: wrap;
 }
 
 .ticket {
@@ -105,7 +108,12 @@ body {
 
 .ticket_id {
     height: 20%;
+    font-weight: bolder;
     background-color: white;
+    font-family: sans-serif;
+    color: #989393;
+    padding-top: 0.4rem;
+    padding-left: 1rem;
 }
 
 textarea {
