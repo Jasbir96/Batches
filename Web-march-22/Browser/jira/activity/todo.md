@@ -9,7 +9,7 @@ create , local storage
 <!-- to code anything dynamic -> static version -->
 <!-- html-> tags  -->
 <!-- css -->
-<!-- put the static html as a child for containing element in js -->
+<!-- put the static html as a child for containing element in js and internal element -> shortcut (innerHTML) -->
 
 flex -> height , width : min-height , min-width
  <!-- when you want that element should have minimum that height 

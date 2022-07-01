@@ -45,8 +45,9 @@ function createTicket() {
 `;
     main.appendChild(ticket);
     // ticket should have some functionalites
-    // change color 
-    // lock and unlock
+    // 3. change color
+
+    // 4. lock and unlock
 
 }
 
