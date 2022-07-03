@@ -2,35 +2,29 @@ const allColors = document.querySelectorAll(".color");
 const main = document.querySelector(".main");
 const addBtn = document.querySelector(".add");
 const colors = ["pink", "blue", "green", "black"];
-
-// for (let i = 0; i < allColors.length; i++) {
-//     allColors[i].addEventListener("click", changeColor)
-// }
-// // e-> is the object that will be given by browser
-// function changeColor(e) {
-//     // e.currentarget -> refers the element on which event has 
-//     // occurred
-//     let elem = e.currentTarget;
-//     // all the classes present on the element 
-//     let allclasses = elem.classList;
-//     let color = allclasses[1];
-//     console.log(color);
-//     main.style.backgroundColor = color;
-//     // console.log(elem, " ", allclasses);
-// }
-console.log("uuid", uuidv4());
+const colorBoxes = document.querySelectorAll(".color_boxes");
+const lock = document.querySelector(".lock");
+const unlock = document.querySelector(".unlock");
+let isLocked = false;
 
 // creation of tickets
-
 // 1. when + is clicked then a ticket will created
 addBtn.addEventListener("click", function () {
-    // create a ticket 
+    // create a ticket
+    if (isLocked == true) {
+        alert("FIrst unlock it");
+        return;
+    }
     createTicket();
 })
-
-
-
-
+// *************change background -> color boxes************** 
+// loop -> eventlistener add
+for (let i = 0; i < colorBoxes.length; i++) {
+    colorBoxes[i].addEventListener("click", filterTickets);
+}
+// lock unlock 
+lock.addEventListener("click", lockHelper);
+unlock.addEventListener("click", unlockHelper);
 
 // ticket creation 
 function createTicket() {
@@ -82,27 +76,22 @@ function changeColor(e) {
     classes.add(nextColor);
 
 }
-
-
-
-// *************change background -> color boxes************** 
-let colorBoxes = document.querySelectorAll(".color_boxes");
-// loop -> eventlistener add
-for (let i = 0; i < colorBoxes.length; i++) {
-    colorBoxes[i].addEventListener("click", filterTickets);
-}
+// ************************* helper functions
 // how to toggle multiple option 
 function filterTickets(e) {
     // click -> first click -> clicked
+    if (isLocked == false) {
+        alert("First lock it");
+        return
+    }
     let elem = e.currentTarget;
     let childElemArr = elem.children;
     let clickedColor = childElemArr[0].classList[1];
     // second time click -> clicked class
     let secondClass = elem.classList[1];
     if (secondClass == "clicked") {
-        elem.classList.remove("clicked");
         // removal -> show all tickets
-        showAll();
+        showAll(elem);
     } else {
         // remove clicked from every colorbox
         for (let i = 0; i < colorBoxes.length; i++) {
@@ -115,7 +104,7 @@ function filterTickets(e) {
         // color;
         showOnlyMYColor(clickedColor);
 
-    }    
+    }
 }
 function showOnlyMYColor(clickedColor) {
     // get all the ticket
@@ -142,7 +131,25 @@ function showAll() {
         // show 
         allTickets[i].style.display = "block";
     }
+    for (let i = 0; i < colorBoxes.length; i++) {
+        // if -> elem has class -> remove
+        // doesnot -> leave 
+        colorBoxes[i].classList.remove("clicked");
+    }
 }
+function lockHelper(e) {
+    // lock -> click
+    isLocked = true;
+    // edit -> disable
+}
+function unlockHelper(e) {
+    isLocked = false;
+    showAll();
+    // edit -> enable 
+}
+
+
+
 
 
 
