@@ -12,9 +12,9 @@ import UseReducer from "./POCS/useState/useReducer"
 import CounterParent from './POCS/useMemo/CounterParent';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    // <BrowserRouter>
-    //     <App />
-    // </BrowserRouter>
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
     // useState
     // <UseState></UseState>
     // <UseReducer></UseReducer>

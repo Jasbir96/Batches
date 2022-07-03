@@ -1,0 +1,47 @@
+.login-container
+{
+    margin-top: 8vh;
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+}
+.imgcar
+{
+    width: 441px;
+    height: 590px;
+    position: relative;
+}
+
+.login-form
+{
+    flex-basis: 25vw;
+    flex-grow: 0;
+}
+.insta-head
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caro
+{
+    height: 423px;
+    width: 241px;
+    position: absolute;
+    left: 143px;
+    top: 93px;
+}
+@media only screen and (max-width: 749px) {
+   
+    .login-form
+    {
+        flex-basis: 70vw !important;
+    }
+  }
+  @media only screen and (max-width: 750px) {
+      .imgcar{
+          display: none;
+      }
+  }

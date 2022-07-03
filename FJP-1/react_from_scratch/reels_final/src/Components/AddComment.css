@@ -1,0 +1,8 @@
+.emojibox
+{
+    display: flex;
+    margin: 0;
+    margin-left: 4%;
+    margin-right: 2%;
+    padding-bottom: 2%;
+}

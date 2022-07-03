@@ -1,0 +1,75 @@
+.spacer
+{
+    height: 12vh;
+}
+.pg-container
+{
+    margin-left: 18%;
+    margin-right: 18%;
+    min-height: 88vh;
+}
+.upper-part
+{
+    display: flex;
+    justify-content: center;
+}
+.bimg
+{
+    flex-basis: 40%;
+    flex-grow: 0;
+}
+.bimg img
+{
+    max-width: 100%;
+    width: 50%;
+    border-radius: 50%;
+}
+.info
+{
+    flex-basis: 50%;
+    flex-grow: 0;
+}
+
+.post-cal
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+}
+.uposts
+{
+    display: flex;
+    flex-wrap: wrap;
+    
+    
+}
+.u-video
+{
+    width: 22%;
+    height: 45vh;
+    margin-right: 2%;
+    margin-top: 4%;
+    background-color: black;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .pg-container
+    {
+        margin-right: 1%;
+        margin-left: 1%;
+    }
+}
+@media only screen and (max-width: 1160px) {
+    .u-video
+    {
+        width: 31%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .u-video
+    {
+        width: 48%;
+    }
+}

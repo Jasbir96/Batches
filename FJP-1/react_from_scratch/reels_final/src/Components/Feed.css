@@ -1,0 +1,17 @@
+.feed-container
+{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.center{
+    height: 90vh;
+    
+    
+}
+.right{
+    height: 100vh;
+   
+    /* background-color: green; */
+}
+

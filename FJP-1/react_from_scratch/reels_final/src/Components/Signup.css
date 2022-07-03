@@ -1,0 +1,31 @@
+.signupStyle
+{
+    margin-top: 5%;
+    width: 25vw;
+}
+.signuoWrapper
+{
+    display: flex;
+    justify-content: center;
+}
+.insta-head img{
+    width: 15vw;
+}
+
+@media only screen and (max-width: 1030px) {
+    .signupStyle
+    {
+        width: 40%;
+    }
+  
+}
+@media only screen and (max-width: 620px) {
+        .signupStyle
+        {
+            width: 60%;
+        }
+        .insta-head img{
+            width: 35%;
+        }
+    }
+

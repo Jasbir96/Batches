@@ -1,0 +1,36 @@
+.insta-head2
+{
+    display: flex;
+    justify-content: center;
+    margin-left: 15%;
+}
+
+.insta-head2 img
+{
+    width: 50%;
+}
+.MuiMenu-paper
+{
+    width: 10%;
+}
+@media only screen and (max-width: 1100px) {
+   
+    .MuiMenu-paper
+{
+    width: 20%;
+}
+  }
+  @media only screen and (max-width: 571px) {
+   
+    .MuiMenu-paper
+{
+    width: 26%;
+}
+  }
+  @media only screen and (max-width: 400px) {
+   
+    .MuiMenu-paper
+{
+    width: 32%;
+}
+  }
