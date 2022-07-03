@@ -67,6 +67,9 @@ body {
     display: flex;
     margin-right: 3rem;
 }
+.clicked {
+    background-color: #282829;
+}
 
 .box {
     width: 50%;
@@ -87,7 +90,7 @@ body {
     background-color: rgb(241, 234, 234);
     padding: 2rem;
     display: flex;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 

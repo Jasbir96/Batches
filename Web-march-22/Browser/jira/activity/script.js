@@ -27,6 +27,12 @@ addBtn.addEventListener("click", function () {
     // create a ticket 
     createTicket();
 })
+
+
+
+
+
+// ticket creation 
 function createTicket() {
     // 2. main -> ticket add
     let id = uuidv4();
@@ -71,11 +77,36 @@ function changeColor(e) {
     let nextIdx = (cIdx + 1) % colors.length;
     let nextColor = colors[nextIdx];
     // classes[1]=nextColor;
-    
+
     classes.remove(cColor);
     classes.add(nextColor);
 
 }
+
+// *************change background -> color boxes************** 
+let colorBoxes = document.querySelectorAll(".color_boxes");
+// loop -> eventlistener add
+for (let i = 0; i < colorBoxes.length; i++) {
+    colorBoxes[i].addEventListener("click", filterTickets);
+}
+function filterTickets(e) {
+    // click -> first click -> clicked
+    let elem = e.currentTarget;
+    // second time click -> clicked class
+    let secondClass = elem.classList[1];
+    if (secondClass == "clicked") {
+        elem.classList.remove("clicked");
+    } else {
+        
+        elem.classList.add("clicked");
+    }
+    // functionality 
+    // filtering 
+
+}
+
+
+
 
 
 
