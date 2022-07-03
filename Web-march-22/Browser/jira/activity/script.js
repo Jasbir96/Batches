@@ -83,28 +83,66 @@ function changeColor(e) {
 
 }
 
+
+
 // *************change background -> color boxes************** 
 let colorBoxes = document.querySelectorAll(".color_boxes");
 // loop -> eventlistener add
 for (let i = 0; i < colorBoxes.length; i++) {
     colorBoxes[i].addEventListener("click", filterTickets);
 }
+// how to toggle multiple option 
 function filterTickets(e) {
     // click -> first click -> clicked
     let elem = e.currentTarget;
+    let childElemArr = elem.children;
+    let clickedColor = childElemArr[0].classList[1];
     // second time click -> clicked class
     let secondClass = elem.classList[1];
     if (secondClass == "clicked") {
         elem.classList.remove("clicked");
+        // removal -> show all tickets
+        showAll();
     } else {
-        
+        // remove clicked from every colorbox
+        for (let i = 0; i < colorBoxes.length; i++) {
+            // if -> elem has class -> remove
+            // doesnot -> leave 
+            colorBoxes[i].classList.remove("clicked");
+        }
         elem.classList.add("clicked");
-    }
-    // functionality 
-    // filtering 
+        //************ */ show only my color*********
+        // color;
+        showOnlyMYColor(clickedColor);
 
+    }    
 }
-
+function showOnlyMYColor(clickedColor) {
+    // get all the ticket
+    let allTickets = document.querySelectorAll(".ticket");
+    // check there headings
+    for (let i = 0; i < allTickets.length; i++) {
+        // heading get -> color check  
+        let header = allTickets[i].children[0];
+        let headerColor = header.classList[1];
+        if (headerColor == clickedColor) {
+            // show 
+            allTickets[i].style.display = "block";
+        } else {
+            // hide 
+            allTickets[i].style.display = "none";
+        }
+    }
+    // show only those whose color matches your cColor
+}
+function showAll() {
+    let allTickets = document.querySelectorAll(".ticket");
+    for (let i = 0; i < allTickets.length; i++) {
+        // heading get -> color check  
+        // show 
+        allTickets[i].style.display = "block";
+    }
+}
 
 
 

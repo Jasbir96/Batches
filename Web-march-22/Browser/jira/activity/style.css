@@ -67,6 +67,7 @@ body {
     display: flex;
     margin-right: 3rem;
 }
+
 .clicked {
     background-color: #282829;
 }
@@ -100,6 +101,7 @@ body {
     /* margin-top: 10rem; */
     /* margin-left: 10rem; */
 }
+
 
 .ticket_header {
     height: 6%;
