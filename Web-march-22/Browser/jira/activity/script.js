@@ -5,8 +5,9 @@ const colors = ["pink", "blue", "green", "black"];
 const colorBoxes = document.querySelectorAll(".color_boxes");
 const lock = document.querySelector(".lock");
 const unlock = document.querySelector(".unlock");
+const deleteBtn = document.querySelector(".delete");
 let isLocked = false;
-
+let isDelete = false;
 // creation of tickets
 // 1. when + is clicked then a ticket will created
 addBtn.addEventListener("click", function () {
@@ -17,6 +18,7 @@ addBtn.addEventListener("click", function () {
     }
     createTicket();
 })
+deleteBtn.addEventListener("click", deletehelper)
 // *************change background -> color boxes************** 
 // loop -> eventlistener add
 for (let i = 0; i < colorBoxes.length; i++) {
@@ -25,6 +27,7 @@ for (let i = 0; i < colorBoxes.length; i++) {
 // lock unlock 
 lock.addEventListener("click", lockHelper);
 unlock.addEventListener("click", unlockHelper);
+
 
 // ticket creation 
 function createTicket() {
@@ -146,6 +149,9 @@ function unlockHelper(e) {
     isLocked = false;
     showAll();
     // edit -> enable 
+}
+function deleteHelper() {
+   console.log("Delete will be implemented")
 }
 
 
