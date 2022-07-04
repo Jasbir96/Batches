@@ -18,15 +18,12 @@ addBtn.addEventListener("click", function () {
     }
     createTicket();
 })
-deleteBtn.addEventListener("click", deletehelper)
+deleteBtn.addEventListener("click", deleteHelper)
 // *************change background -> color boxes************** 
 // loop -> eventlistener add
 for (let i = 0; i < colorBoxes.length; i++) {
     colorBoxes[i].addEventListener("click", filterTickets);
 }
-// lock unlock 
-lock.addEventListener("click", lockHelper);
-unlock.addEventListener("click", unlockHelper);
 
 
 // ticket creation 
@@ -38,7 +35,7 @@ function createTicket() {
     ticket.innerHTML = `
     <div class="ticket_header black"></div>
     <div class="ticket_content">
-        <div class="ticket_id ">
+        <div class="ticket_id">
             #${id}
         </div>
         <textarea name=""></textarea>
@@ -140,18 +137,43 @@ function showAll() {
         colorBoxes[i].classList.remove("clicked");
     }
 }
+
+function deleteHelper() {
+    console.log("Delete will be implemented")
+}
+// lock unlock 
+lock.addEventListener("click", lockHelper);
+unlock.addEventListener("click", unlockHelper);
+
 function lockHelper(e) {
     // lock -> click
     isLocked = true;
     // edit -> disable
+    disableEdit();
 }
 function unlockHelper(e) {
     isLocked = false;
     showAll();
     // edit -> enable 
+    enableEdit();
 }
-function deleteHelper() {
-   console.log("Delete will be implemented")
+function disableEdit() {
+    let allTickets = document.querySelectorAll(".ticket");
+    for (let i = 0; i < allTickets.length; i++) {
+        // heading get -> color check 
+        let textarea = allTickets[i].querySelector("textarea");
+        textarea.setAttribute("readonly", "");
+    }
+}
+function enableEdit() {
+    // get all the ticket
+    let allTickets = document.querySelectorAll(".ticket");
+    // check there headings
+    for (let i = 0; i < allTickets.length; i++) {
+        // heading get -> color check 
+        let textarea = allTickets[i].querySelector("textarea");
+        textarea.removeAttribute("readonly", "");
+    }
 }
 
 
