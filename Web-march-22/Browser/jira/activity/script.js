@@ -8,23 +8,67 @@ addBtn.addEventListener("click", function () {
         alert("FIrst unlock it");
         return;
     }
-    createTicket();
+    handleCreation();
 })
-
 // ticket creation 
-function createTicket() {
+function handleCreation() {
     // 2. main -> ticket add
+    isDelete = false;
     let id = uuidv4();
+    // logic creating a box -> it will exist 
+    createModal(id);
+}
+function createModal(id) {
+    let cColor = "black";
+    let modal = document.createElement("div");
+    modal.setAttribute("class", "modal");
+    modal.innerHTML = `
+            <textarea class="contentarea"
+            placeholder="Enter some Task"
+            ></textarea>
+            <div class="pallet_container">
+                <div class="pallet_color pink"></div>
+                <div class="pallet_color blue"></div>
+                <div class="pallet_color green"></div>
+                <div class="pallet_color black "></div>
+            </div>`;
+    main.appendChild(modal);
+    // color choose 
+    let allColors = modal.querySelectorAll(".pallet_color");
+    for (let i = 0; i < allColors.length; i++) {
+        allColors[i].addEventListener("click", function (e) {
+            cColor = allColors[i].classList[1];
+        })
+    }
+    // color code 
+    modal.addEventListener("keypress", function (e) {
+        let key = e.key;
+        if (key == "Enter") {
+            // get text, color
+            let textarea = modal.querySelector("textarea");
+            let text = textarea.value;
+            // destory;
+            modal.remove();
+            // return text color
+            createTicket(id, cColor, text);
+        }
+    })
+}
+
+
+
+
+function createTicket(id, color, text) {
     let ticket = document.createElement("div");
     ticket.setAttribute("class", "ticket");
     ticket.innerHTML = `
-    <div class="ticket_header black"></div>
-    <div class="ticket_content">
-        <div class="ticket_id">
-            #${id}
-        </div>
-        <textarea name=""></textarea>
-    </div>`;
+<div class="ticket_header ${color}"></div>
+<div class="ticket_content">
+    <div class="ticket_id">
+        #${id}
+    </div>
+    <textarea name="">${text}</textarea>
+</div>`;
     main.appendChild(ticket);
 
     // 3. change color
@@ -33,7 +77,6 @@ function createTicket() {
     header.addEventListener("click", changeColor);
     // delete 
     ticket.addEventListener("click", deleteTicket);
-
 }
 function changeColor(e) {
     // e.currentTarget give the element on which event has happened
