@@ -7,7 +7,6 @@ const lock = document.querySelector(".lock");
 const unlock = document.querySelector(".unlock");
 const deleteBtn = document.querySelector(".delete");
 let isLocked = false;
-let isDelete = false;
 // creation of tickets
 // 1. when + is clicked then a ticket will created
 addBtn.addEventListener("click", function () {
@@ -18,14 +17,11 @@ addBtn.addEventListener("click", function () {
     }
     createTicket();
 })
-deleteBtn.addEventListener("click", deleteHelper)
 // *************change background -> color boxes************** 
 // loop -> eventlistener add
 for (let i = 0; i < colorBoxes.length; i++) {
     colorBoxes[i].addEventListener("click", filterTickets);
 }
-
-
 // ticket creation 
 function createTicket() {
     // 2. main -> ticket add
@@ -39,19 +35,19 @@ function createTicket() {
             #${id}
         </div>
         <textarea name=""></textarea>
-    </div>
-`;
+    </div>`;
     main.appendChild(ticket);
     // ticket should have some functionalites
-
     // 3. change color
     // header pe click ho -> change the color
     let header = ticket.querySelector(".ticket_header");
-    header.addEventListener("click", changeColor)
-    // 4. lock and unlock,color filtering 
+    header.addEventListener("click", changeColor);
+    // 1.
+    ticket.addEventListener("click", deleteTicket);
     // diificult
 }
 function changeColor(e) {
+    // unlock wala check 
     // e.currentTarget give the element on which event has happened
     let header = e.currentTarget;
     //    i have html element and classes can be used to identify that
@@ -137,14 +133,27 @@ function showAll() {
         colorBoxes[i].classList.remove("clicked");
     }
 }
+deleteBtn.addEventListener("click", deleteHelper)
+let isDelete = false;
 
 function deleteHelper() {
-    console.log("Delete will be implemented")
+    if (isDelete == false) {
+        isDelete = true;
+    } else {
+        isDelete = false;
+    }
 }
+function deleteTicket(e) {
+    if (isDelete == true) {
+        e.currentTarget.remove();
+    }
+}
+
+
+
 // lock unlock 
 lock.addEventListener("click", lockHelper);
 unlock.addEventListener("click", unlockHelper);
-
 function lockHelper(e) {
     // lock -> click
     isLocked = true;
@@ -157,6 +166,9 @@ function unlockHelper(e) {
     // edit -> enable 
     enableEdit();
 }
+
+
+
 function disableEdit() {
     let allTickets = document.querySelectorAll(".ticket");
     for (let i = 0; i < allTickets.length; i++) {
