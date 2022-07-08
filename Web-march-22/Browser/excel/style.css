@@ -1,0 +1,30 @@
+/* basic css  */
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0px;
+}
+/* specific height */
+.menu_bar {
+    border: 1px solid red;
+    height: 3rem;
+    background-color: lightblue;
+}
+.formula_container {
+    border: 1px solid red;
+    height: 2rem;
+    background-color: lightgreen;
+}
+.sheets_container {
+    border: 1px solid red;
+    height: 2rem;
+    background-color: lightsalmon;
+}
+.grid_container {
+    border: 1px solid red;
+    height: calc( 100vh - 7rem );
+        background-color: lightgrey;
+}
+
+/* grid -> remaining height */
