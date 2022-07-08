@@ -27,20 +27,26 @@ body {
 }
 
 
-
-
-
 /* grid -> remaining height */
 .grid_container {
     border: 1px solid gray;
     height: calc(100vh - 7rem);
+    overflow: auto;
     /* background-color: lightgrey; */
 }
 
 .cell {
     border: 0.5px solid gray;
-    height: 2rem;
+    height: 1.6rem;
     width: 5rem;
+    background-color: lightpink;
+}
+
+.tl_cell {
+    height: 1.4rem;
+    width: 2rem;
+    border-right: 5px solid lightgray;
+    border-bottom: 5px solid lightgray;
 }
 
 .left_col>* {
@@ -53,9 +59,12 @@ body {
     display: flex;
 }
 
-.top_row>.cell {
+.top_row>.cell, .row>.cell {
     padding-top: 0.2rem;
     min-width: 5rem;
     text-align: center;
+}
 
+.row {
+    display: flex;
 }
