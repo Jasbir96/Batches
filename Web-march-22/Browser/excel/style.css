@@ -29,15 +29,16 @@ body {
 
 /* grid -> remaining height */
 .grid_container {
-    border: 1px solid gray;
+    border: 5px solid red;
     height: calc(100vh - 7rem);
     overflow: auto;
+    position: relative;
     /* background-color: lightgrey; */
 }
 
 .cell {
     border: 0.5px solid gray;
-    height: 1.6rem;
+    height: 1.5rem;
     width: 5rem;
     background-color: lightpink;
 }
@@ -57,6 +58,17 @@ body {
 
 .top_row {
     display: flex;
+    position: absolute;
+    top:0;
+    left: 2rem;
+}
+.left_col {
+    position: absolute;
+    top: 1.4rem;
+}
+.grid {
+    position: absolute;
+    left:2.01rem;
 }
 
 .top_row>.cell, .row>.cell {
