@@ -20,16 +20,12 @@ body {
     /* background-color: lightgreen; */
 }
 
-.sheets_container {
-    border: 1px solid gray;
-    height: 2rem;
-    background-color: lightsalmon;
-}
 
 
+/* ******************grid starts*********************/
 /* grid -> remaining height */
 .grid_container {
-    border: 5px solid red;
+    /* border: 5px solid red; */
     height: calc(100vh - 7rem);
     overflow: auto;
     position: relative;
@@ -40,7 +36,7 @@ body {
     border: 0.5px solid gray;
     height: 1.5rem;
     width: 5rem;
-    background-color: lightpink;
+    /* background-color: lightpink; */
 }
 
 .tl_cell {
@@ -48,6 +44,7 @@ body {
     width: 2rem;
     border-right: 5px solid lightgray;
     border-bottom: 5px solid lightgray;
+    /* position:absolute; */
 }
 
 .left_col>* {
@@ -59,16 +56,18 @@ body {
 .top_row {
     display: flex;
     position: absolute;
-    top:0;
+    top: 0;
     left: 2rem;
 }
+
 .left_col {
     position: absolute;
     top: 1.4rem;
 }
+
 .grid {
     position: absolute;
-    left:2.01rem;
+    left: 2.01rem;
 }
 
 .top_row>.cell, .row>.cell {
@@ -79,4 +78,29 @@ body {
 
 .row {
     display: flex;
+}
+
+/* ****************sheets container************** */
+.sheets_container {
+    /* border: 1px solid gray; */
+    height: 2rem;
+    /* background-color: lightsalmon; */
+    display: flex;
+}
+
+.add_sheet {
+    height: 2rem;
+    width: 2rem;
+    border: 2px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sheet {
+    height: 2rem;
+    width: 4rem;
+    border: 1px solid gray;
+    text-align: center;
+    padding-top: 0.2rem;
 }
