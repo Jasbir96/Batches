@@ -54,10 +54,6 @@ function createModal(id) {
         }
     })
 }
-
-
-
-
 function createTicket(id, color, text) {
     let ticket = document.createElement("div");
     ticket.setAttribute("class", "ticket");
