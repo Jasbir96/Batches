@@ -8,12 +8,14 @@ app.get("/sayhello", function (req, res) {
     res.end("Hello fron server");
 })
 // get karna hai data from saybye
-app.get("/saybye", function (req, res) {
+app.get("/saybye", function (req, res){
     // frontend
-    res.send("Bye");
+    res.end("Bye");
 })
 //  3000 -> address of a  server -> on a given machine 
 app.listen(3000, function () {
     console.log("server started at port 3000");
 })
-// console.log("Hello");
+console.log("Hello hi hello");
+// if server file is running on same machine : localhost:3000
+// http port -> ??
