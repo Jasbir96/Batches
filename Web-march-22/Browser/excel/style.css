@@ -12,7 +12,32 @@ body {
     border: 1px solid gray;
     height: 3rem;
     /* background-color: lightblue; */
+    display: flex;
+    align-items: center;
 }
+.menu_bar>* {
+    height: 75%;
+}
+.select_f_family {
+    width: 20%;
+    border: none;
+    border-right: 1px solid gray;
+    text-align: center;
+}
+.select_f_size {
+    width: 10%;
+    border: none;
+    border-right: 1px solid gray;
+}
+.bui_container, .alignment_container {
+    border-right: 1px solid gray;
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
 
 /*******************formula container************/
 .formula_container {
