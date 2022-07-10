@@ -3,13 +3,14 @@ const express = require("express");
 // you have to write it -> app signifies -> your server  
 const app = express();
 // if you want to accept data in backend
-app.use(express.json());
 // get karna hai data from sayhello
 // app.get("/sayhello", function (req, res) {
 //     // frontend 
 //     res.end("Hello fron server");
 // })
 // get karna hai data from saybye
+app.use(express.json());
+// class 1 e
 app.get("/saybye", function (req, res) {
     // frontend
     res.end("Bye");
@@ -36,14 +37,13 @@ app.delete("/sayhello", function (req, res) {
     res.end("delete wala hello from server");
 })
 // template route 
-app.get("/getSquare/:num1/:num2", function (req, res) {
-    console.log("header me data", req.params.num1);
-    console.log("header me data", req.params.num2);
+app.get("/getProduct/:first/:second", function (req, res) {
+    console.log("header me data", req.params.first);
+    console.log("header me data", req.params.second);
     // let number = req.params.num;
-    let sq = req.params.num1 * req.params.num2;
+    let sq = req.params.first * req.params.second;
     res.end(sq + " ");
 })
-
 //  3000 -> address of a  server -> on a given machine 
 app.listen(3000, function () {
     console.log("server started at port 3000");
