@@ -5,18 +5,22 @@ const app = express();
 // if you want to accept data in backend
 app.use(express.json());
 // get karna hai data from sayhello
-app.get("/sayhello", function (req, res) {
-    // frontend 
-    res.end("Hello fron server");
-})
+// app.get("/sayhello", function (req, res) {
+//     // frontend 
+//     res.end("Hello fron server");
+// })
 // get karna hai data from saybye
 app.get("/saybye", function (req, res) {
     // frontend
     res.end("Bye");
 })
-// post route
 // req -> represents request
 // res-> represents response 
+app.get("/sayhello", function (req, res) {
+    console.log("data", req.body);
+    res.end("get wala hello from server");
+})
+// post route
 app.post("/sayhello", function (req, res) {
     console.log("data", req.body);
     res.end("post wala hello from server");

@@ -7,22 +7,46 @@ body {
     margin: 0px;
 }
 
-/* specific height */
+/*******************menu bar************/
 .menu_bar {
     border: 1px solid gray;
     height: 3rem;
     /* background-color: lightblue; */
 }
 
+/*******************formula container************/
 .formula_container {
     border: 1px solid gray;
     height: 2rem;
     /* background-color: lightgreen; */
+    /* flex enable -> vertical centering  */
+    display: flex;
+    align-items: center;
+}
+
+.formula_img {
+    height: 1.2rem;
+}
+
+.address_bar {
+    width: 20%;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-right: 1px solid gray;
+    margin-right: 1.5rem;
+}
+
+.formula_bar {
+    margin-left: 0.5rem;
+    width: 70%;
+    border: none;
+    border-left: 1px solid gray;
+    outline: none;
 }
 
 
-
-/* ******************grid starts*********************/
+/* ******************grid container*********************/
 /* grid -> remaining height */
 .grid_container {
     /* border: 5px solid red; */
