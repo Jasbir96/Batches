@@ -9,6 +9,6 @@ handlers serially
 * **if** request hit's your handler
         use -> it will always execute the function 
         get -> route + get method  then it will execute
-        post -> route + get method  then it will execute
-        patch -> route + get method  then it will execute
-        delete -> route + get method  then it will execute
+        post -> route + post method  then it will execute
+        patch -> route + patch method  then it will execute
+        delete -> route + delete method  then it will execute
