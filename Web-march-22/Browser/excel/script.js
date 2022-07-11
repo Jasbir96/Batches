@@ -21,8 +21,6 @@ for (let i = 0; i < cells.length; i++) {
     })
 }
 
-
-
 function setMenuBar(rid, cid) {
     let cellObj = db[rid][cid];
     // boldButton
@@ -31,7 +29,6 @@ function setMenuBar(rid, cid) {
     } else {
         boldButton.classList.remove("selected");
     }
-    
     // italicButton
     if (cellObj.isItalic) {
         italicButton.classList.add("selected");
@@ -44,6 +41,10 @@ function setMenuBar(rid, cid) {
     } else {
         underlineButton.classList.remove("selected");
     }
-    console.log(cellObj);
+    // font size
+    fontSizeSelector.value = cellObj.fontSize;
+    // font family
+    fontFamilySelector.value = cellObj.fontFamily;
+    // console.log(cellObj);
 
 }
