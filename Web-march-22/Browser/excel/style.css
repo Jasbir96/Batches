@@ -15,26 +15,38 @@ body {
     display: flex;
     align-items: center;
 }
+
 .menu_bar>* {
     height: 75%;
 }
+
 .select_f_family {
     width: 20%;
     border: none;
     border-right: 1px solid gray;
     text-align: center;
 }
+
 .select_f_size {
     width: 10%;
     border: none;
     border-right: 1px solid gray;
 }
+
 .bui_container, .alignment_container {
     border-right: 1px solid gray;
     width: 20%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+
+i {
+    color: rgb(121, 114, 114);
+}
+
+.selected {
+    color: black;
 }
 
 
@@ -119,10 +131,16 @@ body {
     left: 2.01rem;
 }
 
+
 .top_row>.cell, .row>.cell {
     padding-top: 0.2rem;
     min-width: 5rem;
     text-align: center;
+}
+
+.row>.cell {
+
+    font-family: "Courier New";
 }
 
 .row {
