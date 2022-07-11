@@ -1,5 +1,5 @@
 // create grid
-function init() {
+function initUI() {
     let topRow = document.querySelector(".top_row");
     // left column ke cells
     let leftCol = document.querySelector(".left_col");
@@ -37,4 +37,26 @@ function init() {
         grid.appendChild(row);
     }
 }
-init();
+// 1. creation 2d db -> to represent every 
+// cell in the excel grid
+let db = [];
+function initDb() {
+    for (let i = 0; i < 100; i++) {
+        let rowArr = [];
+        for (let j = 0; j < 26; j++) {
+            let cellObj = {
+                fontFamily: "Courier New",
+                fontSize: "16",
+                isBold: false,
+                isItalic: false,
+                isUnderline: false,
+            }
+            rowArr.push(cellObj);
+
+        }
+        db.push(rowArr);
+    }
+}
+initUI();
+initDb();
+// console.log(db);f
