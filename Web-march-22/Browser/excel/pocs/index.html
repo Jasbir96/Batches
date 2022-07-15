@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="a" placeholder="a">
+    <input type="text" id="b" placeholder="b">
+    <input type="text" id="c" placeholder="c">
+    <!-- keyboard-->
+    <script>
+        let inputA = document.querySelector("#a");
+        let inputB = document.querySelector("#b");
+        let inputC = document.querySelector("#c");
+        // when a key is pressed
+        // inputA.addEventListener("keypress", function (e) {
+        //     // console.log("Key pressed");
+        //     console.log(e.key);
+        // })
+        // focus
+        // inputA.addEventListener("focus", function () {
+        //     console.log("inputA is in focus");
+        //     console.log(inputA);
+        // })
+        // inputB.addEventListener("focus", function () {
+        //     console.log("inputB is in focus");
+        //     console.log(inputB);
+        // })
+        // inputC.addEventListener("focus", function () {
+        //     console.log("inputC is in focus");
+        //     console.log(inputC);
+        // })
+        // blur ->
+        inputA.addEventListener("blur", function (e) {
+            console.log("inputA is in blur");
+            console.log(inputA);
+        })
+        inputB.addEventListener("blur", function (e) {
+            console.log("inputB is in blur");
+            console.log(inputB);
+        })
+        inputC.addEventListener("blur", function (e) {
+            console.log("inputC is in blur");
+            console.log(inputC);
+        })
+
+    </script>
+</body>
+
+</html>
