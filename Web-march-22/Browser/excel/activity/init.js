@@ -50,10 +50,11 @@ function initDb() {
                 isBold: false,
                 isItalic: false,
                 isUnderline: false,
-                cAlignment:"justify"
+                cAlignment: "justify",
+                formula: "",
+                value: ""
             }
             rowArr.push(cellObj);
-
         }
         db.push(rowArr);
     }

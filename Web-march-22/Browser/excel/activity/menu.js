@@ -125,10 +125,6 @@ for (let i = 0; i < alignmentBtns.length; i++) {
 }
 
 
-
-
-
-
 // ********************helper function*****************
 function getCell() {
     //1.  set -> address get  from address bar
