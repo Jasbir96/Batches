@@ -50,6 +50,7 @@ function initDb() {
                 isBold: false,
                 isItalic: false,
                 isUnderline: false,
+                cAlignment:"justify"
             }
             rowArr.push(cellObj);
 
