@@ -3,6 +3,7 @@ const express = require("express");
 // you have to write it -> app signifies -> your server  
 const app = express();
 app.use(express.json());
+// boday checker -> user defined middleware 
 app.post("/simple", function bodyChecker(req, res, next) {
     let data = req.body;
     // Object.keys(data)=>["name","age"]
