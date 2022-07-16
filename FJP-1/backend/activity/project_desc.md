@@ -18,17 +18,7 @@
   * Plan Details
     * Discreption of the plan
     * Buy Now Button
-    * Reviews
-
-
-
-
-
-
-
-
- 
-  
+    * Reviews  
 ## Backend Arcitecture:  Mvc architecture, REST API
 ## Database : MongoDb,Mongoose
 ## Authentication : Json web token 
