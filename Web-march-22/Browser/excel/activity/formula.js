@@ -7,7 +7,6 @@ for (let i = 0; i < cells.length; i++) {
         let dbCell = db[rid][cid];
         dbCell.value = cells[i].innerText;
         evaluateChildren(dbCell.children);
-
     })
 }
 function evaluateChildren(children) {
@@ -106,7 +105,7 @@ function getRidCidFromUI(uicell) {
     // console.log(uicell, " ", uicell.innerText);
     let rid = uicell.getAttribute("rid");
     let cid = uicell.getAttribute("cid");
-    return { rid, cid }
+    return { rid, cid };
 };
 function getRidCidFromStringAddress(stringAddress) {
     // console.log(stringAddress);
@@ -117,6 +116,3 @@ function getRidCidFromStringAddress(stringAddress) {
     // console.log(rid, " ", cid);
     return { "rid": rid, "cid": cid }
 }
-
-
-
