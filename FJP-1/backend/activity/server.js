@@ -20,6 +20,7 @@ app.post("/signup", async function (req, res) {
 })
 
 // login input: email + password:
+// locahost:3000 -> express API 
 app.listen(3000, function () {
     console.log("server started at port 3000");
 })

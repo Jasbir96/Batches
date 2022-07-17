@@ -4,8 +4,10 @@
 // * how to create a db ->  link share
 // connect to my app // mongoose 
 const mongoose = require('mongoose'); //npm i mongoose
-let dblink = "mongodb+srv://admin:<password>@cluster0.ufy4c.mongodb.net/?retryWrites=true&w=majority";
-// db connect
+// db server link -> mongodb atlas ka link
+let dblink =
+    "mongodb+srv://admin:BohYctQDD0twhLoA@cluster0.ufy4c.mongodb.net/?retryWrites=true&w=majority";
+// db  server connect -> mongodbAtlas connect 
 mongoose
     .connect(dblink)
     .then(function () {
@@ -18,29 +20,41 @@ mongoose
 let userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        required: [true, "Name is not send"],
     },
     password: {
         type: String,
-        required: true
+        required: [true, "password is missing"]
     },
     confirmPassword: {
         type: String,
-        required: true
+        required: [true, "confirmPassword is missing "],
+        // custom validator
+        validate: {
+            validator: function () {
+                // return true -> value that is valid
+                // return false -> value that is not valid  
+            },
+            //    error message
+            message: "password miss match"
+        },
     },
     email: {
         type: String,
-        required: true,
+        required: [true, "email is missing"],
         unique: true
     },
     phonenumber: {
-        type: "String",
-        minLength: 10,
+        type: String,
+        minLength: [10, "less then 10 numbers"],
         maxLength: 10
     },
     pic: {
         type: String,
         default: "dp.png"
+    }, days: {
+        type: String,
+        enum: ["Mon", "Tue", "Wed"]
     },
     address: {
         type: String,
@@ -55,5 +69,8 @@ let userSchema = new mongoose.Schema({
 // password,
 // address
 // ?? -> ??
-const UserModel = mongoose.model('FooduserModel', userSchema);
+// model is similar to your collection 
+const UserModel = mongoose.model
+    // name of the collection, the set of rules this collection should follow
+    ('FooduserModel', userSchema);
 module.exports = UserModel;

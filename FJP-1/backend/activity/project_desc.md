@@ -19,7 +19,7 @@
     * Discreption of the plan
     * Buy Now Button
     * Reviews  
-## Backend Arcitecture:  Mvc architecture, REST API
+## Backend Architecture:  MVC architecture, REST API
 ## Database : MongoDb,Mongoose
 ## Authentication : Json web token 
 ## 3rd party : 
@@ -32,7 +32,6 @@
     * Frontend : Netlify
     * Codebase : Github
     * Database server : MongoDB Atlas 
-
 * Futher improvement : videos, feedback ,meal level  
 
 
