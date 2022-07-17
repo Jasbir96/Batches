@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const UserModel = require("./userModel");
+// repersent -> collection
+const FooduserModel = require("./userModel");
 // signup  input:
 // name,
 // password,
@@ -11,12 +12,16 @@ const UserModel = require("./userModel");
 // pic,
 app.use(express.json());
 app.post("/signup", async function (req, res) {
-    let data = req.body;
-    console.log(data);
-    // to create 
-    let newUser = await UserModel.create(data);
-    console.log(newUser);
-    res.end("data recieved");
+    try {
+        let data = req.body;
+        console.log(data);
+        // to create a document inside userModel
+        let newUser = await FooduserModel.create(data);
+        console.log(newUser);
+        res.end("data recieved");
+    } catch (err) {
+        res.end(err.message);
+    }
 })
 
 // login input: email + password:

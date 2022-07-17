@@ -32,8 +32,8 @@ let userSchema = new mongoose.Schema({
         // custom validator
         validate: {
             validator: function () {
-                // return true -> value that is valid
-                // return false -> value that is not valid  
+                // this referes to the current entry 
+                    return this.password==this.confirmPassword;
             },
             //    error message
             message: "password miss match"
@@ -51,11 +51,13 @@ let userSchema = new mongoose.Schema({
     },
     pic: {
         type: String,
-        default: "dp.png"
-    }, days: {
-        type: String,
-        enum: ["Mon", "Tue", "Wed"]
-    },
+        default: "dp.png",
+
+    }, 
+    // days: {
+    //     type: String,
+    //     enum: ["Mon", "Tue", "Wed"]
+    // },
     address: {
         type: String,
     }
@@ -70,7 +72,7 @@ let userSchema = new mongoose.Schema({
 // address
 // ?? -> ??
 // model is similar to your collection 
-const UserModel = mongoose.model
+const FooduserModel = mongoose.model
     // name of the collection, the set of rules this collection should follow
-    ('FooduserModel', userSchema);
-module.exports = UserModel;
+('FooduserModel', userSchema);
+module.exports = FooduserModel;
