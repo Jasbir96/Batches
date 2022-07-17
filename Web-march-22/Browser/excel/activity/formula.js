@@ -1,32 +1,31 @@
-// set value
+// *********************************************set value*****************************
 for (let i = 0; i < cells.length; i++) {
     // 2. when a cell is clicked -> element
     cells[i].addEventListener("blur", function () {
         // db set value
         let { rid, cid } = getRidCidFromUI(cells[i]);
-        db[rid][cid].value = cells[i].innerText;
+        let dbCell = db[rid][cid];
+        dbCell.value = cells[i].innerText;
+        // children check -> present 
+        // evaluate call
+
     })
 }
-// set formula
+// *******************************************set formula***************************************
 const formulaBar = document.querySelector(".formula_bar");
 formulaBar.addEventListener("keypress", function (e) {
     // enter is pressed and formulabar is not empty 
     if (e.key == "Enter" && formulaBar.value != "") {
         // formula wala logic implementation
-        let formula = formulaBar.value
+        let formula = formulaBar.value;
+        let cCell = addressBar.value;
         let ans = evaluate(formula);
         console.log(ans);
         let { rid, cid } = getRidCidFromAddressBar();
         setUI(ans, rid, cid);
-        setFormulaInDb(formula, rid, cid, ans);
+        setFormulaInDb(formula, rid, cid, ans, cCell);
     }
 })
-
-
-
-
-
-
 function evaluate(formula) {
     // parse -> ( A1 + A2 )->get cells from formula
     // ( A1 + A2 )-> split(" ")-> array -> [(,A1,+,A2,)]
@@ -60,6 +59,27 @@ function evaluate(formula) {
 
 
 }
+function setUI(ans, rid, cid) {
+    let cell = document.querySelector
+        (`.grid .cell[rid="${rid}"][cid="${cid}"]`);
+    cell.innerText = ans;
+}
+function setFormulaInDb(formula, rid, cid, ans, cCell) {
+    db[rid][cid].formula = formula;
+    db[rid][cid].value = ans;
+    let formulaEntities = formula.split(" ");
+    //  A1,A2 ke children ke array me hamne b1 ko put kar dia hai 
+    for (let i = 0; i < formulaEntities.length; i++) {
+        let cEntity = formulaEntities[i];
+        let ascii = cEntity.charCodeAt(0);
+        if (ascii >= 65 && ascii <= 90) {
+            let { rid, cid } = getRidCidFromStringAddress(cEntity);
+            let children = db[rid][cid].children;
+            children.push(cCell);
+        }
+    }
+
+}
 // *************************helper*************** 
 function getRidCidFromUI(uicell) {
     console.log(uicell, " ", uicell.innerText);
@@ -77,13 +97,5 @@ function getRidCidFromStringAddress(stringAddress) {
     return { "rid": rid, "cid": cid }
 }
 
-function setUI(ans, rid, cid) {
-    let cell = document.querySelector
-        (`.grid .cell[rid="${rid}"][cid="${cid}"]`);
-    cell.innerText = ans;
-}
-function setFormulaInDb(formula, rid, cid, ans) {
-    db[rid][cid].formula = formula;
-    db[rid][cid].value = ans;
-}
+
 

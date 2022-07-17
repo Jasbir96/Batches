@@ -52,7 +52,8 @@ function initDb() {
                 isUnderline: false,
                 cAlignment: "justify",
                 formula: "",
-                value: ""
+                value: "",
+                children:[]
             }
             rowArr.push(cellObj);
         }
