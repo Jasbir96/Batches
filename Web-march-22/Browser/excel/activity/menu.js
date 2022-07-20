@@ -131,7 +131,7 @@ function getCell() {
     let { rid, cid } = getRidCidFromAddressBar();
     //2.  address -> ui cell get (html)
     let cell = document.querySelector
-        (`.grid .cell[rid="${rid}"][cid="${cid}"]`)
+        (`.grid .cell[rid="${rid}"][cid="${cid}"]`);
     return cell;
 }
 function getRidCidFromAddressBar() {
