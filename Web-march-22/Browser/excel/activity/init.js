@@ -120,7 +120,7 @@ function setUI(db) {
             uiCell.style.fontStyle = cellObj.isItalic == true ? "italic" : "normal";
             uiCell.style.fontWeight = cellObj.isBold == true ? "bold" : "normal";
             uiCell.style.textDecoration = cellObj.isUnderline == true ? "underline" : "none";
-            uiCell.style.textlign = cellObj.cAlignment;
+            uiCell.style.textAlign = cellObj.cAlignment;
             uiCell.textContent = cellObj.value;
         }
     }
