@@ -56,7 +56,7 @@ function setMenuBar(rid, cid) {
             alignmentBtns[j].classList.add("selected");
         }
     }
-
-
-
+    // set formula in sync
+    let formula = cellObj.formula;
+    formulaBar.value = formula
 }
