@@ -37,6 +37,45 @@ function initUI() {
         grid.appendChild(row);
     }
 }
+
+// ***********************sheet wala logic**************
+let firstSheet = document.
+    querySelector(".sheet_sub .sheet");
+firstSheet.addEventListener("click", changeSheet);
+// new sheets to be created 
+let addBtn = document.querySelector(".add_sheet");
+let sheetSubContainer = document.querySelector(".sheet_sub");
+
+addBtn.addEventListener("click", function () {
+    // get all the sheet
+    let allSheets = document.
+        querySelectorAll(".sheet_sub .sheet");
+    // last sheet
+    let lastSheet = allSheets[allSheets.length - 1];
+    let myId = lastSheet.getAttribute("myId")
+    let newMyId = Number(myId) + 1;
+    let sheetHtml = document.createElement("div");
+    sheetHtml.setAttribute("class", "sheet");
+    sheetHtml.setAttribute("myId", `${newMyId}`);
+    sheetHtml.innerText = `Sheet ${newMyId + 1}`;
+    sheetSubContainer.appendChild(sheetHtml);
+    // current sheet put karne wala event listener
+    sheetHtml.addEventListener("click", changeSheet);
+})
+function changeSheet(e) {
+    let sheetHtml = e.currentTarget;
+    let allSheets = document.
+        querySelectorAll(".sheet_sub .sheet");
+    for (let i = 0; i < allSheets.length; i++) {
+        allSheets[i].classList.remove("current_sheet");
+    }
+    // set as a current sheet on the ui 
+    sheetHtml.classList.add("current_sheet");
+}
+
+
+
+
 // 1. creation 2d db -> to represent every 
 // cell in the excel grid
 let db = [];
@@ -53,7 +92,7 @@ function initDb() {
                 cAlignment: "justify",
                 formula: "",
                 value: "",
-                children:[]
+                children: []
             }
             rowArr.push(cellObj);
         }

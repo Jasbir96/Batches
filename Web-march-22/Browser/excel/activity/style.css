@@ -165,9 +165,17 @@ i {
 }
 
 .sheet {
+    background-color: lightgray;
     height: 2rem;
     width: 4rem;
     border: 1px solid gray;
     text-align: center;
     padding-top: 0.2rem;
+}
+
+.current_sheet {
+    background-color: white;
+}
+.sheet_sub{
+    display: flex;
 }
