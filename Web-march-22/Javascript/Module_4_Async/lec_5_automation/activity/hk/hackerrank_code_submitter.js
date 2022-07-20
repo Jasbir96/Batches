@@ -29,7 +29,6 @@ async function fn() {
     //    promises compose 
     // choose a topic  -> ?? Java ✔ 
     await waitAndClickTopic("Java", tab);
-
     // select questions -> ??  Java Stdin and Stdout I ✔
     await waitAndClickQuestion("Java Stdin and Stdout I", tab)
     // write the code ->  -> code read type 
@@ -39,7 +38,6 @@ async function fn() {
     await copyPasteQuestion(code, tab);
     // submit the code  -> button click n-> easy -> 
     await submitCode(tab);
-
 }
 fn();
 // keyboard ,mouse ,scroll

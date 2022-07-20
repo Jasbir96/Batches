@@ -5,7 +5,13 @@ for (let i = 0; i < cells.length; i++) {
         // db set value
         let { rid, cid } = getRidCidFromUI(cells[i]);
         let dbCell = db[rid][cid];
+        if (dbCell.formula != "" &&
+            dbCell.value != cells[i].innerText) {
+            let cCell = addressBar.value;
+            removeFormula(dbCell, cCell);
+        }
         dbCell.value = cells[i].innerText;
+
         evaluateChildren(dbCell.children);
     })
 }
@@ -37,14 +43,46 @@ formulaBar.addEventListener("keypress", function (e) {
         // formula wala logic implementation
         let formula = formulaBar.value;
         let cCell = addressBar.value;
+        let { rid, cid } = getRidCidFromAddressBar();
+        let dbCell = db[rid][cid];
+        let oldFormula = dbCell.formula;
+        if (oldFormula == formula) {
+            return;
+        }
+        // remove 
+        if (oldFormula != "") {
+            removeFormula(dbCell, cCell);
+        }
+// add
         let ans = evaluate(formula);
         // console.log(ans);
-        let { rid, cid } = getRidCidFromAddressBar();
         setCell(ans, rid, cid);
         setFormulaInDb(formula, rid, cid, ans, cCell);
     }
 })
 
+function removeFormula(dbCell, cCell) {
+    let formula = dbCell.formula
+    let formulaEntities = formula.split(" ");
+    //  A1,A2 ke children ke array me hamne b1 ko put kar dia hai 
+    // remove parent from children
+    for (let i = 0; i < formulaEntities.length; i++) {
+        let cEntity = formulaEntities[i];
+        let ascii = cEntity.charCodeAt(0);
+        if (ascii >= 65 && ascii <= 90) {
+            let { rid, cid } = getRidCidFromStringAddress(cEntity);
+            let children = db[rid][cid].children;
+            let idx = children.indexOf(cCell);
+            if (idx != -1) {
+                children.splice(idx, 1);
+            }
+        }
+    }
+    dbCell.formula = "";
+
+
+
+}
 
 function evaluate(formula) {
     // parse -> ( A1 + A2 )->get cells from formula
