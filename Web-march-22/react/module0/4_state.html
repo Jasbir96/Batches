@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- react ui change algorithm -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <!-- using react library it changes actual web page -->
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- babel library converts your jsx into js  -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <!-- babel -> it knowa that we need to convert JSX to simple js  -->
+    <script type="text/babel">
+
+        function Counter() {
+            // let count = 0;
+            // that is state 
+            // first -> variable -> initial value of 0
+            // second -> change  function 
+            let [count, changeCount] = React.useState(5);
+            function incrementCount() {
+                // whenever ui changes -> function will execute again
+                // exceptt your line number 24
+                changeCount(count + 1);
+            }
+            function decrementCount() {
+                changeCount(count - 1);
+            }
+            return (
+                <div>
+                    <h1> Counter</h1>
+                    <div>
+                        <h2> Current count is {count}</h2>
+                        <button
+                            onClick={incrementCount}
+                        >+</button>
+                        <button
+                            onClick={decrementCount}
+                        >-</button>
+                    </div>
+                </div>
+
+            )
+        }
+        //1  it puts  component  return value  in the  div with id=app 
+        ReactDOM.render(<Counter></Counter>, document.getElementById("app"));
+    </script>
+</body>
+
+</html>
