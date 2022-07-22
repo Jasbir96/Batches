@@ -26,16 +26,21 @@
             }
             return (
                 <div>
+                    <h1>Counter 1</h1>
                     <h2>Counter value is {count} </h2>
                     <button onClick={incrementCount}>+</button>
                     <button onClick={decrementCount}>-</button >
-                </div >
+                </div>
             )
         }
-
         //1  it puts  component  return value  in the  div with id=app 
         ReactDOM.render(<Counter></Counter>, document.getElementById("app"));
     </script>
 </body>
 
 </html>
+
+
+<!-- component -> functional
+class based 
+-->
