@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+// token name is -> JWT & mechanism -> cookies
 // repersent -> collection
 const FooduserModel = require("./userModel");
 // signup  input:
@@ -28,13 +29,13 @@ app.post("/login", async function (req, res) {
     try {
         let data = req.body;
         let { email, password } = data;
-        if (email&&password) {
+        if (email && password) {
             let user = await FooduserModel
-            .findOne({ email: email });
+                .findOne({ email: email });
             if (user) {
                 if (user.password == password) {
                     res.send("user logged In");
-                }else{
+                } else {
                     res.send("email or password does not match");
                 }
             } else {
@@ -48,10 +49,25 @@ app.post("/login", async function (req, res) {
         res.end(err.message);
     }
 })
+// users -> get all the users -> sensitive route -> protected route -> logged in i will only allow that person 
+app.get("/users", protectRoute, async function (req, res) {
+    try {
+        let users = await FooduserModel.find();
+        // to send json data ;
+        res.json(users);
+    } catch (err) {
+        res.end(err.message);
+    }
+})
 // locahost:3000 -> express API 
 app.listen(3000, function () {
     console.log("server started at port 3000");
 })
+function protectRoute(req, res,next) {
+    console.log("protect Route Encountered");
+    // you are logged In then it will allow next fn to run 
+    next();
+}
 // {
 //     name: 'Jasbir',
 //     password: 'abcd',
