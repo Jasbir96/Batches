@@ -47,7 +47,7 @@ let userSchema = new mongoose.Schema({
     phonenumber: {
         type: String,
         minLength: [10, "less then 10 numbers"],
-        maxLength: 10
+        maxLength: [10,"more then 10 numbers"]
     },
     pic: {
         type: String,

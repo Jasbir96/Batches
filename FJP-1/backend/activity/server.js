@@ -23,8 +23,31 @@ app.post("/signup", async function (req, res) {
         res.end(err.message);
     }
 })
-
 // login input: email + password:
+app.post("/login", async function (req, res) {
+    try {
+        let data = req.body;
+        let { email, password } = data;
+        if (email&&password) {
+            let user = await FooduserModel
+            .findOne({ email: email });
+            if (user) {
+                if (user.password == password) {
+                    res.send("user logged In");
+                }else{
+                    res.send("email or password does not match");
+                }
+            } else {
+                res.send(`User with this email Id is not found.
+                 kindly signup`);
+            }
+        } else {
+            res.end(" kindly enter email and password both");
+        }
+    } catch (err) {
+        res.end(err.message);
+    }
+})
 // locahost:3000 -> express API 
 app.listen(3000, function () {
     console.log("server started at port 3000");
