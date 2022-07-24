@@ -34,7 +34,8 @@ app.post("/login", async function (req, res) {
                 .findOne({ email: email });
             if (user) {
                 if (user.password == password) {
-                    // create JWT ->-> payload, secret text ,algorithms-> SHA256
+                    // create JWT ->-> payload, secret text 
+                    // ,algorithms-> SHA256
                     const token = jwt.sign({
                         data: user["_id"],
                         exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24)
@@ -69,6 +70,20 @@ app.get("/users", protectRoute, async function (req, res) {
 })
 app.get("/user", protectRoute, async function (req, res) {
     // user profile ka data show 
+    try {
+        const userId = req.userId;
+        const user = await FooduserModel.findById(userId);
+        res.json({
+            data: user,
+            message: "Data about logged in user is send"
+        });
+        // model by Id -> get
+        // res-> send 
+    } catch (err) {
+        res.end(err.message);
+
+    }
+
 })
 
 // locahost:3000 -> express API 
@@ -81,9 +96,14 @@ function protectRoute(req, res, next) {
         const JWT = cookies.JWT;
         if (cookies.JWT) {
             console.log("protect Route Encountered");
-            // you are logged In then it will allow next fn to run
+            // you are logged In then it will 
+            // allow next fn to run
             let token = jwt.verify(JWT, secrets.JWTSECRET);
-            console.log(token);
+            console.log("Jwt decrypted", token);
+            let userId = token.data
+            console.log("userId",userId);
+            req.userId = userId;
+
             next();
         } else {
             res.send("You are not logged In Kindly Login");
