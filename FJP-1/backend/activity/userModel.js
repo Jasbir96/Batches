@@ -33,7 +33,7 @@ let userSchema = new mongoose.Schema({
         validate: {
             validator: function () {
                 // this referes to the current entry 
-                    return this.password==this.confirmPassword;
+                return this.password == this.confirmPassword;
             },
             //    error message
             message: "password miss match"
@@ -47,17 +47,16 @@ let userSchema = new mongoose.Schema({
     phonenumber: {
         type: String,
         minLength: [10, "less then 10 numbers"],
-        maxLength: [10,"more then 10 numbers"]
+        maxLength: [10, "more then 10 numbers"]
     },
     pic: {
         type: String,
         default: "dp.png",
 
-    }, 
-    // days: {
-    //     type: String,
-    //     enum: ["Mon", "Tue", "Wed"]
-    // },
+    },
+    otp: {
+        type: String
+    },
     address: {
         type: String,
     }
@@ -74,5 +73,5 @@ let userSchema = new mongoose.Schema({
 // model is similar to your collection 
 const FooduserModel = mongoose.model
     // name of the collection, the set of rules this collection should follow
-('FooduserModel', userSchema);
+    ('FooduserModel', userSchema);
 module.exports = FooduserModel;

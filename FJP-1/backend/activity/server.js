@@ -58,6 +58,40 @@ app.post("/login", async function (req, res) {
         res.end(err.message);
     }
 })
+app.patch("/forgetPassword", async function (req, res) {
+    try {
+        let { email } = req.body;
+        let otp = otpGenerator();
+        let user = await FooduserModel
+            .findOneAndUpdate({
+                email: email
+            }, { otp: otp }, { new: true });
+        console.log(user);
+        res.json({
+            data: user,
+            "message": "Otp send to your mail"
+        })
+    } catch (err) {
+        res.send(err.message);
+    }
+})
+app.patch("/resetPassword", async function (req, res) {
+    try {
+        let { otp, password, confirmPassword } = req.body;
+        let user = await FooduserModel.findOneAndUpdate({ otp }, { password, confirmPassword, otp: undefined },
+            { runValidators: true, new: true });
+        console.log(user);
+        res.json({
+            data: user,
+            message: "Password for the use is reset"
+        })
+    } catch (err) {
+        res.send(err.message);
+    }
+})
+function otpGenerator() {
+    return Math.floor(100000 + Math.random() * 900000);
+}
 // users -> get all the users -> sensitive route -> protected route -> logged in i will only allow that person 
 app.get("/users", protectRoute, async function (req, res) {
     try {
@@ -101,7 +135,7 @@ function protectRoute(req, res, next) {
             let token = jwt.verify(JWT, secrets.JWTSECRET);
             console.log("Jwt decrypted", token);
             let userId = token.data
-            console.log("userId",userId);
+            console.log("userId", userId);
             req.userId = userId;
 
             next();
