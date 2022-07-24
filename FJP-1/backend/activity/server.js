@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 // npm i cookie parser
 const cookieParser = require("cookie-parser");
+// jsonwebtoken
+const jwt = require("jsonwebtoken");
+const secrets = require("./secrets");
 // token name is -> JWT & mechanism -> cookies
 // repersent -> collection
 const FooduserModel = require("./userModel");
@@ -31,7 +34,14 @@ app.post("/login", async function (req, res) {
                 .findOne({ email: email });
             if (user) {
                 if (user.password == password) {
-                    res.cookie("token", "sample value");
+                    // create JWT ->-> payload, secret text ,algorithms-> SHA256
+                    const token = jwt.sign({
+                        data: user["_id"],
+                        exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24)
+                    }, secrets.JWTSECRET);
+                    // put token into cookies
+                    res.cookie("JWT", token);
+                    // send the token 
                     res.send("user logged In");
                 } else {
                     res.send("email or password does not match");
@@ -57,17 +67,37 @@ app.get("/users", protectRoute, async function (req, res) {
         res.end(err.message);
     }
 })
+app.get("/user", protectRoute, async function (req, res) {
+    // user profile ka data show 
+})
 
 // locahost:3000 -> express API 
 app.listen(3000, function () {
     console.log("server started at port 3000");
 })
 function protectRoute(req, res, next) {
-    console.log(req.cookies);
-    console.log("protect Route Encountered");
-    // you are logged In then it will allow next fn to run
+    try {
+        const cookies = req.cookies;
+        const JWT = cookies.JWT;
+        if (cookies.JWT) {
+            console.log("protect Route Encountered");
+            // you are logged In then it will allow next fn to run
+            let token = jwt.verify(JWT, secrets.JWTSECRET);
+            console.log(token);
+            next();
+        } else {
+            res.send("You are not logged In Kindly Login");
+        }
+    } catch (err) {
+        console.log(err);
+        if (err.message == "invalid signature") {
+            res.send("TOken invalid kindly login");
+        } else {
 
-    next();
+            res.send(err.message);
+        }
+    }
+
 }
 
 
