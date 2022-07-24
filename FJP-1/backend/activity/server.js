@@ -1,17 +1,14 @@
 const express = require("express");
 const app = express();
+// npm i cookie parser
+const cookieParser = require("cookie-parser");
 // token name is -> JWT & mechanism -> cookies
 // repersent -> collection
 const FooduserModel = require("./userModel");
-// signup  input:
-// name,
-// password,
-// confirmpassword
-// address
-// email,
-// phonenumber,
-// pic,
+// to  add post body data to req.body
 app.use(express.json());
+// add cookies to req.cookies
+app.use(cookieParser());
 app.post("/signup", async function (req, res) {
     try {
         let data = req.body;
@@ -34,6 +31,7 @@ app.post("/login", async function (req, res) {
                 .findOne({ email: email });
             if (user) {
                 if (user.password == password) {
+                    res.cookie("token", "sample value");
                     res.send("user logged In");
                 } else {
                     res.send("email or password does not match");
@@ -59,15 +57,21 @@ app.get("/users", protectRoute, async function (req, res) {
         res.end(err.message);
     }
 })
+
 // locahost:3000 -> express API 
 app.listen(3000, function () {
     console.log("server started at port 3000");
 })
-function protectRoute(req, res,next) {
+function protectRoute(req, res, next) {
+    console.log(req.cookies);
     console.log("protect Route Encountered");
-    // you are logged In then it will allow next fn to run 
+    // you are logged In then it will allow next fn to run
+
     next();
 }
+
+
+// create -> deleteUser, updateUser
 // {
 //     name: 'Jasbir',
 //     password: 'abcd',
