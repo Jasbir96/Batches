@@ -15,7 +15,6 @@
     </div>
     <!-- babel -> it knowa that we need to convert JSX to simple js  -->
     <script type="text/babel">
-
         function Todo() {
             // store these li's into an array
             let [tasks, setTasks] = React.useState([]);
@@ -26,14 +25,28 @@
                 // console.log(input, "  ", inputValue);
                 changeValue(inputValue);
             }
-            return (<div>
+            function addTask() {
+                // copy data from original
+                let newTaskArr = [...tasks];
+                if (value =="") {
+                    alert("Kindly enter some task");
+                    return;
+                }
+                newTaskArr.push(value);
+                setTasks(newTaskArr);
+                changeValue("");
+            }
+
+// console.log(tasks);
+
+            return (
+                <div>
                 <h1>Todo App</h1>
                 {/* controlled component */}
                 <input type="Text" value={value}
                     onChange={setInput}
                 />
-                <button >Add Task</button>
-
+                <button onClick={addTask}>Add Task</button>
                 <h1>Tasks</h1>
                 <ul>
                     {/* when you have data in an array and want to print it */}
