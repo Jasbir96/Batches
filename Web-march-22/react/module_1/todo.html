@@ -17,9 +17,21 @@
     <script type="text/babel">
 
         function Todo() {
-            return <div>
+            // store these li's into an array 
+            let [tasks, setTasks] = React.useState(["Make Tea","Study"]);
+            return (<div>
                 <h1>Todo App</h1>
-            </div>
+                <input type="Text" />
+                <button>Add Task</button>
+                <h1>Tasks</h1>
+                <ul>
+                    {/* when you have data in an array and want to print it */}
+                    {tasks.map(function (arrElem) {
+                        return (<li>{arrElem}</li>)
+                    })}
+                </ul>
+
+            </div>)
         }
         //1  it puts  component  return value  in the  div with id=app 
         ReactDOM.render(<Todo />, document.getElementById("app"));
