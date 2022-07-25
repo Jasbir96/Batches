@@ -15,7 +15,7 @@
     </div>
     <!-- babel -> it knowa that we need to convert JSX to simple js  -->
     <script type="text/babel">
-        function Counter() {
+        function Counter(props) {
             // state variable, state function changer
             let arr = React.useState(0);
             let count = arr[0];
@@ -23,20 +23,30 @@
             function incrementCount() {
                 setCount(count + 1);
             }
-            function decrementCount() {
+         function decrementCount() {
                 setCount(count - 1);
             }
             return (
                 <div>
-                    <h1>Counter 1</h1>
+                    <h1>Counter {props.value}</h1>
                     <h2>Counter value is {count} </h2>
                     <button onClick={incrementCount}>+</button>
                     <button onClick={decrementCount}>-</button >
                 </div>
             )
         }
+        function CounterParent() {
+            return (
+                <div>
+                    <Counter value="1" />
+                    <Counter value={2} />
+                    <Counter value={3} />
+                    <Counter value={4} />
+                </div>
+            )
+        }
         //1  it puts  component  return value  in the  div with id=app 
-        ReactDOM.render(<Counter></Counter>, document.getElementById("app"));
+        ReactDOM.render(<CounterParent />, document.getElementById("app"));
     </script>
 </body>
 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- react ui change algorithm -->
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
@@ -15,21 +14,23 @@
     </div>
     <!-- babel -> it knowa that we need to convert JSX to simple js  -->
     <script type="text/babel">
-
         function Counter() {
             // let count = 0;
             // that is state 
             // first -> variable -> initial value of 0
             // second -> change  function 
-            let [count, changeCount] = React.useState(5);
+            let [count, changeCount] = React.useState(0);
+            console.log("Render0")
             function incrementCount() {
                 // whenever ui changes -> function will execute again
                 // exceptt your line number 24
                 changeCount(count + 1);
             }
+            console.log("Render1")
             function decrementCount() {
                 changeCount(count - 1);
             }
+            console.log("Render2")
             return (
                 <div>
                     <h1> Counter</h1>

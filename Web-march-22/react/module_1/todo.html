@@ -15,28 +15,14 @@
     </div>
     <!-- babel -> it knowa that we need to convert JSX to simple js  -->
     <script type="text/babel">
-        function Counter() {
-            // state variable, state function changer
-            let arr = React.useState(0);
-            let count = arr[0];
-            let setCount = arr[1];
-            function incrementCount() {
-                setCount(count + 1);
-            }
-            function decrementCount() {
-                setCount(count - 1);
-            }
-            return (
-                <div>
-                    <h1>Counter 1</h1>
-                    <h2>Counter value is {count} </h2>
-                    <button onClick={incrementCount}>+</button>
-                    <button onClick={decrementCount}>-</button >
-                </div>
-            )
+
+        function Todo() {
+            return <div>
+                <h1>Todo App</h1>
+            </div>
         }
         //1  it puts  component  return value  in the  div with id=app 
-        ReactDOM.render(<Counter></Counter>, document.getElementById("app"));
+        ReactDOM.render(<Todo />, document.getElementById("app"));
     </script>
 </body>
 

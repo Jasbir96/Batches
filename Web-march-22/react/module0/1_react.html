@@ -4,7 +4,8 @@
     <!-- react ui change algorithm -->
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <!-- using react library it changes actual web page -->
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin>        
+    </script>
     <!-- babel library converts your jsx into js  -->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
@@ -19,7 +20,7 @@
                 <h1>hello world</h1>
             )
         }
-        // it puts Hello function's   return value  in the  div with id=app 
+        // it puts Hello function's (coomponent )  return value  in the  div with id=app 
         ReactDOM.render(<Hello></Hello>, document.getElementById("app"));
     </script>
 </body>
