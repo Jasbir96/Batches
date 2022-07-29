@@ -17,15 +17,26 @@
     <script type="text/babel">
         function InputBox(props) {
             {/* controlled component */ }
+            let [value, changeValue] = React.useState("");
+            function setInput(e) {
+                let inputValue = e.target.value;
+                // change value is used to update value state variable 
+                changeValue(inputValue);
+                //  when will it change after calling ?? -> you tell definetly 
+            }
+            function addTaskFromInput() {
+                props.addTask(value);
+                changeValue("");
+            }
             return (
                 <React.Fragment>
-                <input type="Text"
+                    <input type="Text"
                         // set 
-                        value={props.value}
+                        value={value}
                         //update 
-                        onChange={props.setInput}
+                        onChange={setInput}
                     />
-         <button onClick={props.addTask}>Add Task</button>
+                    <button onClick={addTaskFromInput}>Add Task</button>
                 </React.Fragment>
             )
         }
@@ -48,15 +59,7 @@
         }
         function Todo() {  // store these li's into an array
             let [tasks, setTasks] = React.useState([]);
-            let [value, changeValue] = React.useState("");
-            function setInput(e) {
-                let inputValue = e.target.value;
-                // change value is used to update value state variable 
-                changeValue(inputValue);
-                //  when will it change after calling ?? -> you tell definetly 
-
-            }
-            function addTask() {
+            function addTask(value) {
                 // copy data from original
                 let newTaskArr = [...tasks];
                 if (value == "") {
@@ -65,19 +68,12 @@
                 }
                 newTaskArr.push(value);
                 setTasks(newTaskArr);
-
-                changeValue("");
-            }
+            }   
             return (
                 <React.Fragment>
                     <h1>Todo App</h1>
-                    <InputBox value={value} 
-                    setInput={setInput} 
-                    addTask={addTask}
-                    name="rachel" 
-                    />
-                    <OutPutBox 
-                    tasks={tasks}/>
+                    <InputBox addTask={addTask} />
+                    <OutPutBox tasks={tasks} />
                 </React.Fragment>)
         }
 
