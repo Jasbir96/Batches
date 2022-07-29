@@ -1,6 +1,6 @@
 let arr = [1, 2, 3, 4];
 // address copy 
-// let arr2 = arr;
+let arr2 = arr;
 // arr.push(10);
 // console.log("arr2", arr2);
 

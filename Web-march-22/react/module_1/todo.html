@@ -15,48 +15,83 @@
     </div>
     <!-- babel -> it knowa that we need to convert JSX to simple js  -->
     <script type="text/babel">
-        function Todo() {
-            // store these li's into an array
+        function InputBox(props) {
+            {/* controlled component */ }
+            return (
+                <><input type="Text"
+                        // set 
+                        value={props.value}
+                        //update 
+                        onChange={props.setInput}
+                    />
+                    <button onClick={props.addTask}>Add Task</button>
+                </>
+            )
+        }
+        function OutPutBox(props) {
+            return (
+                <>
+                    <h1>Tasks</h1>
+                    <ul
+                    >
+                        {/* when you have data in an array and want to print it */}
+                        {/*react renders html array also */}
+                        {props.tasks.map(function (arrElem, idx) {
+                            // key is a prop that is specific to react 
+                            // and to identify 
+                            return (<li key={idx}>{arrElem}</li>)
+                        })}
+                    </ul>
+                </>
+            )
+        }
+        function Todo() {  // store these li's into an array
             let [tasks, setTasks] = React.useState([]);
             let [value, changeValue] = React.useState("");
             function setInput(e) {
-                // let input = e.target;
                 let inputValue = e.target.value;
-                // console.log(input, "  ", inputValue);
+                // change value is used to update value state variable 
                 changeValue(inputValue);
+                //  when will it change after calling ?? -> you tell definetly 
+
             }
             function addTask() {
                 // copy data from original
                 let newTaskArr = [...tasks];
-                if (value =="") {
+                if (value == "") {
                     alert("Kindly enter some task");
                     return;
                 }
                 newTaskArr.push(value);
                 setTasks(newTaskArr);
+
                 changeValue("");
             }
-
-// console.log(tasks);
-
             return (
-                <div>
-                <h1>Todo App</h1>
-                {/* controlled component */}
-                <input type="Text" value={value}
-                    onChange={setInput}
-                />
-                <button onClick={addTask}>Add Task</button>
-                <h1>Tasks</h1>
-                <ul>
-                    {/* when you have data in an array and want to print it */}
-                    {/*react renders html array also */}
-                    {tasks.map(function (arrElem) {
-                        return (<li>{arrElem}</li>)
-                    })}
-                </ul>
-            </div>)
+                <>
+                    <h1>Todo App</h1>
+                    <InputBox value={value} 
+                    setInput={setInput} 
+                    addTask={addTask}
+                    name="rachel" 
+                    />
+                    <OutPutBox 
+                    tasks={tasks}/>
+                </>)
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
         //1  it puts  component  return value  in the  div with id=app 
         ReactDOM.render(<Todo />, document.getElementById("app"));
     </script>
