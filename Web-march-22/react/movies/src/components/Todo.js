@@ -1,3 +1,5 @@
+import React from 'react';
+
 import OutPutBox from "./OutputBox";
 import InputBox from "./InputBox";
 function Todo() {  // store these li's into an array

@@ -1,3 +1,4 @@
+import React from 'react';
 function InputBox(props) {
     {/* controlled component */ }
     let [value, changeValue] = React.useState("");
