@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
-    <div id="app">
+    <div id="root">
     </div>
     <!-- babel -> it knowa that we need to convert JSX to simple js  -->
     <script type="text/babel">
@@ -21,7 +21,7 @@
             )
         }
         // it puts Hello function's (coomponent )  return value  in the  div with id=app 
-        ReactDOM.render(<Hello></Hello>, document.getElementById("app"));
+        ReactDOM.render(<Hello></Hello>, document.getElementById("root"));
     </script>
 </body>
 </html>
