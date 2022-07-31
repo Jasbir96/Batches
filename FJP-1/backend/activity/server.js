@@ -8,6 +8,7 @@ const secrets = require("./secrets");
 // token name is -> JWT & mechanism -> cookies
 // repersent -> collection
 const FooduserModel = require("./userModel");
+const { findOne } = require("./userModel");
 // to  add post body data to req.body
 app.use(express.json());
 // add cookies to req.cookies
@@ -58,15 +59,22 @@ app.post("/login", async function (req, res) {
         res.end(err.message);
     }
 })
+
 app.patch("/forgetPassword", async function (req, res) {
     try {
         let { email } = req.body;
+        let afterFiveMin = Date.now() + 5 * 60 * 1000;
         let otp = otpGenerator();
+        //    mail
+        // by default -> FindAndUpdate -> not updated send document, 
+        // new =true -> you will get updated doc
         let user = await FooduserModel
-            .findOneAndUpdate({
-                email: email
-            }, { otp: otp }, { new: true });
+            .findOneAndUpdate(
+                { email: email },
+                { otp: otp, otpExpiry: afterFiveMin },
+                { new: true });
         console.log(user);
+
         res.json({
             data: user,
             "message": "Otp send to your mail"
@@ -77,22 +85,69 @@ app.patch("/forgetPassword", async function (req, res) {
 })
 app.patch("/resetPassword", async function (req, res) {
     try {
-        let { otp, password, confirmPassword } = req.body;
-        let user = await FooduserModel.findOneAndUpdate({ otp }, { password, confirmPassword, otp: undefined },
-            { runValidators: true, new: true });
+        let { otp, password, confirmPassword, email } =
+            req.body;
+        // search -> get the user
+        let user = await FoodUserModel.findOne(email);
+        let currentTime = Date.now();
+        if (currentTime > user.otpExpiry) {
+            delete user.otp
+            delete user.otpExpiry
+            await user.save();
+            res.json({
+                message: "Otp Expired"
+            })
+        } else {
+            if (user.otp != otp) {
+                res.json({
+                    message: "Otp doesn't match"
+                })
+            } else {
+                // //////////////////////////
+                user = await FooduserModel.findOneAndUpdate(
+                    { otp },
+                    { password, confirmPassword },
+                    {
+                        runValidators: true,
+                        new: true
+                    });
+                delete user.otp
+                delete user.otpExpiry
+
+                await user.save();
+                //////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+                res.json({
+                    user: user,
+                    message: "User password reset"
+                })
+            }
+
+        }
+        // key delete -> get the document obj -> modify that object by removing useless keys  
+        // save to save this doc in db 
         console.log(user);
-        res.json({
-            data: user,
-            message: "Password for the use is reset"
-        })
+
     } catch (err) {
+        console.log(err);
         res.send(err.message);
     }
 })
 function otpGenerator() {
     return Math.floor(100000 + Math.random() * 900000);
 }
-// users -> get all the users -> sensitive route -> protected route -> logged in i will only allow that person 
+// users -> get all the users from db -> sensitive route -> protected route -> logged in i will only allow that person 
 app.get("/users", protectRoute, async function (req, res) {
     try {
         let users = await FooduserModel.find();
@@ -102,6 +157,7 @@ app.get("/users", protectRoute, async function (req, res) {
         res.end(err.message);
     }
 })
+// loggedin user
 app.get("/user", protectRoute, async function (req, res) {
     // user profile ka data show 
     try {
@@ -119,7 +175,6 @@ app.get("/user", protectRoute, async function (req, res) {
     }
 
 })
-
 // locahost:3000 -> express API 
 app.listen(3000, function () {
     console.log("server started at port 3000");
