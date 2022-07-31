@@ -1,3 +1,4 @@
+const express = require('express');
 const userRouter = express.Router();
 const { getAllUsersController, profileController } =
     require('../controller/userController');
