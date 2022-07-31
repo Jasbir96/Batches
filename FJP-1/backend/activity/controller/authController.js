@@ -1,19 +1,8 @@
-const express = require("express");
-const app = express();
-// npm i cookie parser
-const cookieParser = require("cookie-parser");
-// jsonwebtoken
 const jwt = require("jsonwebtoken");
-const secrets = require("./secrets");
-// token name is -> JWT & mechanism -> cookies
-// repersent -> collection
-const FooduserModel = require("./userModel");
-const { findOne } = require("./userModel");
-// to  add post body data to req.body
-app.use(express.json());
-// add cookies to req.cookies
-app.use(cookieParser());
-app.post("/signup", async function (req, res) {
+const secrets = require("../secrets");
+const FooduserModel = require("../model/userModel");
+// ************************controller functions************************
+async function signupController(req, res) {
     try {
         let data = req.body;
         console.log(data);
@@ -24,9 +13,8 @@ app.post("/signup", async function (req, res) {
     } catch (err) {
         res.end(err.message);
     }
-})
-// login input: email + password:
-app.post("/login", async function (req, res) {
+}
+async function loginController(req, res) {
     try {
         let data = req.body;
         let { email, password } = data;
@@ -58,32 +46,9 @@ app.post("/login", async function (req, res) {
     } catch (err) {
         res.end(err.message);
     }
-})
+}
 
-app.patch("/forgetPassword", async function (req, res) {
-    try {
-        let { email } = req.body;
-        let afterFiveMin = Date.now() + 5 * 60 * 1000;
-        let otp = otpGenerator();
-        //    mail
-        // by default -> FindAndUpdate -> not updated send document, 
-        // new =true -> you will get updated doc
-        let user = await FooduserModel
-            .findOneAndUpdate(
-                { email: email },
-                { otp: otp, otpExpiry: afterFiveMin },
-                { new: true });
-        console.log(user);
-
-        res.json({
-            data: user,
-            "message": "Otp send to your mail"
-        })
-    } catch (err) {
-        res.send(err.message);
-    }
-})
-app.patch("/resetPassword", async function (req, res) {
+async function resetPasswordController(req, res) {
     try {
         let { otp, password, confirmPassword, email } =
             req.body;
@@ -105,7 +70,7 @@ app.patch("/resetPassword", async function (req, res) {
             } else {
                 // //////////////////////////
                 user = await FooduserModel.findOneAndUpdate(
-                    { otp },
+                    { otp, email },
                     { password, confirmPassword },
                     {
                         runValidators: true,
@@ -113,21 +78,8 @@ app.patch("/resetPassword", async function (req, res) {
                     });
                 delete user.otp
                 delete user.otpExpiry
-
                 await user.save();
                 //////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
                 res.json({
                     user: user,
                     message: "User password reset"
@@ -143,42 +95,28 @@ app.patch("/resetPassword", async function (req, res) {
         console.log(err);
         res.send(err.message);
     }
-})
-function otpGenerator() {
-    return Math.floor(100000 + Math.random() * 900000);
 }
-// users -> get all the users from db -> sensitive route -> protected route -> logged in i will only allow that person 
-app.get("/users", protectRoute, async function (req, res) {
+async function forgetPasswordController(req, res) {
     try {
-        let users = await FooduserModel.find();
-        // to send json data ;
-        res.json(users);
-    } catch (err) {
-        res.end(err.message);
-    }
-})
-// loggedin user
-app.get("/user", protectRoute, async function (req, res) {
-    // user profile ka data show 
-    try {
-        const userId = req.userId;
-        const user = await FooduserModel.findById(userId);
+        let { email } = req.body;
+        let afterFiveMin = Date.now() + 5 * 60 * 1000;
+        let otp = otpGenerator();
+        //    mail
+        // by default -> FindAndUpdate -> not updated send document, 
+        // new =true -> you will get updated doc
+        let user = await FooduserModel
+            .findOneAndUpdate({ email: email },
+                { otp: otp, otpExpiry: afterFiveMin },
+                { new: true });
+        console.log(user);
         res.json({
             data: user,
-            message: "Data about logged in user is send"
-        });
-        // model by Id -> get
-        // res-> send 
+            "message": "Otp send to your mail"
+        })
     } catch (err) {
-        res.end(err.message);
-
+        res.send(err.message);
     }
-
-})
-// locahost:3000 -> express API 
-app.listen(3000, function () {
-    console.log("server started at port 3000");
-})
+}
 function protectRoute(req, res, next) {
     try {
         const cookies = req.cookies;
@@ -208,18 +146,17 @@ function protectRoute(req, res, next) {
     }
 
 }
+// ******************helper function************************************************
+function otpGenerator() {
+    return Math.floor(100000 + Math.random() * 900000);
+}
+// user update
+// delete
 
-
-// create -> deleteUser, updateUser
-// {
-//     name: 'Jasbir',
-//     password: 'abcd',
-//     confirmPassword: 'abcd',
-//     email: 'abc@gmail.com',
-//     phonenumber: '8800953687',
-//     pic: 'dp.png',
-// -> unnique id
-//     _id: new ObjectId("62d2f2c0aaa6d2fe55d1e68c"),
-// mongoose
-//     __v: 0
-//   }
+module.exports = {
+    signupController,
+    loginController,
+    resetPasswordController,
+    forgetPasswordController,
+    protectRoute
+}
