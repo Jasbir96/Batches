@@ -13,6 +13,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", userRouter);
+// update user Profile
+// delete user profile
 
 // locahost:3000 -> express API 
 app.listen(3000, function () {
