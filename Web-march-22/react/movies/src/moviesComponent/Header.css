@@ -1,0 +1,10 @@
+.flex {
+    display: flex;
+    margin-inline-start: 1rem;
+    height:80%
+}
+
+.flex>* {
+    margin-right: 1rem;
+
+}

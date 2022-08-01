@@ -7,7 +7,7 @@ function Movies() {
     return (
         <>
             <Home></Home>
-            <Favourites></Favourites>
+            {/* <Favourites></Favourites> */}
         </>
     )
 }

@@ -1,4 +1,4 @@
-{
+module.exports = {
     "page": 1,
     "results": [
         {
@@ -8,11 +8,11 @@
             "title": "The Gray Man",
             "original_language": "en",
             "original_title": "The Gray Man",
-            "overview": 
-            "When a shadowy CIA agent uncovers damning agency secrets, he's hunted across the globe by a sociopathic rogue operative who's put a bounty on his head.",
+            "overview":
+                "When a shadowy CIA agent uncovers damning agency secrets, he's hunted across the globe by a sociopathic rogue operative who's put a bounty on his head.",
             "poster_path": "/8cXbitsS6dWQ5gfMTZdorpAAzEH.jpg",
-            "media_type": 
-            "movie",
+            "media_type":
+                "movie",
             "genre_ids": [
                 28,
                 53
@@ -423,5 +423,5 @@
             "vote_count": 336
         }
     ]
-    
+
 }
