@@ -36,3 +36,8 @@
       * Genre -> Type of movie
       * Rating 
       * Popular
+* data file : movies.json
+* get small prepend in backdrop path (normal image ): https://image.tmdb.org/t/p/w500/
+* Banner image prepend : https://image.tmdb.org/t/p/original/
+
+Day1 -> Main Page 
