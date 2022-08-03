@@ -1,0 +1,17 @@
+.trending_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.poster_box {
+    width: 30%;
+    height: 30rem;
+    border: 1px solid gray;
+    margin-bottom: 1rem;
+    ;
+}
+
+.poster_img {
+    width: 100%;
+}
