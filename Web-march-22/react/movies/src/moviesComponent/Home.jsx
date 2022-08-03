@@ -72,13 +72,11 @@ function MovieList() {
             <h2>Trending Movies</h2>
             {movies == "" ? <h2>Loading Movies</h2 > :
                 <div className="trending_box">
-                    {movies.map((movieObj, idx) => {
+                    {movies.map(function(movieObj, idx)  {
                         return (
                             <div key={idx}  className="poster_box">
                                 <h2>{movieObj.original_title}</h2>
- <img 
- src={"https://image.tmdb.org/t/p/w500/" + movieObj.poster_path} 
- className="poster_img"></img>
+ <img src={"https://image.tmdb.org/t/p/w500/" + movieObj.poster_path} className="poster_img"></img>
                             </div>
                         )
                     })}
