@@ -6,7 +6,6 @@
         * banner -> First movie ka banner
         * List of trending movies 
         * Pagination 
-
   * Favourites Page:
         * Header -> links to Movies, favourites
         * Genres list
@@ -35,9 +34,9 @@
       * Movie name 
       * Genre -> Type of movie
       * Rating 
-      * Popular
+      * Popularity
   
-* data file : movies.json
+* data file : movies.js
 * get small prepend in backdrop path (normal image ): https://image.tmdb.org/t/p/w500/
 * Banner image prepend : https://image.tmdb.org/t/p/original
 
