@@ -2,34 +2,58 @@
 import React from 'react';
 import "./Header.css";
 import "./Banner.css";
-import "./MovieList.css"
+import "./MovieList.css";
+import "./Pagination.css";
 
 function Home() {
+    const [pageNo, setpageNumber] = React.useState(1);
+    function incPageNumber() {
+        setpageNumber(function (pageNo) {
+            return pageNo + 1;
+        });
+    }
+    function descPageNum() {
+        if (pageNo == 1) {
+            return;
+        }
+        setpageNumber(function (pageNo) {
+            return pageNo - 1;
+        });
+    }
     return (
         <>
             <Header></Header>
             <Banner></Banner>
-
-            <MovieList></MovieList>
-            <Pagination></Pagination>
+            <MovieList pageNo={pageNo}></MovieList>
+            <div className="pagination">
+                <div className="pagination_btn"
+                    onClick={descPageNum}
+                >Previous</div>
+                <div className="page_no">{pageNo}</div>
+                <div className="pagination_btn"
+                    onClick={incPageNumber}
+                >Next</div>
+            </div>
         </>
     )
 }
+
 export default Home;
 // banner
-
-
 function Banner() {
     let [firstMovie, setFirstMovie] = React.useState("");
-    React.useEffect(async function () {
-        // it is used to make request
-        let response = await fetch("https://api.themoviedb.org/3/trending/movie/week?api_key=16e7df484a81f634d85b2f25f938585d");
-        // response -> you will get in buffer -> convert it into json
-        let data = await response.json();
-        console.log("data", data);
-        let movies = data.results;
-        // console.log("movies", movies)
-        setFirstMovie(movies[0]);
+    React.useEffect(function(){
+        async function fetchData() {
+            // it is used to make request
+            let response = await fetch("https://api.themoviedb.org/3/trending/movie/week?api_key=16e7df484a81f634d85b2f25f938585d");
+            // response -> you will get in buffer -> convert it into json
+            let data = await response.json();
+            console.log("data", data);
+            let movies = data.results;
+            // console.log("movies", movies)
+            setFirstMovie(movies[0]);
+        }
+        fetchData();
     }, []);
     return (
         <>
@@ -54,25 +78,30 @@ function Banner() {
 // put your api key, media -> movies, time_window:week 
 // then you will get the link to get trending  movies -> copy and use it in useEffect
 //movieList
-function MovieList() {
+function MovieList(props) {
+    console.log(props.pageNo);
     let [movies, setMovie] = React.useState("");
     let [value, setValue] = React.useState("");
     function setText(e) {
         let newValue = e.target.value;
         setValue(newValue);
-
     }
-    React.useEffect(async function () {
-        // it is used to make request
-        let response = await fetch("https://api.themoviedb.org/3/trending/movie/week?api_key=16e7df484a81f634d85b2f25f938585d");
-        // response -> you will get in buffer -> convert it into json
-        let data = await response.json();
-        console.log("data", data);
-        let movies = data.results;
-        // console.log("movies", movies)
-        setMovie(movies);
-    }, []);
-    
+    React.useEffect(function fn() {
+        async function fetchData() {
+            // it is used to make request
+            let response = await fetch
+                ("https://api.themoviedb.org/3/trending/movie/week?api_key=16e7df484a81f634d85b2f25f938585d&page=" + props.pageNo);
+            // response -> you will get in buffer -> convert it into json
+            let data = await response.json();
+            console.log("data", data);
+            let movies = data.results;
+            // console.log("movies", movies)
+            setMovie(movies);
+        }
+        fetchData();
+
+    }, [props.pageNo]);
+
     function filterLogic(searchText, movieArray) {
 
         let filteredMovieArray = [];
@@ -80,7 +109,7 @@ function MovieList() {
             let upperSearchText = searchText.toUpperCase();
             let movieName = movieArray[i].original_title;
             let upperText = movieName.toUpperCase();
-            console.log(upperText);
+            // console.log(upperText);
             let ans = upperText.includes(upperSearchText);
             if (ans == true) {
                 filteredMovieArray.push(movieArray[i]);
@@ -115,12 +144,7 @@ function MovieList() {
 
     )
 }
-// pagination
-function Pagination() {
-    return (
-        <h2>Pagination</h2>
-    )
-}
+
 // header
 function Header() {
     return (

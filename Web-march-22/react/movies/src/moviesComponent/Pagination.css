@@ -1,0 +1,18 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination_btn {
+    border: 1px solid #e056fd;
+    height: 2rem;
+    width: 4.5rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.page_no {
+    border: 1px solid #e056fd;
+    width: 2rem;
+    text-align: center;
+}
