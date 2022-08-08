@@ -4,19 +4,48 @@ import React from 'react';
 // verify your emailId
 // go to account page -> settings-> api
 // create -> developer-> request api -> form fill-> you will get an api key
-
 //2. go to this website https://developers.themoviedb.org/3/getting-started/introduction
 // search for -> trending-> tryout-> 
 // put your api key, media -> movies, time_window:week 
 // then you will get the link to get trending  movies -> copy and use it in useEffect
 //movieList
 function MovieList(props) {
-    console.log(props.pageNo);
     let [movies, setMovie] = React.useState("");
     let [value, setValue] = React.useState("");
+    let [favourites, setFavourite] = React.useState([]);
     function setText(e) {
         let newValue = e.target.value;
         setValue(newValue);
+    }
+    function setToFavouriteHandlers(movieId) {
+        console.log("add", movieId);
+        for (let i = 0; i < movies.length; i++) {
+            let movieObj = movies[i];
+            if (movieObj.id == movieId) {
+                // [..favorites,movieobj]
+                let newfavourites = [...favourites];
+                newfavourites.push(movieObj);
+                setFavourite(newfavourites);
+                break;
+            }
+        }
+    }
+    function deleteFavoriteHandlers(movieId) {
+        let filteredFavorite =
+            favourites.filter((movieObj) => {
+                return movieObj.id != movieId;
+            })
+        setFavourite(filteredFavorite);
+    }
+
+    function checkContainFavHandlers(movieId) {
+        for (let i = 0; i < favourites.length; i++) {
+            if (favourites[i].id == movieId) {
+                return true
+            }
+        }
+        return false;
+
     }
     React.useEffect(function fn() {
         async function fetchData() {
@@ -25,16 +54,15 @@ function MovieList(props) {
                 ("https://api.themoviedb.org/3/trending/movie/week?api_key=16e7df484a81f634d85b2f25f938585d&page=" + props.pageNo);
             // response -> you will get in buffer -> convert it into json
             let data = await response.json();
-            console.log("data", data);
             let movies = data.results;
-            // console.log("movies", movies)
             setMovie(movies);
         }
         fetchData();
     }, [props.pageNo]);
 
-
+    // plain js
     let searchedMovies = filterLogic(value, movies);
+    console.log("fav", favourites);
     return (
         // you can recieve themovies array and filter it accoring to you search text 
         // and show only filterd movies 
@@ -49,6 +77,16 @@ function MovieList(props) {
                                 <div key={idx} className="poster_box">
                                     <h2>{movieObj.original_title}</h2>
                                     <img src={"https://image.tmdb.org/t/p/w500/" + movieObj.poster_path} className="poster_img"></img>
+                                    {
+                                        checkContainFavHandlers(movieObj.id) ?
+                                            <i className="fa-solid fa-xmark"
+                                                onClick={() => { deleteFavoriteHandlers(movieObj.id) }}
+                                            ></i> :
+                                            <i className="fa-solid fa-face-grin-hearts"
+                                                onClick={() => { setToFavouriteHandlers(movieObj.id) }}
+                                            ></i>
+                                    }
+                                    <></>
                                 </div>
                             )
                         })}
@@ -64,7 +102,6 @@ function filterLogic(searchText, movieArray) {
         let upperSearchText = searchText.toUpperCase();
         let movieName = movieArray[i].original_title;
         let upperText = movieName.toUpperCase();
-        // console.log(upperText);
         let ans = upperText.includes(upperSearchText);
         if (ans == true) {
             filteredMovieArray.push(movieArray[i]);
