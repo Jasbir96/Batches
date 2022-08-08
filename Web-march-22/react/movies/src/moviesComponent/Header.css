@@ -1,14 +1,19 @@
 .flex {
     display: flex;
     margin-inline-start: 1rem;
-    height:80%
+    height: 80%
 }
 
 .flex>* {
     margin-right: 1rem;
 
 }
-a{
+
+a {
     text-decoration: none;
-    color:rgb(159, 176, 222);
+    color: rgb(159, 176, 222);
+}
+
+.border-bottom {
+    border-bottom: 1px solid gray;
 }

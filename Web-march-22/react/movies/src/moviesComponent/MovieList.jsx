@@ -37,7 +37,6 @@ function MovieList(props) {
             })
         setFavourite(filteredFavorite);
     }
-
     function checkContainFavHandlers(movieId) {
         for (let i = 0; i < favourites.length; i++) {
             if (favourites[i].id == movieId) {
@@ -47,6 +46,7 @@ function MovieList(props) {
         return false;
 
     }
+
     React.useEffect(function fn() {
         async function fetchData() {
             // it is used to make request
@@ -78,7 +78,7 @@ function MovieList(props) {
                                     <h2>{movieObj.original_title}</h2>
                                     <img src={"https://image.tmdb.org/t/p/w500/" + movieObj.poster_path} className="poster_img"></img>
                                     {
-                                        checkContainFavHandlers(movieObj.id) ?
+                                        checkContainFavHandlers(movieObj.id)==true ?
                                             <i className="fa-solid fa-xmark"
                                                 onClick={() => { deleteFavoriteHandlers(movieObj.id) }}
                                             ></i> :
