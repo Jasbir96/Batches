@@ -18,7 +18,8 @@
   * Plan Details
     * Discreption of the plan
     * Buy Now Button
-    * Reviews  
+    * Reviews
+* Rest api , Improving response  
 ## Backend Architecture:  MVC architecture , REST API
 ## Database : MongoDb,Mongoose
 ## Authentication : Json web token 
@@ -59,7 +60,7 @@
            *  signup page, profile,login ,forgetpassword 
      * AuthProvider:
        *  sync -> if you have a user or not on login and logout 
-       * It also exposes you lossley coupled auth functions
+       * It also exposes you lossley coupled auth functions -> all the are together 
      * Signup Page: 
 
    

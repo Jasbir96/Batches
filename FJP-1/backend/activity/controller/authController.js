@@ -19,8 +19,7 @@ async function loginController(req, res) {
         let data = req.body;
         let { email, password } = data;
         if (email && password) {
-            let user = await FooduserModel
-                .findOne({ email: email });
+            let user = await FooduserModel.findOne({ email: email });
             if (user) {
                 if (user.password == password) {
                     // create JWT ->-> payload, secret text 
@@ -32,7 +31,12 @@ async function loginController(req, res) {
                     // put token into cookies
                     res.cookie("JWT", token);
                     // send the token 
-                    res.send("user logged In");
+                    delete user.password
+                    delete user.confirmPassword
+                    // before sending to frontend 
+                    res.status(200).json({
+                        user
+                    });
                 } else {
                     res.send("email or password does not match");
                 }
