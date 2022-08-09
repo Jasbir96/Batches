@@ -1,7 +1,8 @@
 const nodemailer = require("nodemailer");
 const secrets = require("../../activity/secrets");
 async function mailSender() {
-    // input through which mechanism send your email -> port, facilitator (technical details) 
+    // input through which mechanism send your email
+    //  -> port, facilitator (technical details) 
     let transporter = nodemailer.createTransport({
         service: "gmail",
         host: "smtp.gmail.com",
@@ -16,7 +17,7 @@ async function mailSender() {
         from: '"Fred Foo 👻" <foo@example.com>', // sender address
         to: "dcompany631@gmail.com", // list of receivers
         subject: "Hello ✔ Testing for FJP", // Subject line
-        html: `<b>HTML text testing email for fjp with token ${token}?</b>`, // html body
+        html: `<b>HTML text testing email for fjp with token ${token}?</b>`,
     }
     // send mail with defined transporter object
     let info = await transporter.sendMail(dataObj);

@@ -47,13 +47,27 @@
     * node mailer use -> send the mail 
 
 * Integrate our frontend to our backend -> 
-  *  React code explain 
-  * signup page, profile,login ,forgetpassword  resetpassword 
+    *  postman vs frontend
+     * request button-> request || ui button press -> request + loader
+     * response you will get    || response you will -> then you have do some change on ui
+     *  
+  *  React code explain  (except->home, plans,planDetails)
+     *  Step -1 add backend url as proxy to react package.json
+     *  Step- 2 structuring 
+        *  Top : Header -> Home,plan,login/ user profile
+        *  Different Pages
+           *  signup page, profile,login ,forgetpassword 
+     * AuthProvider:
+       *  sync -> if you have a user or not on login and logout 
+       * It also exposes you lossley coupled auth functions
+     * Signup Page: 
+
+   
+  
 
 
 <!-- reset password request -> otp, email ,pass
 <!-- if otp is  not present -> change-->
-
 
 <!-- http stateless mail ->  -->
 
