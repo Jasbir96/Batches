@@ -7,11 +7,11 @@ async function mailSender() {
         host: "smtp.gmail.com",
         secure: true,
         auth: {
-            user: "pepcodingdev@gmail.com",
+            user: secrets.APP_EMAIL,
             pass: secrets.APP_PASSWORD
         }
     });
-    let token="sdmfbdskbdb";
+    let token = "sdmfbdskbdb";
     let dataObj = {
         from: '"Fred Foo 👻" <foo@example.com>', // sender address
         to: "dcompany631@gmail.com", // list of receivers
