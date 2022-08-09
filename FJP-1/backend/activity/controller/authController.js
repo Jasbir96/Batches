@@ -47,7 +47,6 @@ async function loginController(req, res) {
         res.end(err.message);
     }
 }
-
 async function resetPasswordController(req, res) {
     try {
         let { otp, password, confirmPassword, email } =
