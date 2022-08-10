@@ -485,6 +485,7 @@ function Favourites() {
         <div className="search_pagination flex border-bottom
         ">
             <input type="text" placeholder="Search" onChange={setTextHandler} value={searchtext}></input>
+            {/* no elems */}
             <input type="number" min="1" value={noOfElems} onChange={setnoElemsHandler} ></input>
         </div>
         <table>
@@ -524,6 +525,7 @@ function Favourites() {
                 })}
             </tbody>
         </table>
+        {/* page number */}
         <div className="pagination">
             <div className="pagination_btn"
                 onClick={descPageNum}
