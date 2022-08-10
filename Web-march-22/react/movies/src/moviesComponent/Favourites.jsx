@@ -1,22 +1,45 @@
 import React from 'react';
 import Header from './Header';
-import { useEffect } from 'react';
+import { useEffect, useState} from 'react';
 
 function Favourites() {
-    let [favourites, setFavourites] = React.useState([])
-    let [ratingOrder, setRatingOrder] = React.useState(null);
-    let [popularityOrder, setPopularity] = React.useState(null);
-    let [searchtext, setValue] = React.useState("");
-    let [noOfElems, setElems] = React.useState(5);
-    let [currPage, setPage] = React.useState(1);
-    
+    let [favourites, setFavourites] = useState([])
+    let [ratingOrder, setRatingOrder] = useState(null);
+    let [popularityOrder, setPopularity] = useState(null);
+    let [searchtext, setValue] = useState("");
+    let [noOfElems, setElems] = useState(5);
+    let [currPage, setPage] = useState(1);
+    const [genres, setGenres] = useState([])
+
+
+
+
+    let genreids = {
+        28: 'Action',
+        12: 'Adventure',
+        16: 'Animation', 35: 'Comedy', 80: 'Crime', 99: 'Documentary', 18: 'Drama', 10751: 'Family',
+        14: 'Fantasy', 36: 'History',
+        27: 'Horror', 10402: 'Music',
+        9648: 'Mystery', 10749: 'Romance', 878: 'Sci-Fi', 10770: 'TV', 53: 'Thriller', 10752: 'War', 37: 'Western'
+    }
     useEffect(function () {
-        let favStrArr = 
-        localStorage.getItem("favourites")||"[]";
+        let favStrArr =
+            localStorage.getItem("favourites") || "[]";
         let favArr = JSON.parse(favStrArr);
         setFavourites(favArr);
+
     }, [])
     
+    useEffect(function () {
+        // favoruites update -> new genre 
+        let temp = favourites.map((movie) => genreids[movie.genre_ids[0]])
+        console.log(temp)
+        // unique value hold
+        temp = new Set(temp);
+        setGenres(["All Genres", ...temp]);
+
+    }, [favourites])
+
     function setRatingHandler(order) {
         setRatingOrder(order);
         setPopularity(null);
@@ -69,7 +92,7 @@ function Favourites() {
 
     return (<>
         <Header></Header>
-        <GenreBox genres={["Family", "action", "romance"]}></GenreBox>
+        <GenreBox genres={genres}></GenreBox>
         <div className="search_pagination flex border-bottom
         ">
             <input type="text" placeholder="Search" onChange={setTextHandler} value={searchtext}></input>
@@ -211,7 +234,7 @@ function GenreBox(props) {
     return (
         < div className="flex border-bottom"
         >
-            <h4>All Genres</h4>
+            
             {props.genres.map((genre, idx) => {
                 return (
                     <h4 key={idx}>{genre}</h4>

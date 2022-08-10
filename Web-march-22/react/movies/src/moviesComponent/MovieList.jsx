@@ -74,6 +74,11 @@ function MovieList(props) {
         }
         fetchData();
     }, [props.pageNo]);
+    React.useEffect(function () {
+        let prevStrArray = localStorage.getItem("favourites") || "[]";
+        let prevArray = JSON.parse(prevStrArray);
+        setFavourite(prevArray)
+    },[])
 
     // plain js
     let searchedMovies = filterLogic(value, movies);
