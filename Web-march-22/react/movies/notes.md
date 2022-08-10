@@ -59,9 +59,6 @@
 ** share it's code -> mon : 5 to 7 tailwind 
 ** Pending : Styling  
 
-
-
-
 ## HOSTING 
 * npm run build
 * go to firebase console
@@ -76,6 +73,15 @@
 * rewrite-> n
 * firebase deploy
 
+### if you do change -> build
+* npm run build
+* firebase init
+* proceed -> y
+* option -> hosting -> space  then enter
+* existing -> choose -=> space press then
+* spa-> y
+* rewrite-> n
+* firebase deploy
 
 
 
