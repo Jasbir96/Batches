@@ -54,7 +54,7 @@
   * Pagination ✔
   * Sending message from movies to favourite to movies -> like dislike(movies page) , delete (fav), localstorage
   * Group by Genre
-  * Deletion of movies in favourites
+  * Deletion of movies in favourites -> skip?? 
   * Deployment on firebase 
 # share it's code -> mon : 5 to 7 tailwind 
 # Pending : Styling  

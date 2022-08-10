@@ -25,6 +25,12 @@ function MovieList(props) {
                 // [..favorites,movieobj]
                 let newfavourites = [...favourites];
                 newfavourites.push(movieObj);
+                // localstorage add
+                let prevStrArray = localStorage.getItem("favourites") || "[]";
+                let prevArray = JSON.parse(prevStrArray);
+                prevArray.push(movieObj);
+                prevArray = JSON.stringify(prevArray);
+                localStorage.setItem("favourites", prevArray);
                 setFavourite(newfavourites);
                 break;
             }
@@ -35,6 +41,15 @@ function MovieList(props) {
             favourites.filter((movieObj) => {
                 return movieObj.id != movieId;
             })
+
+        let prevStrArray = localStorage.getItem("favourites") || "[]";
+        let prevArray = JSON.parse(prevStrArray);
+        prevArray = prevArray.filter((movieObj) => {
+            return movieObj.id != movieId;
+        })
+        prevArray = JSON.stringify(prevArray);
+        localStorage.setItem("favourites", prevArray);
+        // remove 
         setFavourite(filteredFavorite);
     }
     function checkContainFavHandlers(movieId) {
@@ -78,7 +93,7 @@ function MovieList(props) {
                                     <h2>{movieObj.original_title}</h2>
                                     <img src={"https://image.tmdb.org/t/p/w500/" + movieObj.poster_path} className="poster_img"></img>
                                     {
-                                        checkContainFavHandlers(movieObj.id)==true ?
+                                        checkContainFavHandlers(movieObj.id) == true ?
                                             <i className="fa-solid fa-xmark"
                                                 onClick={() => { deleteFavoriteHandlers(movieObj.id) }}
                                             ></i> :

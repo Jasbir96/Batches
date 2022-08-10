@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> LocalStorage Example</h1>
+    <script>
+        // get 
+        // set
+        // strings  
+        let randString = "I am string";
+        localStorage.setItem("myString", randString);
+        let string = localStorage.getItem("myString");
+        console.log("string", string);
+
+        // array ,object
+        let arr = [1, 2, 3, 4];
+        let strArr = JSON.stringify(arr);
+        localStorage.setItem("arrdata", strArr);
+        // get 
+        strArr = localStorage.getItem("arrdata");
+        arr = JSON.parse(strArr);
+        console.log("arr", strArr);
+
+// update
+    </script>
+</body>
+
+</html>
