@@ -427,22 +427,65 @@ function Favourites() {
     ])
     let [ratingOrder, setRatingOrder] = React.useState(null);
     let [popularityOrder, setPopularity] = React.useState(null);
+    let [searchtext, setValue] = React.useState("");
+    let [noOfElems, setElems] = React.useState(5);
+    let [currPage, setPage] = React.useState(1);
+
     function setRatingHandler(order) {
         setRatingOrder(order);
         setPopularity(null);
     }
-    function popularityhandler(order) {
+
+    function setPopularityhandler(order) {
+        setRatingOrder(null);
         setPopularity(order);
     }
+    function setTextHandler(e) {
+        let newValue = e.target.value;
+        setValue(newValue);
+        setPage(1);
+    }
+    // no of elems change 
+    function setnoElemsHandler(e) {
+        let newValue = e.target.value;
+        setElems(newValue);
+    }
+    // pag number change
+    function incPageNumber() {
+        // overflow 
 
-    let ratedMovies = sortFavourites(ratingOrder, favourites);
+        setPage(function (currPage) {
+            return currPage + 1;
+        });
+    }
+    function descPageNum() {
+        if (currPage == 1) {
+            return;
+        }
+        setPage(function (currPage) {
+            return currPage - 1;
+        });
+    }
+
+    // searching
+    let searchedMovies = searchtext == "" ? favourites : filterLogic(searchtext, favourites);
+    // sorting
+    let ratedMovies = ratingOrder == null ? searchedMovies : sortFavourites(ratingOrder, searchedMovies);
+    let sortedByrateNPop = popularityOrder == null ? ratedMovies : sortByPopularity(popularityOrder, ratedMovies);
+    // paginate 
+    // currPage -> pageNumber,
+    // noOfElems
+    let sidx = (currPage - 1) * noOfElems;
+    let eidx = sidx + noOfElems;
+    let paginatedResult = sortedByrateNPop.slice(sidx, eidx);
+
     return (<>
         <Header></Header>
         <GenreBox genres={["Family", "action", "romance"]}></GenreBox>
         <div className="search_pagination flex border-bottom
         ">
-            <input type="text" placeholder="Search"></input>
-            <input type="number" min="1" ></input>
+            <input type="text" placeholder="Search" onChange={setTextHandler} value={searchtext}></input>
+            <input type="number" min="1" value={noOfElems} onChange={setnoElemsHandler} ></input>
         </div>
         <table>
             <thead>
@@ -453,9 +496,9 @@ function Favourites() {
                         <i class="fa-solid fa-angles-down" onClick={() => { setRatingHandler(false) }}></i>
                     </th>
                     <th>
-                        <i class="fa-solid fa-angles-up"></i>
+                        <i class="fa-solid fa-angles-up" onClick={() => { setPopularityhandler(true) }}></i>
                         Popularity
-                        <i class="fa-solid fa-angles-down"></i>
+                        <i class="fa-solid fa-angles-down" onClick={() => { setPopularityhandler(false) }}></i>
                     </th>
                     {/* <th>Genre</th>
                     <th>Remove</th> */}
@@ -463,7 +506,7 @@ function Favourites() {
 
             </thead>
             <tbody>
-                {ratedMovies.map((movieObj) => {
+                {paginatedResult.map((movieObj) => {
                     return (
                         <tr>
                             <td>
@@ -471,22 +514,29 @@ function Favourites() {
 
                                     style={{ height: "10rem" }}
                                 ></img>
+                                <h4>{movieObj.original_title}</h4>
 
                             </td>
                             <td>{movieObj.vote_average}</td>
                             <td>{movieObj.popularity}</td>
                         </tr>
                     )
-
                 })}
-
             </tbody>
         </table>
-
+        <div className="pagination">
+            <div className="pagination_btn"
+                onClick={descPageNum}
+            >Previous</div>
+            <div className="page_no">{currPage}</div>
+            <div className="pagination_btn"
+                onClick={incPageNumber}
+            >Next</div>
+        </div>
     </>
     )
 }
-export default Favourites
+
 
 function sortFavourites(ratingOrder, favourites) {
     if (ratingOrder === null) {
@@ -514,8 +564,58 @@ function sortFavourites(ratingOrder, favourites) {
     }
     let ratedFavourites = favourites.sort(helper);
     return ratedFavourites;
-
 }
+function sortByPopularity(popularityOrder, ratedMovies) {
+    if (popularityOrder === null) {
+        return ratedMovies;
+    }
+    function helper(a, b) {
+        if (popularityOrder) {
+            if (a.popularity > b.popularity) {
+                return +1
+            } else if (a.popularity == b.popularity) {
+                return 0
+            } else if (a.popularity < b.popularity) {
+                return -1
+            }
+        } else {
+            if (a.popularity > b.popularity) {
+                return -1
+            } else if (a.popularity == b.popularity) {
+                return 0
+            } else if (a.popularity < b.popularity) {
+                return +1
+            }
+        }
+
+    }
+    let ratedandpopFavourites = ratedMovies.sort(helper);
+    return ratedandpopFavourites;
+}
+
+function filterLogic(searchText, movieArray) {
+    let filteredMovieArray = [];
+    for (let i = 0; i < movieArray.length; i++) {
+        let upperSearchText = searchText.toUpperCase();
+        let movieName = movieArray[i].original_title;
+        let upperText = movieName.toUpperCase();
+        let ans = upperText.includes(upperSearchText);
+        if (ans == true) {
+            filteredMovieArray.push(movieArray[i]);
+        }
+    }
+    return filteredMovieArray;
+}
+
+
+
+
+
+
+
+
+
+
 
 function GenreBox(props) {
     return (
@@ -531,3 +631,4 @@ function GenreBox(props) {
         </div >)
 
 }
+export default Favourites
