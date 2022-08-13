@@ -1,0 +1,104 @@
+.plansCard{
+    margin: 50px 0;
+}
+.planDetails{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.pCard{
+    height: 400px;
+    width: 280px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #6e6e6e;
+    transition: 0.3s;
+    border: 1px solid #6e6e6e;
+    margin: 55px 0;
+}
+.pCard1{
+    height: 30%;
+    width: 90%;
+    margin: 0 10px;
+    /* background-color: hotpink; */
+    border-bottom: 1px solid #6e6e6e;
+}
+.pCard2{
+    height: 35%;
+    width: 90%;
+    margin: 0 10px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: 1px solid #6e6e6e;
+    /* background-color: gray; */
+}
+.pCard .btn{
+    position: relative;
+    top: 20px;
+    margin: 0;
+}
+.btn a{
+    text-decoration: none;
+    color: aliceblue;
+    
+}
+.img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.ppoints{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.costpoint{
+    height: 24%;
+    width: 100%;
+    margin: 0;
+    font-size: 16px;
+    margin-left: 15px;
+}
+.point{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-size: 16px;
+    margin-left: 15px;
+}
+.priceBox{
+    height: 70%;
+    display: flex;
+    justify-content: center;
+}
+.price{
+    height: 100%;
+    width: 60%;
+    font-size: 46px;
+    color:#F7115F;
+    display: flex;
+    align-items: flex-end;
+}
+.duration{
+    height: 90%;
+    width: 30%;
+    display: flex;
+    align-items: flex-end;
+}
+
+@media only screen and (max-width: 850px) {
+    .planDetails{
+        flex-direction: column;
+    }
+    .pCard{
+        margin: 25px;
+    }
+    
+}

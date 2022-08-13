@@ -1,0 +1,44 @@
+nav {
+    position: fixed;
+    width: 100%;
+    transition: 1s;
+    z-index: 2;
+    background-color: rgba(26, 25, 25, 0.699)
+}
+
+.activeNavBar {
+    background: rgba(0, 0, 0, 0.952);
+    transition: 1s;
+}
+
+nav ul {
+    list-style: none;
+    overflow: hidden;
+    color: #fff;
+    padding: 0;
+    text-align: right;
+    margin: 0;
+    background: rgba(0, 0, 0, 0);
+    transition: 1s;
+}
+
+nav.black ul {
+    background: #000;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 20px 1.5rem;
+}
+
+nav ul li:hover {
+    background: rgba(0, 0, 0, 0.322);
+    cursor: pointer;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
+
