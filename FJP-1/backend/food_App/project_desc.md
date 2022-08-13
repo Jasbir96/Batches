@@ -63,8 +63,8 @@
      * Login Page : Completed   
 
 ## 11/aug/2022
-* login , signup (backend frontend)->bugs
- * Profile Page -> ui
+* login , signup (backend frontend)->bugs -> status code addition
+ * Profile Page -> ui -> backend -> ui link
  * Forget password and reset Password -> ui
  * Plans Schema : name,duration,price:,discount,
  * To be added later :  reviews-> later, averagerating

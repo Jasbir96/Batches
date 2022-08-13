@@ -1,5 +1,4 @@
 const FooduserModel = require("../model/userModel");
-
 async function profileController(req, res) {
     // user profile ka data show 
     try {
@@ -15,7 +14,6 @@ async function profileController(req, res) {
         res.end(err.message);
 
     }
-
 }
 async function getAllUsersController(req, res) {
     try {

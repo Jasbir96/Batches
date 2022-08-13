@@ -1,11 +1,26 @@
 import React, { useState } from 'react';
 import '../Styles/login.css'
-// import axios from 'axios';
-// import { connect } from 'react-redux';
-// import { useHistory } from 'react-router-dom';
-
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
 function ForgetPassword() {
     const [email, emailSet] = useState("");
+    const sendEmail = async () => {
+        // request -> forgetPassword Route
+        try {
+            let res = await axios.patch("/api/v1/auth/forgetPassword", { email });
+            if (res.status === 404) {
+                alert("user with this email not found");
+            } else if (res.status == 500) {
+                alert("Internal server error");
+            } else {
+                alert("Mail send to your registerd email ID");
+                // send to your restpasswordPage
+            }
+        } catch (err) {
+            console.log(err.message);
+        }
+        // send to resetPassword Page
+    }
     return (
         <div className="container-grey">
             <div className="form-container">
@@ -16,9 +31,12 @@ function ForgetPassword() {
                 <div className="loginBox">
                     <div className="entryBox">
                         <div className="entryText">Email</div>
-                        <input className="email input" type="email" name="Email" placeholder="Your Email" required="" onChange={(e) => emailSet(e.target.value)} />
+                        <input className="email input"
+                            type="email" name="Email" placeholder="Your Email"
+                            onChange={(e) => emailSet(e.target.value)} />
                     </div>
-                    <button className="loginBtn  form-button" type="submit">
+                    <button className="loginBtn  form-button"
+                        onClick={sendEmail}>
                         Send Email
                     </button>
 
