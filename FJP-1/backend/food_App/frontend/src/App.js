@@ -11,6 +11,8 @@ import AllPlans from './Components/Plan Page/AllPlans';
 import AuthProvider from './Components/Context/AuthProvider';
 import Profile from './Components/Profile Page/Profile';
 import PlanDetail from './Components/PlanDetail Page/PlanDetail';
+import Otp from "./Components/Login Page/Otp";
+import PasswordReset from "./Components/Login Page/PasswordReset";
 function App() {
   return (
     <Router>
@@ -30,6 +32,12 @@ function App() {
           <Route path="/forgetPassword">
             <ForgetPassword />
           </Route>
+          <Route path="/otp">
+            <Otp></Otp>
+          </Route>
+          <Route path="/passwordReset">
+            <PasswordReset></PasswordReset>
+          </Route>
           <Route path="/allPlans">
             <AllPlans />
           </Route>
@@ -42,7 +50,7 @@ function App() {
         </Switch>
         <Footer />
       </AuthProvider>
-    </Router>
+    </Router >
   );
 }
 export default App;

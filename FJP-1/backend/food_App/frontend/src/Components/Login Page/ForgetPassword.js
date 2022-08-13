@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import '../Styles/login.css'
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import { useAuth } from '../Context/AuthProvider';
 function ForgetPassword() {
     const [email, emailSet] = useState("");
+    const { setResetEmail } = useAuth();
+    const history = useHistory();
     const sendEmail = async () => {
         // request -> forgetPassword Route
         try {
@@ -14,7 +17,9 @@ function ForgetPassword() {
                 alert("Internal server error");
             } else {
                 alert("Mail send to your registerd email ID");
+                setResetEmail(email);
                 // send to your restpasswordPage
+                history.push("/otp");
             }
         } catch (err) {
             console.log(err.message);

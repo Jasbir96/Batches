@@ -74,19 +74,19 @@ async function resetPasswordController(req, res) {
         let { otp, password, confirmPassword, email } =
             req.body;
         // search -> get the user
-        let user = await FoodUserModel.findOne(email);
+        let user = await FooduserModel.findOne({email:email});
         let currentTime = Date.now();
         if (currentTime > user.otpExpiry) {
             delete user.otp
             delete user.otpExpiry
             await user.save();
-            res.json({
-                message: "Otp Expired"
+            res.status(400).json({
+                result: "Otp Expired"
             })
         } else {
             if (user.otp != otp) {
-                res.json({
-                    message: "Otp doesn't match"
+                res.staus(400).json({
+                    result: "wrong otp"
                 })
             } else {
                 // //////////////////////////
@@ -101,12 +101,11 @@ async function resetPasswordController(req, res) {
                 delete user.otpExpiry
                 await user.save();
                 //////////////////////////////////////////////////////////////
-                res.json({
+                res.status(201).json({
                     user: user,
                     message: "User password reset"
                 })
             }
-
         }
         // key delete -> get the document obj -> modify that object by removing useless keys  
         // save to save this doc in db 
@@ -114,7 +113,9 @@ async function resetPasswordController(req, res) {
 
     } catch (err) {
         console.log(err);
-        res.send(err.message);
+        res.status(500).json({
+            result: err.message
+        });
     }
 }
 async function forgetPasswordController(req, res) {
