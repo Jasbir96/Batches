@@ -11,15 +11,18 @@ function Login() {
     const [password, passwordSet] = useState("")
     const [email, emailSet] = useState("");
     const [loading, setLoading] = useState(false);
-    const {login, user} = useContext(AuthContext);
+    const { login, user } = useContext(AuthContext);
     const handleLogin = async () => {
         try {
             // console.log(email,password)
-            await login(email, password)
-            history.push("/")
-          } catch(err) {
+            let flag = await login(email, password)
+
+            console.log("flag",flag);
+            if (flag)
+                history.push("/")
+        } catch (err) {
             console.log(err);
-          }
+        }
     }
     return (
         <div className="container-grey">
@@ -38,7 +41,7 @@ function Login() {
                         <div className="entryText">Password</div>
                         <input className="password input" type="password" name="Password" placeholder="**********" onChange={(e) => passwordSet(e.target.value)} />
                     </div>
-                    <button className="loginBtn  form-button" type="submit" onClick={handleLogin}>
+                    <button className="loginBtn  form-button"  onClick={handleLogin}>
                         Login
                     </button>
                     <div className='otherOption'>

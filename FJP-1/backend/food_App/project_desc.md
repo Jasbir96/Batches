@@ -1,5 +1,4 @@
 # Meal Plans delivery website -> EatFit clone
-
 ## pages
 * Home : ❓
     * Majorly Static
@@ -62,9 +61,14 @@
        * It also exposes you lossley coupled auth functions -> all the are together 
      * Signup Page:  completed
      * Login Page : Completed   
+
 ## 11/aug/2022
- * Logout Page
- * Forget password and reset Password
- * Plans Schema  
+* login , signup (backend frontend)->bugs
+ * Profile Page -> ui
+ * Forget password and reset Password -> ui
+ * Plans Schema : name,duration,price:,discount,
+ * To be added later :  reviews-> later, averagerating
+ * All Plans Page creation 
+  
 
 
