@@ -1,5 +1,4 @@
 import React, { useState, useReducer } from 'react';
-
 // all the prem/comb of your state change 
 // predictible state change  -> state change logic
 function reducer(state, action) {
@@ -15,6 +14,7 @@ function reducer(state, action) {
             return state - 5;
     }
 }
+
 function UseState() {
     const initialState = 0;
     const [count, dispatch] = useReducer(reducer, initialState);
@@ -35,13 +35,15 @@ function UseState() {
     console.log("state variable ", count);
     return (
         <>
-            <button onClick={() => { dispatch("increment") }}>Increment</button>
-            <span>    {count}    </span>
+<button onClick={() => { dispatch("increment") }}>
+    Increment</button>
+            <span>    {count}   </span>
             <button onClick={() => { dispatch("decrement") }}>
                 Decrement</button>
             <button onClick={() => { dispatch("increment_by_five") }}>
-                + five </button>
-            <button onClick={() => { dispatch("dec_by_five") }}>- five </button>
+                +five</button>
+            <button onClick={() => { dispatch("dec_by_five") }}>
+                - five </button>
         </>
     )
 }

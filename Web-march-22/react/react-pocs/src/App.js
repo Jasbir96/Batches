@@ -1,4 +1,5 @@
 import './App.css';
+import UseReducer from './pocs/UseReducer';
 import UseState from './pocs/UseState';
 import UseStateComplex from './pocs/UseStateComplex';
 
@@ -7,7 +8,8 @@ function App() {
     <>
       <div>React POCS</div>
       {/* <UseState></UseState> */}
-      <UseStateComplex></UseStateComplex>
+      {/* <UseStateComplex></UseStateComplex> */}
+      <UseReducer></UseReducer>
     </>
   );
 }
