@@ -15,15 +15,15 @@
         * Pagination
 ## Technical Prerequisites (Engineering manager)
 * How to make a (Ajax)request in react and render that data on ui
-  * React ->life cycle methods
+  * React ->life cycle methods -> useEffect
 * Favourite page features that are highly used: 
   * Pagination,
   * group by,
   * sorting,
   * searching
-* Multiple pages -> Routing 
+* Multiple pages (client side routing)-> Routing 
 * Practice : communication between multiple components
-* Sending data from one page to another 
+* Sending data from one page to another -> localstorage 
 
   ***I will not focus on ui**
 

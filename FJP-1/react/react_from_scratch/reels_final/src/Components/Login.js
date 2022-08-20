@@ -136,9 +136,9 @@ export default function Login() {
             <TextField type="password" InputLabelProps={{ style: { width: '-webkit-fill-available' } }} className={classes.password} margin='dense'
               onChange={(e) => { handlePassword(e) }} id="outlined-basic" label="Password" variant="outlined" fullWidth={true} size='small' />
             <Typography variant='subtitle1'>
-              <Link className={classes.link} variant="inherit" underline='none' href="#" >
+              {/* <Link className={classes.link} variant="inherit" underline='none' href="#" >
                 Forget Password ?
-              </Link>
+              </Link> */}
             </Typography>
           </CardContent>
           <CardActions>
@@ -147,7 +147,6 @@ export default function Login() {
             </Button>
           </CardActions>
         </Card>
-
         <Card className={classes.root2} variant="outlined">
           <CardContent>
             <Typography className={classes.typo} variant='subtitle1'>
