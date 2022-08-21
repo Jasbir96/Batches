@@ -13,7 +13,7 @@ function AuthProvider({ children }) {
     // const history = useHistory();
     const [user, userSet] = useState("");
     const [loading, setLoading] = useState(false);
-const [resetPassEmail, setResetEmail] = useState(null);
+    const [resetPassEmail, setResetEmail] = useState(null);
     const [otpPassEmail, setOtpPassEmail] = useState(null);
     async function signUp(name, password, email, confirm) {
         try {
@@ -26,12 +26,13 @@ const [resetPassEmail, setResetEmail] = useState(null);
                     confirmPassword: confirm,
                     email
                 })
-            if (res.status == 400) {
-                alert("improper user data entry")
-            }
+
             setLoading(false);
         } catch (err) {
             console.log("err", err.message);
+            if (err.message == "Request failed with status code 400") {
+                alert("improper user data entry")
+            }
             setLoading(false);
         }
     }
@@ -39,31 +40,30 @@ const [resetPassEmail, setResetEmail] = useState(null);
         let flag = true;
         try {
             setLoading(true);
+            // res is valid -> with not 400/500
             const res = await axios.post("/api/v1/auth/login", {
                 email: email,
                 password: password
             });
-            console.log(res.status);
-            if (res.status == 404) {
-                alert("Password or email may be wrong");
-                flag = false;
-            } else if (res.status == 400) {
-                alert("user not found kindly login")
-                flag = false;
-            } else if (res.status == 500) {
-                alert("Internal server error")
-                flag = false;
-            }
-            else {
-                userSet(res.data.user);
-            }
+            // console.log(res.status);
+            userSet(res.data.user);
             setLoading(false);
             // console.log("40",res.data);
-            return flag
+            return flag;
         }
         catch (err) {
             flag = false;
-            console.log(err);
+            console.log(err.message);
+            if (err.message == "Request failed with status code 404") {
+                alert("Password or email may be wrong");
+                flag = false;
+            } else if (err.message == "Request failed with status code 400") {
+                alert("user not found kindly login");
+                flag = false;
+            } else if (err.message == "Request failed with status code 500") {
+                alert("Internal server error")
+                flag = false;
+            }
             setLoading(false);
             return flag;
         }

@@ -66,9 +66,17 @@
 * login , signup (backend frontend)->bugs -> status code addition
  * Profile Page -> ui -> backend -> ui link
  * Forget password and reset Password -> ui
- * Plans Schema : name,duration,price:,discount,
+
+## 21/aug/2022
+ * Rectifying status code error ->axios 
+ * Plans Schema : name,duration,price:discount
+ * All Plans Page creation
+ * Deployment + stripe integration / razorpay  
+ * Bought plan  -> fall back route 
  * To be added later :  reviews-> later, averagerating
- * All Plans Page creation 
+# 22/aug/2022
+* Presisting Login -> JWT and may i will be local storage
+ 
   
 
 

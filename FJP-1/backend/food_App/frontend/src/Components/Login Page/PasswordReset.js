@@ -27,20 +27,20 @@ function PasswordReset() {
                 setOtpPassEmail(null);
                 setResetEmail(null);
                 history.push("/login");
-            } else if (res.status == 400) {
+            } else if (res.status == 200) {
                 if (res.message == "Otp Expired") {
                     alert("Otp expried kindly regenerate ")
                 } else if (res.message == "wrong otp") {
-                    alert("wrong otp")
+                    alert("wrong otp");
                 }
                 setOtpPassEmail(null);
                 setResetEmail(null);
-            }else if(res.status==500){
-                alert("Internal server error");
             }
-
         } catch (err) {
             console.log(err.message);
+            if (err.message == "Request failed with status code 500") {
+                alert("Internal server error");
+            }
             setOtpPassEmail(null);
             setResetEmail(null);
         }

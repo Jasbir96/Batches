@@ -74,18 +74,18 @@ async function resetPasswordController(req, res) {
         let { otp, password, confirmPassword, email } =
             req.body;
         // search -> get the user
-        let user = await FooduserModel.findOne({email:email});
+        let user = await FooduserModel.findOne({ email: email });
         let currentTime = Date.now();
         if (currentTime > user.otpExpiry) {
             delete user.otp
             delete user.otpExpiry
             await user.save();
-            res.status(400).json({
+            res.status(200).json({
                 result: "Otp Expired"
             })
         } else {
             if (user.otp != otp) {
-                res.staus(400).json({
+                res.status(200).json({
                     result: "wrong otp"
                 })
             } else {
