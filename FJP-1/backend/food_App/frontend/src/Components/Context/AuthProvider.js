@@ -45,6 +45,7 @@ function AuthProvider({ children }) {
                 email: email,
                 password: password
             });
+            console.log(res.data);
             // console.log(res.status);
             userSet(res.data.user);
             setLoading(false);

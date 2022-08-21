@@ -68,8 +68,67 @@
  * Forget password and reset Password -> ui
 
 ## 21/aug/2022
- * Rectifying status code error ->axios 
+ * Rectifying status code error ->axios  ✔
+ * Adding Plans to your backend :(skeleteon code )
+  1. We are using mvc architecture 
+     1. api level -> main sub-route with your router
+     2. create a planRouter -> remaining route & associating controller fns
+     3. create controller functions -> 
+        1. get,update,delete, 
+        2. create getall
+     4. create model -> db schema 
+ * you first fill your model -> controller -> router
+ * Usage : send data to a particular and following your schema  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  * Plans Schema : name,duration,price:discount
+  1. name: {
+        type: String,
+        required: [true, "kindly pass the name"],
+        unique: [true, "plan name should be unique"],
+        // errors
+        maxlength: [40, "Your plan length is more than 40 characters"],
+    },
+    duration: {
+        type: Number,
+        required: [true, "You Need to provide duration"]
+    },
+    price: {
+        type: Number,
+        required: true,
+    },
+    discount: {
+        type: Number,
+        validate: {
+            validator: function () {
+                return this.discount < this.price;
+            },
+            message: "Discount must be less than actual price",
+        },
+    }, 
  * All Plans Page creation
  * Deployment + stripe integration / razorpay  
  * Bought plan  -> fall back route 
