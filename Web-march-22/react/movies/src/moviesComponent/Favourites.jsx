@@ -160,13 +160,13 @@ function sortFavourites(ratingOrder, favourites) {
             if (a.vote_average > b.vote_average) {
                 return +1
             } else if (a.vote_average == b.vote_average) {
-                return 0
+                return 0;
             } else if (a.vote_average < b.vote_average) {
                 return -1
             }
         } else {
             if (a.vote_average > b.vote_average) {
-                return -1
+                return -1;
             } else if (a.vote_average == b.vote_average) {
                 return 0
             } else if (a.vote_average < b.vote_average) {
@@ -175,6 +175,7 @@ function sortFavourites(ratingOrder, favourites) {
         }
 
     }
+    // [1,5,4,2,7]
     let ratedFavourites = favourites.sort(helper);
     return ratedFavourites;
 }
