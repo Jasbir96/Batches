@@ -8,7 +8,7 @@ function AllPlans() {
     const [arr, arrset] = useState([]);
     useEffect(async () => {
         try {
-            const data = await axios.get("/api/plans?page=1&&limit=3");
+            const data = await axios.get("/api/plans");
             console.log(data.data);
             arrset(data.data.data);
         } catch (err) {

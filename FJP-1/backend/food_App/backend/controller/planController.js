@@ -52,9 +52,54 @@ async function getPlanController(req, res) {
         })
     }
 }
-async function updatePlanController(req, res) { }
-async function deletePlanController(req, res) { }
+async function updatePlanController(req, res) {
+    try {
+        console.log("to update", req.body);
+        let planUpdateObjData = req.body;
+        let id = req.params.planRoutes;
+        console.log(id);
+        // mera obj jo hai wo empty ??
+        const isDataPresent = Object.keys(planUpdateObjData).length > 0;
+        if (isDataPresent) {
+            // get plan from db 
+            const plan = await FoodplanModel.findById(id);
 
+            // update the plan
+            for (let key in planUpdateObjData) {
+                plan[key] = planUpdateObjData[key];
+            }
+            // save to db  -> validators will run 
+            await plan.save();
+            res.status(200).json({
+                plan
+            })
+        } else {
+            res.status(404).json({
+                message: "nothing to update"
+            })
+        }
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ err: err.message });
+    }
+
+}
+async function deletePlanController(req, res) {
+    try {
+        let id = req.params.planRoutes;
+        let plan = await FoodplanModel.findByIdAndDelete(id);
+        res.status(200).json({
+            result: "plan found",
+            plan: plan
+
+        });
+    } catch (err) {
+        console.log(err);
+        res.json(500).json({
+            err: err.message
+        })
+    }
+}
 module.exports = {
     getAllplansController,
     createPlanController,
