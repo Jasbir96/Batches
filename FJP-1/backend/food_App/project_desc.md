@@ -84,7 +84,24 @@
  * deployment 
  
 # 22/aug/2022
- * To be added later :  reviews-> later, averagerating
+ * To be added later :
+  * TO add review feature
+    * create reviewModel :  
+      * desc,rating,createdAt,
+      * userId with ref  to userModel and planId with ref  to PlanModel
+    * update PlanModel with two new properties
+      * array of reviews : which review are done for your plan
+      * averageRating : 
+    * implementaiton: 
+      * create review 
+        * review send all the above entries 
+        * review's id is added to that plan for quick access
+        * average rating of that plan is also updated with
+           the help of current rating 
+      * get review 
+        * Find -> populate your planId and userId to get data about them
+  
+
 * Deployment + stripe integration / razorpay  
  * Bought plan  -> fall back route 
 * Presisting Login -> JWT and may i will be local storage

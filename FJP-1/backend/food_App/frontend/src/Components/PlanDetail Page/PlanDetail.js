@@ -1,10 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import '../Styles/planDetail.css'
-import '../Styles/contact.css'
+import '../Styles/planDetail.css';
+import '../Styles/contact.css';
 import AuthProvider, { useAuth } from '../Context/AuthProvider';
-
 function PlanDetail() {
     const [plan, setplan] = useState({})
     const { id } = useParams();
@@ -13,7 +12,7 @@ function PlanDetail() {
     const [rate, setrate] = useState();
     const { user } = useAuth();
     useEffect(async () => {
-        const data = await axios.get(`/api/plans/${id}`)
+        const data = await axios.get(`/api/v1/plan/${id}`)
         console.log(data.data.data);
         delete data.data.data["_id"]
         delete data.data.data["__v"]
@@ -26,7 +25,6 @@ function PlanDetail() {
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
-    console.log(rate);
     const handleClick = async () => {
         console.log(123645);
         const data = await axios.post("/api/reviews", {
@@ -38,14 +36,14 @@ function PlanDetail() {
         const reviews = await axios.get("/api/getReview/" + id);
         setarr(reviews.data.reviews);
     }
-    const handleDelete = async() =>{
-        try{
+    const handleDelete = async () => {
+        try {
             let data = await axios.delete("/", {
                 "id": id
             });
             alert(data);
         }
-        catch(err){
+        catch (err) {
             alert(err);
         }
     }
@@ -68,10 +66,8 @@ function PlanDetail() {
                             ))
                         }
                     </div>
-
                 </div>
             </div>
-
             <div className='reviewBox'>
                 <div className="reviewEnrty">
                     <input type="text" value={review} onChange={(e) => setreview(e.target.value)} />
@@ -101,7 +97,6 @@ function PlanDetail() {
                                     }
                                 </div>
                             </div>
-
                             <div className='rcBtn'>
                                 <button className="showMoreBtn btn" onClick={handleDelete}>Delete</button>
                             </div>

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose'); //npm i mongoose
-
 let planSchema = new mongoose.Schema({
     name: {
         type: String,

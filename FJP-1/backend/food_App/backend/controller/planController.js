@@ -2,7 +2,7 @@ const FoodplanModel = require("../model/planModel");
 async function getAllplansController(req, res) {
     try {
         // mera obj jo hai wo empty ??
-        let plans = await FoodplanModel.find();
+        let plans = await FoodplanModel.find().populate("reviews");
         res.status(200).json({
             Allplans: plans
         })
@@ -38,7 +38,8 @@ async function createPlanController(req, res) {
 async function getPlanController(req, res) {
     try {
         let id = req.params.planRoutes;
-        let plan = await FoodplanModel.findById(id);
+        let plan = await FoodplanModel.findById(id)
+        .populate("reviews");;
         res.status(200).json({
             result: "plan found",
             plan: plan
