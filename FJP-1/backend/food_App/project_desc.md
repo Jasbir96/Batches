@@ -79,13 +79,14 @@
      4. create model -> db schema 
  * you first fill your model -> controller -> router
  * Usage : send data to a particular and following your schema  
- * Plans Schema : name,duration,price:discount
-  
+ * Plans Schema : name,duration,price:discount  
  * All Plans Page creation
- * Deployment + stripe integration / razorpay  
- * Bought plan  -> fall back route 
- * To be added later :  reviews-> later, averagerating
+ * deployment 
+ 
 # 22/aug/2022
+ * To be added later :  reviews-> later, averagerating
+* Deployment + stripe integration / razorpay  
+ * Bought plan  -> fall back route 
 * Presisting Login -> JWT and may i will be local storage
  
   

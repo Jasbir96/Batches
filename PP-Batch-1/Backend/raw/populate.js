@@ -7,7 +7,6 @@ const personSchema = Schema({
     age: Number,
     stories: [{ type: Schema.Types.ObjectId, ref: 'Story' }]
 });
-
 const storySchema = Schema({
     author: { type: Schema.Types.ObjectId, ref: 'Person' },
     title: String,
@@ -22,10 +21,8 @@ const author = new Person({
     age: 50
 });
 
-
 author.save(function (err) {
     if (err) return handleError(err);
-
     const story1 = new Story({
         title: 'Casino Royale',
         author: author._id    // assign the _id from the person

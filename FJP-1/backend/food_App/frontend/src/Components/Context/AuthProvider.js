@@ -26,7 +26,6 @@ function AuthProvider({ children }) {
                     confirmPassword: confirm,
                     email
                 })
-
             setLoading(false);
         } catch (err) {
             console.log("err", err.message);
@@ -45,7 +44,7 @@ function AuthProvider({ children }) {
                 email: email,
                 password: password
             });
-            console.log(res.data);
+            console.log(res);
             // console.log(res.status);
             userSet(res.data.user);
             setLoading(false);

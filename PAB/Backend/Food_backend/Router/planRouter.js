@@ -27,8 +27,7 @@ planRouter.route("/:id")
     .delete(bodyChecker, isAuthorized(["admin"]), deletePlan)
 async function getbestPlans(req, res) {
     console.log("hello")
-    try{
-        
+    try{    
     let plans = await PlanModel.find()
     .sort("-averageRating").populate({
             path: 'reviews',

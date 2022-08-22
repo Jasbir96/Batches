@@ -1,6 +1,5 @@
 // dependency
 const express = require("express");
-
 // router
 const ReviewRouter = express.Router();
 const ReviewModel = require("../model/reviewModel");
