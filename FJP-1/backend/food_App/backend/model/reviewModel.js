@@ -25,7 +25,6 @@ const reviewSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId, //_id
         required: [true, "Review must belong to a plan "],
         ref:"FoodplanModel"
-       
     }
 })
 const ReviewModel = mongoose.model("FoodreviewModel",
