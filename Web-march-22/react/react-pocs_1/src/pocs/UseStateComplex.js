@@ -17,7 +17,7 @@ function reducer(state, action) {
 
 function UseState() {
     const initialState = 0;
-    // const [count, dispatch] = useReducer(reducer, initialState);
+    const [count, dispatch] = useReducer(reducer, initialState);
     // let [count, setCount] = useState(0);
     // const IncrementCount = () => {
     //     setCount((count) => count + 1);
