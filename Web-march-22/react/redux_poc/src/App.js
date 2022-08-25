@@ -6,16 +6,20 @@ import { Provider } from "react-redux";
 import CounterRedux from './components/CounterRedux';
 import BatRedux from './components/BatRedux';
 import UserRedux from './components/UserRedux';
-
+import Login from "./firebasecomponents/login";
 function App() {
-  return (
-    <Provider store={store}>
-      <h1>Redux Examples</h1>
-      {/* <Counter></Counter> */}
-      <CounterRedux></CounterRedux>
-      <BatRedux></BatRedux>
-      <UserRedux></UserRedux>
-    </Provider>
+  return (<>
+    <h1>Redux Examples</h1>
+    <Login></Login>
+    {/* // <Provider store={store}> */}
+    {/* <Counter></Counter> */}
+    {/* <CounterRedux></CounterRedux> */}
+    {/* <BatRedux></BatRedux> */}
+    {/* <UserRedux></UserRedux> */}
+
+    {/* // </Provider> */}
+  </>
+
   );
 }
 export default App;
