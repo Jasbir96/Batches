@@ -11,6 +11,10 @@ function App() {
   return (<>
     <h1>Redux Examples</h1>
     <Login></Login>
+
+
+
+    {/* Redux ki pocs */}
     {/* // <Provider store={store}> */}
     {/* <Counter></Counter> */}
     {/* <CounterRedux></CounterRedux> */}
