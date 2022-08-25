@@ -5,6 +5,7 @@ import store from "./redux/store";
 import { Provider } from "react-redux";
 import CounterRedux from './components/CounterRedux';
 import BatRedux from './components/BatRedux';
+import UserRedux from './components/UserRedux';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       {/* <Counter></Counter> */}
       <CounterRedux></CounterRedux>
       <BatRedux></BatRedux>
+      <UserRedux></UserRedux>
     </Provider>
   );
 }
