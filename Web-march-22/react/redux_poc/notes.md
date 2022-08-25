@@ -1,7 +1,10 @@
 # Redux 
 * Code Flow
-* Uscase 
-* terms : statements 
+* Usecase 
+* Principles
+  * It follow unidrectional flow of data
+  * state change is compared on the basis of reference 
+ 
 # Steps 
 * npm i redux react-redux
 * create redux folder

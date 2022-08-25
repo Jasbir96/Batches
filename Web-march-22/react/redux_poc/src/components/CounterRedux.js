@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+// state, state change functions -> props
 function CounterRedux(prop) {
     console.log("3 counterredux ", prop);
     let count = prop.count;
