@@ -16,9 +16,9 @@ function CounterRedux(prop) {
     )
 }
 // ye aapke store ke saare states get kar ke component provide  
-function mapStateToProps(state) {
+function mapStateToProps(store) {
     console.log("counter msp");
-    return state.Count;
+    return store.Count;
 }
 // it provide dispatch-> call reducer fn ko
 // state update 
