@@ -14,3 +14,7 @@ function BatReducer(state = initialState, action) {
     }
 }
 export default BatReducer;
+
+
+
+// prure are function that doen't effect outer env

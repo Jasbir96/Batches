@@ -2,8 +2,14 @@
 * Code Flow
 * Usecase 
 * Principles
+  * Single sourec of truth : all the state in redux are stored in single store
+  * state is read only : you a component can't interact with state directly . You need to dispatch an action and reducer will change the state  inside the store
+* reducer are pure functions
+* 
+*  Observations
   * It follow unidrectional flow of data
-  * state change is compared on the basis of reference 
+  * state change is compared on the basis of reference
+   
 # Steps 
 * npm i redux react-redux
 * create redux folder

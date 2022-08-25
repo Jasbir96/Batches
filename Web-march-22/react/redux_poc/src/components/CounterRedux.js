@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // state, state change functions -> props
 function CounterRedux(prop) {
+    // {count:0, vfn1,fn1}
     console.log("3 counterredux ", prop);
     let count = prop.count;
     let increment = prop.increment;
@@ -18,6 +19,7 @@ function CounterRedux(prop) {
 // ye aapke store ke saare states get kar ke component provide  
 function mapStateToProps(store) {
     console.log("counter msp");
+    // {count:0} 1
     return store.Count;
 }
 // it provide dispatch-> call reducer fn ko
