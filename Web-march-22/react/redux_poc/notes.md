@@ -4,7 +4,6 @@
 * Principles
   * It follow unidrectional flow of data
   * state change is compared on the basis of reference 
- 
 # Steps 
 * npm i redux react-redux
 * create redux folder
@@ -38,15 +37,15 @@
     * input :  inital state & actions
     * initally it return the inital state 
     * reducer contains all the state change possiblities 
-    * it can only be intercated by a dispatch function
-    *  in case of multiple reducers all the action type will be matched
+    * it can only be intercated by a **dispatch** function
+    *  in case of multiple reducers all the action type will be matched  -> note worthy 
   * dispatch : it is used to interact with reducer to change the store 
     * you can pass two params
       * action : that will be matched to do a state change
       * payload : to provide some data to the reducer
   * store : It is central storage of all the current  state recievd from the reducers  
-    * It can't be changed directly 
     * Redux can only have one store  
+    * It can't be changed directly  and only be intercated by reducer 
   *  Provider : It is a wrapper that wrap the whole app 
   *  connect : It is used to connnect provider with the component 
   *  MapstateToProps: 
