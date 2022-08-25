@@ -3,9 +3,15 @@
 import axios from "axios";
 // that middleware will recieve you dispatch
 async function getUserMiddleWare(dispatch) {
-    let res = await axios("https://jsonplaceholder.typicode.com/users/1");
-    console.log("jsonData", res.data);
-    let user = res.data;
-    dispatch({ type: "setUser", payload: user })
+    try {
+        let res = await axios("https://jsonplaceholder.typicode.com/users/1");
+        console.log("jsonData", res.data);
+        let user = res.data;
+        dispatch({ type: "setUser", payload: user })
+
+    } catch (err) {
+        dispatch
+            ({ type: "setError", payload: "can't fetch data right now" });
+    }
 }
 export default getUserMiddleWare;

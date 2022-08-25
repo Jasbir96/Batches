@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { connect } from "react-redux"
 import getUserMiddleWare from '../redux/user/userMiddleWare';
@@ -10,7 +11,8 @@ function UserRedux(props) {
     return (
         <>
             {loading == true
-                ? <h1>...Loading</h1> : <h2>userData :{user}</h2>}
+                ? <h1>...Loading</h1> :
+                <h2>userData :{user}</h2>}
         </>
     )
 }
@@ -21,8 +23,9 @@ function mapDispatchToProps(dispatch) {
     return {
         fetchUser: () => {
             // middleware 
-            dispatch(getUserMiddleWare)
+            dispatch(getUserMiddleWare);
         }
+
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)
