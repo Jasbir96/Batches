@@ -1,11 +1,10 @@
 # Redux 
 * Code Flow
 * Usecase 
-* Principles
+* Principles: https://redux.js.org/understanding/thinking-in-redux/three-principles
   * Single sourec of truth : all the state in redux are stored in single store
   * state is read only : you a component can't interact with state directly . You need to dispatch an action and reducer will change the state  inside the store
-* reducer are pure functions
-* 
+* reducer are pure functions in redux
 *  Observations
   * It follow unidrectional flow of data
   * state change is compared on the basis of reference
