@@ -4,10 +4,11 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     async function loginHandler() {
-        alert(email + " " + password);
+        // alert(email + " " + password);
         // firebase talk -> login
         try {
-            let userCreds = await auth.signInWithEmailAndPassword(email, password);
+            let userCreds = await 
+            auth.signInWithEmailAndPassword(email, password);
             console.log(userCreds.user);
         } catch (err) {
             alert(err.message);
