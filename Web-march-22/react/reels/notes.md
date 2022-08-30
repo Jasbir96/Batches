@@ -23,6 +23,20 @@
     *  auth enable , emailId ,password: enable
     *  Fields -> empty, 
     *  Login failed :error message  : Later  
+  
+  ### Pending 
     *  Routes  
     *  if login successfull  : Home Page 
+  * Signup Page 
+    * Input
+      * email
+      * Password
+      * Name
+      * Image 
+    * Steps
+      * signup -> auth function firebase : createUserWithEmailAndPassword 
+      * user data store -> firestore -> Part-1
+        * firestore enable : firebase console
+      * image upload -> firebase storage  
+      * user data store + image link store-> firestore -> Part-1
    

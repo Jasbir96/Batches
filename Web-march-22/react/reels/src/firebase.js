@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
 import firebase from "firebase/app";
 import "firebase/auth";
+// 1. import
+import "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
@@ -16,6 +18,15 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 export const googleAuth = new firebase.auth.GoogleAuthProvider();
 export default firebase;
-export const auth=firebase.auth();
+export const auth = firebase.auth();
+// 2.
+const firestore = firebase.firestore();
+
+// 3. to shorten the syntax
+export const database = {
+    users: firestore.collection('users'),
+    getCurrentTimeStamp:
+        firebase.firestore.FieldValue.serverTimestamp,
+}
 
 
