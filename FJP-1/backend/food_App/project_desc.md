@@ -101,11 +101,12 @@
       * get review 
         * Find -> populate your planId and userId to get data about them
 # 28th/aug/22
-* Deployment + stripe integration / razorpay  
+*  integration stripe / razorpay
 * Bought plan  -> fall back route 
-* HomePage completion
+* Deployment + HomePage completion
 * Presisting Login -> JWT and may i will be local storage
-* Config data hiding 
+* Config data hiding
+* Security 
  
   
 
