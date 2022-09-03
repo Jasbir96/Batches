@@ -1,9 +1,9 @@
-
 // new razorpay
 const rzpButton = document.querySelector("#rzp-button1");
 rzpButton.addEventListener("click", async function (e) {
     //   1. backend request 
-    const response = await fetch("http://localhost:3000/checkout");
+    const response = await
+        fetch("https://824d-2405-201-4036-1035-412e-58de-345d-11b6.in.ngrok.io/checkout");
     const data = await response.json();
     console.log("data", data);
     // 2. options fill data
@@ -13,7 +13,11 @@ rzpButton.addEventListener("click", async function (e) {
         "currency": data.currency,
         "name": "Acme Corp",
         "description": data.product,
-        
+        "prefill": {
+            "name": "Gaurav Kumar",
+            "email": "gaurav.kumar@example.com",
+            "contact": "9999999999"
+        },
     };
     // payemnt page create 
     const paymentPage = new Razorpay(options);
@@ -22,4 +26,7 @@ rzpButton.addEventListener("click", async function (e) {
     // // page reload prevent 
     e.preventDefault();
 })
+
+
+
 

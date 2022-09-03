@@ -3,6 +3,7 @@ const app = express();
 const secrets = require("./secrets");
 const shortId = require("shortId");
 const Razorpay = require("razorpay");
+const crypto =require("crypto");
 const instance = new Razorpay({
     key_id: secrets.KEY_ID,
     key_secret: secrets.KEY_PASSWORD,
@@ -31,6 +32,26 @@ app.get("/checkout", function (req, res) {
         product: planName
     });
 })
+app.post("/verification", (req, res) => {
+    const secret = "mysecret";
+
+    console.log(req.body);
+
+    const shasum = crypto.createHmac("sha256", secret);
+    shasum.update(JSON.stringify(req.body));
+    const digest = shasum.digest("hex");
+
+    console.log(digest, req.headers["x-razorpay-signature"]);
+
+    if (digest === req.headers["x-razorpay-signature"]) {
+        console.log("request is legit");
+        res.status(200).json({
+            message: "OK",
+        });
+    } else {
+        res.status(403).json({ message: "Invalid" });
+    }
+});
 app.listen(3000, function () {
     console.log("server started at port 3000")
 })
