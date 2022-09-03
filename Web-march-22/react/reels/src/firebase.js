@@ -3,10 +3,11 @@ import firebase from "firebase/app";
 import "firebase/auth";
 // 1. import
 import "firebase/firestore";
+import "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyDnubDLp4n7wERXJPRq3peWsjRoEvflcnY",
     authDomain: "instareels-26712.firebaseapp.com",
     projectId: "instareels-26712",
@@ -21,7 +22,7 @@ export default firebase;
 export const auth = firebase.auth();
 // 2.
 const firestore = firebase.firestore();
-
+export const storage = firebase.storage();
 // 3. to shorten the syntax
 export const database = {
     users: firestore.collection('users'),

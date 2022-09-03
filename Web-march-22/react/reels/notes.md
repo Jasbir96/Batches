@@ -37,6 +37,10 @@
       * signup -> auth function firebase : createUserWithEmailAndPassword 
       * user data store -> firestore -> Part-1
         * firestore enable : firebase console
-      * image upload -> firebase storage  
+        * user create 
+      * image upload -> firebase storage
+      * FirebaseStorage -> enable   
       * user data store + image link store-> firestore -> Part-1
-   
+ * Adding redux with firebase 
+   * npm i redux react-redux redux-thunk react-redux-firebase redux-firestore
+      
