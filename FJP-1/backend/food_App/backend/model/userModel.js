@@ -5,8 +5,8 @@
 // connect to my app // mongoose 
 const mongoose = require('mongoose'); //npm i mongoose
 // db server link -> mongodb atlas ka link
-let secrets =require("../secrets");
-    
+let secrets = require("../secrets");
+
 // db  server connect -> mongodbAtlas connect 
 mongoose
     .connect(secrets.DB_LINK)
@@ -52,7 +52,6 @@ let userSchema = new mongoose.Schema({
     pic: {
         type: String,
         default: "dp.png",
-
     },
     otp: {
         type: String
@@ -63,6 +62,7 @@ let userSchema = new mongoose.Schema({
     address: {
         type: String,
     }
+
 })
 // product Knowledge
 // user data -> store

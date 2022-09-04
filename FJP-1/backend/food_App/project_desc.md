@@ -82,7 +82,6 @@
  * Plans Schema : name,duration,price:discount  
  * All Plans Page creation
  * deployment 
- 
 # 22/aug/2022
  * To be added later :
   * TO add review feature
@@ -100,14 +99,46 @@
            the help of current rating 
       * get review 
         * Find -> populate your planId and userId to get data about them
-# 28th/aug/22
-*  integration stripe / razorpay
-* Bought plan  -> fall back route 
-* Deployment + HomePage completion
+# 4th/aug/22
+* Deployment 
+* Bought plan + integration razorpay-> fall back route
+*  HomePage completion 
+
+## Deployment 
+   * Backend: (Heroku) 
+     * Implement cors : package cors 
+     * convert your code to work with both process.env ans secrets.js
+         *  put process.env.[private data key ] || require("../secrets)[private data]
+         * Remove static port number : process.env.PORT || 3000
+     * rewrite start script in package.json ->
+        scripts:{"start":"node api.js"}
+     * push the code to github
+     *  heroku
+        *  -> signup -> create new app
+        *  set Env variables
+             * go to setting -> click on reveal config vars
+             * enter all the secret key value pair
+        *  -> go to deploy 
+        *  -> Connect to a github repo -> enable automatic deploy->deploy branch
+  * Frontend : netlify
+    * code : add full links when making api request to backend  
+    * Netlify : 
+          * signup -> click on add new site -> import an existing project 
+          * authorize github -> choose your repo
+          * in next popup -> in build command put CI=false npm run build  
+    * deploy : warnings are converted to errors
+        
+
+
+
+
+
+
+## Issues
+* PlanDetails ,reviews
 * Presisting Login -> JWT and may i will be local storage
 * Config data hiding
 * Security 
- 
   
 
 

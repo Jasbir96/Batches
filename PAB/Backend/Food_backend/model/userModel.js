@@ -63,7 +63,7 @@ const userSchema = new mongoose.Schema(
         },
     })
 // hook
-userSchema.pre('save', function (next) {
+userSchema.pre('save', async function (next) {
     // do stuff
     const salt = await bcrypt.genSalt(10);
     // password convert text
