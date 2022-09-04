@@ -99,7 +99,7 @@
            the help of current rating 
       * get review 
         * Find -> populate your planId and userId to get data about them
-# 4th/aug/22
+# 4th/sep/22
 * Deployment 
 * Bought plan + integration razorpay-> fall back route
 *  HomePage completion 
@@ -125,8 +125,8 @@
     * Netlify : 
           * signup -> click on add new site -> import an existing project 
           * authorize github -> choose your repo
-          * in next popup -> in build command put CI=false npm run build  
-    * deploy : warnings are converted to errors
+    * deploy : warnings are converted to errors to prevent that 
+          * in next popup -> in build command put : CI=false npm run build  
         
 
 
