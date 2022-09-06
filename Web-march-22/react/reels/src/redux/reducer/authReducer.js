@@ -15,5 +15,8 @@ function authReducer(state = initialState, action) {
                 authError: action.payload,
                 isLoggedIn: false
             }
+        default :
+        return state;     
     }
 }
+export default authReducer;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 // import { auth } from "../firebase";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+import {signInMiddleWare} from "../redux/reducer/authMiddleWare";
 function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

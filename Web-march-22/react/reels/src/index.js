@@ -5,8 +5,8 @@ import App from './App';
 import firebase, { firebaseConfig } from "./firebase";
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import store from "./redux/store";
+import {Provider} from "react-redux"
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
 // steps import 
 // provide through the app -> Provider 
 root.render(
@@ -17,7 +17,7 @@ root.render(
                         // firebase config
                         config={firebaseConfig}
  // dispatch to change the store using reducer 
-                        dispatch={reduxStore.dispatch}
+                        dispatch={store.dispatch}
                 >
                         <App />
                 </ReactReduxFirebaseProvider>
