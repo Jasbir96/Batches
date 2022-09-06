@@ -15,13 +15,13 @@ function App() {
 
 
     {/* Redux ki pocs */}
-    {/* // <Provider store={store}> */}
+    // <Provider store={store}>
     {/* <Counter></Counter> */}
-    {/* <CounterRedux></CounterRedux> */}
-    {/* <BatRedux></BatRedux> */}
-    {/* <UserRedux></UserRedux> */}
+    <CounterRedux></CounterRedux>
+    <BatRedux></BatRedux>
+    <UserRedux></UserRedux>
 
-    {/* // </Provider> */}
+    // </Provider>
   </>
 
   );

@@ -23,7 +23,13 @@ function mapDispatchToProps(dispatch) {
     return {
         fetchUser: () => {
             // middleware 
-            dispatch(getUserMiddleWare);
+            dispatch(getUserMiddleWare1);
+        }
+        
+        , fetchUserWithComponentData: () => {
+            let compData = `User Data is fetched on ${Date.now()}`;
+            let innerFn = getUserMiddleWare2(compData);
+            dispatch(innerFn);
         }
 
     }
