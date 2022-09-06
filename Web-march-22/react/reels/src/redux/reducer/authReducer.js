@@ -15,6 +15,17 @@ function authReducer(state = initialState, action) {
                 authError: action.payload,
                 isLoggedIn: false
             }
+
+        case "SIGNOUT":
+            return {
+                authError:null,
+                isLoggedIn:false
+            }
+        case "SIGNOUT_FAILURE":
+            return {
+                authError: null,
+                isLoggedIn: false
+            }
         default :
         return state;     
     }
