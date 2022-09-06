@@ -18,7 +18,6 @@ export const firebaseConfig = {
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 export const googleAuth = new firebase.auth.GoogleAuthProvider();
-export default firebase;
 export const auth = firebase.auth();
 // 2.
 const firestore = firebase.firestore();
@@ -27,7 +26,8 @@ export const storage = firebase.storage();
 export const database = {
     users: firestore.collection('users'),
     getCurrentTimeStamp:
-        firebase.firestore.FieldValue.serverTimestamp,
+    firebase.firestore.FieldValue.serverTimestamp,
 }
+export default firebase;
 
 

@@ -28,7 +28,9 @@ function Login(props) {
     )
 }
 function mapStateToProps(store) {
-    return store.auth;
+    return {
+        auth: store.auth,
+    };
 }
 function mapDispatchToProps(dispatch) {
     return {
@@ -38,7 +40,7 @@ function mapDispatchToProps(dispatch) {
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)
-(Login);
+    (Login);
 
 
 
@@ -57,4 +59,3 @@ export default connect(mapStateToProps, mapDispatchToProps)
 
 
 
- 
