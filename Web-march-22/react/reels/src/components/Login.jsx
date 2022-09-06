@@ -1,19 +1,11 @@
 import React, { useState } from 'react'
-import { auth } from "../firebase";
-function Login() {
+// import { auth } from "../firebase";
+import { connect } from "react-redux"
+function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     async function loginHandler() {
-        // alert(email + " " + password);
-        // firebase talk -> login
-        try {
-            let userCreds = await 
-            auth.signInWithEmailAndPassword(email, password);
-            console.log(userCreds.user);
-            alert("user Logged In");    
-        } catch (err) {
-            alert(err.message);
-        }
+        props.loginWithFirebase(email, password);
         setEmail("");
         setPassword("");
     }
@@ -35,5 +27,34 @@ function Login() {
         </>
     )
 }
+function mapStateToProps(store) {
+    return store.auth;
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        loginWithFirebase: (email, password) => {
+            dispatch(signInMiddleWare(email, password))
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)
+(Login);
 
-export default Login
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

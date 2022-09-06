@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { connect } from "react-redux"
 import getUserMiddleWare from '../redux/user/userMiddleWare';
@@ -25,7 +24,6 @@ function mapDispatchToProps(dispatch) {
             // middleware 
             dispatch(getUserMiddleWare1);
         }
-        
         , fetchUserWithComponentData: () => {
             let compData = `User Data is fetched on ${Date.now()}`;
             let innerFn = getUserMiddleWare2(compData);
