@@ -43,7 +43,7 @@ export function signOutMiddleWare() {
 export function signUpMiddleWare(userDataObj) {
     return async function (dispatch, getStore,
         { getFirebase, getFirestore }) {
-            console.log("signup started");
+        console.log("signup started");
         try {
             const firebase = getFirebase();
             const firestore = getFirestore();

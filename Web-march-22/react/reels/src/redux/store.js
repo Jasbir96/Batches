@@ -10,8 +10,12 @@ const rootreducer = combineReducers({
         firebase: firebaseReducer
 })
 const reduxStore = 
-createStore(rootreducer, applyMiddleware(
-        thunk.withExtraArgument({ getFirebase, getFirestore })));
+
+createStore(rootreducer,
+        compose(
+applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore }))
+        )
+        );
 //redux binding for firebase );
 export default reduxStore;
 
