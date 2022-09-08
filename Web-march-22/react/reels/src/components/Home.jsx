@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { isLoaded } from 'react-redux-firebase';
 
-
 function Home(props) {
     return (
         <>
