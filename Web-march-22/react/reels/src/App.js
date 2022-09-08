@@ -6,8 +6,8 @@ function App() {
   return (
     <>
       <h1>Reels App</h1>
-      <Login></Login>
-      {/* <Signup></Signup> */}
+      {/* <Login></Login> */}
+      <Signup></Signup>
     </>
 
   );

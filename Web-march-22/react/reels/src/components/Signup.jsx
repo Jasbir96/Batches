@@ -22,16 +22,7 @@ function Signup(props) {
       alert(err.message);
     }
   }
-  // useEffect(function () {
-  //   // get
-  //   async function fn() {
-  //     const docSnap = await database
-  //     .users.doc("cQs3NYCarKcDWLWxOZK8PafFNEu2").get();
-  //     let user = docSnap.data();
-  //     console.log(user);
-  //   }
-  //   fn();
-  // }, [])
+
   return (
     <>
       <div>Signup Page </div>
@@ -72,13 +63,18 @@ function Signup(props) {
     </>
   );
 }
-function mapStateToProps() {
+function mapStateToProps(store) {
+  console.log("store",store);
+  return {
+    auth: store.auth,
+    firebase: store.firebase
 
+  }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    signupWithFirebase: function () {
+    signupWithFirebase: function (userDataOBj) {
       dispatch(signUpMiddleWare(userDataOBj));
 
     }

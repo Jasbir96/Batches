@@ -41,16 +41,23 @@ export function signOutMiddleWare() {
 }
 
 export function signUpMiddleWare(userDataObj) {
-    return async function (dispatch, getStore, { getFirebase, getFirestore }) {
+    return async function (dispatch, getStore,
+        { getFirebase, getFirestore }) {
+            console.log("signup started");
         try {
+            const firebase = getFirebase();
+            const firestore = getFirestore();
+            const auth = firebase.auth();
             // // 1. signup hoga
+            console.log("Signing up");
             const userCreds = await auth
                 .createUserWithEmailAndPassword
                 (userDataObj.email, userDataObj.password);
             const userId = userCreds.user.uid;
+
             alert("user signed up");
             // 2. uploading user image
-            const uploadtask = storage.ref(`/users/${userId}/profileImage`).put(filePath);
+            const uploadtask = storage.ref(`/users/${userId}/profileImage`).put(userDataObj.filePath);
             uploadtask.on("state_changed", progressCb, errorCb, successCb)
             function progressCb(snapShot) {
                 var progress = (
@@ -67,12 +74,17 @@ export function signUpMiddleWare(userDataObj) {
                 // img url
                 let imgUrl = await uploadtask.snapshot.ref.getDownloadURL()
                 //  doc -> img url -> upload -> firestore
-                let docSnap = await database.users.doc(userId).set({
-                    name: name,
-                    email: email,
-                    createdAt: database.getCurrentTimeStamp(),
-                    profileImageLink: imgUrl
-                })
+                const getCurrentTimeStamp = firebase
+                    .firestore
+                    .FieldValue
+                    .serverTimestamp
+                let docSnap = await firestore.collection("users")
+                    .doc(userId).set({
+                        name: userDataObj.name,
+                        email: userDataObj.email,
+                        createdAt: getCurrentTimeStamp(),
+                        profileImageLink: imgUrl
+                    })
                 dispatch({ type: "SIGNUP_SUCCESS" })
             }
         } catch (err) {
