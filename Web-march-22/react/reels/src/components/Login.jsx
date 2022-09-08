@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 // import { auth } from "../firebase";
 import { connect } from "react-redux";
-import { signInMiddleWare ,signOutMiddleWare } from "../redux/reducer/authMiddleWare";
+import { Redirect } from 'react-router-dom';
+import { signInMiddleWare, signOutMiddleWare } from "../redux/reducer/authMiddleWare";
+import { isLoaded } from 'react-redux-firebase';
+
 function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -13,7 +16,7 @@ function Login(props) {
     return (
         <>
             {
-                props?.firebase?.isEmpty !=null  ? <button onClick={props.logout}>Signout</button > :
+                isLoaded(props.firebase.auth) &&props.firebase.auth?.uid != undefined ? <Redirect to="/"></Redirect> :
                     <>
                         <h1>Login</h1>
                         <input type="text" placeholder="email"
@@ -31,8 +34,6 @@ function Login(props) {
                     </>
             }
         </>
-
-
     )
 }
 function mapStateToProps(store) {
