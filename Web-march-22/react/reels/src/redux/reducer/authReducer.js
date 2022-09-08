@@ -1,6 +1,5 @@
 const initialState = {
     authError: null,
-    isLoggedIn: false,
 }
 
 function authReducer(state = initialState, action) {
@@ -8,26 +7,30 @@ function authReducer(state = initialState, action) {
         case "LOGIN_SUCCESS":
             return {
                 authError: null,
-                isloggedIn: true
             }
         case "LOGIN_FAILURE":
             return {
                 authError: action.payload,
-                isLoggedIn: false
             }
 
         case "SIGNOUT":
             return {
-                authError:null,
-                isLoggedIn:false
+                authError: null,
             }
         case "SIGNOUT_FAILURE":
             return {
-                authError: null,
-                isLoggedIn: false
+                authError: action.payload
             }
-        default :
-        return state;     
+        case "SIGNUP_SUCCESS":
+            return {
+                authError: null
+            }
+        case "SIGNUP_FAILURE":
+            return {
+                authError: action.payload
+            }
+        default:
+            return state;
     }
 }
 export default authReducer;

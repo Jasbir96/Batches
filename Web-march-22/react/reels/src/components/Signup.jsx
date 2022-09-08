@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { auth, database, storage } from "../firebase";
-
-function Signup() {
+import { signUpMiddleWare } from "../redux/reducer/authMiddleWare";
+import { connect } from "react-redux";
+function Signup(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -13,36 +14,10 @@ function Signup() {
         alert("All fields are required");
         return;
       }
-      // 1. signup hoga
-      const userCreds = await auth
-        .createUserWithEmailAndPassword(email, password);
-      const userId = userCreds.user.uid;
-      alert("user signed up");
-      // 2. uploading user image
-      const uploadtask = storage.ref(`/users/${userId}/profileImage`).put(filePath);
-      uploadtask.on("state_changed", progressCb, errorCb, successCb)
-      function progressCb(snapShot) {
-        var progress = (
-          snapShot.bytesTransferred /
-          snapShot.totalBytes) * 100;
-        console.log("Progress: ", progress, "%");
+      let obj = {
+        email, password, name, filePath
       }
-      function errorCb(err) {
-        console.log(err.message);
-        console.log(err.payload);
-      }
-      async function successCb() {
-        // image upload -> complete 
-        // img url
-        let imgUrl = await uploadtask.snapshot.ref.getDownloadURL()
-        //  doc -> img url -> upload -> firestore 
-        let docSnap = await database.users.doc(userId).set({
-          name: name,
-          email: email,
-          createdAt: database.getCurrentTimeStamp(),
-          profileImageLink: imgUrl
-        })
-      }
+      props.signupWithFirebase(obj)
     } catch (err) {
       alert(err.message);
     }
@@ -97,5 +72,24 @@ function Signup() {
     </>
   );
 }
+function mapStateToProps() {
 
-export default Signup;
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    signupWithFirebase: function () {
+      dispatch(signUpMiddleWare(userDataOBj));
+
+    }
+  }
+}
+
+export default connect(mapStateToProps,
+  mapDispatchToProps)(Signup);
+
+
+
+
+
+

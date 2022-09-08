@@ -45,17 +45,20 @@
    * npm i redux react-redux redux-thunk react-redux-firebase redux-firestore
 
 # React-redux-firebase 
-* React redux firebase : is a library to integrate firebase into redux  based application
+* React redux firebase : is a library to integrate firebase into redux based application
 * It provide Output: 
-    * middleware : Firebase function provide 
-    * it also holds it's own reducer that contains realtime firebase info 
+    * middleware : Firebase function provide -> getFirebase 
+    * it also holds it's own reducer that contains realtime firebase auth info 
 * To setup react redux firebase :
     * App wrap -> Through it's inbuilt component -> ReactReduxFirebaseprovider. This component takes three props 
       * Firebase library ka obj
       * firebase config
       * dispatch 
 * Advantages of React-redux-firebase   
-
   * user auth state hold realtime
   * connect redux -> firebase : middleware using thunk -> firebase
+
+Firestore
+* component -> export fieabse ka logic to middleaware
+* middleware -> firebase ,firestore available
       

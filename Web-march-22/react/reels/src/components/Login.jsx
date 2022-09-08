@@ -13,7 +13,7 @@ function Login(props) {
     return (
         <>
             {
-                props?.auth?.isloggedIn == true ? <button onClick={props.logout}>Signout</button > :
+                props?.firebase?.isEmpty !=null  ? <button onClick={props.logout}>Signout</button > :
                     <>
                         <h1>Login</h1>
                         <input type="text" placeholder="email"
