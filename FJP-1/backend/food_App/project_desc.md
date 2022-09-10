@@ -130,15 +130,11 @@
         
 
 
-
-
-
-
 ## Issues
-* PlanDetails ,reviews
+* PlanDetails,reviews,Bookings,Home Page : Dynamic version, 
 * Presisting Login -> JWT and may i will be local storage
 * Config data hiding
-* Security 
+* Security : Theory : integrate 
   
 
 

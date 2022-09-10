@@ -98,6 +98,13 @@ https://github.com/sudheerj/
 * https://speakerdeck.com/ckarande/top-overlooked-security-threats-to-node-dot-js-web-applications -> what is paramter pollution
 * https://severalnines.com/database-blog/securing-mongodb-external-injection-attacks
 
+* Attacks :
+  * Man in the middle Attack: https://www.imperva.com/learn/application-security/man-in-the-middle-attack-mitm/
+  * No SQL injection : https://www.imperva.com/learn/application-security/nosql-injection/
+  * XSS attack : https://owasp.org/www-community/attacks/xss/
+
+
+
 ## Using nvm 
 * Install nvm from https://github.com/coreybutler/nvm-windows/releases
 * nvm list -> list 
