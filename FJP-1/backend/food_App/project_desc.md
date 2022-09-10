@@ -128,8 +128,6 @@
     * deploy : warnings are converted to errors to prevent that 
           * in next popup -> in build command put : CI=false npm run build  
         
-
-
 ## Issues
 * PlanDetails,reviews,Bookings,Home Page : Dynamic version, 
 * Presisting Login -> JWT and may i will be local storage
