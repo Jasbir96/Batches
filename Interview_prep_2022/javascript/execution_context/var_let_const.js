@@ -21,10 +21,10 @@
 // }
 // fn();
 
-// let is block scope ->  
-// block -> space between two curly braces 
+// let is block scope ->
+// block -> space between two curly braces
 
-// example 1 
+// example 1
 // let fruit = "🍎"
 // {
 //     {
@@ -40,8 +40,8 @@
 //     console.log(40, fruit)
 // }
 // console.log(42, fruit)
-
 // example 2
+console.log("before");
 function fn() {
     let a = 10;
     console.log("13", a);

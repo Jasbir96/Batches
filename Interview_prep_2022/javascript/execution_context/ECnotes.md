@@ -17,4 +17,5 @@
     * For that execution context
       * all variables will assigned : undefined
       * function statements are assigned memory in the heap 
+  * Code execution
 * let var const   
