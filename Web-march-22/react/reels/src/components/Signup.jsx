@@ -28,7 +28,8 @@ function Signup(props) {
   return (
 
     <>{
-      isLoaded(props.firebase.auth) && props.firebase.auth?.uid != undefined ? <Redirect to="/"></Redirect> :
+      isLoaded(props.firebase.auth) && props.firebase.auth?.uid != undefined ? 
+      <Redirect to="/"></Redirect> :
         <>
 
           <div>Signup Page </div>

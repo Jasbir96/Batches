@@ -16,10 +16,11 @@ function Login(props) {
     return (
         <>
             {
-                isLoaded(props.firebase.auth) &&props.firebase.auth?.uid != undefined ? <Redirect to="/"></Redirect> :
+                isLoaded(props.firebase.auth) &&props.firebase.auth?.uid != undefined ? 
+                <Redirect to="/"></Redirect> :
                     <>
                         <h1>Login</h1>
-                        <input type="text" placeholder="email"
+                        <input type="email" placeholder="email"
                             value={email}
                             onChange={(e) => { setEmail(e.target.value) }}
                         ></input>

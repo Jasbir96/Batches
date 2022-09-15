@@ -24,7 +24,7 @@
     *  Fields -> empty, 
     *  Login failed :error message  : Later  
   
-  ### Pending 
+   
     *  Routes  
     *  if login successfull  : Home Page 
   * Signup Page 
@@ -59,6 +59,9 @@
   * connect redux -> firebase : middleware using thunk -> firebase
 
 Firestore
-* component -> export fieabse ka logic to middleaware
+* component -> export fireabse ka logic to middleaware
 * middleware -> firebase ,firestore available
+
+### Pending
+Home Page
       

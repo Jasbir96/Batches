@@ -27,13 +27,10 @@ root.render(
                                 // dispatch to change the store using reducer 
                                 dispatch={store.dispatch}
                                 // to work with firestore
-                                createFirestoreInstance={createFirestoreInstance}
-                        >
+                                createFirestoreInstance={createFirestoreInstance}>
                                 <App />
                         </ReactReduxFirebaseProvider>
                 </BrowserRouter>
 
         </Provider>
 );
-
-

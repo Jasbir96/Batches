@@ -71,10 +71,10 @@ export default function UploadFile(props) {
                 postIds: [...props.userData.postIds, docRef.id]
               })
             })
-            .then(() => {
-              // props.setPosts([...props.posts,obj])
-              setLoading(false);
-            })
+              .then(() => {
+                // props.setPosts([...props.posts,obj])
+                setLoading(false);
+              })
               .catch(e => {
                 setError(e);
                 setTimeout(() => {
@@ -97,7 +97,6 @@ export default function UploadFile(props) {
             id="icon-button-file"
             style={{ display: 'none', }}
           />
-
           <label htmlFor="icon-button-file">
             <Button
               disabled={loading}

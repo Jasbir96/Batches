@@ -14,7 +14,6 @@ export default function Likes2({userData=null,postData=null}) {
        
         color:'black'
      }
- 
       });
       
       useEffect(() => {
