@@ -25,6 +25,7 @@ export const storage = firebase.storage();
 // 3. to shorten the syntax
 export const database = {
     users: firestore.collection('users'),
+    posts:firestore.collection('posts'),
     getCurrentTimeStamp:
     firebase.firestore.FieldValue.serverTimestamp,
 }

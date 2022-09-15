@@ -16,6 +16,8 @@
     "redux": "^4.2.0",
     "redux-firestore": "^1.0.0",
     "redux-thunk": "^2.4.1",
+    "uuid": "^9.0.0",
+    "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
