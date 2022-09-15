@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { isLoaded } from 'react-redux-firebase';
 import Header from "./Header";
 import UploadVideo from './UploadVideo';
+import Feed from './Feed';
 function Home(props) {
     return (
         <>
@@ -13,7 +14,7 @@ function Home(props) {
                     <>
                         <Header></Header>
                         <UploadVideo userId={props.firebase.auth.uid}></UploadVideo>
-                        <h2>Feed</h2>
+                        <Feed></Feed>
                     </>
             }
         </>

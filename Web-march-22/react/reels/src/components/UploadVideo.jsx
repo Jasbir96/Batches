@@ -44,7 +44,7 @@ function UploadVideo(props) {
                 }
                 await database.posts.doc(postId).set(postObj);
                 console.log("Post created");
-
+setFilePath("");
 
             }
         } catch (err) {
