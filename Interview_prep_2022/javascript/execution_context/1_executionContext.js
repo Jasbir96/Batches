@@ -20,8 +20,20 @@
 // fn();
 // console.log("After");
 
-// scope -> what is outside -> lexical scope 
 
+
+
+
+
+
+
+
+
+
+
+// scope -> 
+// what is outside -> 
+// lexical scope 
 var a = 20;
 function fn2() {
     console.log("30 a ", a);
@@ -44,7 +56,7 @@ var a = 10;
 console.log(" 42 a", a);
 function fn1() {
 
-    console.log("Inside fn1", a);
+console.log("Inside fn1", a);
     a = 20
 }
 console.log(" 47 a", a);

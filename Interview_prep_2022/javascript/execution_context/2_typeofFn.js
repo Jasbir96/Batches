@@ -4,7 +4,6 @@ function fn1() {
     console.log(" I am statement");
 }
 // fn expression
-
 var fn2 = function () {
     console.log(" I am expression");
 }
