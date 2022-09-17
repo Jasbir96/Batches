@@ -28,6 +28,7 @@ function serialReader(n) {
             serialReader(n + 1);
         }
     });
+    // when function's every line is executed then it removed from the stack 
 }
 serialReader(0)
 
