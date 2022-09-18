@@ -29,20 +29,16 @@
 // Q deep copy of object
 // functional programming
 
+function outer() {
+    return function inner() {
+        return function superInner() {
 
-
-
-
-// function outer() {
-//     return function inner() {
-//         return function superInner() {
-
-//         }
-//     }
-// }
-// // normal
-// let inner = outer();
-// let superInner = inner();
-// superInner();
-// // shorthand
-// inner()()()
+        }
+    }
+}
+// normal
+let inner = outer();
+let superInner = inner();
+superInner();
+// shorthand
+outer()()();
