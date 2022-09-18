@@ -62,6 +62,17 @@ Firestore
 * component -> export fireabse ka logic to middleaware
 * middleware -> firebase ,firestore available
 
-### Pending
-Home Page
+
+
+# Desc 
+* created insta clone with help react , redux ,material ui 
+* user can login signup , upload and view reels of other users
+* user can also like and comment on other's reels
+* redux was used for central state management  ex: authetication flow
+* firebase was used for authentication , storage and data base
+  
+
+
+
+
       
