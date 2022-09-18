@@ -8,13 +8,12 @@ var fn2 = function () {
     console.log(" I am expression");
 }
 
-// arrow fn 
+// arrow fn  
 var fn3 = () => {
     console.log(" I am arrow")
 }
 
 // IIFEE
-
 (function IIFEE() {
 
     console.log(" I am IIFEE");

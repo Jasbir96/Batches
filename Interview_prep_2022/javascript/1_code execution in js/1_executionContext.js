@@ -49,6 +49,16 @@ console.log("40 a ", a);
 fn1();
 console.log("42 a ", a);
 
+
+
+
+
+
+
+
+
+
+
 // Hositing 
 // Example -1 
 console.log(" 40 a", a);
