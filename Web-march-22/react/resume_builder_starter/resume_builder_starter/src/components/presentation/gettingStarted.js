@@ -12,8 +12,8 @@ const { v4: uuidv4 } = require("uuid");
 function GettingStarted(props) {
     let history = useHistory();
     const onChange = async (skinCd) => {
-        if (props.document.id) {
-            props.updateDocument(props.document.id, skinCd);
+        if (props.document) {
+            props.updateDocument(props.document, skinCd);
         }
         else {
             props.setDocument(skinCd);
