@@ -1,7 +1,7 @@
 import { skinCodes } from '../../constants/typeCodes';
 import { connect } from 'react-redux';
-import { withRouter } from "react-router-dom";
-import React from 'react';
+// import { withRouter } from "react-router-dom";
+import React, { useState } from 'react';
 import * as actionTypes from "../../redux/actionTypes";
 import { useHistory } from "react-router-dom";
 const { v4: uuidv4 } = require("uuid");
@@ -9,16 +9,28 @@ const { v4: uuidv4 } = require("uuid");
 // import { bindActionCreators } from 'redux';
 
 // import { withRouter } from "react-router-dom";
-function GettingStarted(props) {
+function GettingStarted() {
+    // currentSkin 
+    // id-> save -> set /update
+    const [theme, setTheme] = useState({ skinCd: "", id: null });
     let history = useHistory();
-    const onChange = async (skinCd) => {
-        if (props.document) {
-            props.updateDocument(props.document, skinCd);
+    // /ye skin select hua hu
+    function updateDocument(skinCd) {
+        setTheme({ ...theme, skinCd: skinCd })
+    }
+    function setDocument(skinCd) {
+        setTheme({ id: uuidv4(), skinCd: skinCd });
+    }
+    const changeTemplate = async (skinCd) => {
+        console.log(skinCd);
+        if (theme.id) {
+            updateDocument(skinCd);
         }
         else {
-            props.setDocument(skinCd);
+            setDocument(skinCd);
         }
-        history.push('/contact');
+        // when this function finishes running send me to /contact page
+        // history.push('/contact');
     }
     return (
         <div className="container med gettingStarted">
@@ -28,13 +40,17 @@ function GettingStarted(props) {
                 <p className=" center">
                     You’ll be able to edit and change this template later!
                 </p>
+                {/* template wala  */}
+                { /*"['skin1', 'skin2', 'skin3','skin4' ];"*/}
                 <div className="styleTemplate ">
                     {
                         skinCodes.map((value, index) => {
                             return (<div key={index} className="template-card rounded-border">
-                                <i className={(value == 'demo-value' ? 'selected fa fa-check' : 'hide')} ></i>
+                                <i className={(value == theme.skinCd ? 'selected fa fa-check' : 'hide')} ></i>
                                 <img className='' src={'/images/' + value + '.svg'} />
-                                <button type="button" onClick={() => onChange(value)} className='btn-select-theme'>USE TEMPLATE</button>
+                                <button type="button"
+                                    onClick={() => changeTemplate(value)} className='btn-select-theme'>USE TEMPLATE</button>
+
                             </div>);
 
                         })
@@ -45,7 +61,17 @@ function GettingStarted(props) {
         </div>
     );
 }
+
+
+
+
+
+
+
+
+
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
         document: state.document
     }
@@ -53,13 +79,18 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
     return {
         setDocument: (skinCd) => {
-            let id = uuidv4();
-            dispatch({ type: actionTypes.SET_SKIN, document: { skinCd, id: id } });
+            dispatch({
+                type: actionTypes.SET_SKIN, payload: {
+                    skinCd: skinCd,
+                    id: uuidv4()
+                }
+            })
         },
         updateDocument: (skinCd) => {
-            dispatch({ type: actionTypes.UPDATE_SKIN, document: { skinCd } })
+            console.log(skinCd)
+            dispatch({ type: actionTypes.UPDATE_SKIN, payload: { skinCd: skinCd } })
         }
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(GettingStarted));
+export default connect(mapStateToProps, mapDispatchToProps)(GettingStarted);
