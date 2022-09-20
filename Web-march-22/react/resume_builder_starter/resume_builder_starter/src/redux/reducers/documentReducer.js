@@ -5,7 +5,6 @@ export default function documentReducer(
     switch (action.type) {
         case actionTypes.SET_SKIN:
             return {
-                ...state,
                 ... action.payload
             }
         case actionTypes.UPDATE_SKIN:

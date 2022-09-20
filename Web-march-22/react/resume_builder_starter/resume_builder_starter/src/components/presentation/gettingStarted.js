@@ -9,28 +9,24 @@ const { v4: uuidv4 } = require("uuid");
 // import { bindActionCreators } from 'redux';
 
 // import { withRouter } from "react-router-dom";
-function GettingStarted() {
+function GettingStarted(props) {
     // currentSkin 
     // id-> save -> set /update
-    const [theme, setTheme] = useState({ skinCd: "", id: null });
+    
     let history = useHistory();
     // /ye skin select hua hu
-    function updateDocument(skinCd) {
-        setTheme({ ...theme, skinCd: skinCd })
-    }
-    function setDocument(skinCd) {
-        setTheme({ id: uuidv4(), skinCd: skinCd });
-    }
+    
+   
     const changeTemplate = async (skinCd) => {
         console.log(skinCd);
-        if (theme.id) {
-            updateDocument(skinCd);
+        if (props.document.id) {
+            props.updateDocument(skinCd);
         }
         else {
-            setDocument(skinCd);
+            props.setDocument(skinCd);
         }
         // when this function finishes running send me to /contact page
-        // history.push('/contact');
+        history.push('/contact');
     }
     return (
         <div className="container med gettingStarted">
@@ -46,7 +42,7 @@ function GettingStarted() {
                     {
                         skinCodes.map((value, index) => {
                             return (<div key={index} className="template-card rounded-border">
-                                <i className={(value == theme.skinCd ? 'selected fa fa-check' : 'hide')} ></i>
+                                <i className={(value == props.document.skinCd ? 'selected fa fa-check' : 'hide')} ></i>
                                 <img className='' src={'/images/' + value + '.svg'} />
                                 <button type="button"
                                     onClick={() => changeTemplate(value)} className='btn-select-theme'>USE TEMPLATE</button>
@@ -61,15 +57,6 @@ function GettingStarted() {
         </div>
     );
 }
-
-
-
-
-
-
-
-
-
 const mapStateToProps = (state) => {
     console.log(state);
     return {
