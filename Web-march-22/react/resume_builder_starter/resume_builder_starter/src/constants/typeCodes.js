@@ -17,10 +17,16 @@ export const skinCodes = ['skin1', 'skin2', 'skin3','skin4' ];
 export const fieldCd = {
     FirstName: "FNAM",
     LastName: "LNAM",
-    Profession:"PROF",
     ProfSummary:"PRSU",
+    Profession:"PROF",
+    Email: "EMAI",
     Phone: "PHON",
     City: "CITY",
+    Country: "CNTY",
+    Street: "STRT",
+    State: "STAT",
+    ZipCode: "ZIPC",
+
     Company: "COMP",
     Degree: "DGRE",   
     FreeFormat: "FRFM",
@@ -39,14 +45,11 @@ export const fieldCd = {
     SchoolCity: "SCIT",
     SchoolName: "SCHO",
     SchoolState: "SSTA",
-    State: "STAT",
     Street: "STRT",
     ZipCode: "ZIPC",
-    Email: "EMAI",
     IsEmailHidden: "EHID",
     SchoolCountry: "SCNT",
     JobCountry: "JCNT",
-    Country: "CNTY"
     
 };
 
