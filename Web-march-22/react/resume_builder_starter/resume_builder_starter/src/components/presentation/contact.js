@@ -23,12 +23,7 @@ function Contact(props) {
 
 
 
-    const onchange = (event) => {
-        var key = event.target.name;
-        var val = event.target.value;
-        // this.setState({contactSection:update(this.state.contactSection,{$merge: {[key]:val}})});
-        setContact({ ...contact, [key]: val })
-    }
+   
     const onSubmit = async () => {
         // if(props.contactSection!=null){
         //     props.updateContact(props.document.id,contact);
@@ -39,8 +34,13 @@ function Contact(props) {
 
         // history.push('/education');
     }
-
-// ??
+    const onchange = (event) => {  // 3 
+        var key = event.target.name;
+        var val = event.target.value;
+        // this.setState({contactSection:update(this.state.contactSection,{$merge: {[key]:val}})});
+        setContact({ ...contact, [key]: val })
+    }
+// 2
     const getFieldData = (key) => {
         if (contact && contact[key]) {
             return contact[key]
@@ -55,20 +55,16 @@ function Contact(props) {
                 <div className="form-card">
                     <h2 className="form-heading center">Personal Details</h2>
                     <div className="form-section">
+                     
                         <div className="input-group">
                             <label>First Name</label>
                             <div className="effect">
-                    <input type="text" name={fieldCd.FirstName}
-                     value={getFieldData(fieldCd.FirstName)} 
-                     onChange={onchange} /><span></span>
+                    {/* 1 */}
+                    <input type="text" name={fieldCd.FirstName} value={getFieldData(fieldCd.FirstName)}  onChange={onchange} /><span></span>
+                      
                             </div>
                             <div className="error"></div>
                         </div>
-
-
-
-
-
 
                         <div className="input-group"><label>Last Name</label>
                             <div className="effect"><input type="text" name={fieldCd.LastName} value={getFieldData(fieldCd.LastName)} onChange={onchange} /><span></span>

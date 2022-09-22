@@ -17,7 +17,7 @@ import Finalize from './components/presentation/finalizePage';
 function App() {
   return (
     <div>
-      {/* <Header></Header>
+      <Header></Header>
 
       <Switch>
         <Route path="/education" component={Education}></Route>
@@ -30,10 +30,10 @@ function App() {
         <Route path="/register" component={Register}></Route>
         <Route path="/" component={LandingPage}></Route>
       </Switch>
-      <Footer></Footer> */}
+      <Footer></Footer>
 
 
-      <Form></Form>
+      {/* <Form></Form> */}
     </div>
 
   );
@@ -71,30 +71,20 @@ function Form() {
 
       <h2>First Name</h2>
       <input type="text" value={getValue("first_name")}
-        name={"first_name"}
-        onChange={setValue}
-      ></input>
+        name={"first_name"} onChange={setValue}></input>
 
-      <h2>
-        Last Name
-      </h2>
+      <h2>Last Name</h2>
       <input type="text"
-        value={getValue("last_name")}
-        name={"last_name"}
+        value={getValue("last_name")} name={"last_name"}
         onChange={setValue}
       ></input>
       
-      <h2>
-        Email
-      </h2>
+      <h2>Email</h2>
       <input type="text"
-        value={getValue("email")}
-        name={"email"}
-        onChange={setValue}
+        value={getValue("email")} name={"email"}onChange={setValue}
       ></input>
-      <h2>
-        Phone
-      </h2>
+
+      <h2>Phone</h2>
       <input type="text"
         name="phone" value={getValue("phone")}
         onChange={setValue}
