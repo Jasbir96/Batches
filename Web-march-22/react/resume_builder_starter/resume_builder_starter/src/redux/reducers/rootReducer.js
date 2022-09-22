@@ -1,8 +1,8 @@
-import initialState from "./initialState.json";
-import * as actionTypes from "../actionTypes";
 import documentReducer from "./documentReducer";
+import contactReducer from "./contactReducer";
 import { combineReducers } from "redux";
 const rootReducer = combineReducers({
-    document: documentReducer
+    document: documentReducer,
+    contact: contactReducer
 })
 export default rootReducer;
