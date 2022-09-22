@@ -11,14 +11,14 @@ import ResumePreview from './resumePreview'
 import { connect } from "react-redux";
 function Contact(props) {
     // console.log(props)
-    //    let history = useHistory();
+       let history = useHistory();
     const [contact, setContact] = useState(props.contact);
 // 2-3
     const onSubmit = async () => {
 
         props.setContact(contact);
 
-        // history.push('/education');
+        history.push('/education');
     }
     const onchange = (event) => {  // 3 
         var key = event.target.name;
