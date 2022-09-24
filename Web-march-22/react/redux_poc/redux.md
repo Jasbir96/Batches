@@ -1,6 +1,6 @@
 # Redux 
 * Code Flow
-* Usecase 
+* Usecase : prop drilling  
 * Principles: https://redux.js.org/understanding/thinking-in-redux/three-principles
   * Single sourec of truth : all the state in redux are stored in single store
   * state is read only : you a component can't interact with state directly . You need to dispatch an action and reducer will change the state  inside the store
@@ -19,8 +19,9 @@
   * put your reducer into that createStore
 * Go to app.js 
   * import store from store.js 
-  * import Provider from **react-redux** lib
+  * import **Provider** from **react-redux** lib
   * put store in front of store prop
+
 * Go to component
   * import connect from **react-redux**
   * create two function 
