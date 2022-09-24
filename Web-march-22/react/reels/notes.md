@@ -22,9 +22,7 @@
     * Firebase service used : Firebase auth : sign method -> login 
     *  auth enable , emailId ,password: enable
     *  Fields -> empty, 
-    *  Login failed :error message  : Later  
-  
-   
+    *  Login failed :error message  : Later 
     *  Routes  
     *  if login successfull  : Home Page 
   * Signup Page 
@@ -54,9 +52,20 @@
       * Firebase library ka obj
       * firebase config
       * dispatch 
+    * go to root Reducer
+    * RootReducer-> 
+      * import firebase reducer from react-redux-firebase 
+      * pass firebaseReducer to it
+    * Store
+      * import compose , applyMiddleware from "redux"
+      * import getFirebase from react-redux-firebaseReducer
+      * import thunk from redux-thunk
+      * use compose applymiddleware and thunk with extr arguments to pass getFirebase
 * Advantages of React-redux-firebase   
   * user auth state hold realtime
   * connect redux -> firebase : middleware using thunk -> firebase
+
+
 
 Firestore
 * component -> export fireabse ka logic to middleaware
