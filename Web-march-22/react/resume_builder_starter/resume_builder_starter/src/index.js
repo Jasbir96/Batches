@@ -4,11 +4,24 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import firebase, { firebaseConfig } from "./firebase";
+
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <ReactReduxFirebaseProvider
+        // firebase lib link
+        firebase={firebase}
+        // firebase config
+        config={firebaseConfig}
+        // dispatch to change the store using reducer 
+        dispatch={store.dispatch}
+      >
+
+        <App />
+      </ReactReduxFirebaseProvider>
     </BrowserRouter>
   </Provider>
   ,
