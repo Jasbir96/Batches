@@ -11,14 +11,20 @@ import ResumePreview from './resumePreview'
 import { connect } from "react-redux";
 function Contact(props) {
     // console.log(props)
-       let history = useHistory();
+    let history = useHistory();
     const [contact, setContact] = useState(props.contact);
-// 2-3
+    // 2-3
     const onSubmit = async () => {
 
         props.setContact(contact);
 
         history.push('/education');
+    }
+    const onBack = async () => {
+
+        props.setContact(contact);
+
+        history.push('/getting-started');
     }
     const onchange = (event) => {  // 3 
         var key = event.target.name;
@@ -109,7 +115,7 @@ function Contact(props) {
                         </div>
                         <div className="form-buttons">
                             <button onClick={onSubmit} className="btn hvr-float-shadow" type='button'>Next</button>
-                            <NavLink to='/getting-started' className="center">Back</NavLink>
+                            <div onClick={onBack} className="center back">Back</div>
                         </div>
                     </div>
 
@@ -140,7 +146,7 @@ function mapDispatchToProps(dispatch) {
         setContact: (contactObj) => {
             dispatch({
                 type: contactActions.SET_CONTACT,
-                payload:  contactObj
+                payload: contactObj
 
             })
         },

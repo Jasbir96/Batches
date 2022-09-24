@@ -26,7 +26,7 @@ body {
     font-family: Josefin Sans;
 }
 
-a {
+a,.back {
     text-decoration: none;
     color: #7c7171;
 
@@ -681,4 +681,10 @@ h1 span {
         /* box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.25); */
         text-shadow: 2px 2px #e2c5c5;
     }
+}
+
+.back{
+    font-size: 2.1rem;
+    color: #1DBFAF;
+        outline: #1DBFAF;
 }

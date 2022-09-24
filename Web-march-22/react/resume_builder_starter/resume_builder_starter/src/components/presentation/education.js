@@ -27,7 +27,10 @@ function Education(props) {
     props.setEducation(education)
     history.push('/finalize')
   }
-
+  const onBack = async (e) => {
+    props.setEducation(education)
+    history.push('/contact')
+  }
 
   return (
     <div className="container med education" >
@@ -79,7 +82,8 @@ function Education(props) {
 
             <div className="form-buttons">
               <button className="btn hvr-float-shadow" type='button' onClick={onSubmit}>Next</button>
-              <NavLink to='/contact' className="center">Back</NavLink>
+              <div className="center back" onClick={onBack}>Back</div>
+              {/* <NavLink to='/contact' className="center">Back</NavLink> */}
             </div>
           </div>
         </div>
