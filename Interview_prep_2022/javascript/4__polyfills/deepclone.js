@@ -9,7 +9,7 @@ let person = {
         country: 'USA'
     },
     movies: [[{ key: "Die hard" }], "First Avenger"]
-}; 
+};
 
 // you need to make a deep copy for it
 // * shallow copy 
@@ -36,22 +36,32 @@ console.log("parsedString", parsedString);
 
 // deep clone implementation 
 let superClone = (object) => {
+    // check if the entry object is array or a normal obj
     let isArr = Array.isArray(object);
+    // if array then send empty array other wise send empty obj -> to copy data from orginal obj/array
     let cloning = isArr ? [] : {};
     // [fn,lastName,address]
+    // loop through all the entries of the orginal object 
     Object.keys(object).map((prop) => {
-        if (Array.isArray(object[prop])) {
+        // normal value type => data copy to empty obj
+        if (typeof object[prop] != "object") {
+            cloning[prop] = object[prop];
+        }
+        // if the key is an array 
+        else if (Array.isArray(object[prop])) {
+            // new obj -> array ko spread kar do 
             cloning[prop] = [...object[prop]];
+                // now work on those entries of that array  -> by looping over them  
             for (let i = 0; i < cloning[prop].length; i++) {
+                // reference type 
                 if (cloning[prop][i] == "object") {
+                    // clone wale me bhej 
                     cloning[prop][i] = superClone(object[prop][i]);
                 }
             }
             // array -> objects -> super clone 
         } else if (typeof object[prop] === "object") {
             cloning[prop] = superClone(object[prop]);
-        } else {
-            cloning[prop] = object[prop];
         }
     });
     return cloning;
