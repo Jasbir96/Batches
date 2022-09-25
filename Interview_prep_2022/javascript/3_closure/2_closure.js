@@ -16,7 +16,7 @@
 //     }
 // }
 // // and -> you can't declare any varibale in global area
-// printCount(0);
+printCount(0);
 
 // printCount()(0);
 
