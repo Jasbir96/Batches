@@ -1,4 +1,3 @@
-
 .main {
     font: 200% $font-stack;
     color: $secondary-color;
@@ -7,4 +6,16 @@
 .card {
     @include flex-container;
     font: 200% $font-stack;
+}
+
+.info {
+  @include customToaster
+}
+
+.alert {
+    @include customToaster($toastTheme:"DarkRed");
+}
+
+.success {
+    @include customToaster($toastTheme:"DarkGreen")
 }

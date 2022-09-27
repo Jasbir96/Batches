@@ -42,4 +42,22 @@ nav li a:active {
   font: 200% Helvetica, sans-serif;
 }
 
+.info {
+  background: "DarkGrey";
+  box-shadow: 0 0 1px rgba(169, 169, 169, 0.25);
+  color: #fff;
+}
+
+.alert {
+  background: "DarkRed";
+  box-shadow: 0 0 1px rgba(169, 169, 169, 0.25);
+  color: #fff;
+}
+
+.success {
+  background: "DarkGreen";
+  box-shadow: 0 0 1px rgba(169, 169, 169, 0.25);
+  color: #fff;
+}
+
 /*# sourceMappingURL=website.css.map */

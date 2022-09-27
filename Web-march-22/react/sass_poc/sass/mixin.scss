@@ -3,3 +3,12 @@
     justify-content: flex-end;
     align-items: center;
 }
+
+// functions
+@mixin customToaster($toastTheme: "DarkGrey") {
+    background: $toastTheme;
+    box-shadow: 0 0 1px rgba(169, 169, 169, 0.25);
+    color: #fff;
+}
+
+// if else , loops
