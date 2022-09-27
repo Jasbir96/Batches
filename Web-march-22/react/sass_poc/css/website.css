@@ -25,4 +25,21 @@ nav li a {
 }
 nav li a:hover {
   color: rgb(134, 130, 130);
-}/*# sourceMappingURL=main.css.map */
+}
+nav li a:active {
+  color: #333;
+}
+
+.main {
+  font: 200% Helvetica, sans-serif;
+  color: rgb(134, 130, 130);
+}
+
+.card {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font: 200% Helvetica, sans-serif;
+}
+
+/*# sourceMappingURL=website.css.map */

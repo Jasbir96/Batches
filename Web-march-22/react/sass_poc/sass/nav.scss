@@ -1,0 +1,38 @@
+
+
+body {
+    font: 100% $font-stack;
+    color: $primary-color;
+}
+
+div {
+    color: $secondary-color;
+    background-color: $background-color;
+}
+
+// nesting
+nav {
+    height: 10vh;
+    width: 100%;
+    display: flex;
+
+    ul {
+        list-style: none;
+    }
+
+    li {
+        margin-right: 2.5rem;
+        a {
+            text-decoration: none;
+            color: $primary-color;
+
+            // parent selector
+            &:hover {
+                color: $secondary-color
+            }
+            &:active{
+                color: $primary-color
+            }
+        }
+    }
+}
