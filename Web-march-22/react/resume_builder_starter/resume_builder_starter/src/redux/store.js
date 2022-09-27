@@ -4,7 +4,6 @@ import { getFirebase } from "react-redux-firebase"
 // async work -> thunk use apply ->apply middleware-> function withExtraArgument
 // combine : multiple things into create Store -> compose  
 import thunk from "redux-thunk";
-
 const store = createStore(rootReducer,
     compose(applyMiddleware(thunk.withExtraArgument({ getFirebase })))
 );

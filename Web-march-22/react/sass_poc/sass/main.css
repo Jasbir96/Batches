@@ -1,0 +1,28 @@
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}
+
+div {
+  color: rgb(134, 130, 130);
+  background-color: "green";
+}
+
+nav {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+}
+nav ul {
+  list-style: none;
+}
+nav li {
+  margin-right: 2.5rem;
+}
+nav li a {
+  text-decoration: none;
+  color: #333;
+}
+nav li a:hover {
+  color: rgb(134, 130, 130);
+}/*# sourceMappingURL=main.css.map */
