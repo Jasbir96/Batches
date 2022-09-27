@@ -7,7 +7,7 @@ export function signInMiddleWare(email, password) {
             let auth = firebase.auth();
             let userCreds = await auth
                 .signInWithEmailAndPassword(email, password);
-            console.log("user logged In", userCreds);
+            // console.log("user logged In", userCreds);
             dispatch({
                 type: "LOGIN_SUCCESS",
 

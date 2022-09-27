@@ -29,12 +29,6 @@ function authReducer(state = initialState, action) {
             return {
                 authError: action.payload
             }
-        case "FETCH_USER_SUCCESS":
-            return {
-                authError: null
-            }
-        case "FETCH_USER_FAILURE":
-            return { authError: action.payload }
         default:
             return state;
     }

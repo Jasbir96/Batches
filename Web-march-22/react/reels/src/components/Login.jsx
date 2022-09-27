@@ -16,7 +16,8 @@ function Login(props) {
     return (
         <>
             {
-                isLoaded(props.firebase.auth) &&props.firebase.auth?.uid != undefined ? 
+                isLoaded(props.firebase.auth) 
+                &&props.firebase.auth?.uid != undefined ? 
                 <Redirect to="/"></Redirect> :
                     <>
                         <h1>Login</h1>
