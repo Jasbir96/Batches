@@ -51,12 +51,13 @@ export function signUpMiddleWare(userDataObj) {
             const userCreds = await auth.createUserWithEmailAndPassword
                 (userDataObj.email, userDataObj.password);
             const userId = userCreds.user.uid;
-            alert("user signed up");
+            console.log("user signed up");
             // firestore -> user collection -> user add
             await firestore.collection("users").doc(userId).set({
                 email: userDataObj.email,
                 resumes: []
             })
+            console.log("signup done ");
             dispatch({ type: "SIGNUP_SUCCESS" })
         } catch (err) {
             dispatch({ type: "SIGNUP_FAILURE", payload: err.message })

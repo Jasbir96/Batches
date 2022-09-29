@@ -1,28 +1,40 @@
 import React from "react";
-import ResumePreview from './resumePreview'
+import ResumePreview from './resumePreview';
+// js written -> pdf
+
 import jsPDF from "jspdf";
 import html2canvas from 'html2canvas';
 import { connect } from "react-redux";
 function Finalize(props) {
   let educationSection = props.education
   let contactSection = props.contact
-  let document = props.document
 
-  const saveToDatabase = async () => {
 
-  }
   const downloadResume = () => {
-
+    // document -> dom 
+    // get header part
     const input = document.getElementById('resumePreview');
-    console.log(document)
+// convert image
     html2canvas(input)
       .then((canvas) => {
+// image -> 64bit 
         const imgData = canvas.toDataURL('image/png');
+        //  type pdf -> potartit ,mm, a4
         const pdf = new jsPDF("p", "mm", "a4");
+        // x-axis final point : page with
+        // y-axis final point : page height
         var width = pdf.internal.pageSize.getWidth();
         var height = pdf.internal.pageSize.getHeight();
+
+        // pdf -> image add
+          // function -> addImages
+            // params
+                // * imageData: 64bitimage data
+               // extension
+              // starting x,y coordinates
+             // width ,height 
         pdf.addImage(imgData, 'JPEG', 0, 0, width, height);
-        // pdf.output('dataurlnewwindow');
+        // download pdf
         pdf.save("resume.pdf");
       }).catch(function (error) {
         console.log(error)
@@ -50,7 +62,6 @@ function Finalize(props) {
             <p className="no-margin"  >
               Save to Database
             </p>
-            <a style={{ cursor: 'pointer' }} onClick={saveToDatabase}  >Save to Database</a>
           </div>
         </div>
       </div>

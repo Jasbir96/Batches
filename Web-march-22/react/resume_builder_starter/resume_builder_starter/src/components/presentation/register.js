@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { isLoaded } from 'react-redux-firebase'
 import { connect } from "react-redux";
 import { signUpMiddleWare } from "../../redux/reducers/auth/authMiddleWare";
+import {Redirect} from "react-router-dom";
 function Register(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
