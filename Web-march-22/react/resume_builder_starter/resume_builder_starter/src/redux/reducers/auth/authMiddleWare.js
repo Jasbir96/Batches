@@ -4,7 +4,7 @@ export function signInMiddleWare(email, password) {
         try {
             let firebase = getFirebase();
             let auth = firebase.auth();
-            let userCreds = await auth .signInWithEmailAndPassword(email, password);
+            let userCreds = await auth.signInWithEmailAndPassword(email, password);
             console.log("user logged In", userCreds);
             dispatch({
                 type: "LOGIN_SUCCESS",
@@ -34,6 +34,30 @@ export function signOutMiddleWare() {
                 type: "SIGNOUT_FAILURE",
                 payload: err.message
             })
+        }
+    }
+}
+
+export function signUpMiddleWare(userDataObj) {
+    return async function (dispatch, getStore,
+        { getFirebase, getFirestore }) {
+        console.log("signup started");
+        try {
+            const firebase = getFirebase();
+            const firestore = getFirestore();
+            const auth = firebase.auth();
+            // // 1. signup hoga
+            console.log("Signing up");
+            const userCreds = await auth.createUserWithEmailAndPassword(userDataObj.email, userDataObj.password);
+            const userId = userCreds.user.uid;
+            alert("user signed up");
+            await firestore.collection("users").doc(userId).set({
+                email: userDataObj.email,
+                resumes: []
+            })
+            dispatch({ type: "SIGNUP_SUCCESS" })
+        } catch (err) {
+            dispatch({ type: "SIGNUP_FAILURE", payload: err.message })
         }
     }
 }

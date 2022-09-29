@@ -24,7 +24,6 @@ function Signup(props) {
       alert(err.message);
     }
   }
-
   return (
 
     <>{
