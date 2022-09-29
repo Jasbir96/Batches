@@ -16,30 +16,31 @@ function Register(props) {
   }
   return (
     <>
-      {!isLoaded(props.auth) ? <></> :
+      {isLoaded(props.firebase.auth) && props.firebase.auth?.uid != undefined ?
+        <Redirect to="/"></Redirect> :
 
-        <div className="container med contact">
-          <div className="section funnel-section">
-            <div className="form-card">
-              <h2 className="form-heading center">Enter your details</h2>
-              <div className="form-section">
-                <div className="input-group full"><label>Email</label>
-                  <div className="effect"><input type="text" name="email" value={email || ''} onChange={handleEmail} /><span></span>
-                  </div>
+      <div className="container med contact">
+        <div className="section funnel-section">
+          <div className="form-card">
+            <h2 className="form-heading center">Enter your details</h2>
+            <div className="form-section">
+              <div className="input-group full"><label>Email</label>
+                <div className="effect"><input type="text" name="email" value={email || ''} onChange={handleEmail} /><span></span>
                 </div>
-                <div className="input-group full"><label>Password</label>
-                  <div className="effect"><input type="password" name="password" value={password || ''} onChange={handlePassword} /><span></span>
-                  </div>
-                </div>
-                <div className="form-buttons">
-                  <button onClick={onSubmit} className="btn hvr-float-shadow" type='button'>Register</button>
-                </div>
-
               </div>
-            </div>
+              <div className="input-group full"><label>Password</label>
+                <div className="effect"><input type="password" name="password" value={password || ''} onChange={handlePassword} /><span></span>
+                </div>
+              </div>
+              <div className="form-buttons">
+                <button onClick={onSubmit} className="btn hvr-float-shadow" type='button'>Register</button>
+              </div>
 
+            </div>
           </div>
+
         </div>
+      </div>
       }
     </>
   );
