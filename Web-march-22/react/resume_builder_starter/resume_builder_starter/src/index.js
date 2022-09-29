@@ -19,7 +19,7 @@ ReactDOM.render(
         config={firebaseConfig}
         // dispatch to change the store using reducer 
         dispatch={store.dispatch}
-
+        // firestore enable -> you can interact with it 
         createFirestoreInstance={createFirestoreInstance}
 
       >
