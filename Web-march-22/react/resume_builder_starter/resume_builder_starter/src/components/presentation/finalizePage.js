@@ -50,8 +50,6 @@ function Finalize(props) {
           ></ResumePreview>
         </div>
         <div className="finalize-settings center">
-
-
           <div className=" download-resume resume-options">
             <p className="no-margin"  >
               Download Resume As PdF
