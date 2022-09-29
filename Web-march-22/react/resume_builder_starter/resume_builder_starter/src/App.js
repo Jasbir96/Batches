@@ -31,11 +31,8 @@ function App() {
       <Footer></Footer>
       {/* <Form></Form> */}
     </div>
-
   );
-
 }
-
 export default App;
 // error coz of string
 // const obj = {
