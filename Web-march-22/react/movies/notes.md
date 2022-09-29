@@ -68,6 +68,7 @@
 * firebase init
 * proceed -> y
 * option -> hosting -> space  then enter
+*  use as your public directory-> put build
 * existing -> choose -=> space press then
 * spa-> y
 * rewrite-> n
@@ -78,6 +79,7 @@
 * firebase init
 * proceed -> y
 * option -> hosting -> space  then enter
+* use as your public directory-> put build
 * existing -> choose -=> space press then
 * spa-> y
 * rewrite-> n
