@@ -12,27 +12,23 @@ import AboutUs from './components/presentation/aboutUs';
 import Contacts from './components/presentation/contact';
 import Education from './components/presentation/education';
 import Finalize from './components/presentation/finalizePage';
-
-
+import PrivateRoute from './components/PrivateRoute';
 function App() {
   return (
     <div>
       <Header></Header>
-
       <Switch>
-        <Route path="/education" component={Education}></Route>
-        <Route path="/contact" component={Contacts}></Route>
-        <Route path="/getting-started" component={GettingStarted}></Route>
+        <PrivateRoute path="/education" component={Education}></PrivateRoute>
+        <PrivateRoute path="/contact" component={Contacts}></PrivateRoute>
+        <PrivateRoute path="/getting-started" component={GettingStarted}></PrivateRoute>
         <Redirect path="/resume-templates" to="/getting-started"></Redirect>
         <Route path="/about-us" component={AboutUs}></Route>
-        <Route path="/finalize" component={Finalize}></Route>
+        <PrivateRoute path="/finalize" component={Finalize}></PrivateRoute>
         <Route path="/login" component={Login}></Route>
         <Route path="/register" component={Register}></Route>
         <Route path="/" component={LandingPage}></Route>
       </Switch>
       <Footer></Footer>
-
-
       {/* <Form></Form> */}
     </div>
 
@@ -78,10 +74,10 @@ function Form() {
         value={getValue("last_name")} name={"last_name"}
         onChange={setValue}
       ></input>
-      
+
       <h2>Email</h2>
       <input type="text"
-        value={getValue("email")} name={"email"}onChange={setValue}
+        value={getValue("email")} name={"email"} onChange={setValue}
       ></input>
 
       <h2>Phone</h2>
