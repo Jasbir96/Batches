@@ -39,8 +39,7 @@ export function signOutMiddleWare() {
 }
 
 export function signUpMiddleWare(userDataObj) {
-    return async function (dispatch, getStore,
-        { getFirebase, getFirestore }) {
+    return async function (dispatch, getStore, { getFirebase, getFirestore }) {
         console.log("signup started");
         try {
             const firebase = getFirebase();
@@ -48,7 +47,8 @@ export function signUpMiddleWare(userDataObj) {
             const auth = firebase.auth();
             // // 1. signup hoga
             console.log("Signing up");
-            const userCreds = await auth.createUserWithEmailAndPassword(userDataObj.email, userDataObj.password);
+            const userCreds = await auth.createUserWithEmailAndPassword
+            (userDataObj.email, userDataObj.password);
             const userId = userCreds.user.uid;
             alert("user signed up");
             await firestore.collection("users").doc(userId).set({

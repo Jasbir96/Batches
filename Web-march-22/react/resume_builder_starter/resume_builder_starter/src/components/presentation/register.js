@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { isLoaded } from 'react-redux-firebase'
 import { connect } from "react-redux";
 import { signUpMiddleWare } from "../../redux/reducers/auth/authMiddleWare";
-import { useHistory } from "react-router";
 function Register(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -32,9 +31,6 @@ function Register(props) {
                   <div className="effect"><input type="password" name="password" value={password || ''} onChange={handlePassword} /><span></span>
                   </div>
                 </div>
-                {props.authMine?.ErrorMessage?.message ? <div className="input-group full">
-                  <span className="error-message" >{props.authMine?.ErrorMessage?.message}</span>
-                </div> : <></>}
                 <div className="form-buttons">
                   <button onClick={onSubmit} className="btn hvr-float-shadow" type='button'>Register</button>
                 </div>

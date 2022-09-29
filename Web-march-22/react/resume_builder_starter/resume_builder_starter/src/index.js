@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import firebase, { firebaseConfig } from "./firebase";
+import { createFirestoreInstance } from 'redux-firestore';
 
 
 ReactDOM.render(
@@ -18,6 +19,9 @@ ReactDOM.render(
         config={firebaseConfig}
         // dispatch to change the store using reducer 
         dispatch={store.dispatch}
+
+        createFirestoreInstance={createFirestoreInstance}
+
       >
 
         <App />
