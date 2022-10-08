@@ -38,11 +38,11 @@ Object.prototype.MyApply = function (jisThisBind, args) {
     jisThisBind.mymethod(...args);
 }
 // *****************usage***********************************
+// bind
 let boundFn = obj.sayHi.MyBind(ironMan, 2, 3);
 boundFn();
  boundFn = obj.sayHi.MyBind(obj, 2, 3);
 boundFn();
-
 // call -> it directly call but not returns a new fn;
 obj.sayHi.MyCall(ironMan,"Hi","Bye");
 // apply : it is same as call but in it params are passed in an array
