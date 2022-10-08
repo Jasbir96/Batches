@@ -15,6 +15,7 @@ console.log(b.p);
 b.p=20;
 console.log("`````````````````````````````");
 console.log(b, a);
+console.log(a.isPrototypeOf(b));
 
 // javascript multiple inheritance -> ❌
 // multilevel -> ✔
