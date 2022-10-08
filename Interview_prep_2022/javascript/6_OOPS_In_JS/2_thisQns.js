@@ -8,7 +8,6 @@
 // }
 let sayHiAdd=obj.sayHi;
 sayHiAdd();
-
 let obj = {
     name: "Steve",
     sayHi: function () {
