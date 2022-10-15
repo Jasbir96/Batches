@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { auth, database, storage } from "../firebase";
-import { signUpMiddleWare } from "../redux/reducer/authMiddleWare";
+import { auth, database, storage } from "../../firebase";
+import { signUpMiddleWare } from "../../redux/reducer/authMiddleWare";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+// ****************react router dom ************
+import { Redirect ,Link} from "react-router-dom";
 import { isLoaded } from "react-redux-firebase";
-// input 
+// **************material ui****************** 
 import TextField from '@mui/material/TextField';
 import "./signup.css";
-import Img from "./insta.jpg";
-
+import Img from "../insta.jpg";
 import Button from '@mui/material/Button';
+// ********************************************
+
+
 function Signup(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,14 +39,13 @@ function Signup(props) {
         <Redirect to="/"></Redirect> :
         <>
           <div className="signup_container">
-            <div className="signup-card">
+            <div className="signup_card">
               <img src={Img}></img>
               <TextField
                 id="outlined-basic"
                 label="Email"
                 // which type of input field you
                 variant="outlined"
-
                 type="email"
                 placeholder="Enter Email"
                 value={email}
@@ -91,7 +93,7 @@ function Signup(props) {
                 // html kis element ki tarah behave
                 component="label"
                 fullWidth
-                style={{ marginTop :"1rem" }}
+                style={{ marginTop: "1rem" }}
               >
                 <input type="File" onChange={(e) => {
                   setFilePath(e.target.files[0]);
@@ -110,6 +112,15 @@ function Signup(props) {
               >
                 Signup
               </Button>
+
+            </div>
+            <div className="bottom_card">
+              <div>
+                Already Have an Account ?
+              </div>
+              <Link to="/login">
+                Login
+              </Link>
 
             </div>
 

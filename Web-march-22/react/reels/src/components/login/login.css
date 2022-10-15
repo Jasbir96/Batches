@@ -1,0 +1,36 @@
+.login_half{
+    display :flex;
+    flex-direction: column;
+    margin-top:8rem;
+    text-align: center;
+    align-items: center;    
+}
+.login_card{
+    border : 1px solid #ccc;
+    width:25rem;  
+    padding:1rem;
+    margin-bottom: 1rem;
+}
+.bottom_card{
+    width:25rem;
+    border : 1px solid #ccc;
+    padding:1rem;
+
+}
+
+
+/*crousel half*/
+.crousel_half{
+    background-size: cover;
+    height: 590px;
+    width: 441px;
+    background-image: url("./carbg.jpg");
+    position: relative;
+}
+.car {
+    height: 423px;
+    width: 241px;
+    position: absolute;
+    top: 93px;
+    left: 143px;
+}

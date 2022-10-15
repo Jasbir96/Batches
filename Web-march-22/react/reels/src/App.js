@@ -2,11 +2,11 @@
 import { Switch } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
-import Login from "./components/Login";
+import Login from "./components/login/Login";
 import PageNotFound from './components/PageNotFound';
-import Signup from "./components/Signup";
+import Signup from "./components/signup/Signup";
 import Profile from "./components/Profile";
-import { Route,Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 function App() {
   return (
     <>
