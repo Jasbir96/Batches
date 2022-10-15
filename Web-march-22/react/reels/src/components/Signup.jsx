@@ -7,7 +7,9 @@ import { isLoaded } from "react-redux-firebase";
 // input 
 import TextField from '@mui/material/TextField';
 import "./signup.css";
-import Img from "./insta.jpg"
+import Img from "./insta.jpg";
+
+import Button from '@mui/material/Button';
 function Signup(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,7 +43,7 @@ function Signup(props) {
                 label="Email"
                 // which type of input field you
                 variant="outlined"
-                
+
                 type="email"
                 placeholder="Enter Email"
                 value={email}
@@ -84,14 +86,30 @@ function Signup(props) {
                 margin="dense"
 
               />
-
               {/* uncontrolled input -> input type file  */}
-              <input type="File" onChange={(e) => {
-                setFilePath(e.target.files[0]);
-                console.log(e.target.files)
-              }}></input>
-              <br></br>
-              <button onClick={signupHandler}>Signup</button>
+              <Button variant="outlined"
+                // html kis element ki tarah behave
+                component="label"
+                fullWidth
+                style={{ marginTop :"1rem" }}
+              >
+                <input type="File" onChange={(e) => {
+                  setFilePath(e.target.files[0]);
+                  console.log(e.target.files)
+                }}
+                  style={{ display: 'none' }}
+                ></input>
+                Upload
+              </Button>
+              < Button
+                fullWidth
+                variant="contained"
+                onClick={signupHandler}
+                style={{ marginTop: "1rem" }}
+
+              >
+                Signup
+              </Button>
 
             </div>
 
