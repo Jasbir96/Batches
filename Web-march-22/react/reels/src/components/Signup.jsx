@@ -4,6 +4,10 @@ import { signUpMiddleWare } from "../redux/reducer/authMiddleWare";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { isLoaded } from "react-redux-firebase";
+// input 
+import TextField from '@mui/material/TextField';
+import "./signup.css";
+import Img from "./insta.jpg"
 function Signup(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,47 +29,74 @@ function Signup(props) {
     }
   }
   return (
-
     <>{
-      isLoaded(props.firebase.auth) && props.firebase.auth?.uid != undefined ? 
-      <Redirect to="/"></Redirect> :
+      isLoaded(props.firebase.auth) && props.firebase.auth?.uid != undefined ?
+        <Redirect to="/"></Redirect> :
         <>
+          <div className="signup_container">
+            <div className="signup-card">
+              <img src={Img}></img>
+              <TextField
+                id="outlined-basic"
+                label="Email"
+                // which type of input field you
+                variant="outlined"
+                
+                type="email"
+                placeholder="Enter Email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                size="small"
+                fullWidth
+                margin="dense"
+              />
+              <TextField
+                id="outlined-basic"
+                label="Password"
+                // which type of input field you
+                variant="outlined"
+                type="password"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                size="small"
+                fullWidth
+                margin="dense"
 
-          <div>Signup Page </div>
-          <input
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          ></input>
-          <br></br>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          ></input>
-          <br></br>
-          <input
-            type="text"
-            placeholder="Full Name"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
-          <br></br>
-          {/* uncontrolled input -> input type file  */}
-          <input type="File" onChange={(e) => {
-            setFilePath(e.target.files[0]);
-            console.log(e.target.files)
-          }}></input>
-          <br></br>
-          <button onClick={signupHandler}>Signup</button>
+              ></TextField>
+              <TextField
+                id="outlined-basic"
+                label="Full Name"
+                // which type of input field you
+                variant="outlined"
+                type="text"
+                placeholder="Full Name"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+                size="small"
+                fullWidth
+                margin="dense"
+
+              />
+
+              {/* uncontrolled input -> input type file  */}
+              <input type="File" onChange={(e) => {
+                setFilePath(e.target.files[0]);
+                console.log(e.target.files)
+              }}></input>
+              <br></br>
+              <button onClick={signupHandler}>Signup</button>
+
+            </div>
+
+          </div>
+
         </>
     }</>
 

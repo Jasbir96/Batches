@@ -103,9 +103,6 @@ https://github.com/sudheerj/
   * No SQL injection : https://www.imperva.com/learn/application-security/nosql-injection/
   * XSS attack : https://owasp.org/www-community/attacks/xss/
 
-
-
-
 ## Using nvm 
 * Install nvm from https://github.com/coreybutler/nvm-windows/releases
 * nvm list -> list 

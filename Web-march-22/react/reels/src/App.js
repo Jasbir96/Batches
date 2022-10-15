@@ -10,7 +10,7 @@ import { Route,Redirect } from "react-router-dom";
 function App() {
   return (
     <>
-      <h1>Reels App</h1>
+      {/* <h1>Reels App</h1> */}
       <Switch>
         <Route path="/login">
           <Login></Login>
