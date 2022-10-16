@@ -12,7 +12,15 @@
     ### disadvantages ->  callback hell
             *  nesting of code 
             * inversion of control 
-    ### Alternative:   Promises 
+    ### Alternative:  Promises
+    Solved : 
+    * inversion of control -> promise can resolved or rejected only once ,
+            *  and you don't need to pass a callback to     third party lib anymore, 
+    *  nesting -> using chaining 
+        ### disadvantage 
+                * consumption syntax was difficult to understand   -> then ,catch
+* https://www.youtube.com/watch?v=fyGSyqEX2dw&t=1s
+* Promise.all,Promise.race
 
 
 
