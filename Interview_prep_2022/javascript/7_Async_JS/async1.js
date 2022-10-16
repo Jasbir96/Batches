@@ -6,7 +6,6 @@ setTimeout(function(){
 },
 1000);
 while(halt){
-
 }
 console.log("After");
 
